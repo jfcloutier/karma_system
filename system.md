@@ -1,6 +1,6 @@
 # System
 
-## Notes
+## About
 
 * karma system
   * karma_agency (prolog)
@@ -8,7 +8,7 @@
     * Implements agency functions
       * Apperception
       * Fitness
-      * SOM
+      * Society of Mind (SOM)
         * Cognition actors
         * Metacognition
   * karma_body (elixir/phoenix)
@@ -23,6 +23,23 @@
   * karma_observer (elixir/liveview)
     * Web app
     * Monitoring of an karma_agency
+
+## Status
+
+* karma_agency - **under construction**
+  * Operational
+    * actor model framework
+    * apperception engine
+  * To do
+    * SOM
+    * Fitness and feelings
+* karma_body - **under construction**
+  * Operational
+    * Lego sensors and actuators on a BrickPi3
+  * To do
+    * Simulated sensors and actuators
+* karma_world - **under construction**
+* karma_observer - **TO DO**
 
 ## Karma system
 
