@@ -136,7 +136,7 @@ sequenceDiagram;
     agency-->>+body: ask for actuators/sensors
     body-->>-agency: answer actuator/sensors
     agency-->>+body: sense/actuate
-    body-->>+world: sensing/actuating
+    body-->>+world: registering/sensing/actuating
     world-->-body: sensed/actuated
     body-->>-agency: sensed/actuated
     agency-->>observer: SOM or fitness event
