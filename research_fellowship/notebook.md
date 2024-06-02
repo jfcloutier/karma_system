@@ -2,6 +2,19 @@
 
 I am, as of May 27, 2024 keeping a project notebook to record progress made on a daily basis.
 
+## June 1 2024
+
+Agency start level-1 meta-cognition actor
+Normalize query API of CAs
+Improved payloads of prediction events and predction error messages
+
+## June 1, 2024
+
+### Idea for experimental setup - Dissociative learning
+
+Two differently colored patches, only one is food. The other has no nutritional value.
+Once in a while, reverse which color is food and see how the agent changes its association between color and food.
+
 ## May 23, 2024
 
 I became Research Fellow at the Active Inference Institute thus the motivation for this notebook.
