@@ -2,7 +2,11 @@
 
 I am, as of May 27, 2024 keeping a project notebook to record progress made on a daily basis.
 
-## June 1 2024
+## June 3, 2024
+
+Design: Rules and constraints for how a Meta-CA builds and adjusts the set of CAs at its level of abstraction.
+
+## June 2, 2024
 
 Agency start level-1 meta-cognition actor
 Normalize query API of CAs
