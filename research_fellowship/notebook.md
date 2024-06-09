@@ -1,6 +1,20 @@
 # Research notebook
 
-I am, as of May 27, 2024 keeping a project notebook to record progress made on a daily basis.
+## June 9, 2024
+
+Defined the rules by which CAs are added and culled by meta-CAs, based on competence and relevance.
+
+## June 8, 2024
+
+Wrote about how time manifests in a SOM.
+
+## June 7, 2024
+
+Deleted clock actor. Replaced by a timer thread used to delay sending messages.
+
+## June 4, 2024
+
+Added a clock actor that publishes tic events (WIP)
 
 ## June 3, 2024
 
