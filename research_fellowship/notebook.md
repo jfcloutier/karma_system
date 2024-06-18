@@ -1,5 +1,13 @@
 # Research notebook
 
+## June 18, 2024
+
+Wrote about the search spaces of agency
+
+## June 16, 2024
+
+Defined interlocking rules and constraints specifying the purpose and behavior of cognition actors
+
 ## June 9, 2024
 
 Defined the rules by which CAs are added and culled by meta-CAs, based on competence and relevance.
