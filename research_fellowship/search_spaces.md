@@ -8,25 +8,25 @@ We can look at agency as the self-directed, concurrent exploration of multiple s
 
 ## External search spaces
 
-The robot searches the outside world (aka what it is not) for what it needs from it and for what it needs it to become.
+The robot searches the outside world (aka what the agent is not) for what it needs from it and for what it needs it to become.
 
 ### Resource space
 
-* What: Looking for food while avoiding collisions
+* What: Searching for food while avoiding collisions
 * Why: To maintain fitness
 
 ### Niche space
 
-* What: Looking for how to  beneficially alter the environment
+* What: Searching for how to  beneficially alter the environment
 * Why: To increase predictability in exploitation and reduce risks in exploration
 
 ## Internal search spaces
 
-The agent searches its "inner space" (aka what it was, is, and can become) to make sense of signals (merkwelt) and to discover affordances (wirkwelt)
+The agent searches its "inner space" (aka what the agent was, is, and can become) to make sense of signals (merkwelt) and to discover affordances (wirkwelt)
 
 ### Assembly space
 
-* What: Looking for ways cognition actors (CAs) can assemble into a working collective
+* What: Searching for ways cognition actors (CAs) can assemble into a working collective
   * Some background:
     * A CA deals with a subset of the agent's environment at some level of abstraction
     * A CA observes its umwelt (and nothing else) and acts on it (and nothing else)
@@ -36,16 +36,22 @@ The agent searches its "inner space" (aka what it was, is, and can become) to ma
     * Conjecture: Only CAs high enough in the collective's hierarchy can detect clear fitness trends and discover reliably effective affordances to control these trends
 * Why: To maximize control over fitness while minimizing energy expenditure
 
-### Affordance space
-
-* What: Looking for how a CA can most effectively impact its own beliefs
-  * By disrupting unpleasant (fitness-reducing) beliefs and promoting pleasant (fitness-increasing) beliefs
-    * A belief is how a CAs has made sense of observations on its umwelt
-* Why: To increase policy effectiveness and reliability, and minimize misfires
-
 ### Causal theory space
 
-* What: Looking for causal theories a CA can use to successfully
-  * make sense of past changes in its umwelt
+* What: A CA searching for causal theories it can use to successfully
+  * make sense of step-wise changes in its umwelt
   * and predict future changes to it (spontaneous or from acting on it)
 * Why: To maximize predictive accuracy and minimize theory complexity (Occam's Razor)
+
+### Belief space
+
+* What: A CA searching for trends in its latest observations that then become its beliefs
+  * For example, a CA detecting that observed distances are trending down might believe that the agent is approaching an obstacle
+  * A belief is how a CAs has made sense of past observations of its umwelt
+* Why: To detect signals in past observation while minimizing noise
+
+### Affordance space
+
+* What: A CA sarching for how it can act to most effectively impact its own beliefs
+  * By disrupting unpleasant (fitness-reducing) beliefs and promoting pleasant (fitness-increasing) beliefs
+* Why: To increase policy effectiveness and reliability, and minimize misfires
