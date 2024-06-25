@@ -4,18 +4,18 @@ This repository is an umbrella for the `sym-cog-robotics` research project of th
 
 The name of the software system under development is Karma. [Why the name](https://en.wikipedia.org/wiki/Karma)
 
-    Karma [...] is a concept of action, work, or deed, and its effect or consequences. In Indian religions, the term more specifically refers to a principle of cause and effect, often descriptively called the principle of karma, wherein individuals intent and actions (cause) influence their future [...]
+> Karma [...] is a concept of action, work, or deed, and its effect or consequences> In Indian religions, the term more specifically refers to a principle of cause an> effect, often descriptively called the principle of karma, wherein individual> intent and actions (cause) influence their future [...]
 
 Here are key concepts and opinions shaping this effort:
 
-* **Active Inference** (an agent must behave *as if* it actively minimizes surprise to preserve its identity)
-* **Enactivism** (cognition arises through a dynamic interaction between an agent and its environment, and an agent's perceptions and actions are constructively co-dependent)
-* **Apperception** (predictive sense-making is realized by the discovery of unified causal theories)
-* **Mortal Computing** (meaning is grounded in the agent's drive to survive)
-* **Society of Mind** (agency is realized by a collective of cognition actors interacting with each other and the agent's environment)
-* **Constraint Closure** (a cognition actor constrains how the society of mind can change, and vice-versa)
-* **Kantian Whole** (the parts -cognition actors- exist for and by means of the whole -the society of mind-)
-* **Autopoeisis** (an agent's society of mind is a continuous process of self-construction and self-maintenance)
+* **Active Inference** - an agent must behave *as if* it actively minimizes surprise to preserve its identity
+* **Enactivism** - cognition arises through a dynamic interaction between an agent and its environment, and an agent's perceptions and actions are constructively co-dependent
+* **Apperception** - predictive sense-making is realized by the discovery of unified causal theories
+* **Mortal Computing** - meaning is grounded in the agent's drive to survive
+* **Society of Mind** - agency is realized by a collective of cognition actors interacting with each other and the agent's environment
+* **Kantian Whole** - the parts (cognition actors) exist for and by means of the whole (the society of mind)
+* **Constraint Closure** - a cognition actor constrains how the society of mind can change, and vice-versa
+* **Autopoeisis** - an agent's society of mind is a continuous process of self-production and self-maintenance
 
 The code of the Karma project is distributed over these repositories
 

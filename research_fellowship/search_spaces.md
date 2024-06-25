@@ -13,7 +13,7 @@ The robot searches the outside world (aka what the agent is not) for what it nee
 ### Resource space
 
 * What: Searching for food while avoiding collisions
-* Why: To maintain fitness
+* Why: To maintain wellbeing
 
 ### Niche space
 
@@ -33,8 +33,8 @@ The agent searches its "inner space" (aka what the agent was, is, and can become
     * A CA's umwelt is made of other CAs (subject to constraints that obligate hierarchies)
     * The most primitive CAs are sensor and effector CAs whose umwelts are the robot's sensors and motors
     * The larger the collective, the higher the energy cost to the agent
-    * Conjecture: Only CAs high enough in the collective's hierarchy can detect clear fitness trends and discover reliably effective affordances to control these trends
-* Why: To maximize control over fitness while minimizing energy expenditure
+    * Conjecture: Only CAs high enough in the collective's hierarchy can detect clear wellbeing trends and discover reliably effective affordances to control these trends
+* Why: To maximize control over wellbeing while minimizing energy expenditure
 
 ### Causal theory space
 
@@ -53,5 +53,5 @@ The agent searches its "inner space" (aka what the agent was, is, and can become
 ### Affordance space
 
 * What: A CA sarching for how it can act to most effectively impact its own beliefs
-  * By disrupting unpleasant (fitness-reducing) beliefs and promoting pleasant (fitness-increasing) beliefs
+  * By disrupting unpleasant (wellbeing-reducing) beliefs and promoting pleasant (wellbeing-increasing) beliefs
 * Why: To increase policy effectiveness and reliability, and minimize misfires

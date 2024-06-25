@@ -7,7 +7,7 @@
     * App
     * Implements agency functions
       * Apperception
-      * Fitness
+      * Wellbeing
       * Society of Mind (SOM)
         * Cognition actors
         * Metacognition
@@ -32,7 +32,7 @@
     * apperception engine
   * To do
     * SOM
-    * Fitness and feelings
+    * Wellbeing and feelings
 * karma_body - **under construction**
   * Operational
     * Lego sensors and actuators on a BrickPi3
@@ -78,7 +78,7 @@ classDiagram
     on PC
     Prolog app
     apperception()
-    fitness()
+    wellbeing()
     som()
     pubsub()
     body_interface()
@@ -117,8 +117,8 @@ sequenceDiagram;
     body-->>-agency: answer actuator/sensors
     agency-->>+body: sense/actuate
     body-->>-agency: sensed/actuated
-    agency-->>observer: SOM or fitness event
-    agency-->>agency: SOM or fitness event
+    agency-->>observer: SOM or wellbeing event
+    agency-->>agency: SOM or wellbeing event
 ```
 
 ----
@@ -139,6 +139,6 @@ sequenceDiagram;
     body-->>+world: registering/sensing/actuating
     world-->-body: sensed/actuated
     body-->>-agency: sensed/actuated
-    agency-->>observer: SOM or fitness event
-    agency-->>agency: SOM or fitness event
+    agency-->>observer: SOM or wellbeing event
+    agency-->>agency: SOM or wellbeing event
 ```

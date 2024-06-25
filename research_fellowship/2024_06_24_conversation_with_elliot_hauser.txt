@@ -1,0 +1,345 @@
+JF
+ — 
+Today at 9:06 AM
+The hope is that this formalization of a CA's beliefs will be enough for an agent's collective of CAs to autonomously make pragmatic sense of the agent's world by abstracting up useful beliefs from the examination of more concrete, observed beliefs.
+
+The conjecture is that sufficiently abstracted beliefs correlate clearly with wellbeing trends and can be reliably impacted by action policies so as to keep the agent's wellbeing within survivable bounds. 
+Elliott Hauser
+ — 
+Today at 10:10 AM
+Even though you need a simple simulation, can you avoid hard-coding an ontology somehow?
+
+Think of chemotaxis: what's the 'Object'? A characteristic (patternable) relationship between the environment and sensors. 
+
+It's not "Food", for instance. Food is an nutritive relationship between metabolic processes and a set of chemical gradient  parameters. Under what conditions is a given chemical nutritive? They'd be, at least, the internal dynamics of the metabolism and the parameters under which the chemical can be metabolized.
+
+What are "Non-nutritive food" and "Poisoned food", respectively? A chemical signature indistinguishable from food that is, respectively, not reactive to or an agonist against metabolic processes.
+
+I think you get a lot of complex dynamics for free when modeling at this level, and avoid the reductionism so prevalent in AI/robotics. Furthermore, it'd not be too much effort to model differential metabolisms, where different agents could extract minimal nutrition from 'non-food', be more resistant to 'poisonous food', etc.
+
+Although you'd be exaggerating for effect, I think could you get a minimal model where three+ chemical gradients, taxic ability, two+ noisy sensors, and a few well-chosen metabolic process configurations (varying, e.g. rate of consumption, resulting energy, opportunity cost in terms of time of non-food, and succeptibility to poisonous agonists) would get some very interesting dynamics.
+I'm not sure the model you're working on would need extensive revision to accomodate something like this: you'd just need to make sure that it's amenable to a 'ground truth' of the environmental state that's radically ontologically sparse. 
+The internal ontologies would then be emergent as the agents infer their internal dynamics, as FEP would hold, I think
+Hierarchies would emerge as well, potentially, where different lineages of noisy food-sensors might confer differentially adaptive wellbeing in distinguishing the non-food and poisoned food signals. 
+Then, if you're feeling ambitious, a mechanism for changes in an individual (analog of gene expression), heritability, reproduction (after some nutritive threshold, say), and perhaps inter-individual transmission of models (analog of learning/transference)
+Elliott Hauser
+ — 
+Today at 10:19 AM
+The key thing i'm interested in is a scenario where there's no 'poison' sensor, and to see under what conditions the inference of the existence of poison might emerge, and what that emergent concept would look like.
+If an agent could map sources of food but not directly poison, for instance, poison would be equivalent to specific, apparently random food-locations...but that's only learnable if the simulation has some regularity in poison distribution.
+
+You could 'teach' the system things this way, which would be implicit in its concept. If the poison were only placed on integer-valued coordinates in a continuous plane, the concept 'poison' would be substantially similar to the integer-grid map of the space
+Maybe way out there, but hopefully some interesting thoughts in there for your project. Exciting stuff!
+JF
+ — 
+Today at 10:21 AM
+
+    can you avoid hard-coding an ontology somehow?
+
+Yes. That's a key intent of this project. The society of mind will evolve and mature by learning through active engagement and discover an ontology that enables its survival.
+
+    what's the 'Object'? A characteristic (patternable) relationship between the environment and sensors. 
+
+Yes. That is precisely the nature of the objects Cognition Actors abduce from synthesizing beliefs from detecting counts, trends and endings.
+
+    Hierarchies would emerge as well
+
+Yes. An agent learns by growing and adapting a hierarchy of Cognition Actors from experiences in order to preserve its wellbeing.
+
+     if you're feeling ambitious
+
+I have been thinking along these lines but exploring reproduction and culture depends on this effort first succeeding. 
+Elliott Hauser
+ — 
+Today at 10:22 AM
+I'm not finding it right now but I remember Michael Levin showing a graphic of automota on a gradient of survivability (100% to 0% over some delta t) showing emergent behavior where 'colonies' of autonoma would colonize regions of low survivability utilizing the property that death occured inside-out in the group.
+Maybe someone has the ref. It was a blue-to-red gradient, I think, with bright green automata on it.
+JF
+ — 
+Today at 10:25 AM
+
+    see under what conditions the inference of the existence of poison might emerge
+
+That's a great idea! My conjecture is that the belief generation process I describe, combined with wellbeing evaluation and communication to CAs would be sufficient for the agent to figure out that some food is good while other is bad.
+
+I can see how to add "poison" to the experimental setup (virtual and real) I envision.
+Elliott Hauser
+ — 
+Today at 10:25 AM
+Would it be fair to conceptualize Counts as 'presence' and Endings as 'absence'? Interestingly, this accentuates that Endings are counterfactual, whereas (instantaneous) Counts are not.
+That suggests that, like trends, they're a higher level of basal cognition
+JF
+ — 
+Today at 10:26 AM
+Counts are co-presence and Endings are discontinuations. Like Trends, they are higher level in the sense that they elevate observations into beliefs (which are observations to other CAs, and on and on, climbing the meta ladder) 
+Elliott Hauser
+ — 
+Today at 10:29 AM
+(I'm also interested in modeling epistemic state stigmergically. That is, 'memory' needs to be a write to self, and 'recall' needs to be a sensing of that material substrate, the configuration of which is another parameter. You'd then presumably see emergent differential exploitation of different short/long term memory capacities and reliabilities....Would be fascinating if there were an emergent development of error-correcting codes (roughly, inventing RAID) from signal processing in agents that had unreliable memory-substrates. 
+Hugely different adaptive behaviors as well, depending on the distribution and reliability of long/short term memory
+Which is a preface to talking about the problem of cumulative Counts. That only becomes a temporal cognitive state when there's stigmergic memorialization of past sensory states.
+
+    cumulative Counts
+
+Whether a cumulative Count is a Trend, for instance, would depend on the cognitive architecture. Some agents might treat them the same and others might treat them as a pseudo-sensor. The former would be more adaptive in the case of unreliable memory, while the latter would be ideal in the case of perfect memory
+JF
+ — 
+Today at 10:32 AM
+
+    I'm also interested in modeling epistemic state stigmergically
+
+Another great idea! Thanks! The way ants leave a trace of where they have been unsuccessful so that they eventually move away from the goal to get around an obstacle. This is exciting! 
+Elliott Hauser
+ — 
+Today at 10:36 AM
+Yes, but, inspired by FEP/coarse graining, I'm talking about internal stigmergy. That is, at some level of abstraction, an agent treating sub-agents as stigmergic resources. Although it's not external to the Markov blanket, it's external to the cognitive abstraction utilizing it as memory.
+
+"Sub system, increment" => sub-system increments, via unknown dynamics, to an unknown internal state
+"Sub system, what's you belief about the increment?" => recalling this stigmergic memory from a sub-system.
+
+External stigmergic memory (scoring on a tree trunk) is roughly equivalent, cognitively, except the prerequisites, cost of access, and reliability parameters are all different.
+JF
+ — 
+Today at 10:37 AM
+
+    Whether a cumulative Count is a Trend
+
+Yes it can be. A Count is within the scope of a CA's latest time frame. But there can be a Trend of Counts observed by a more abstract CA.
+Elliott Hauser
+ — 
+Today at 10:37 AM
+^ the parameters of the internal and external stigmergic substrates would have to be inferred by the CA at a given level of abstratction, like all the rest.
+'My memory is unreliable, so let me make these marks, even though I can't bring them with me'
+vs
+'My memory is reliable, so these marks are only worth it when they enable synergistic inference'
+Whether the marks degrade or are altered would once again need to be inferred, and I think this inference might not be tractable without some degree of reliable memory. So external+internal stigmergy enables powerful inference about the dynamics of the environment. 
+A proto-experiment, really
+JF
+ — 
+Today at 10:40 AM
+
+    I'm talking about internal stigmergy
+
+It applies. A CA keeps a memory of past states from which it synthesizes beliefs. These beliefs are observed by other CAs that also memorize their observations from which they can synthesize beliefs from detected trends. The whole society of mind is internal stygmergy.
+
+     the parameters of the internal and external stigmergic substrates would have to be inferred by the CA at a given level of abstratction, like all the rest
+
+Exactly right.
+Elliott Hauser
+ — 
+Today at 10:42 AM
+My interest in this is in the role of (classical, external) information. I'd like to see an experimental setup where differentially reliable memory-capacities interact with external stigmergic capacity to form a kind of error-correcting code.
+An agent with good short term and bad long term memory would try making high-fidelity marks on the environment before short-term memory degrades, even though those marks are less accessible than their internal memory. This would function as a more-reliable reference than long-term memory,  a basis for inferring the reliability of long-term memory, etc.....as long as the dynamics of the tracked states have intelligible Trends
+JF
+ — 
+Today at 10:47 AM
+
+    Whether the marks degrade or are altered would once again need to be inferred,
+
+A more abstract  CA will not revise the past observations from which it derives its beliefs but will revise its beliefs from new observations. However, the CA which beliefs were observed may change! Thus the beliefs of the more abstract CA degrade if their base of support shifts.
+
+There is also that a CA will eventually forget its oldest memories and it will forget more of them if the agent's energy resources become low (memory is metabilically expensive).
+Elliott Hauser
+ — 
+Today at 10:47 AM
+Excretion of non-food and posion-food as the end of metabolism would be interesting: that would mean that CAs might infer from 'trails' of those signals that a CA like them that has metabolized those chemicals has passed that way.
+JF
+ — 
+Today at 10:49 AM
+
+    Excretion of non-food and posion-food
+
+
+Pooping as stygmergy! Just yesterday I was thinking about the robot pooping fertilizer and seeds to promote food growth, as a form of niche construction.
+Elliott Hauser
+ — 
+Today at 10:49 AM
+Similarly, external stigmergy creates the possibility of interaction (proto-sociality), where individuals could help or hinder each other, based upon the encoding/decoding functions usef for these marks
+JF
+ — 
+Today at 10:50 AM
+I am starting with one robot but hope to move to multiple robots once I have solved the One Body Problem. 
+Elliott Hauser
+ — 
+Today at 10:52 AM
+I'd predict that a population of cognitively similar individuals (similar distribtuion of memory parameters) would be more likely to develop prosocial behaviors (e.g. keeping externalized Counts of food, or poison) even without inferring the existence of non-self agents. 
+But then at some point, once internal and external agency are inferred, informational parasitism (stigmergic disinformation) becomes partially adaptive. (labeling a safe region poisonous for exclusive access to it). But that won't work until/unless there's aslo differential memory capacities, or some non-intelligible signal innovation in the mark, or the perfidious agent would fool themselves!
+JF
+ — 
+Today at 10:54 AM
+You are killing me 😆 . So many dimensions to explore!
+Elliott Hauser
+ — 
+Today at 10:55 AM
+Solid plan.
+My phase one feedback boils down to the suggestion to 
+
+    model the environment simply, but such that there's an ontology that exceeds the epistemic capacity of the agents
+    Cost and noise functions for all abilities
+    tunable metabolism processes with tight;y bounded but randomized parameters
+    some regularization to the 'map'
+
+
+Experimental conditions could be chosen from amongst these (numerical) variables, fixing or tightly constraining the others.
+JF
+ — 
+Today at 10:57 AM
+Excellent suggestions!
+Elliott Hauser
+ — 
+Today at 10:57 AM
+^ these are all 'external'/ontological properties that I think would provide fair tests for the modular/processual epistemic dynamics you've articulated.
+It seems plausible then that whether you've gotten the CA architecture right would be readable from the results: some combination of these parameters should yield FEP-predicted intelligent behavior.
+JF
+ — 
+Today at 10:59 AM
+
+    Cost and noise functions for all abilities
+
+
+I think my next post will be about my thoughts re. wellbeing, how it is measured, communicated and responded to.
+Elliott Hauser
+ — 
+Today at 10:59 AM
+Then you couls start exploring architectural changes is 1) it's not happening in sim or 2) there are opportunities to get more rich behaviors
+Elliott Hauser
+ — 
+Today at 10:59 AM
+Hmmm...Really? Wellbeing is never measured internally.
+JF
+ — 
+Today at 11:00 AM
+
+     some combination of these parameters should yield FEP-predicted intelligent behavior
+
+
+This describes phase 3 of the project, an FEP-based analysis of the agent's observed behaviors
+Elliott Hauser
+ — 
+Today at 11:00 AM
+Even if it's modeled internally, that's always contingent
+Elliott Hauser
+ — 
+Today at 11:01 AM
+Seems like there's got to be an early check you can do to confirm that FEP-predicted phenomena are recovered from your architecture and a suitable environment in simulation.
+Otherwise, you're not testing the many hypotheses constituting your architecture, right?
+Elliott Hauser
+ — 
+Today at 11:01 AM
+(and basal systems are entirely incapable of performing such modeling...they merely may participate in it)
+JF
+ — 
+Today at 11:02 AM
+
+    Wellbeing is never measured internally.
+
+Then bad terminology? I need agent-wide measures of energy store, physical integrity and overall engagement 
+
+    Seems like there's got to be an early check 
+
+It will be as early as possible. Much needs to be done before this can happen. 
+Elliott Hauser
+ — 
+Today at 11:04 AM
+Ah yes it's terminological, but perhaps deeper. If we ceded 'measurement' to you, the experiementer, and reserved 'perception' for the CAs, then I think we're closer to the same page.
+
+I'm not sure you need a definition of wellbeing on top of your other metrics. Why not use FEP metrics in your experiment? Measure variational free energy. If you can show it being minimized you're in business.
+
+Whether minimizing variational free energy achieves/recovers some biological constuct 'wellbeing' is secondary
+In my mind Phase I goals have to be centered around demonstrating emergent behavior that is 1) sensitive to FEP-relevant parameters of agent and environment and 2) consonnant with FEP expectations, broadly
+Then, you've got a valid experimental platform for determining how changes to CA or environment are manifested in FEP-legible phenomena.
+JF
+ — 
+Today at 11:07 AM
+
+    determining how changes to CA or environment are manifested in FEP-legible phenomena
+
+
+That's a great way to put it.
+Elliott Hauser
+ — 
+Today at 11:08 AM
+The reason I brought in chemotaxis and metabolism is that those are minimally modelable but constitute a very rich, hard-to-predict state space of behavior. Not that you need to get to biological wellbeing in this project.
+The outcome i'm interested in your research is some more clarity on how these (individually simple) models might reveal some dynamics of cognitive architectural choices
+Once the platform's built and validated we can have precise and differing theories about what minimal CAs would behave like/accomplish what.
+(All the racing ahead to prosociality was expressing my interest in performing those kinds of experiments with your platform)
+DOn't let anyone bug you about the details of CA: your CA is a hypothesis. You'll have the only platform for testing that kind of hypotheses if you build this, and many other CAs could be advanced
+I've got my doubts about CA but they'll evaporate if you can demonstrate that it induces FEP-like phenomena in a simulation like this. 
+Which is in part why I'm not poking at it too hard. Even if you don't, for instance, implment explict, fallable memory, you might get FEP phenomena.
+If you don't, or it's weak, I think you'll probably to make your agent's abilities noisy in some way, and we'll have a metric of the role of cognitive fallibility in FEP phenomena.
+Regardless, I predict that the kinds of entities CAs evolve into will be characteristically dependent upon the regularity/predictability of the environment. I won't get any signal on that belief unless your ontology exceeds epistemic capacity by some meaningful margin, with consequences for metabolism or other components of the instantiated architecture of an individuals
+Which is why I'm lobbying for that as a Phase I feature.
+JF
+ — 
+Today at 11:15 AM
+
+    I think you'll probably to make your agent's abilities noisy in some way,
+
+
+I think it's pretty much guaranteed to be noisy. Predictive abilities depend on the discovery of causal theories that "explain" observations and these theories will have partial accuracy that may diminish in the context of more recent observations. Among other factors.
+Elliott Hauser
+ — 
+Today at 11:17 AM
+Really great project. I'll definitely keep a close eye on the updates you post (and thanks for posting them here, by the way; was easy to get a general sense of what you're up to and I hope this formative feedback is useful to you!)
+JF
+ — 
+Today at 11:18 AM
+
+    unless your ontology exceeds epistemic capacity by some meaningful margin
+
+
+Not sure I understand. The agent will develop its own ontology from engaging a world with regularities in it. My ontology is the one used to define the mechanisms by which the agent will develop, unpredictably, its own. 
+Thanks Elliot! This is tremendously helpful feedback!
+Elliott Hauser
+ — 
+Today at 11:27 AM
+By this I mean an ontology: [food, non-food, poison-food] and a non-verlapping epistemic range: [A-smell, non B-smell]
+The sensor just gets a 'slice' of what we know of the 'real' ontology. These objects could be modeled like this:
+
+    Food: 90-95% A, 10-5% random non-toxic
+    Non-food: <40% A, >3% toxic, rest random non-toxic
+    Poision-food: 1-20% toxic, random mixture of A and non-toxic.
+
+Perceiving an 'object' is impossible: it's only an inference. If the agent has direct sensors for all object types that's not going to give you interesting opportunities for inference.
+If, instead, it's got a fallible sensors and relatively strong regularities, you're back in business.
+
+An example of an experiment I'd want to do would be to model food etc more completely, with hard to detect but high information signals (e.g. 90% of the time, detecting any amount of X means the substance is poison). See how that, and relevant cost/noise functions, might impact behavior.
+There are a lot of parameters to such a model (but still tractable, I think, to something like a linear solver? certainly still deterministic...). 
+You might be able to map the space of parameter values to find interesting combinations, with one or more metrics of 'interesting'. One metric of not-not-interesting would be survivable. So you could get the parameter-combinations where some combination of metabolic processes and food compositions/prevalences, costs of movement, etc, permit life. Trim your search space bit by bit like that.
+JF
+ — 
+Today at 11:43 AM
+
+    Perceiving an 'object' is impossible: it's only an inference. 
+
+
+I agree and so does Immanuel Kant. The robot has sensors for color, luminance, distance and touch. It can also sense the state of its motors (how much they have run, whether they are stalled). That's it. Observed objects will necessarily need to be inferred.
+
+In the experimental setup I am thinking about, there will be a boundary around the world,. There will be obstacles and the floor will be made of luminescent tiles. "Food" tiles will be green, fertile tiles will be blue. Tiles surrounding the food will have a luminosity gradient "pointing" to the food. Food tiles will revert to fertile tiles once the food is consumed. If the robot spends enough time on fertile tiles, they will become food tiles (the pooping of seeds!). Poison tiles could be red and pooping poison seeds might create more poison tiles. That kind of setup.
+
+I could play with various tints of green and red to represent various levels of nutritional value or toxicity.
+
+    Trim your search space bit by bit like that
+
+
+So many search spaces in this project, for the robot and for me! 
+Elliott Hauser
+ — 
+Today at 11:57 AM
+Ah, ok. If you want to stay as close as possible to that setup, maybe make each 'tile' a 100x100 grid, and interactions with it sampling from that grid. Then the percentages above would apply. That's the higher-resolution world, lower-resolution sensing setup. You could start with ratios that mimic single tiles but you're set up for higher complexity when (as I'd predict) that'll yield weak results. 
+
+The 'chemicals' I've been talked about could definitely be modeled as RGB values. Pick those carefully and you might be able to get interesting effects like where the aggregate pixel hue looks like food, but there are few actual green pixels in the 100x100
+(effectively metamerism...really interesting. This effect would only be cases where the non-target color pixels are distributed in a way indistinguishable from the target color, so naturally rare...ooh and color spaces and types of color blindness would be an amazing addition in a later phase.)
+
+I do think that if the targer color is green, taking the G channel out of the sensor would be interesting.
+
+If there's a fact of the matter about the environment that matches your sensor state too closely I think you'll get uninteresting inferences.
+
+In general, I'd build in a lot of variables, and keep them initially unitary: a CA 'samples' from the food at 100% success, the food is converted to 100% of its energy value, etc. Then you're much more explicit about your assumptions at the outset, and ready to explore other state-spaces.
+
+This could be as simple as a default-value argument of 1 in some reusable 'dice roller' wrapper around the functions that are interfaces between CAs and anything else. 
+JF
+ — 
+Today at 12:03 PM
+Food for thought. Thanks!
+﻿

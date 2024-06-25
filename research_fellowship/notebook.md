@@ -1,5 +1,13 @@
 # Research notebook
 
+## June 24, 2024
+
+Formalized the nature and origins of a CA's beliefs entailing the synthesis of objects, and wrote about it.
+
+## June 23, 2024
+
+Figured out a setup allowing for niche construction by the rover
+
 ## June 18, 2024
 
 Wrote about the search spaces of agency
