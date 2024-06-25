@@ -15,3 +15,27 @@ If the agent spends enough time over a fertile area some time after eating, a fo
 If a food patch is not depleted (paler green), it eventually grows back to its prior state, whether or not the agent spends time (pooping) on it afterwards.
 
 Hopefully, the agent would discover it can modify its world into a better food source by absorbing food without depleting it and then spending enough time on all fertile areas so as to turn them into food patches.
+
+## Option: With poison food patches
+
+A poison patch (red) can also grow in fertile areas. Eating poison decreases the agent's integrity without increasing its energy.
+
+Similarly to food, a poison patch can be depleted and it can be replicated in another fertile area by the robot spending time on it after eating poison.
+
+If food seeds are pooped on a poison patch, food eventually takes over the poison.
+
+It is possible for a patch to contain, for a while, both food and poison (a mix of red and green tiles), and for the robot to eat of both.
+
+Thanks to @eah13 for the idea!
+
+## Option: With stygmergy
+
+The agent deposits poop some time after eating and for a while proportional to the amount eaten.
+
+If the agent spends a enough time eating, it will starting depositing on the patch it is on.
+
+The robot can sense its own deposits (poop) and distinguish between the remains of poison (yellow) vs food (brown).
+
+Deposits disappear on their on after some time.
+
+Thanks to @eah13 for the idea!
