@@ -2,6 +2,9 @@
 
 This repository is an umbrella for the `sym-cog-robotics` research project of the Active Inference Institute that I am conducting as a Research Fellow.
 
+This project is an experiment in **Artificial Agency**. It asks the question What does it take, at a minimum, for a robot to learn, *on its own*, how to survive in a
+world it knows initially almost nothing about?
+
 The name of the software system under development is Karma. [Why the name](https://en.wikipedia.org/wiki/Karma)
 
 > Karma [...] is a concept of action, work, or deed, and its effect or consequences> In Indian religions, the term more specifically refers to a principle of cause an> effect, often descriptively called the principle of karma, wherein individual> intent and actions (cause) influence their future [...]

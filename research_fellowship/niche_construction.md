@@ -1,6 +1,6 @@
 # Niche construction
 
-The agent's world starts with a food patch (green) and multiple fertile areas (brown), including one in which a food patch sits.
+The agent's world starts with one or more food patches (green) and multiple fertile areas (blue), including one in which a food patch sits.
 
 Non-fertile areas are gray.
 
@@ -18,15 +18,17 @@ Hopefully, the agent would discover it can modify its world into a better food s
 
 ## Option: With poison food patches
 
-A poison patch (red) can also grow in fertile areas. Eating poison decreases the agent's integrity without increasing its energy.
+A poison patch (red) can also grow in fertile areas. 
 
-Similarly to food, a poison patch can be depleted and it can be replicated in another fertile area by the robot spending time on it after eating poison.
+Eating poison decreases the agent's integrity without increasing its energy.
+
+Similarly to food, a poison patch can be depleted and it can be replicated in another fertile area by the agent spending time on it after eating poison.
 
 If food seeds are pooped on a poison patch, food eventually takes over the poison.
 
-It is possible for a patch to contain, for a while, both food and poison (a mix of red and green tiles), and for the robot to eat of both.
+It is possible for a patch to contain, for a while, both food and poison (a mix of red and green tiles), and for the agent to eat of both.
 
-Thanks to @eah13 for the idea!
+Thanks to Elliot Hauser (@eah13) for the poison idea!
 
 ## Option: With stygmergy
 
@@ -34,8 +36,8 @@ The agent deposits poop some time after eating and for a while proportional to t
 
 If the agent spends a enough time eating, it will starting depositing on the patch it is on.
 
-The robot can sense its own deposits (poop) and distinguish between the remains of poison (yellow) vs food (brown).
+The agent can sense its own deposits (poop) and distinguish between the remains of poison (bright yellow) vs food (dark yellow).
 
 Deposits disappear on their on after some time.
 
-Thanks to @eah13 for the idea!
+Thanks to Elliot Hauser (@eah13) for the stygmergy idea!

@@ -1,5 +1,17 @@
 # Research notebook
 
+## July 17, 2024
+
+Presented an intro to the project
+
+## July 9, 2024
+
+Wrote about intents and action policies.
+
+## June 27, 2024
+
+Clarified the nature and role of Wellbeing measures, and wrote about it.
+
 ## June 24, 2024
 
 Formalized the nature and origins of a CA's beliefs entailing the synthesis of objects, and wrote about it.
