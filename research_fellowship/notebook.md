@@ -1,5 +1,9 @@
 # Research notebook
 
+## August 8, 2024
+
+Wrote about metacognition actors
+
 ## July 17, 2024
 
 Presented an intro to the project
