@@ -1,5 +1,13 @@
 # Research notebook
 
+## August 26, 2024
+
+Completed revision of agency notes
+
+## August 21, 2024
+
+Presented on the project's Philosophical Stances
+
 ## August 8, 2024
 
 Wrote about metacognition actors
