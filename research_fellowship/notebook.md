@@ -1,5 +1,17 @@
 # Research notebook
 
+## October 10, 2024
+
+Coding progress: Meta-cognition actor is adding cognition actors
+
+## October 02, 2024
+
+Presented `Actors making inferences - a computatinal substrate for artificial agency` at open hour
+
+## September 22, 2024
+
+Commented on [A beautiful loop: An active inference theory of consciousness](https://osf.io/preprints/psyarxiv/daf5n?view_only=) and to what extent Karma fulfills the requirements for artificial consciousness.
+
 ## August 26, 2024
 
 Completed revision of agency notes
