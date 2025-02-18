@@ -1,8 +1,29 @@
 # Research notebook
 
+## February 18, 2025
+
+More details on policies, with a algorithm for their execution
+
+## February 7, 2025
+
+Elliott Hauser becomes project advisor
+
+## February 4, 2025
+
+Avel Guénin becomes project advisor
+
+## January 2025
+
+Progress on coding the outline of a CA's timeframe
+
+## November 12, 2024
+
+Coding progress: MetaCAs grow the SOM
+Symposium: Presentation on "An experiment in articial agency" recorded and submitted
+
 ## October 10, 2024
 
-Coding progress: Meta-cognition actor is adding cognition actors
+Coding progress:  Improved actor model framework (added signaling and did refactoring). Meta-cognition actor is adding cognition actors
 
 ## October 02, 2024
 
