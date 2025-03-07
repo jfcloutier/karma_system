@@ -1,4 +1,4 @@
-# System
+# System overview
 
 ## About
 
@@ -23,6 +23,10 @@
   * karma_observer (elixir/liveview)
     * Web app
     * Monitoring of an karma_agency
+    * Data generation for analysis
+  * karma_analyst (elixir/liveview)
+    * Web app
+    * Experimental data gathering and analysis
 
 ## Status
 
@@ -40,6 +44,7 @@
     * Simulated sensors and actuators
 * karma_world - **under construction**
 * karma_observer - **TO DO**
+* karma_analyst - **TO DO**
 
 ## Karma system
 
@@ -51,10 +56,12 @@ title: Networking
 graph LR;
 agency("`**agency**
 *prolog on PC*`")==>|HTTP|body_on_brickpi3("`**body (physical)**
-*elixir on brickpi3*`") & body_on_PC & observer("`**observer**
-*elixir on PC*`") 
+*elixir on brickpi3*`") & body_on_PC & observer
 body_on_PC("`**body (simulated)**
 *elixir on PC*`")==>|HTTP|world("`**world**
+*elixir on PC*`")
+observer("`**observer**
+*elixir on PC*`")==>|HTTP|analyst("`**analyst**
 *elixir on PC*`")
 
 ```
@@ -72,6 +79,7 @@ classDiagram
   Body
   World
   Observer <-- Agency
+  Observer --> Analyst
   Body <--> World
   Body <--> Agency
   class Agency {
@@ -85,8 +93,14 @@ classDiagram
   }
   class Observer {
     on PC
-    Elixir web ppp
+    Elixir web app
     monitor()
+  }
+  class Analyst {
+    on PC
+    Elixir web app
+    start_experiement()
+    export_results()
   }
   class Body {
     sensors()
@@ -119,6 +133,7 @@ sequenceDiagram;
     body-->>-agency: sensed/actuated
     agency-->>observer: SOM or wellbeing event
     agency-->>agency: SOM or wellbeing event
+    observer-->>analyst:observations
 ```
 
 ----
@@ -141,4 +156,5 @@ sequenceDiagram;
     body-->>-agency: sensed/actuated
     agency-->>observer: SOM or wellbeing event
     agency-->>agency: SOM or wellbeing event
+    observer-->>analyst:observations
 ```

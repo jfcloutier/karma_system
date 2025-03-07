@@ -9,6 +9,7 @@
 | **Body sub-system**| Provides an API to access physical (Lego EV3) and virtual sensors and effectors | Completed | All needed sensor and effector types covered | |
 | **Agency sub-system** | Implements agency for a Lego EV3 rover | In progress | * The rover autonomously engages its environment<br/> * A mortal collective of sense-making/active cognition actors (CA) evolves <br/> * A survivable configuration of CAs is eventually found | Insufficient design, infeasibility, computationally intractable |
 | **Observer sub-system** | Tooling and UI allowing a human observer to track and make some sense of the agent's autonomous behavior and learning | TBD | * Agency's behaviors and state changes are understandable<br/>* Meaningful patterns are made visible | Can the internals of agency be made comprehensible? |
+| **Analyst sub-system** | Experimental data gathering and analysis | TBD | * Observer data is gathered per experiment<br/>* The data is analysed so as to validate orinvalidate that the agent is reducing surprisal over time | Is the data gathered sufficient and amenable to Active Inference analysis? |
 
 ## Agency
 

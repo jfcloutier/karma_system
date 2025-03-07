@@ -28,7 +28,7 @@ Here are key concepts and opinions shaping this effort:
 * **Constraint Closure** - a cognition actor constrains how the society of mind can change, and vice-versa
 * **Autopoeisis** - an agent's society of mind is a continuous process of self-production and self-maintenance
 
-The code of the Karma project is distributed over these repositories
+The code of the Karma project is currently found in these repositories
 
 * [Karma Agency](https://github.com/jfcloutier/karma_agency) - Prolog code implementing agency
 * [Karma Body](https://github.com/jfcloutier/karma_body) - Elixir code giving access to the robot's sensors and motors, embodied or simulated
