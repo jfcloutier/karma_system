@@ -1,10 +1,10 @@
 # Ontology
 
-The working ontology of the Karma project
+The working ontology of the Karma project. It is processual in kind and deflationary in intent.
 
 ## Being
 
-> A metastable system of processes achieving [constraint closure](https://montevil.org/publications/articles/2015-mm-organisation-closure-constraints/) (a *living* being is additionally self-producing)
+> A metastable system of processes achieving [constraint closure](https://montevil.org/publications/articles/2015-mm-organisation-closure-constraints/). A *living* being is additionally self-producing.
 
 ## Umwelt (the being's)
 
@@ -16,15 +16,19 @@ The working ontology of the Karma project
 
 ## Sentience
 
-> Processes of **being** integrating *durable changes* to the **innenwelt**, causing further changes to the being and then, possibly and as a consequence, to its **umwelt**
+> Processes of **being** that integrate *durable changes* to the **innenwelt**, causing further changes to the being's innenwelt or instantiating **actions**
+
+## Action
+
+> Changes to the **being** that cause changes to the being's outer world or to the being's relatedness to it
 
 ## Feelings
 
-> Durable changes to the **innenwelt** (such changes are always caused by the **being**'s processes) that stand for measures of the being's precariousness (feelings of low precariousness are good feelings)
+> Durable changes to the **innenwelt** (such changes are always caused by the **being**'s processes) that stand for measures of the being's precariousness. Feelings of low precariousness are good feelings.
 
 ## Experiences
 
-> Durable changes to the **innenwelt** that stand for prior changes to the innenwelt correlated with **feelings**
+> Durable changes to the **innenwelt** that stand for prior changes to the innenwelt associated with extent **feelings**
 
 ## Beliefs
 
@@ -36,4 +40,4 @@ The working ontology of the Karma project
 
 ## Agent
 
-> A **sentient** **being**, possibly **conscious**, who changes itself and its **umwelt** (i.e. acts) in accordance to its **beliefs**, promoting experiences that feel good
+> A **sentient** **being**, possibly **conscious**, who changes itself and acts in accordance to its **beliefs**, promoting experiences that feel good
