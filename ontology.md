@@ -20,7 +20,7 @@ The working ontology of the Karma project. It is processual in kind and deflatio
 
 ## Action
 
-> Changes to the **being** that cause changes to the being's outer world or to the being's relatedness to it
+> Concerted changes to the **being** that cause changes to the being's outer world or to the being's relatedness to it
 
 ## Feelings
 
