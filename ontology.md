@@ -1,6 +1,6 @@
 # Ontology
 
-The working ontology of the Karma project. It is processual in kind and deflationary in intent.
+The working ontology of the Karma project. It is processual in kind and deflationary in intent. It allows for basal agency and, eventually, basal consciousness.
 
 ## Being
 
