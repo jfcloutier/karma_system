@@ -16,9 +16,27 @@ A CA operates one time frame after another. Each time frame corresponds to a "th
 
 At the end of the current time frame, a CA decides whether to act on its updated beliefs and, if so, how.
 
-## Metacognition actors
+## Growth and shrinking
 
-A meta-CA adds and removes CAs at the hierarchical level it manages (the level is made up of its "ward" CAs).
+* A CA at level L can birth another CA at the same level or one level up
+  * At most once per time frame
+    * If "mitosis" is triggered
+      * Probablility of triggering goes up with
+        * Fullness
+    * It births a CA one level up if
+      * level L has 100% coverage
+      * level L+1 is empty
+    * If it can recruit an umwelt for the new CA
+      * Find random N > 1 willing CAs at level L -1
+      * Willingness is more likely if the Level L-1 CA participates in few umwelts
+
+* A CA at level L considers removing itself from the SOM
+  * At most once per time frame
+  * If it is not indispensible to a CA at level L+1
+  * The probability of "apoptosis" increases with
+    * Low wellbeing
+      * Internal (it flails)
+      * External (the collective flails)
 
 ## Contraints
 

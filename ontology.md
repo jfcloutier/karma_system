@@ -28,7 +28,7 @@ The working ontology of the Karma project. It is processual in kind and deflatio
 
 ## Experiences
 
-> Durable changes to the **innenwelt** that stand for prior changes to the innenwelt associated with concurrent **feelings**
+> Durable changes to the **innenwelt** that stand for prior changes to the innenwelt associated with synchronous **feelings**
 
 ## Beliefs
 
