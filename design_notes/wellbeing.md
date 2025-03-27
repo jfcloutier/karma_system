@@ -12,19 +12,47 @@ The measures are:
 
 The wellbeing measures are each a pair of numbers, a current value and a gradient.
 
-The current value is an "how much" value computed from aggregating information communicated by the Cognition Actors about their computations, actions they take, bumps they suffer, food they "ingest" etc. The gradient value integrates how the current value is changing, that is, how sharply is the value going up or down.
+The current value is an "how much" value computed from aggregating information communicated within Cognition Actors about their computations, actions they take, bumps they suffer, food they "ingest" etc. The gradient value integrates how the current value is changing, that is, how sharply is the value going up or down.
 
-The measures of wellbeing are centrally computed and then broadcasted to the "society of mind". They permeate the collective of Cognition Actors (CAs) and Meta-Cognition Actors (M-CAs).
+## Signalling wellbeing
 
-Wellbeing provides the means by which *normativity* is associated with the beliefs of CAs. CAs are informed of current wellbeing levels and gradients, and correlate these with beliefs the CAs synthesize from current and past observations. Beliefs associated with high and static or with increasing wellbeing measures, are "pleasant" beliefs. Beliefs associated with low and static or with decreasing wellbeing measures are "unpleasant". Beliefs associated with neither are "neutral". Low and decreasing measures feel the worst whereas high and increasing measures feel the best.
+Cognition actors (CAs) broadcast wellbeing signals into the society of mind (SOM) once per timeframe, and receive wellbeing signals from other CAs.
+
+Wellbeing signals weaken the further they travel. The distance between two CAs is measured by their degree of umwelt separation, namely the smallest number of edges traversed in a graph connecting CAs via umwelt relationships.
+
+The weaker a signal, the less it nudges the receiving CA's own aggregated wellbeing measure.
+
+Wellbeing signals convey no provenance: "Your wellbeing is my wellbeing, to a point."
+
+At the end of a CA's timeframe (at the end of its periodic OODA-ish loop), a CA adds to/substracts from its own measure of wellbeing based on an accounting of its own "metabolic" work and happenings (bumps, eating...), and the accumulated, attenuated wellbeing signals it received.
+
+The CA adds the updated wellbeing measures to its wellbeing history, enabling it to detect gradients.
+
+## The role of wellbeing
+
+Wellbeing provides the means by which *normativity* is associated with the beliefs of CAs. CAs correlate their wellbeing with beliefs the they synthesize from current and past observations.
+
+Beliefs associated with high and static or with increasing wellbeing measures, are "pleasant" beliefs. Beliefs associated with low and static or with decreasing wellbeing measures are "unpleasant". Beliefs associated with neither are "neutral". Low and decreasing measures feel the worst whereas high and increasing measures feel the best.
 
 Wellbeing drives attention: CAs intend actions to persist pleasant beliefs and actions to terminate unpleasant beliefs. Neutral beliefs are normally "left alone" by the CA but are kept as they may compose the non-neutral beliefs of more abstract CAs.
 
-Wellbeing also provides the motivation for M-CAs to cull or add CAs so as to manage overall energy expenditure or nudge up overall engagement.
+Wellbeing also provides the motivation for CAs to give birth to new CAs or to remove themselves from the SOM, so as to manage overall energy expenditure or nudge up overall engagement.
+
+### Wellbeing and stress
+
+Stress on a CA is caused by it having low or dropping wellbeing measures.
+
+Stress makes a CA more *plastic*. When stressed, it is more likely to:
+
+* revise its causal model
+* temporarily ignore aquired policy habits
+* temporarily ignore strongly held beliefs, to act instead on other beliefs
+* lower its threshold for action
+* trigger its mitosis (birth a new CA) or apoptosis (remove itself from the SOM)
 
 ## Fullness
 
-The fullness Wellbeing Actor maintains a global energy budget. It starts full.
+Fullness represents the energy budget of a CA. It starts full.
 
 An agent's collective of CAs is mortal. When there is no energy left, its mind dies (its Lego body is permanent).
 
@@ -40,26 +68,17 @@ Energy is spent individually by each CA when
 
 Energy is also spent whenever the agent progressively and automatically recovers from lost integrity, i.e. repairs itself.
 
-At the completion of a time frame, the CA emits an account of what it did in the time frame. Reports from CAs are collected and integrated by the fullness Wellbeing Actor into an updated, global value.
-
-CAs and meta-CAs listen to fullness level events, broadcasted to the collective of CAs and M-CAs whenever the measure changes significantly.
-
 In response to low and/or decreasing fullness,
 
-A CA may:
+A CA may reduce "metabolic costs" by:
 
-* forget a past state (oldest first)
-* forget a belief ignored by all parent CAs (neutral first)
-* look for a less complex causal theory
-* raise the threshold for persisting/terminating beliefs (don't waste energy on trivial matters!)
-
-A M-CA may
-
-* remove a "low-value" CA (low-engagement, low predictive accuracy) whose beliefs are ignored or redundant
+* forgetting a past state (oldest first)
+* forgetting a belief ignored by all parent CAs (neutral first)
+* raising the threshold for persisting/terminating beliefs (don't waste energy on trivial matters!)
 
 ## Integrity
 
-The integrity Wellbeing Actor maintains a global integrity level. Integrity is initially full.
+Integrity represents the health of the CA. Integrity is initially full.
 
 Integrity decreases because of harmful actions taken by the agent.
 
@@ -72,13 +91,9 @@ Integrity is reduced whenever
 
 CAs listen to integrity level events, broadcasted whenever the measure changes significantly.
 
-In response to low integrity,
-
-* A CA may raise the threshold at which it intends to impact its beliefs (it less easily triggered into action when unhealthy)
-
 ## Engagement
 
-The engament wellbeing actor keeps track of how engaged the CAs are overall. Engagement is initially empty.
+Engagement keeps track of how engaged the CAs are overall. Engagement is initially empty.
 
 Engagement goes up whenever
 
@@ -89,8 +104,3 @@ Engagement decreases whenever
 
 * a CA's belief loses relevance (it was the basis of another CA's belief that was removed), or
 * with the passing of time when no action is executed
-
-In response to overall low engagement,
-
-* a M-CA may replace a CA in the hope that the new CA's sense-making trajectory will lead to relevance and to action-taking
-* a CA may lower its threshold for persisting beliefs, to the point where even neutral beliefs are acted on (leading to babbling as a form of undirected engagement)

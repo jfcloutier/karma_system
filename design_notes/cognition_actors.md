@@ -117,11 +117,11 @@ The more competent a CA is, the more likely it is that its parents CAs will be c
 
 ## Responding to wellbeing measures
 
-* The agent's wellbeing actors (fullness, integrity and engagement) each keep track of an agent wellbeing measures.
-  * The agent starts life with highest fullness, highest integrity and lowest engagement (all initially broadcasted)
+* A CA updates its wellbeing measures (fullness, integrity and engagement).
+  * It starts life with highest fullness, highest integrity and lowest engagement (all initially broadcasted)
 * See [wellbeing.md](./wellbeing.md)
-* When a measure changes, the wellbeing actor emits an event listened to by all CAs (and meta-CAs)
-* In each time frame, a CA may respond to the latest brodacasted measure by operating on its internal data
+* CAs signal their changing wellbeing to other CAs
+* In each time frame, a CA may respond to the latest brodacasted measures by operating on its internal data
 * It responds to
   * low fullness by
     * getting rid of an ineffective policy (if any)
