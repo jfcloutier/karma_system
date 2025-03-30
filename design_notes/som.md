@@ -12,9 +12,13 @@ A CA synthesizes its beliefs from predicted observations, past and current, of t
 
 The beliefs of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are fullness, integrity and engagement. They signal risks, present or absent, to the survivability of the entire collective of CAs. Beliefs associated with high risks are unpleasant. Beliefs associated with low risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs.
 
-A CA operates one timeframe after another. Each timeframe corresponds to a "thick now". The timeframe of a CA starts and stops independently of other CAs; timeframes are not synchronized. CAs higher up in the collective's hierarchy have longer timeframes. During its current timeframe, a CA makes new observations by predicting the latest beliefs in its umwelt, reads the global wellbeing measures, refreshes its set of beliefs by integrating the latest observations with past ones, and assigns up-to-date normative values (pleasantness/unpleasantness) to its updated beliefs.
+A CA operates one timeframe after another. Each timeframe corresponds to a "thick now". The timeframe of a CA starts and stops independently of other CAs; timeframes are not synchronized. CAs higher up in the collective's hierarchy have longer timeframes. 
 
-At the end of the current timeframe, a CA decides whether to act on its updated beliefs and, if so, how.
+During its current timeframe, a CA makes new observations by predicting the latest beliefs in its umwelt, reads the global wellbeing measures, refreshes its set of beliefs by integrating the latest observations with past ones, and assigns up-to-date normative values (pleasantness/unpleasantness) to its updated beliefs.
+
+At the end of the current timeframe, a CA decides whether to act on its updated beliefs and, if so, how. 
+
+Upon completing its current timeframe, a CA adds the state of the timeframe to its memory of past states. The longer the timeframe (and the more abstract the CA), the more states the it remembers. The oldest state is dropped from memory when the maximum number of remembered states is reached.
 
 ## Growth and shrinking
 

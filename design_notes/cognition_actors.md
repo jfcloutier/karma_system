@@ -18,7 +18,7 @@ The more competent a CA is, the more likely it is that its parents CAs will be c
   * If the CA has a causal theory, it uses it to predict the next observations.
 * A CA predicts the success of its policies since an executed policy is also an observation
 * If a prediction is met with a prediction error, the prediction error becomes the latest observation, else the uncontested prediction is the observation.
-* A CA drops repeated states (state = observations in the same time frame) - i.e. a CA's perceived time stands still while its umwelt does not appear to change
+* A CA drops repeated states (state = observations in the same timeframe) - i.e. a CA's perceived time stands still while its umwelt does not appear to change
 
 ## Understanding (relating observations causally and via constraints)
 
@@ -109,7 +109,7 @@ The more competent a CA is, the more likely it is that its parents CAs will be c
 ## Attention
 
 * A belief, when synthesized, is associated with a wellbeing/pleasantness trend (better, worse, same)
-  * A CA remembers the ambient wellbeing at each time frame
+  * A CA remembers the ambient wellbeing at each timeframe
 * A CA normally does not intend to further/disrupt beliefs when wellbeing trends not far enough from neutral
 * Higher-level beliefs are more likely to be associated with clear wellbeing trends than lower-level beliefs
   * This drives the SOM to add levels until clear wellbeing trends appear
@@ -121,7 +121,7 @@ The more competent a CA is, the more likely it is that its parents CAs will be c
   * It starts life with highest fullness, highest integrity and lowest engagement (all initially broadcasted)
 * See [wellbeing.md](./wellbeing.md)
 * CAs signal their changing wellbeing to other CAs
-* In each time frame, a CA may respond to the latest brodacasted measures by operating on its internal data
+* In each timeframe, a CA may respond to the latest brodacasted measures by operating on its internal data
 * It responds to
   * low fullness by
     * getting rid of an ineffective policy (if any)

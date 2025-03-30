@@ -6,7 +6,7 @@ The mind of an agent is an evolving hierarchy of cognition actors (CA). Each CA 
 
 A CA, by definition, observes its umwelt (via predictions and prediction errors). The umwelt is composed of lower-level CAs. The CAs and their umwelts form a hierarchy.
 
-Observations in a given time frame are considered synchronous, as are the beliefs derived in the time frame.
+Observations in a given timeframe are considered synchronous, as are the beliefs derived in the timeframe.
 
 A CA derives its beliefs from noticing quantities, trends, endings etc. in its umwelt.  What it observes are the (accumulating, trending, ending) beliefs, past and present, of its "child" CAs. The CA makes its own, more abstract beliefs available for observation by its "parent" CAs. And so on, up an abstraction hierarchy of beliefs about beliefs about beliefs etc.
 
@@ -49,7 +49,7 @@ Abduction **conjures** up properties or relations to either translate a sensor r
 
 ## Count
 
-> How many relations of a given type and directionality an object has with other objects in the current time frame only.
+> How many relations of a given type and directionality an object has with other objects in the current timeframe only.
 
 e.g. this policy was attempted twice to achieve this goal
 
@@ -62,7 +62,7 @@ e.g. this policy was attempted twice to achieve this goal
 
 ## Comparison
 
-> Whether there has been more of something than of something else, as observed over time frames leading to, and including, the current time frame.
+> Whether there has been more of something than of something else, as observed over timeframes leading to, and including, the current timeframe.
 
 e.g. there have been more attempts to achieve this goal than attempts to achieve this other goal
 
@@ -76,7 +76,7 @@ e.g. there have been more attempts to achieve this goal than attempts to achieve
 
 ## Trend
 
-> How the values of a property of an object are trending, as observed over time frames leading to, and including, the current time frame.
+> How the values of a property of an object are trending, as observed over timeframes leading to, and including, the current timeframe.
 
 e.g. luminance increases (trend)
 e.g. the increase in luminance persists (trending trend)
@@ -89,7 +89,7 @@ e.g. the increase in luminance persists (trending trend)
 
 ## End
 
-> How long before something observed in past time frames ends in the current time frame.
+> How long before something observed in past timeframes ends in the current timeframe.
 
 e.g. increase in luminance ended suddenly
 
@@ -103,7 +103,7 @@ e.g. increase in luminance ended suddenly
 
 ## Attempt
 
-> The **fact** that the CA executed a policy to achieve a goal in the current time frame.
+> The **fact** that the CA executed a policy to achieve a goal in the current timeframe.
 
 e.g. attempted to stop distance getting smaller
 

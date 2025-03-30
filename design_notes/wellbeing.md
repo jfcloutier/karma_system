@@ -64,7 +64,7 @@ Energy is spent individually by each CA when
 * synthesizing a belief (each belief comes at a cost)
 * using a causal theory (the more complex the theory, the higher the cost per use)
 * remembering past observations and beliefs (additional cost per remembered observation/belief)
-* completing a time frame (baseline computational/metabolic cost)
+* completing a timeframe (baseline computational/metabolic cost)
 
 Energy is also spent whenever the agent progressively and automatically recovers from lost integrity, i.e. repairs itself.
 
