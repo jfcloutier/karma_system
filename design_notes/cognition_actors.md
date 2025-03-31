@@ -10,6 +10,20 @@ A belief is pleasant if it was derived in the context of improving wellbeing, un
 
 The more competent a CA is, the more likely it is that its parents CAs will be competent and survive, and thus the more likely it is that the CA itself will survive; orphaned CAs are susceptible to being removed when wellbeing is low.
 
+## Timeframe and memory
+
+A CA operates one timeframe after another. The current timeframe of a CA corresponds to a "thick now"; all observations made and all beliefs updated by the CA during this timeframe are considered synchronous. Timeframes are not synchronized across CAs. The timeframe of a CA starts and stops independently of those of other CAs. The current timeframes of CAs partially and randomly overlap.
+
+During its current timeframe, a CA makes new observations by predicting the latest beliefs of CAs in its umwelt, update its wellbeing measures, refresh its set of beliefs by integrating the latest observations with past ones, and assign up-to-date normative values (pleasantness/unpleasantness) to its updated beliefs.
+
+At the end of the current timeframe, a CA decides whether to act on its updated beliefs and, if so, how.
+
+Upon completing its current timeframe, a CA adds the state of the timeframe to its memory of past states. The CA uses its remembered past states to compute its wellbeing gradients, derive its current (pleasant vs unpleasant) beliefs, and update the causal theory that explains its past observations and predicts its incoming observations.
+
+CAs higher up in the collective's hierarchy have longer timeframes and longer memories (more states are remembered). When the maximum number of remembered states is reached and the latest state is committed to memory (upon completion of the current timeframe), the oldest state is dropped from memory.
+
+There is a "metabolic" cost associated with memory. The higher a CA's metabolic costs, the faster its fullness wellbeing drains. A CA under stress from low fullness might reduce the size of its memory to reduce this drain. Regaining high fullness would restore the prior bound on the CA's memory size.
+
 ## Observing (its umwelt's beliefs)
 
 * A CA predicts its observations of the beliefs of CAs in its umwelt

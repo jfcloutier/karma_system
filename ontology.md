@@ -1,6 +1,8 @@
 # Ontology
 
-The working ontology of the Karma project. It is processual in kind and deflationary in intent. It allows for basal agency and, eventually, basal consciousness.
+The working ontology of the Karma project. It is processual in kind and deflationary in intent. It allows for basal (minimalist) agency and consciousness in both living and artificial systems.
+
+One can argue that some degree of consciousness, conceived of as second-order sentience, is required for any living being, however elementary, to survive. It remains to be seen (but would not be all that surprising) if this is also the case for mortal, artificial agents.
 
 ## Being
 
@@ -12,23 +14,23 @@ The working ontology of the Karma project. It is processual in kind and deflatio
 
 ## Innenwelt
 
-> Changes to the **being** available to its **sentience** (the being's meaningful inner-world)
+> Changes to the **being** that are available to its **sentience** (the being's meaningful inner-world)
 
 ## Sentience
 
-> Processes of **being** that integrate *durable changes* to the **innenwelt**, causing further changes to the being's innenwelt or instantiating **actions**
+> Processes of **being** that instantiate the **feelings**, **experiences**, **beliefs** and **actions** of the being
 
 ## Action
 
-> Concerted changes to the **being** that cause changes to the being's outer world or to the being's relatedness to it
+> Changes to and by the **being** that cause changes to the being's outer world or to the being's relatedness to it
 
 ## Feelings
 
-> Durable changes to the **innenwelt** (such changes are always caused by the **being**'s processes) that stand for measures of the being's precariousness. Feelings of low precariousness are good feelings.
+> Changes to the **innenwelt** that stand for measures of the being's precariousness. Feelings of low precariousness are good feelings.
 
 ## Experiences
 
-> Durable changes to the **innenwelt** that stand for prior changes to the innenwelt associated with synchronous **feelings**
+> Durable changes to the **innenwelt** from integrating prior changes to it and associating them with **feelings**
 
 ## Beliefs
 
@@ -36,8 +38,8 @@ The working ontology of the Karma project. It is processual in kind and deflatio
 
 ## Consciousness
 
-> **Experiences** of **sentience**
+> **Experiences** of **sentience** (a being enters the consciousness spectrum as soon as it can experience the tiniest fraction of its sentience)
 
 ## Agent
 
-> A **sentient** **being**, possibly **conscious**, who changes itself and acts in accordance to its **beliefs**, promoting experiences that feel good
+> A **sentient** **being**, possibly **conscious**, who acts in accordance to its **beliefs**, promoting experiences that feel good
