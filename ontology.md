@@ -34,11 +34,11 @@ I am of the opinion that some degree of consciousness, conceived of as second-or
 
 ## Beliefs
 
-> Durable changes to the **innenwelt** that stand for regularities in **experiences**, or loss thereof
+> Durable changes to the **innenwelt** that stand for regularities, or loss thereof, in **experiences**
 
 ## Consciousness
 
-> **Experiences** of **sentience** (a being in on the consciousness spectrum the moment it experiences any aspect of its sentience)
+> **Experiences** of **sentience**. A being is minimally conscious the moment it experiences one aspect of its sentience
 
 ## Agent
 
