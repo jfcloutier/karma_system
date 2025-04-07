@@ -10,7 +10,7 @@ I am of the opinion that some degree of consciousness, conceived of as second-or
 
 ## Umwelt (the being's)
 
-> All that is not the **being**, and can change the being or be changed by it (the being's meaningful outer-world)
+> All that is not the **being** and can change the being or be changed by it (the being's meaningful outer-world)
 
 ## Innenwelt
 
@@ -34,7 +34,7 @@ I am of the opinion that some degree of consciousness, conceived of as second-or
 
 ## Beliefs
 
-> Durable changes to the **innenwelt** that stand for regularities, or loss thereof, in **experiences**
+> Durable changes to the **innenwelt** that stand for regularities in **experiences**, or loss thereof
 
 ## Consciousness
 
