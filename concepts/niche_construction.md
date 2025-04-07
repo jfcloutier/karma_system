@@ -18,7 +18,7 @@ Hopefully, the agent would discover it can modify its world into a better food s
 
 ## Option: With poison food patches
 
-A poison patch (red) can also grow in fertile areas. 
+A poison patch (red) can also grow in fertile areas.
 
 Eating poison decreases the agent's integrity without increasing its energy.
 
