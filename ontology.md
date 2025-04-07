@@ -1,8 +1,8 @@
 # Ontology
 
-The working ontology of the Karma project. It is processual in kind and deflationary in intent. It allows for basal (minimalist) agency and consciousness in both living and artificial systems.
+The working ontology of the Karma project. It is processual/relational in kind and deflationary in intent. It allows for basal (minimalist) agency and consciousness in both living and artificial systems.
 
-One can argue that some degree of consciousness, conceived of as second-order sentience, is required for any living being, however elementary, to survive. It remains to be seen (but would not be all that surprising) if this is also the case for mortal, artificial agents.
+I am of the opinion that some degree of consciousness, conceived of as second-order sentience, is required for any living being, however elementary, to survive. It remains to be seen (but would not be all that surprising) if this is also the case for mortal, artificial agents.
 
 ## Being
 
@@ -30,7 +30,7 @@ One can argue that some degree of consciousness, conceived of as second-order se
 
 ## Experiences
 
-> Durable changes to the **innenwelt** from integrating prior changes to it and associating them with **feelings**
+> Durable changes to the **innenwelt** from integrating prior changes and associating them with **feelings**
 
 ## Beliefs
 
@@ -38,8 +38,8 @@ One can argue that some degree of consciousness, conceived of as second-order se
 
 ## Consciousness
 
-> **Experiences** of **sentience** (a being enters the consciousness spectrum as soon as it can experience the tiniest fraction of its sentience)
+> **Experiences** of **sentience** (a being in on the consciousness spectrum the moment it experiences any aspect of its sentience)
 
 ## Agent
 
-> A **sentient** **being**, possibly **conscious**, who acts in accordance to its **beliefs**, promoting experiences that feel good
+> A **sentient** **being**, possibly **conscious**, who **acts** in accordance to its **beliefs** to promote **experiences** that **feel** good
