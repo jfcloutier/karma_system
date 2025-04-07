@@ -2,9 +2,7 @@
 
 A society of mind is a collective of specialized, inter-dependent cognition actors that, together, animate an autonomous robot. A successfully evolved/evolving society of mind is one that promotes its own continuity by reliably and safely finding, via the  robot's body, sources of energy in an environment that "wants" to dissipate it.
 
-I will report on the rules and constraints later. For now, I'd like to share some thoughts about how evolving a society of mind is in fact a complex search problem.
-
-We can look at agency as the self-directed, concurrent exploration of multiple search spaces, internal and external to the searching agent. For each search space, I briefly describe what is being looked for and why.
+Evolving a society of mind is a complex search problem. We can look at agency as the self-directed, concurrent exploration of multiple search spaces, internal and external to the agent. For each search space, I briefly describe what is being looked for and why.
 
 ## External search spaces
 
@@ -45,13 +43,13 @@ The agent searches its "inner space" (aka what the agent was, is, and can become
 
 ### Belief space
 
-* What: A CA searching for trends in its latest observations that then become its beliefs
+* What: A CA searching for regularities (or loss thereof) in its latest observations that then become its beliefs
   * For example, a CA detecting that observed distances are trending down might believe that the agent is approaching an obstacle
   * A belief is how a CAs has made sense of past observations of its umwelt
 * Why: To detect signals in past observation while minimizing noise
 
 ### Affordance space
 
-* What: A CA sarching for how it can act to most effectively impact its own beliefs
+* What: A CA searching for how it can act to most effectively impact its own beliefs
   * By disrupting unpleasant (wellbeing-reducing) beliefs and promoting pleasant (wellbeing-increasing) beliefs
 * Why: To increase policy effectiveness and reliability, and minimize misfires
