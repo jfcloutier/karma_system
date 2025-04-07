@@ -1,5 +1,13 @@
 # Research notebook
 
+## April 7, 2025
+
+Cleaned up existing code to remove obsolete design elements and replace active voice (e.g. "start") with passive voice (.e.g "started")
+
+## March 13, 2025
+
+Work session with Elliott Hauser. Leads to a number of design changes, with removal of wellbeing and meta-cognition actors, and folding their function into the CAs themselves, for greater decentralization.
+
 ## February 18, 2025
 
 More details on policies, with a algorithm for their execution
