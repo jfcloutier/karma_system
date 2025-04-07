@@ -18,28 +18,28 @@ I am of the opinion that some degree of consciousness, conceived of as second-or
 
 ## Sentience
 
-> Processes of **being** that instantiate the **feelings**, **experiences**, **beliefs** and **actions** of the being
+> Processes of **being** instantiating the **feelings**, **experiences**, **beliefs** and **actions** of the being
 
 ## Action
 
-> Changes to and by the **being** that cause changes to the being's outer world or to the being's relatedness to it
+> Changes to and by the **being** that cause changes to the being's **umwelt** or changes the being's relations with it
 
 ## Feelings
 
-> Changes to the **innenwelt** that stand for measures of the being's precariousness. Feelings of low precariousness are good feelings.
+> Changes to the **innenwelt** that stand for measuring the being's precariousness. Feelings of low precariousness are good feelings.
 
 ## Experiences
 
-> Durable changes to the **innenwelt** from integrating prior changes and associating them with **feelings**
+> Durable changes to the **innenwelt** from unifying in space-time prior changes, and associating them with **feelings**
 
 ## Beliefs
 
-> Durable changes to the **innenwelt** that stand for regularities, or loss thereof, in **experiences**
+> Durable changes to the **innenwelt** that stand for detecting regularities, or the loss thereof, in **experiences**
 
 ## Consciousness
 
-> **Experiences** of **sentience**. A being is minimally conscious the moment it experiences one aspect of its sentience
+> **Experiences** of **sentience**. A being is minimally conscious the moment it experiences any one aspect of its sentience
 
 ## Agent
 
-> A **sentient** **being**, possibly **conscious**, who **acts** in accordance to its **beliefs** to promote **experiences** that **feel** good
+> A **sentient** **being**, possibly **conscious**, who **acts** in accordance to its **beliefs** to promote having **experiences** that **feel** good
