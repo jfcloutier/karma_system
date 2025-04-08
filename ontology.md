@@ -1,20 +1,26 @@
 # Ontology
 
-The working ontology of the Karma project. It is processual/relational in kind and deflationary in intent. It allows for basal (minimalist) agency and consciousness in both living and artificial systems.
+The working ontology of the Karma project is processual/relational in kind and deflationary in intent. It allows for basal (minimalist) agency in both living and artificial systems.
 
-I am of the opinion that some degree of consciousness, conceived of as second-order sentience, is required for any living being, however elementary, to survive. It remains to be seen (but would not be all that surprising) if this is also the case for mortal, artificial agents.
+I take it as self-evident that a mortal agent must be sentient to adapt and survive. I am of the opinion that some degree of consciousness, defined here simply as experiencing sentience, is additionally required for a living being to survive. It remains to be seen -but would not be all that surprising- if this were also true of mortal, *artificial* agents.
 
 ## Being
 
-> A metastable system of processes achieving [constraint closure](https://montevil.org/publications/articles/2015-mm-organisation-closure-constraints/). A *living* being is additionally self-producing.
+> A metastable system of processes achieving [constraint closure](https://montevil.org/publications/articles/2015-mm-organisation-closure-constraints/)
+
+A *living* being is additionally self-producing
 
 ## Umwelt (the being's)
 
-> All that is not the **being** and can change the being or be changed by it (the being's meaningful outer-world)
+> All that is not the **being** and can change the being or be changed by it
+
+The being's meaningful outer-world
 
 ## Innenwelt
 
-> Changes to the **being** that are available to its **sentience** (the being's meaningful inner-world)
+> Changes to the **being** that are available to its **sentience**
+
+The being's meaningful inner-world
 
 ## Sentience
 
@@ -22,11 +28,13 @@ I am of the opinion that some degree of consciousness, conceived of as second-or
 
 ## Action
 
-> Changes to and by the **being** that cause changes to the being's **umwelt** or changes the being's relations with it
+> Changes to and by the **being** that cause changes to the being's **umwelt** or changes the being's relations to it
 
 ## Feelings
 
-> Changes to the **innenwelt** that stand for measuring the being's precariousness. Feelings of low precariousness are good feelings.
+> Changes to the **innenwelt** that stand for measuring the being's precariousness 
+
+Feelings of low precariousness are good feelings
 
 ## Experiences
 
@@ -38,7 +46,9 @@ I am of the opinion that some degree of consciousness, conceived of as second-or
 
 ## Consciousness
 
-> **Experiences** of **sentience**. A being is minimally conscious the moment it experiences any one aspect of its sentience
+> **Experiences** of **sentience**
+
+A being is minimally conscious the moment it experiences any one aspect of its sentience
 
 ## Agent
 
