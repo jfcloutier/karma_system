@@ -42,4 +42,4 @@ I am of the opinion that some degree of consciousness, conceived of as second-or
 
 ## Agent
 
-> A **sentient** **being**, possibly **conscious**, who **acts** in accordance to its **beliefs** to promote having **experiences** that **feel** good
+> A **sentient** **being**, possibly **conscious**, who **acts** in accordance to its **beliefs** to have **experiences** that **feel** good
