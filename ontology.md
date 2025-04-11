@@ -2,7 +2,7 @@
 
 The working ontology of the Karma project is processual/relational in kind and deflationary in intent. It allows for basal (minimalist) agency in both living and artificial systems.
 
-I take it as self-evident that a mortal agent must have some awareness of itself and its world to adapt and survive. I suspect that some awareness *of being aware* is also required for a living being, however simple, to survive. It would not be all that surprising to me if this were also the case for *artificial* mortal agents.
+I take it as self-evident that a mortal agent must have some awareness of itself and its world to adapt and survive. I suspect that some awareness *of being aware* is also required for the survival of even the simplest living beings, and also for the survival of *artificial* mortal agents.
 
 ## Being
 
