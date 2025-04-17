@@ -8,11 +8,12 @@ A CA is part of a hierarchichal collective of CAs that animate an agent. Each CA
 A CA synthesizes its beliefs from the predicted observations, past and current, of the beliefs in its umwelt.
 
 The beliefs of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are fullness, integrity and engagement.
-They signal risks, present or absent, to the survivability of the entire collective of CAs. Beliefs associated with high/growing risks are unpleasant.
-Beliefs associated with low/decreasing risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs.
+They signal risks, present or absent, to the survivability of a CA and, possibly, the entire collective of CAs.
+
+Beliefs associated with high/growing risks are unpleasant. Beliefs associated with low/decreasing risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs.
 
 A CA operates one timeframe after another. Each timeframe corresponds to a "thick now". The timeframe of a CA starts and stops independently of other CAs;
-timeframes are not synchronized. CAs higher up in the collective's hierarchy have qualitatively longer timeframes. During its current timeframe, a CA observes the latest beliefs in its umwelt (via predictions and prediction errors), reads the broadcasted global wellbeing measures, refreshes its set of beliefs by integrating the latest observations
+timeframes are not synchronized. CAs higher up in the collective's hierarchy have qualitatively longer timeframes. During its current timeframe, a CA observes the latest beliefs in its umwelt (via predictions and prediction errors), reads the wellbeing measures "diffused" by other CAs, refreshes its set of beliefs by integrating the latest observations
 with past ones, and assigns up-to-date normative values (pleasantness/unpleasantness) to its updated beliefs.
 
 At the end of the current timeframe, a CA decides whether to act on updated beliefs and, if so, which ones and how.
@@ -29,7 +30,7 @@ An intent by a CA consists of
 * a priority - determined by the graded normativity of the belief targeted by the intent
 * a policy - how to achieve the goal by impacting a set of observed beliefs held by the umwelt CAs from which the targeted CA's belief was synthesized
 
-A policy is a list of directives, to be communicated to the umwelt CAs. A directive is either a goal (a belief to impact) to be achieved by the umwelt however it chooses,
+A policy is a list of directives, to be communicated to the umwelt CAs. A directive is either a goal (a belief of umwelt CAs to impact) to be achieved by the umwelt however it chooses,
 or it is a command, a named and previously executed policy known to the umwelt, to be executed again by the umwelt.
 
 The policy's directives are communicated all at once by the CA to its umwelt at the end of the CA's current timeframe.
@@ -37,7 +38,7 @@ Keep in mind that, any point in time, multiple CAs may be intending to act.
 
 ## Attention and action thresholds
 
-The first step to acting is to identify a belief to attend to, assuming a parent CA has not already directed the CA to impact one of its own choosing.
+The first step by a CA to acting is to identify a belief to attend to, assuming a parent CA has not already directed the CA to impact one of its own choosing.
 
 Only certain types of beliefs can be acted on and impacted, namely `count`, `comparison`, `trend` and `end`. The others, `abduction` and `attempt`, represent "facts" that can not be changed.
 
@@ -47,7 +48,7 @@ The activation threshold is set by the current wellbeing context which is shared
 (depleted energy stores), a CA raises the threshold for action (conserve energy!), whereas, when energy is plentiful and agent engagement is low,
 a CA lowers the threshold for action (try doing something, anything!). Only a belief with normativity (pleasantness/unpleasantness) above the dynamic threshold is deemed worthy of action.
 
-The normativity of a belief is set as a combination of absolute wellbeing values and their gradient. A positive wellbeing value but one that has been falling sharply will yield unpleasantness, whereas a negative wellbeing value that is rising sharply will yield pleasantness.
+The normativity of a belief is set as a combination of absolute wellbeing values and their gradient. A positive wellbeing value but one that has been falling sharply will yield unpleasantness, whereas a negative wellbeing value that is rising sharply (quickly becoming less negative) will yield pleasantness.
 
 The CA selects which belief, if any, is *most worthy* of action in the current timeframe. Invalidating an unpleasant belief it cares about takes precedence over validating a pleasant belief. Typically, the CA will intend to terminate the most unpleasant, action-worthy belief. Else it will intend to persist the most pleasant, action-worthy belief, or do do something random (babble) if there is no action-worthy belief.
 
