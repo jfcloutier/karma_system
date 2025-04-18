@@ -105,6 +105,30 @@ A CA is singled out as **specialized** if its umwelt transitively controls a *un
 
 At most one CA *per level of the SOM* is allowed to control any one set of sensors and effectors. It is unique, at a given level of abstraction, in having beliefs and policies covering a given sensorium (set of sensors) and effedorium (set of effectors).
 
+## Communication between CAs
+
+The CAs form a collective which implies communication between them to enable coordination, cooperation, competition etc.
+
+Most communications are between a CA and its umwelt CAs and vice-versa. Other communications span the entire collective.
+
+Communications are done either via broadcasted events that CAs either listen to or ignore.
+
+### CA to umwelt CAs
+
+* Predictions - beliefs expected to be held by umwelt CAs as applicable
+* Action directives - goals to achieve (the CA is free to choose how) or commands to execute (do as you're told)
+
+### Unwelt CAs to parent CAs
+
+* Belief domain - what predicates are used to express beliefs, and their value domains (so the parent CAs knows how to compose predictions)
+* Prediction errors - contradicting received predictions
+* Action report - whether an action directive was successful and, if so, the policy executed
+* Lifecycle - notifying the parent of being added to, or removed from, its umwelt
+
+### CA to all CAs
+
+* Wellness measure change - broadcasted whenever a CA's fullness, integrity or engagement mesaure changes
+
 ## Contraints
 
 * Bottom-up constraints
