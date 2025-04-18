@@ -6,17 +6,17 @@ The SOM is a hierarchichal collective of cognition actors (CAs) that animate an 
 
 ## Cognition Actors
 
-Each CA has an umwelt composed of a small number of CAs from the level below.
+Each CA has an umwelt composed of a small number of CAs from one level below.
 
-A CA synthesizes its beliefs from predicted observations, past and current, of the beliefs in its umwelt.
+A CA synthesizes its beliefs from predicted observations, past and current, of beliefs in its umwelt.
 
-The beliefs of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are fullness, integrity and engagement. They signal risks, present or absent, to the survivability of the entire collective of CAs. Beliefs associated with high risks are unpleasant. Beliefs associated with low risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs.
+The beliefs of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are `fullness`, `integrity` and `engagement`. They signal risks, present or absent, to the survivability of the CA and. possibly, the entire collective of CAs. Beliefs associated with high risks are unpleasant. Beliefs associated with low risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs in order to change or preserve them.
 
 ## Growth and shrinking
 
-The SOM grows and shrinks, exploring a space of configurations, searching for competent (life-sustaining) configurations. The SOM grows via "mitosis" (CA birth) and shrinks via "apoptosis" (CA death).
+The SOM grows and shrinks, exploring a space of configurations of CAs, searching for competent (life-sustaining) configurations. The SOM grows via "mitosis" (CA birth) and shrinks via "apoptosis" (CA death).
 
-CAs beget other CAs (mitosis) and CAs remove themselves (apoptosis) all on their own.
+CAs beget other CAs (mitosis) and CAs remove themselves (apoptosis) on their own.
 
 ### Mitosis
 
