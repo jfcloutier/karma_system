@@ -98,7 +98,7 @@ Let's say a CA wants to impact an observation A that supports a belief it intend
 
 How a CA could impact a held belief is further modulated by the kind of belief it is. The only types of beliefs that can be impacted are count, trend and end beliefs.
 
-An *abduction* belief can not be impacted. This would be tantamount to neurosis. A belief abduced by a causal model it posited as given, until a new causal model is acquired that is without it.
+An *abduction* belief can not be impacted. This would be tantamount to neurosis. A belief abduced by a symbolic generative model it posited as given, until a new symbolic generative model is acquired that is without it.
 
 An *attempt* belief also can not be impacted for the same reason: It is a record of action already taken.
 
@@ -158,7 +158,7 @@ A policy is a set of directives to be realized by a CA's umwelt in order to impa
 A directive is either
 
 * a goal: An observed belief plus a desired impact (the umwelt is free to formulate an appropriate policy)
-* a command: a named policy (previously built and executed in the umwelt and then incorporated in the parent CA's causal model)
+* a command: a named policy (previously built and executed in the umwelt and then incorporated in the parent CA's symbolic generative model)
 
 If the the CA is an *effector CA*, the goals it receives will simply be to activate effectors, like spinning a wheel forward or backward.
 Effector CAs are at the bottom level of the hierarchy of CAs and are indirectly and transitively in the umwelts of every CAs.
@@ -235,12 +235,12 @@ For each goal that was executed, the goal with their associated policy is stored
 
 When a CA executes a policy it formulated, the execution of the policy becomes an *attempt belief* held by the CA in its next timeframe.
 
-The attempt belief, like any other belief of the CA, is observable by a parent CA, and, crucially, can be incorporated into the parent CA's causal model.
+The attempt belief, like any other belief of the CA, is observable by a parent CA, and, crucially, can be incorporated into the parent CA's symbolic generative model.
 
 The policy's contents (a list of goals for the CA's umwelt) is known to the CA but is hidden to its observers (i.e. parent CAs).
 
-The CA remembers named attempt beliefs (and their unique policies) for as long as parent CAs references them in their causal models.
+The CA remembers named attempt beliefs (and their unique policies) for as long as parent CAs references them in their symbolic generative models.
 
-When a CA observes a new (as yet unobserved) attempt belief in its umwelt, its causal model becomes obsolete and ought to be replaced.
+When a CA observes a new (as yet unobserved) attempt belief in its umwelt, its symbolic generative model becomes obsolete and ought to be replaced.
 
-An executed policy is considered effective if it is picked up (in the form of an attempt belief) as a cause in a causal model of a parent CA.
+An executed policy is considered effective if it is picked up (in the form of an attempt belief) as a cause in a symbolic generative model of a parent CA.

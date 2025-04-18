@@ -63,7 +63,7 @@ There is a "metabolic" cost associated with memory. The higher a CA's metabolic 
 * The CA applies the theory's causal rules to predict the next state so it can make predictions
   * from the execution of a policy selected to achieve an intent (impacting a held belief)
   * due to "spontaneous" changes in the umwelt
-* The parent CAs constrain the vocabulary of a CA's causal theory (how the CA can express a causal model), should the CA look for a better one
+* The parent CAs constrain the vocabulary of a CA's causal theory (how the CA can express a symbolic generative model), should the CA look for a better one
   * or else beliefs of parent CAs based on latent observations would become unfounded
   * the parent CAs can provide these constraints to the CA
 * Up-down and down-up constraints

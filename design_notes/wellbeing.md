@@ -44,7 +44,7 @@ Stress on a CA is caused by it having low or dropping wellbeing measures.
 
 Stress makes a CA more *plastic*. When stressed, it is more likely to:
 
-* revise its causal model
+* revise its symbolic generative model
 * temporarily ignore aquired policy habits
 * temporarily ignore strongly held beliefs, to act instead on other beliefs
 * lower its threshold for action

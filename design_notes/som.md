@@ -61,7 +61,7 @@ Then:
 
 When a CA is asked to join an umwelt as part of the mitosis of another CA, it either accepts or refuses with  probability modulated by its state.
 
-It refuses being recruited if it does not yet have a causal model.
+It refuses being recruited if it does not yet have a symbolic generative model.
 
 The probability that it accepts goes down:
 

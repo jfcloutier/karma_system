@@ -1,0 +1,43 @@
+Elliott Hauser
+April 18, 2005 12:33 PM
+
+Three + 1 levels:
+- Operational (causal - consequential/insensate)
+- Cognitive (generative - probabilistic/sensate)
+- Metacognitive (effective - embodied/effectively counterfactual) <= when does this emerge
+- External observation (researchers, who have generative models we believe to be causally accurate)
+
+Policies are operational: they are configuration of insensate dynamics
+Policies "surface" affordances that are sensate
+
+Selecting/pursuing a generated affordance should operationally reinforce it - at the insensate level => Pavlovian/Levin type basal cognition
+Chemotaxis reinforces chemotaxis
+
+Operationalize metric parameters:
+- Integrity: high amplitude all-or-nothing stress dumps
+- Fullness: unconscious/indirectly sensed
+
+(High-level CA acting as wellbeing capacitors)
+
+Characteristic dynamics:
+- Directive: high amplitude all-or-noting wellbeing dumps
+- Integrative: high capacitance for stress and even fullness output
+- 'Greedy': high capacitance for 'fullness' and even stress output
+Operationalize metric parameters:
+- Fragility: high amplitude all-or-nothing stress dumps
+- Fullness: unconscious/indirectly sensed
+
+Characteristic dynamics:
+- Directive: high amplitude all-or-noting wellbeing dumps
+- Integrative: high capacitance for stress and even fullness output
+- 'Greedy': high capacitance for 'fullness' and even stress output
+
+
+^ All of these are cognitively minimal
+
+Capacitor would be operationalized by capacity, threshold of activation, and amplitude/magnitude of activation.
+
+=> Policies are operational and should never be _directly_ transmitted
+
+Metacognitive: taxis <= affordance surfaced by generative model that broadcasts resource
+Cognitive level: resource received <= simplistic dynamics
