@@ -101,7 +101,7 @@ Wellbeing signals are realized by wellbeing tokens, created and destroyed, that 
 
 The tokens diffuse down gradients across umwelt relationships, that is with parents and umwelt. Within a timeframe, a CA consumes or produces wellbeing tokens depending on its activies (e.g. getting a new causal theory) and happenings (e.g. touch sensor bumped). At the end of a timeframe, some tokens held by a CA disappear if expired. Some of the remaining tokens (randomly chosen) diffuse, by type, down to umwelt CAs and or up to parent CAs to equilibrate (eliminate the gradient).
 
-Once a CA has equilibrated its wellbeing tokens with its entourage (i.e. parents and umwelt), it adds up wellbeing tokens it holds to compute its wellbeing measures by type. It keeps a snapshot in its timeframe history, enabling it to determine its wellbeing trends.
+Once a CA has equilibrated its wellbeing tokens with its entourage (i.e. parents and umwelt), it sums up the wellbeing tokens it holds to compute its wellbeing measures by type. It keeps a snapshot in its timeframe history, enabling it to determine its wellbeing trends.
 
 ### Modulating the sharing of wellbeing
 
@@ -109,7 +109,7 @@ A CA can modulate the wellbeing of its umwelt by temporarily misrepresenting to 
 
 A CA can do so by claiming to all its umwelt CAs that:
 
-* it has no token of a given type, thus acting as a hoarder, taking half the tokens from each umwelt CA at the end of each timeframe
+* it has no token of a given type, thus acting as a hoarder, taking up to half the tokens from each umwelt CA at the end of each timeframe
 * it has as many tokens of a given type thus always declining tokens from its umwelt
 
 Any CA with can change its wellbeing representation toward its umwelt. It is an action the CA can take as part of a policy it constructs to impact a belief it holds. The action changes how it presents its wellbeing levels to its umwelt.
@@ -118,6 +118,5 @@ The actions are:
 
 * hoard(wellbeing_type)
 * decline(wellbeing_type)
-* share(wellbeing_type)
 
- The change persists until further action. A CA starts life sharing its fullness, integrity and engagement wellbeing tokens.
+ The change persists through the next timeframe. A CA starts life with the default stance which is to share its fullness, integrity and engagement wellbeing tokens.
