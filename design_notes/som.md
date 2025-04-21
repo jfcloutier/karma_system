@@ -8,7 +8,7 @@ The SOM is a hierarchichal collective of cognition actors (CAs) that animate an 
 
 Each CA has an umwelt composed of a small number of CAs from one level below.
 
-A CA synthesizes its beliefs from predicted observations, past and current, of beliefs in its umwelt.
+A CA synthesizes its beliefs from predicted observations, past and current, of the beliefs held by CAs in its umwelt.
 
 The beliefs of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are `fullness`, `integrity` and `engagement`. They signal risks, present or absent, to the survivability of the CA and. possibly, the entire collective of CAs. Beliefs associated with high risks are unpleasant. Beliefs associated with low risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs in order to change or preserve them.
 
@@ -89,11 +89,11 @@ An exploitation tendency corresponds to low responsiveness to stress (the CA ten
 
 An exploration tendency corresponds to high responsiveness to stress (the CA tends to "mix things up" when stressed).
 
-A CA's responsiveness to stress is set once, when it is added to the SOM. It is set with probabilities designed to generate a gaussian distribution across all CAs, whereby most CAs more or less balance exploration vs exploitation.
+The parameters that determine a CA's responsiveness to stress are set once, when it is added to the SOM. They are set separately for each CA with probabilities designed to generate a gaussian distribution across all CAs, whereby most CAs begin and go though their entire lives with a set balance between exploration vs exploitation tendencies.
 
 ## Holarchy and specialization
 
-The CAs in the SOM is no longer referred to as composing a *hierarchy* but, more accurately, a *holarchy*. This provides a better framework for the concept of *specialization* within the SOM.
+The CAs in the SOM can be referred to as composing a *hierarchy* but, more accurately, as constituting a *holarchy*. This provides a better framework for the concept of *specialization* within the SOM.
 
 > "Holarchy: a whole that is a part of other wholes, while simultaneously containing parts that are whole in themselves." - Arthur Koestler
 
@@ -107,7 +107,7 @@ At most one CA *per level of the SOM* is allowed to control any one set of senso
 
 ## Communication between CAs
 
-The CAs form a collective which implies communication between them to enable coordination, cooperation, competition etc.
+The CAs form a collective which implies there is communication between them to enable coordination, cooperation, competition etc.
 
 Most communications are between a CA and its umwelt CAs and vice-versa. Other communications span the entire collective.
 
@@ -127,7 +127,7 @@ Communications are done either via broadcasted events that CAs either listen to 
 
 ### CA to all CAs
 
-* Wellness measure change - broadcasted whenever a CA's fullness, integrity or engagement mesaure changes
+* Wellness measure change - broadcasted whenever a CA's fullness, integrity or engagement mesaure changes. See notes on wellbeing for details about the "diffusion" of wellbeing information across the SOM
 
 ## Contraints
 
