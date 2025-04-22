@@ -177,27 +177,27 @@ At the end of a timeframe, a CA
 * and marks the goal as "in play",
 * and emits the policy to its umwelt CAs together with its priority (a number proportional to how unpleasant/pleasant the belief to impact is).
 
-A CA keeps a list of the policies (as a conjunction of goals)  it receives within its current timeframe.
+A CA keeps a list of the policies (as a conjunction of goals) it receives within its current timeframe.
 
 At the end of its current timeframe, a CA:
 
 * rejects irrelevant policies (none of the goals of the policy reference beliefs the CA holds or could hold, none of the commands in the policy are known to the CA),
 * sorts the remaining policies by priority (highest first),
-* accepts the highest priority policy remaining, if any,
+* selects the highest priority policy remaining, if any,
 * notifies originating CAs of having rejected all other received policies,
-* processes the accepted policy, if any
+* processes the selected policy, if any
 
-Note: A CA processes at most one policy at a time. A new timeframe is started only once the accepted policy, if any, is rejected or executed.
+Note: A CA processes at most one policy at a time. A new timeframe is started only once the selected policy, if any, is rejected or executed.
 A CA's timeframe must thus be qualitatively longer than that of its umwelt CAs, to the point where, to an observer, it operates on a different time scale than its umwelt.
 
-For each goal in the accepted policy:
+For each goal in the selected policy:
 
 * If it is relevant to the CA
   * If the CA is an effector, the goal is marked as "executable" and the CA communicates to the CA of origin that the goal is "executable"
   * else, the goal is marked "in play" and the CA formulates a policy to realize it (i.e. recursively executes the algorithm)
 * If it is not relevant to the CA, the goal is rejected and the originating CA is notified
 
-For each command in the accepted policy:
+For each command in the selected policy:
 
 * If it is known to the CA, the command is marked as "executable" and the CA communicates to the CA of origin that the command is "executable"
 * If it is not known to the CA, the command is rejected and the originating CA is notified

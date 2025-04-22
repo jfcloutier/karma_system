@@ -1,5 +1,17 @@
 # Research notebook
 
+## April 21, 2025
+
+Sketched mechanisms for wellbeing osmosis and capacitance.
+
+## April 18, 2025
+
+Meeting with Elliott H. Discussed parametrization leading to exploit vs explore tendencies. Wellbeing diffusion across CAs and wellbeing capacitance. And the need for lower-level CAs to sometimes override the policy dictates from on high, being closer to the ground truth though with a narrower view.
+
+## April 17, 2025
+
+Meeting with Avel G-C
+
 ## April 7, 2025
 
 Cleaned up existing code to remove obsolete design elements and replace active voice (e.g. "start") with passive voice (.e.g "started")
