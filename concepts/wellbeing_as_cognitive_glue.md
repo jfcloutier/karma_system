@@ -2,7 +2,7 @@
 
 In my design, a robot's agency is implemented by a dynamic collective of cognition actors (CAs). CAs form an evolving abstraction hierarchy where each CA has an umwelt composed of a few lower-level CAs it observes. The lowest-level CAs observe the physical sensors of the robot.
 
-Central to my design is the concept of wellbeing as carrier of normativity. Fullness, integrity and engagement are a CA's three measures of wellbeing. 
+Central to my design is the concept of wellbeing as carrier of normativity. Fullness, integrity and engagement are a CA's three measures of wellbeing.
 
 The wellbeing of each CA fluctuates over its lifetime, with low or dropping wellbeing signalling risk to survival and creating stress. Stress affects the behavior of a CA, causing it to take actions to terminate beliefs it associates with "bad feelings". Stress also makes a CA more "plastic", such as lowering the thresholds for the CA to try new policies or prompting it to revise the current causal theory by which it makes sense of its umwelt.
 
