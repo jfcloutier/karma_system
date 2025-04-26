@@ -83,9 +83,10 @@ CAs listen to integrity level events, broadcasted whenever the measure changes s
 
 Engagement keeps track of how engaged the CAs are overall. Engagement is initially empty.
 
-Engagement goes up whenever
+Engagement goes up for a CA whenever
 
-* a CA's belief is used in the synthesis of another CA's belief (it becomes relevant), and
+* it obtains an accurate and simple causal theory (finding simplicity within complexity),
+* one of its belief is used in the synthesis of another CA's belief (it becomes relevant),
 * whenever an action it intends is executed (it acts in the world).
 
 Engagement decreases whenever
