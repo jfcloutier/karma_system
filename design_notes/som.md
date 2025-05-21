@@ -8,19 +8,21 @@ The SOM is a hierarchichal collective of cognition actors (CAs) that animate an 
 
 Each CA has an umwelt composed of a small number of CAs from one level below.
 
-A CA synthesizes its beliefs from predicted observations, past and current, of the beliefs held by CAs in its umwelt.
+A CA synthesizes its beliefs from patterns detected in the observed/predicted beliefs, past and present, of the CAs in its umwelt.
 
-The beliefs of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are `fullness`, `integrity` and `engagement`. They signal risks, present or absent, to the survivability of the CA and. possibly, the entire collective of CAs. Beliefs associated with high risks are unpleasant. Beliefs associated with low risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs in order to change or preserve them.
+The beliefs of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are `fullness`, `integrity` and `engagement`. They signal risks, present or absent, to the survivability of the CA and. possibly, the entire collective of CAs.
+
+Beliefs associated with high risks are unpleasant. Beliefs associated with low risks are pleasant. Others are neutral. A CA acts on its umwelt in response to the pleasantness or unpleasantness of its current beliefs in order to change or preserve them. It does so by impacting beliefs in its umwelt from which its own beliefs are derived.
 
 ## Growth and shrinking
 
 The SOM grows and shrinks, exploring a space of configurations of CAs, searching for competent (life-sustaining) configurations. The SOM grows via "mitosis" (CA birth) and shrinks via "apoptosis" (CA death).
 
-CAs beget other CAs (mitosis) and CAs remove themselves (apoptosis) on their own.
+CAs beget other CAs (mitosis) and CAs remove themselves (apoptosis).
 
 ### Mitosis
 
-At the end of its current timeframe, a CA at abstraction level L might add another CA to the SOM, at its own level **or** one level up, but not both.
+At the end of its current timeframe, a CA at abstraction level L might birth another CA, at its own SOM level **or** one level up, but not both.
 
 Whether or not a CA is added or removed is probabilistic and dependent on the circumstances of the SOM.
 
@@ -32,12 +34,12 @@ When a CA is added, it starts with initial wellbeing measures:
 
 #### Adding a CA one level up
 
-With a probability proportional to the CA's fullness (modulated up by stress):
+This is done with a probability proportional to the CA's fullness (modulated up by stress).
 
 If:
 
 * level L+1 is empty of CAs and all level L-1 CAs are in umwelts and
-* the CA attempting mitosis is not in any umwelt and can recruit 1 or more CAs at level L
+* the CA attempting mitosis can recruit 1 or more CAs at level L
 
 Then:
 
@@ -45,11 +47,11 @@ Then:
 
 #### Adding a CA at the same level
 
-With a probability proportional to the CA's fullness (modulated up by stress):
+This is done with a probability proportional to the CA's fullness (modulated up by stress):
 
 If:
 
-* A level L+1 CA was not created and
+* A level L+1 CA was not created in the current timeframe and
 * the mitotic CA can recruit 1 or more CAs at level L-1 not in its umwelt and
 * the CA's resulting transitive umwelt is uniquely specialized (see Holarchy and specialization below)
 
@@ -59,14 +61,14 @@ Then:
 
 #### Recruiting a CA
 
-When a CA is asked to join an umwelt as part of the mitosis of another CA, it either accepts or refuses with  probability modulated by its state.
+When a CA is asked to join an umwelt as part of the mitosis of another CA, it either accepts or refuses with probability modulated by its state.
 
 It refuses being recruited if it does not yet have a symbolic generative model.
 
 The probability that it accepts goes down:
 
 * the more it participates in umwelts already (it converges to 0 rather quickly)
-* the lower its wellbeing, modulated up by stress
+* the lower its wellbeing
 
 ### Apoptosis
 
@@ -97,7 +99,7 @@ The CAs in the SOM can be referred to as composing a *hierarchy* but, more accur
 
 > "Holarchy: a whole that is a part of other wholes, while simultaneously containing parts that are whole in themselves." - Arthur Koestler
 
-A CA can be viewed as the interface to a "holon", i.e. a *functional* collective of CAs made up by its transitive umwelt and thus capable of acting as a unit (e.g. the heart, is a collective of bundles of cells that together pump blood). The transitive umwelt of a CA are all the CAs in its immediate uumwelt, plus the transitive umwelts of these CAs.
+A CA can be viewed as the interface to a "holon", i.e. a *functional* collective of CAs made up by its transitive umwelt and thus capable of acting as a unit (e.g. the heart, is a collective of bundles of cells that together pump blood). The transitive umwelt of a CA are all the CAs in its immediate umwelt, plus the transitive umwelts of these CAs.
 
 A holarchy emerges over time from CA mitosis, organized around the agent's physical sensors and effectors.
 
@@ -115,8 +117,8 @@ Communications are done either via broadcasted events that CAs either listen to 
 
 ### CA to umwelt CAs
 
-* Predictions - beliefs expected to be held by umwelt CAs as applicable
-* Action directives - goals to achieve (the CA is free to choose how) or commands to execute (do as you're told)
+* Predictions - beliefs expected to be held by at least some umwelt CAs
+* Action directives - goals to achieve (the CA receiving the directive is free to choose how) or commands to execute (do as you're told)
 
 ### Unwelt CAs to parent CAs
 
