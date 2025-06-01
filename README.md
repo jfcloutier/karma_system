@@ -30,6 +30,9 @@ Here are key concepts and opinions shaping this effort:
 
 The code of the Karma project is currently found in these repositories
 
+* [Karma Prolog Utils](https://github.com/jfcloutier/karma_prolog_utils) - Prolog utility modules
+* [Karma Actors](https://github.com/jfcloutier/karma_actors) - Prolog actor framework
+* [Karma Apperception](https://github.com/jfcloutier/karma_apperception) - A practical Apperception Engine
 * [Karma Agency](https://github.com/jfcloutier/karma_agency) - Prolog code implementing agency
 * [Karma Body](https://github.com/jfcloutier/karma_body) - Elixir code giving access to the robot's sensors and motors, embodied or simulated
 * [Karma World](https://github.com/jfcloutier/karma_world) - Elixir code implementing a virtual, simulation environment - to accelerate the development of Agency
