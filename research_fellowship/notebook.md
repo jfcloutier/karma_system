@@ -1,5 +1,13 @@
 # Research notebook
 
+## June 1, 2025
+
+Separated out Apperception Engine, Actor Model and Prolog Utils into their own repos
+
+## May 24, 2025
+
+Made minor edits to paper "Finding causal theories quickly enough" and published version 2 to Zenodo
+
 ## April 21, 2025
 
 Sketched mechanisms for wellbeing osmosis and capacitance.
