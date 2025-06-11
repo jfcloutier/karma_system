@@ -55,12 +55,12 @@ e.g. this policy was attempted twice to achieve this goal
 
 * What
   * A property
-* Observed as `count(belief(Object), Value)` where
+* Observed as `count(Object, Value)` where
   * `Object` is a unique name created from `relations(RelationName, Direction, ObjectType(ObjectInRelation))`
   * `Direction` is `to` or `from`
   * `Value` is a positive, non-zero integer
 
-## Comparison
+## More
 
 > Whether there has been more of something than of something else, as observed over timeframes leading to, and including, the current timeframe.
 
@@ -68,13 +68,13 @@ e.g. there have been more attempts to achieve this goal than attempts to achieve
 
 * What
   * A relation
-* Observed as `more(belief(Object1), belief(Object2))` where
+* Observed as `more(Object1, Object2)` where
   * `Object1`, `Object2` are unique names created from `relations(RelationName, Direction, ObjectType(ObjectInRelation))`
   * `Object2` is a unique name created from `relations(RelationName, Direction, ObjectType(ObjectInRelation))`
   * `Direction` is `to` or `from`
   * `Value` is a positive, non-zero integer
 
-## Start
+## Started
 
 > Something is observed in the current timeframe that was not observed in past timeframes
 
@@ -82,12 +82,13 @@ e.g. increase in luminance is first observed
 
 * What
   * A property
-* Observed as `start(belief(Object), Value)` where
+* Observed as `started(Object, Value)` where
   * `Object` is a unique name created from
     * `property_starting(PropertyName, Object)`
     * or `relation_starting(RelationName, ObjectType(Object), ObjectType(Object))`
+* `Value` is the number of frames that passed since the start
 
-## Trend
+## Trending
 
 > How the values of a property of an object are trending, as observed over timeframes leading to, and including, the current timeframe.
 
@@ -96,11 +97,11 @@ e.g. the increase in luminance persists (trending trend)
 
 * What
   * A property
-* Observed as `trend(belief(Object), Value)` where
+* Observed as `trending(Object, Value)` where
   * `Object` is a unique name created from `properties(PropertyName, ObjectType(Object))`
   * `Value` is `stable`, `unstable`, `up` or `down`
 
-## End
+## Ended
 
 > How long before something observed in past timeframes ends in the current timeframe.
 
@@ -108,24 +109,37 @@ e.g. increase in luminance ended suddenly
 
 * What
   * A property
-* Observed as `end(belief(Object), Value)` where
+* Observed as `ended(Object, Value)` where
   * `Object` is a unique name created from
     * `property_ending(Object, Value)`
     * or `relation_ending(RelationName, ObjectType(Object), ObjectType(Object))`
-  * `Value` is `suddenly` or `slowly`
+  * `Value` is the number of frames that passed since the ending
 
-## Attempt
+## Attempted
 
-> The **fact** that the CA executed a policy to achieve a goal in the current timeframe.
+> The **fact** that the CA executed a policy to achieve a goal.
 
 e.g. attempted to stop distance getting smaller
 
 * What
   * A relation
-* Observed as `attempted(policy(Policy), goal(Goal))` where
-  * `Policy` is a unique name created from `sub_goals([Goal, ...])`
-  * `Goal` is a unique name created from `intent(belief(Object), Value)` where
-    * `Value` is `persist` or `terminate`
+* Observed as `attempted(Object, Value)` where
+  * `Object` is a unique name created from `executed(policy(Directive), goal(Belief, Impact))`
+    * `Belief` is a unique name created from `belief(Name, Value)`
+    * `Impact` is `persist` or `terminate`
+  * `Value` is the number of frames that passed since last attempted
+
+## Sensed
+
+> The **fact** that the CA made a sensor reading.
+
+e.g. distance to obstacle is 10cm
+
+* What
+  * A property
+* Observed as `sensed(Object, Value)` where
+  * `Object` is the unique name of a sensor
+  * `Value` is a sensor reading
 
 ## About naming of objects in beliefs
 
