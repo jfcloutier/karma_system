@@ -51,7 +51,7 @@ Abduction **conjures** up properties or relations to either translate a sensor r
 
 > How many relations of a given type and directionality an object has with other objects in the current timeframe only.
 
-e.g. this policy was attempted twice to achieve this goal
+e.g. this policy was executed twice
 
 * What
   * A property
@@ -115,19 +115,17 @@ e.g. increase in luminance ended suddenly
     * or `relation_ending(RelationName, ObjectType(Object), ObjectType(Object))`
   * `Value` is the number of frames that passed since the ending
 
-## Attempted
+## Attempted  --TODO REMOVE?
 
-> The **fact** that the CA executed a policy to achieve a goal.
+> The **fact** that the CA executed a policy (directive or command) to achieve a goal.
 
 e.g. attempted to stop distance getting smaller
 
 * What
   * A relation
-* Observed as `attempted(Object, Value)` where
-  * `Object` is a unique name created from `executed(policy(Directive), goal(Belief, Impact))`
-    * `Belief` is a unique name created from `belief(Name, Value)`
-    * `Impact` is `persist` or `terminate`
-  * `Value` is the number of frames that passed since last attempted
+* Observed as `attempted(Policy, Value)` where
+  * `Policy` is policy named by the CA holding this belief
+  * `Value` is the number of attempts
 
 ## Sensed
 
@@ -137,8 +135,8 @@ e.g. distance to obstacle is 10cm
 
 * What
   * A property
-* Observed as `sensed(Object, Value)` where
-  * `Object` is the unique name of a sensor
+* Observed as `sensed(Sensor, Value)` where
+  * `Sensor` is the unique name of a sensor
   * `Value` is a sensor reading
 
 ## About naming of objects in beliefs
