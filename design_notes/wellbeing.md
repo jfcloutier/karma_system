@@ -6,21 +6,21 @@ Wellbeing is a collection of measures the agent strives to maximize. Wellbeing i
 
 The measures are:
 
-* **Fullness**: How much energy the agent has in store, to "pay for" cognitive effort, effector activation, and (pretend) maintenance and repair.
-* **Integrity**: The "health" of the agent, helped by avoiding collisions and not "eating poison"
+* **Fullness**: How much energy the agent has in store, to "pay for" cognitive effort, effector activation, and health recovery
+* **Integrity**: The "health" of the agent, maintained by avoiding collisions and not "eating poison"
 * **Engagement**: How much the agent is engaging its environment, both by making sense of it and by acting in it
 
-In additions to current measures of wellbeing, a CA also keeps track of the rising and falling of these measures. A sharply falling, yet still high, measure of a CA's wellbeing can be as "alarming" as a low measure.
+In additions to current measures of wellbeing, a CA also keeps track of the rising and falling of these measures. A sharply falling, yet still high, measure of a CA's wellbeing can be as "alarming" as a very low measure.
 
-The wellbeing measures of a CA grow and decrease based on actions they take, bumps they suffer, food they "ingest" etc. They also change from CAs sharing their individual wellbeings as they diffuse across the collective of CAs.
+The wellbeing measures of a CA grow and decrease based on actions they take, bumps they suffer, food or poison they "ingest" etc. They also change from CAs sharing their individual wellbeings as they diffuse across the collective of CAs.
 
 ## The role of wellbeing
 
-Wellbeing provides the means by which *normativity* is associated with the beliefs of CAs. CAs correlate their wellbeing with beliefs they synthesize from current and past observations.
+Wellbeing provides the means by which *normativity* is associated with the beliefs of CAs. CAs correlate their wellbeing with the beliefs they synthesize from current and past observations.
 
 Beliefs associated with high and static or with increasing wellbeing measures, are "pleasant" beliefs. Beliefs associated with low and static or with decreasing wellbeing measures are "unpleasant". Beliefs associated with neither are "neutral". Low and decreasing measures feel the worst whereas high and increasing measures feel the best.
 
-Wellbeing drives attention: CAs intend actions to persist pleasant beliefs and actions to terminate unpleasant beliefs. Neutral beliefs are normally "left alone" by the CA but are kept as they may compose the non-neutral beliefs of more abstract CAs.
+Wellbeing drives attention: CAs intend actions to persist pleasant beliefs and terminate unpleasant beliefs. Neutral beliefs are normally "left alone" by the CA but are kept as they may compose the non-neutral beliefs of more abstract CAs.
 
 Wellbeing also provides the motivation for CAs to spawn new CAs or to remove themselves from the SOM, so as to manage overall energy expenditure or nudge up overall engagement.
 
@@ -34,7 +34,7 @@ Stress makes a CA more *plastic*. When stressed, it is more likely to:
 * temporarily ignore aquired policy habits
 * temporarily ignore strongly held beliefs, to act instead on other beliefs
 * lower its threshold for action
-* trigger its mitosis (birth a new CA) or apoptosis (remove itself from the SOM)
+* trigger its mitosis (birth a new CA) or apoptosis (removing itself from the SOM)
 
 ## Measures of wellbeing
 
@@ -42,13 +42,13 @@ Stress makes a CA more *plastic*. When stressed, it is more likely to:
 
 Fullness represents the energy budget of a CA. It starts full.
 
-An agent's collective of CAs is mortal. When there is no energy left, its mind dies (its Lego body is permanent).
+An agent's collective of CAs is mortal. When there is no energy left, its mind dies (its Lego body is comparatively permanent).
 
-Energy is replenished by the action of `eating` but only when the agent is positioned over food (the agent may or may not know it is over food).
+Energy is replenished by the action of `eating` but only when the agent is positioned over food or poison (the agent may or may not know it is over food/poison).
 
 Energy is spent individually by each CA when
 
-* obtaining a causal theory (the more time spent searching, the higher the cost of finding the theory)
+* obtaining a causal theory (the more time spent searching, the more complex the theory, the higher the energy cost)
 * synthesizing a belief (each belief comes at a cost)
 * using a causal theory (the more complex the theory, the higher the cost per use)
 * remembering past observations and beliefs (additional cost per remembered observation/belief)
@@ -85,8 +85,8 @@ Engagement keeps track of how engaged the CAs are overall. Engagement is initial
 
 Engagement goes up for a CA whenever
 
-* it obtains an accurate and simple causal theory (finding simplicity within complexity),
-* one of its belief is used in the synthesis of another CA's belief (it becomes relevant),
+* it obtains an accurate enough causal theory (making sense of its umwelt),
+* one of its beliefs is used in the synthesis of another CA's belief (it becomes relevant),
 * whenever an action it intends is executed (it acts in the world).
 
 Engagement decreases whenever
@@ -100,7 +100,7 @@ The wellbeing of cognition actors (CAs) diffuse throughout the society of mind (
 
 Wellbeing signals are realized by wellbeing tokens, created and destroyed, that travel between CAs without provenance info ("Your wellbeing is my wellbeing, to a point".)
 
-The tokens diffuse down gradients across umwelt relationships, that is with parents and umwelt. Within a timeframe, a CA consumes or produces wellbeing tokens depending on its activies (e.g. getting a new causal theory) and happenings (e.g. touch sensor bumped). At the end of a timeframe, some tokens held by a CA disappear if expired. Some of the remaining tokens (randomly chosen) diffuse, by type, down to umwelt CAs and or up to parent CAs to equilibrate (eliminate the gradient).
+The tokens diffuse down gradients across umwelt relationships, that is with parents and umwelt. Within a timeframe, a CA consumes or produces wellbeing tokens depending on its activies (e.g. turning a wheel, getting a new causal theory) and happenings (e.g. touch sensor bumped). At the end of a timeframe, some tokens held by a CA disappear if expired. Some of the remaining tokens (randomly chosen) diffuse, by type, down to umwelt CAs and or up to parent CAs to equilibrate (eliminate the gradient).
 
 Once a CA has equilibrated its wellbeing tokens with its entourage (i.e. parents and umwelt), it sums up the wellbeing tokens it holds to compute its wellbeing measures by type. It keeps a snapshot in its timeframe history, enabling it to determine its wellbeing trends.
 
@@ -111,13 +111,14 @@ A CA can modulate the wellbeing of its umwelt by temporarily misrepresenting to 
 A CA can do so by claiming to all its umwelt CAs that:
 
 * it has no token of a given type, thus acting as a hoarder, taking up to half the tokens from each umwelt CA at the end of each timeframe
-* it has as many tokens of a given type thus always declining tokens from its umwelt
+* it has "enough" tokens of a given type thus declining tokens from its umwelt
 
-Any CA with can change its wellbeing representation toward its umwelt. It is an action the CA can take as part of a policy it constructs to impact a belief it holds. The action changes how it presents its wellbeing levels to its umwelt.
+Any CA with can change its wellbeing representation toward its umwelt. It is an action the CA can take as part of a policy it it receives (from a parent CA) to impact beliefs it holds. The action changes how the CA presents its wellbeing levels to its own umwelt.
 
 The actions are:
 
 * hoard(wellbeing_type)
 * decline(wellbeing_type)
+* share(wellbeing type)
 
- The change persists through the next timeframe. A CA starts life with the default stance which is to share its fullness, integrity and engagement wellbeing tokens.
+ The change in a CA's "wellbeing osmotic state" persists through the next timeframe. A CA starts life with the default stance which is to share its fullness, integrity and engagement wellbeing tokens.
