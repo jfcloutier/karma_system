@@ -118,8 +118,8 @@ Any CA with can change its wellbeing representation toward its umwelt. It is an 
 
 The actions are:
 
-* hoard(wellbeing_type) -- the CA pretends it has fewer wellbeing tokens of the given type (until it is full)
-* donate(wellbeing_type) -- the CA pretends it has more wellbeing tokens of a given type (until it is empty)
-* equilibrate(wellbeing type) -- the CA represents truthfully the number of tokens of a given type it holds
+* hoard(wellbeing_type) -- the CA pretends to its umwelt that it has fewer wellbeing tokens of the given type (until it is full)
+* donate(wellbeing_type) -- the CA pretends to its umwelt it has more wellbeing tokens of a given type (until it is empty)
+* equilibrate(wellbeing type) -- the CA represents truthfully to its umwelt the number of tokens of a given type it holds
 
  The change in a CA's "wellbeing osmotic state" persists through the next timeframe until the next wellbeing action is taken. A CA starts life with the default stance which is to equilibrate its fullness, integrity and engagement wellbeing tokens.

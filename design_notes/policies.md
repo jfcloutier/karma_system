@@ -173,11 +173,11 @@ Note: The algorithm implements something akin to two-phase commits on composite 
 At the end of a timeframe, a CA
 
 * selects a goal -this becomes a "top" goal because it originated with the CA-
-* and formulates a policy to achieve the goal,
+* and formulates a policy (a list of directives) to achieve the goal,
 * and marks the goal as "in play",
 * and emits the policy to its umwelt CAs together with its priority (a number proportional to how unpleasant/pleasant the belief to impact is).
 
-A CA keeps a list of the policies (as a conjunction of goals) it receives within its current timeframe.
+A CA keeps a list of the policies (as a conjunction of directives) it receives within its current timeframe.
 
 At the end of its current timeframe, a CA:
 
@@ -188,6 +188,7 @@ At the end of its current timeframe, a CA:
 * processes the selected policy, if any
 
 Note: A CA processes at most one policy at a time. A new timeframe is started only once the selected policy, if any, is rejected or executed.
+
 A CA's timeframe must thus be qualitatively longer than that of its umwelt CAs, to the point where, to an observer, it operates on a different time scale than its umwelt.
 
 For each goal in the selected policy:
@@ -195,12 +196,14 @@ For each goal in the selected policy:
 * If it is relevant to the CA
   * If the CA is an effector, the goal is marked as "executable" and the CA communicates to the CA of origin that the goal is "executable"
   * else, the goal is marked "in play" and the CA formulates a policy to realize it (i.e. recursively executes the algorithm)
-* If it is not relevant to the CA, the goal is rejected and the originating CA is notified
+* If it is not relevant to the CA, the goal is rejected
 
 For each command in the selected policy:
 
 * If it is known to the CA, the command is marked as "executable" and the CA communicates to the CA of origin that the command is "executable"
-* If it is not known to the CA, the command is rejected and the originating CA is notified
+* If it is not known to the CA, the command is rejected
+
+The receiving CA informs the originating CA of the directives that can be actuated, or if none are, that none are.
 
 A CA that emitted a policy to its umwelt CAs to achieve a goal (i.e. impact a belief it holds) keeps the goal in play:
 
@@ -224,8 +227,7 @@ When a CA receives the instruction to execute a goal it has in play
       * to execute the named, pre-built policy if the directive is a command
     * It instructs any redundant umwelt CA to consider the directive as executed
 
-Once all the directives in the policy a CA emitted are reported to it as "executed", the goal for which the policy was formulated by the CA is reported as executed
-to the originating CA, and it is no longer active.
+Once all the directives in the policy a CA emitted are reported to it as "executed", the goal for which the policy was formulated by the CA is reported as executed to the originating CA, and it is no longer active.
 
 When all goals of a CA are inactivated (rejected or executed), a new frame is started.
 
