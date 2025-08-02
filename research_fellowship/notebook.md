@@ -1,5 +1,9 @@
 # Research notebook
 
+## August 1, 2025
+
+Sensor and effector CAs coded and unit tested
+
 ## June 1, 2025
 
 Separated out Apperception Engine, Actor Model and Prolog Utils into their own repos
