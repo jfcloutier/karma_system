@@ -118,7 +118,7 @@ Communications are done either via broadcasted events that CAs either listen to 
 ### CA to umwelt CAs
 
 * Predictions - beliefs expected to be held by at least some umwelt CAs
-* Action directives - goals to achieve (the CA receiving the directive is free to choose how) or commands to execute (do as you're told)
+* Action directives - prioritized goals to achieve (the CA receiving the directive is free to choose how)
 
 ### Unwelt CAs to parent CAs
 
@@ -152,4 +152,4 @@ Communications are done either via broadcasted events that CAs either listen to 
             * they have fewer opportunity to intend their own goals and work on being/staying relevant
     * is in a better position than its umwelt to keep the agent alive if
       * it can detect the more abstract observation patterns that are more likely to correlate with wellbeing trends
-      * and thus can set goals (to persist/terminate its beliefs) that will be more effective at maintaining the entire SOM alive
+      * and thus can set goals (to initiate/persist/terminate its beliefs) that will be more effective at maintaining the entire SOM alive

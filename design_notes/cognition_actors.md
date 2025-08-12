@@ -102,19 +102,18 @@ There is a "metabolic" cost associated with memory. The higher a CA's metabolic 
   * By furthering or interrupting (i.e. impacting) sub-beliefs via intents delegated to umwelt CAs
 * Realizing an intent is recursive because a belief is a recursive structure of beliefs held by umwelt CAs
 * See [policies.md](./policies.md)
-* A CA receiving a directive (a goal, i.e. a belief to persist/terminate, or the name of a policy it may have once executed) from a parent CA will, depending o the nature of the directive
-  * construct and (try to) execute a policy to achieve the received goal
+* A CA receiving a directive (a prioritized goal to achieve, i.e. a belief to initiate/persist/terminate with some degree of urgency) from a parent CA will, depending on accepting the directive,
+  * construct/reuse a policy to achieve the received goal
     * based on its causal theory which might describe alternate causes for the same outcome
     * or on guesses if it has no theory yet (babbling)
-  * execute the policy received by name
 * One policy execution at a time
-  * A CA can not intend to affect one of its own goal if it is executing a parent CA's policy
+  * A CA can not intend to realize one of its own goal if it is executing a parent CA's policy
     * Lower-level CAs relinquish some autonomy for the greater good
 * Learning affordances
   * A CA gets feedback as to whether the intents in an executed policy were realized
   * A CA remembers how successul each policy was at achieving a goal
     * A CA selects the more recently successful policies more often (it will also sometimes try others in case they might be better)
-  * A CA can emit a goal-free intent to observe what happens (it babbles)
+  * A CA can randomly construct a policy to observe what happens if executed (it babbles)
     * when given the opportunity
       * all wellbeing levels are high and the CA is not involved in a parent's intent
     * or when necessary
