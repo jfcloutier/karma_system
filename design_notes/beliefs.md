@@ -29,7 +29,7 @@ Each belief is expressed as a `property` (linking an object and a value) or as a
 A property is expressed as `Property(Object, Value)` where
 
 * `Property` is a property name
-* `Value` is a literal belonging to the property's domain (e.g. blue, up, true, 4, stable, etc.)
+* `Value` is a literal belonging to the property's domain (e.g. blue, up, true, 4, etc.)
 * `Object` is the unique name of what's starting, trending, ending, counted, more of, or sensed
   * e.g. self,  reverse_spin, ahsd34ahsdjh
   * the identity (derivation) of the named object is known only to the CA that named it
@@ -47,76 +47,71 @@ A relation is expressed as  `Relation(Object1, Object2)`, where
 Imagined beliefs are conjured up properties or relations to posit occulted observations needed to causally explain direct observations.
 
 * What
-  * A relation or property
+  * A relation `Relation(Object1, Object2)` or property `Property(Object, Value)`
 * Observed as-is (i.e. unobfuscated)
 
 ## Count
 
-> How many relations of a given type and directionality an object has with other objects in the current timeframe only.
+> The belief that something can be counted in the current timeframe.
 
-e.g. this policy was executed twice
+e.g. this action was executed twice
 
 * What
   * A property
 * Observed as `count(Object, Value)` where
-  * `Object` is a unique name possibly created from `relations(RelationName, Direction, ObjectType(ObjectInRelation))`
+  * `Object` is a unique name possibly created from
+    * `Direction(RelationName, InternalObject)` - how many objects connect to/from a given object via a given relation
+    * `properties(PropertyName, Value)` - how many objects are known to possess a given property value
+    * a self-referential object (e.g. an effector CA action)
   * `Direction` is `to` or `from`
-  * `Value` is a positive, non-zero integer
+  * `Value` is an enumerated value
 
 ## More
 
-> Whether there has been more of something than of something else, as observed over timeframes leading to, and including, the current timeframe.
+> The belief that there has been more of something than of something else in the current timeframe.
 
 e.g. there have been more attempts to achieve this goal than attempts to achieve this other goal
 
 * What
   * A relation
 * Observed as `more(Object1, Object2)` where
-  * `Object1`, `Object2` are unique names created from `relations(RelationName, Direction, ObjectType(ObjectInRelation))`
-  * `Object2` is a unique name created from `relations(RelationName, Direction, ObjectType(ObjectInRelation))`
-  * `Direction` is `to` or `from`
-  * `Value` is a positive, non-zero integer
+  * `Object1`, `Object2` are unique names created from `count(InternalObject, Value)`
 
 ## Started
 
-> Something is observed in the current timeframe that was not observed in past timeframes
+> The belief that something observed in the current timeframe is not part of a trend
 
-e.g. increase in luminance is first observed
+e.g. increase in luminance was first observed 3 ticks ago
 
 * What
   * A property
 * Observed as `started(Object, Value)` where
-  * `Object` is a unique name created from
-    * `property_starting(PropertyName, Object)`
-    * or `relation_starting(RelationName, ObjectType(Object), ObjectType(Object))`
-* `Value` is the number of frames that passed since the start
+  * `Object` is a unique name created from an observed belief
+  * `Value` is the number of frames that passed since first observed
 
 ## Trending
 
-> How the values of a property of an object are trending, as observed over timeframes leading to, and including, the current timeframe.
+> The belief that the values of a property of an object are trending up or down, as observed over timeframes leading to, and including, the current timeframe.
 
-e.g. luminance increases (trend)
-e.g. the increase in luminance persists (trending trend)
+e.g. luminance is increasing
 
 * What
   * A property
 * Observed as `trending(Object, Value)` where
-  * `Object` is a unique name created from `properties(PropertyName, ObjectType(Object))`
-  * `Value` is `stable`, `unstable`, `up` or `down`
+  * `Object` is a unique name created from `properties(PropertyName, InternalObject)`
+  * `Value` is `up` or `down`
 
 ## Ended
 
-> How long before something observed in past timeframes ends in the current timeframe.
+> The belief that something is no longer observed in the current timeframe
 
 e.g. increase in luminance ended suddenly
 
 * What
   * A property
 * Observed as `ended(Object, Value)` where
-  * `Object` is a unique name created from
-    * `property_ending(Object, Value)`
-    * or `relation_ending(RelationName, ObjectType(Object), ObjectType(Object))`
-  * `Value` is the number of frames that passed since the ending
+  * `Object` is a unique name created from an observed belief
+  * `Value` is the number of frames that passed since the observed belief ended
 
 ## Sensed
 

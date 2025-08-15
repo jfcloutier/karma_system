@@ -81,7 +81,7 @@ There is a "metabolic" cost associated with memory. The higher a CA's metabolic 
   * from detecting patterns in the current and remembered observations of its umwelt
     * patterns such as counts, endings, comparisons and trends
       * these beliefs are not be inferrable from the causal theory (state-to-state transitions)
-      * e.g. the distance getting smaller is stable (trend about a trend)
+      * e.g. the distance getting smaller started (the start of a trend)
 * See [beliefs.md](./beliefs.md)
 * A CA has no belief until it abduces objects/relations/properties, executes policies or detects patterns
 * Naming a synthetic belief (a synthetic belief is one the CA derived from detecting a pattern in its obeservations or from the execution of a policy it defined)

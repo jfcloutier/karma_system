@@ -136,21 +136,13 @@ To initiate a trend belief, a CA policy could change the ordinal value of a star
 To persist a trend belief, a CA's policy would direct its umwelt to **further** the trend.
 To terminate a trend belief, a CA's policy would direct its umwelt to **disrupt** the trend.
 
-How a trend belief is impacted depends on the assigned value of the trend (stable, up, down or unstable).
+How a trend belief is impacted depends on the assigned value of the trend (up or down).
 
-A `stable` trend captures an unchanging value for a given property of a given object.
-An `unstable` trend captures a seemingly randomly changing value for a given property of a given object.
 An `up` trend captures an upwardly changing ordinal value for a given property of a given object.
 A `down` trend captures a downwardly changing ordinal value for a given property of a given object.
 
 If the nature of the trend to impact is
 
-* stable
-  * to disrupt it, make the observed, trending belief unstable (or up or down) instead (i.e. make it take a different value)
-  * to further it, keep the observed, trending belief stable (i.e. make it take the same value)
-* unstable
-  * to disrupt it, make the observed, trending belief stable instead
-  * to further it, prevent the observed, trending belief from becoming stable
 * up
   * to disrupt it, reduce or stabilize the values of the observed, trending belief
   * to further it, increase the values of the observed, trending belief
