@@ -104,7 +104,7 @@ How a CA might **directly** impact a held belief is modulated by the kind of bel
 
 #### Impacting a `count` belief
 
-A `count` belief encapsulates how many of a given kind of observed beliefs there are in the current timeframe (for e.g., this motor was spun once).
+A `count` belief encapsulates how many of a given kind of beliefs observed in its umwelt there are (for e.g., this motor was spun once).
 
 To persist a count belief, a CA's policy would direct its umwelt CAs to persist *all of* the counted (observed) beliefs.
 
@@ -112,17 +112,27 @@ To initiate or terminate a count belief, a CA's policy would direct its umwelt C
 
 #### Impacting a more belief
 
-A `more` belief expresses that more of an object was counted than another.
+A `more` belief expresses that there is more of than another in its umwelt.
 
-To initiate or teminate a more belief, a CA's policy would direct its umwelt belief to initiate or to terminate a compared, counted belief.
+To initiate or teminate a more belief, a CA's policy would direct its umwelt to initiate or to terminate a compared, count belief.
 
 To persist a more belief, a CA's policy would direct its umwelt CAs to persist both compared counts.
+
+#### Impacting a coincidence belief
+
+A `coincidence` belief captures the fact that two or more umwelt beliefs are consistently observed together.
+
+A coincidence belief can be intentionally initiated by initiating all missing co-occuring umwelt beliefs.
+
+A coincidence belief be persisted by persisting all the co-occuring umwelt beliefs.
+
+A coincidence belief be terminated by terminating any of the co-occuring umwelt beliefs.
 
 #### Impacting a trend belief
 
 A `trend` belief captures how a given kind of observed belief is changing across the latest timeframes of the CA, for example, "distance keeps diminishing" is a "down" trend.
 
-To initiate a trend belief, a CA policy could change the ordinal value of a started belief.
+To initiate a trend belief, a CA policy could change the ordinal value of the trending umwelt belief.
 To persist a trend belief, a CA's policy would direct its umwelt to **further** the trend.
 To terminate a trend belief, a CA's policy would direct its umwelt to **disrupt** the trend.
 
@@ -139,22 +149,6 @@ If the nature of the trend to impact is
 * down
   * to disrupt it, increase or stabilize the values of the observed, trending belief
   * to further it, decrease the values of the observed, trending belief
-
-#### Impacting a started belief
-
-A `started` belief captures the fact that an observation not made in a previous timeframe has now been made.
-
-A started belief can be intentionally initiated by causing pre-conditions for it (as stated by a causal theory).
-
-A started belief, by definition, can not be persisted or terminated: it happened at a point in time and that can't be changed.
-
-#### Impacting an ended belief
-
-An `ended` belief captures the fact that an observation from a previous timeframe has disappeared in the current timeframe.
-
-To initiate an ended belief is simply to terminate the belief.
-
-An ended belief, by definition, can not be persisted or terminated: it happened at a point in time and that can't be changed.
 
 ### Indirectly impacting a belief given a causal theory
 
@@ -256,12 +250,18 @@ The goal for which the policy was formulated by the CA is then no longer active.
 
 When all goals of a CA are inactivated (rejected or executed), a new frame is started.
 
-## Observing executed policies as attempt beliefs
+## Observing action beliefs from executed policies
 
-When a CA executes a policy it formulated, the execution of the policy becomes a `count(PolicyName, 1)` belief held by the CA in its next timeframe.
+When a CA executes a policy it formulated, the execution of the policy possibly becomes a set of `Action(Effector, Boolean)` beliefs (a.k.a. action beliefs) held by effector CAs sitting at the bottom of the CA hierarchy.
 
-The belief from the execution of the policy, like any other belief of the CA, is observable by a parent CA, and, crucially, can be incorporated into the parent CA's symbolic generative model (causal theory).
+These action beliefs held by effector CAs are automatically elevated up the hierarchy, becoming beliefs shared by ancestor CAs, subject to consistency constraints (no disagreement among siblings) and abstraction constraints (they are not combined into abstract beliefs).
 
-The policy's contents (a list of goals for the CA's umwelt) is known to the CA but is hidden to its observers (i.e. parent CAs).
+Crucially, the action beliefs from the execution of the policy, like any other umwelt beliefs observed by a CA, can become incorporated into the CA's causal theory when it is updated.
 
-The CA remembers named policies at least for as long as parent CAs references them.
+## Evaluating the success of reusable policies
+
+The CA remembers, for a while, a policy it executed (the goal -the belief to impact- and the directives emitted) together with the wellbeing values at the time, so as to later be able to gauge the success of the policy.
+
+A policy is deemed successful if it precedes closely the intended belief change. It is even more successful if it correlates with an increase in wellbeing.
+
+A CA might repeat a past policy considered the most successful in attempting to achieve a goal, or it might try another pre-built policy, or it might even construct a new one, all depending on the stress felt by the CA from changes in its wellbeing.

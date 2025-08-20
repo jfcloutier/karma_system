@@ -1,5 +1,9 @@
 # Research notebook
 
+## August 20, 2025
+
+Better framing for beliefs and a rethink of the possible types of beliefs. Clearer integration with wellbeing, causal theories and policies.
+
 ## August 1, 2025
 
 Sensor and effector CAs coded and unit tested

@@ -26,10 +26,10 @@ At the end of its current timeframe, a CA at abstraction level L might birth ano
 
 Whether or not a CA is added or removed is probabilistic and dependent on the circumstances of the SOM.
 
-When a CA is added, it starts with initial wellbeing measures:
+When a CA is added by another, it starts with these wellbeing measures:
 
-* maximum fullness
-* maximum integrity
+* half the fullness of its originator CA
+* the integrity of its originator CA
 * mimimum engagement
 
 #### Adding a CA one level up
@@ -63,7 +63,7 @@ Then:
 
 When a CA is asked to join an umwelt as part of the mitosis of another CA, it either accepts or refuses with probability modulated by its state.
 
-It refuses being recruited if it does not yet have a symbolic generative model.
+It refuses being recruited if it does not yet have a symbolic generative model (a.k.a causal theory).
 
 The probability that it accepts goes down:
 
@@ -82,6 +82,7 @@ If:
 Then:
 
 * It removes itself from the SOM
+* after dispersing its fullness to its parents
 
 ## Parameterizing exploration vs exploitation
 
@@ -113,18 +114,18 @@ The CAs form a collective which implies there is communication between them to e
 
 Most communications are between a CA and its umwelt CAs and vice-versa. Other communications span the entire collective.
 
-Communications are done either via broadcasted events that CAs either listen to or ignore.
+Communications are done either via broadcasted events that CAs either listen to or ignore, or via directed messages.
 
 ### CA to umwelt CAs
 
 * Predictions - beliefs expected to be held by at least some umwelt CAs
-* Action directives - prioritized goals to achieve (the CA receiving the directive is free to choose how)
+* Directives - prioritized goals to achieve (the CA receiving the directive is free to choose how)
 
 ### Unwelt CAs to parent CAs
 
-* Belief domain - what predicates are used to express beliefs, and their value domains (so the parent CAs knows how to compose predictions)
+* Beliefs domain - what predicates are used to express beliefs, and their value domains (so the parent CAs knows how to compose predictions, irrespective of its causal theory)
 * Prediction errors - contradicting received predictions
-* Action report - whether an action directive was successful and, if so, the policy executed
+* Action reports - whether a directive can be actualized, is ready to actualize or was successful
 * Lifecycle - notifying the parent of being added to, or removed from, its umwelt
 
 ### CA to all CAs
@@ -134,22 +135,20 @@ Communications are done either via broadcasted events that CAs either listen to 
 ## Contraints
 
 * Bottom-up constraints
-  * Level N -1 CAs determine what the level N CAs can observe and do. They...
-    * define the set of observations (beliefs they hold) and made available to the level N CAs which umwelts they compose
-    * define the set of policies they constructed known to the level N CAs which umwelts they compose
+  * Umwelt CAs determine what their parents can observe and do. They...
+    * determine the set of beliefs the level parent CAs can observe, build causal theories from, and compose into abstract beliefs
+    * determine set of meaningful goals in a parent CA's policy
 * Top-down constraints
-  * A Level N + 1 CA
-    * models the (Level N) CAs in its umwelt but not vice-versa
-      * umwelt CAs can't make sense of what's asked of/imposed on them - they simply accept it (Froese's Irruption Theory?)
-    * reduces the agency of its umwelt
-      * restricts the causal theory search space of umwelt CAs (by imposing restriction on the vocabulary used)
-        * they can not "unground"" parent CA's beliefs (by disappearing the vocabulary of umwelt beliefs used by the parent CAs to synthesize beliefs)
-          * this imposes constraints on signatures of causal theories
-            * the choice of abduced objects/predicates is reduced
-        * impose directives (policies to execute or goals to achieve) on Level N CAs to achieve its own goals
-          * umwelt CAs decide how to fulfill received directives (they are not micromanaged, just directed)
-          * they can't fulfill their own goals while fulfilling their parent CA's goals
-            * they have fewer opportunity to intend their own goals and work on being/staying relevant
-    * is in a better position than its umwelt to keep the agent alive if
-      * it can detect the more abstract observation patterns that are more likely to correlate with wellbeing trends
-      * and thus can set goals (to initiate/persist/terminate its beliefs) that will be more effective at maintaining the entire SOM alive
+  * A CA models its umwelt CAs but not vice-versa
+    * umwelt CAs can't make sense of why they are directed to impact their beliefs - they simply accept it (Froese's Irruption Theory?)
+  * A CA reduces the agency of its umwelt
+    * it imposes directives (policies to execute or goals to achieve) on umwelt CAs to achieve its own goals
+      * umwelt CAs however decide how to fulfill received directives (they are not micromanaged, just directed)
+      * but they can't fulfill their own goals while fulfilling their parent CA's goals
+      * and they have fewer opportunity to intend their own goals and work on being/staying relevant
+  * A CA is in a better position than its umwelt to keep the agent alive if
+    * it can detect the more abstract observation patterns that are more likely to correlate with wellbeing trends
+    * and thus can set goals (to initiate/persist/terminate its beliefs) that will be more effective at maintaining the entire SOM alive
+  * A CA restricts the causal theory search space of its umwelt CAs (by imposing restriction on the vocabulary used)
+    * umwelt CAs can not "unground" parent CA's beliefs (by disappearing the vocabulary of umwelt beliefs used by the parent CAs to synthesize abstract beliefs)
+    * this imposes constraints on the abduced objects/predicates in the signatures of causal theories

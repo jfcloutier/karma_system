@@ -89,7 +89,7 @@ e.g. this motor executed more spins than this other motor, the distance reported
 
 ### coincide
 
-> The belief that two or more umwelt beliefs are co-occuring
+> The belief that two or more umwelt beliefs are consistently co-occuring
 
 e.g. increase in luminance and reduction in distance are observed together
 
@@ -125,11 +125,11 @@ A belief from a child CA can be elevated
 
 A CA works to increase engagement by holding useful beliefs and by acting on them. However, creating and holding beliefs is costly and the CA has limited resources.
 
-A CA will not synthesize all possible abstract beliefs it can all at once, only a few to reduce drain on fullness.
+A CA will not synthesize all possible abstract beliefs it can all at once, only a few to reduce drain on fullness. This relates to attention.
 
 Abstract beliefs of no use to parent CAs are eventually dropped, freeing resources for holding other beliefs. Elevated beliefs are free.
 
-If a parent CA predicts a belief the child CA does not hold, the child CA will attempt to synthesize it (since it matters), possibly at the expense of another, less useful, belief.
+If a parent CA predicts a belief the child CA does not hold (and is possibly not yet in its beliefs domain), the child CA will attempt to synthesize it (since it matters), potentially at the expense of another, less useful, belief.
 
 A CA will try not to drop a held belief that is of use to a parent CA (useful because predictions about the belief are received) because doing so reduces the CA's engagement wellbeing.
 
@@ -139,7 +139,7 @@ The belief domain of a CA is a representation that subsumes all beliefs held by 
 
 The belief domain of a CA grows and shrinks with the beliefs it holds.
 
-A CA advertises changes to its belief domain so that parent CAs know what they can predict.
+A CA advertises changes to its belief domain so that parent CAs know what they can predict that might not be inferrable from their causal theory.
 
 Belief domains constrain what a parent CA can predict of their umwelt's beliefs, and thus constrain what a CA can observe, and thus the signatures of their causal models.
 
