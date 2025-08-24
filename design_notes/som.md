@@ -38,12 +38,12 @@ This is done with a probability proportional to the CA's fullness (modulated up 
 
 If:
 
-* level L+1 is empty of CAs and all level L-1 CAs are in umwelts and
-* the CA attempting mitosis can recruit 1 or more CAs at level L
+* the level above is empty of CAs and all CAs at the level below are in umwelts and
+* the CA attempting mitosis can recruit 1 or more CAs at at its level to be with it in the umwelt of the newly created CA one level above
 
 Then:
 
-* the mitotic CA creates a CA at level L+1 with itself and the recruited CAs as its umwelt.
+* the mitotic CA creates a CA one level above with itself and the recruited CAs as its umwelt.
 
 #### Adding a CA at the same level
 
