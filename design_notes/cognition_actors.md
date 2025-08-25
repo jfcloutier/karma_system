@@ -98,3 +98,54 @@ When the maximum number of remembered states is reached and the latest state is 
   * Wellbeing is osmotically equilibrated among CAs over parent-umwelt links
 
 * See [wellbeing.md](./wellbeing.md)
+
+## Lifecycle
+
+* Start new timeframe
+* Make observations directed by attention
+  * Predict umwelt beliefs
+    * Supporting goal beliefs in received directives
+    * Supporting sufficiently pleasant/unpleasant beliefs
+    * Expected from causal theory
+* Update beliefs
+  * Elevate all action beliefs
+    * Subject to consistency and abstraction-hiding constraints
+  * Attempt to compose or elevate received goal beliefs
+  * Update already abstracted beliefs
+  * Discover new abstracted beliefs, wellbeing allowing
+* Assess executed policies
+  * Evaluate success in light of
+    * Revised beliefs vs policy goals (impact achieved?)
+    * Modulate success by
+      * Time elapsed since execution of policy
+      * Noise (other actions taken since degrade the signal)
+  * Update efficacity measurements
+* Act
+  * Select a goal
+    * Select own belief to act on
+    * Prioritize against received goals
+  * Choose highest priority goal
+  * Build or reuse a policy
+  * Emit intent and carry through execution if possible
+* Update and share wellbeing
+  * Throughout: add to/substract from wellbeing measures
+    * given "metabolic" activity
+    * sensor readings (food, bumps)
+  * Carry out "osmotic" sharing
+  * Update wellbeing measures
+  * Emit updated measures
+* Maybe ask for revised causal theory
+  * Evaluate efficacy and costs of the causal theory
+  * Evaluate obsolescence (new actions takens?, new observations?, new observed belief domains?)
+* Adjust resource usage per wellbeing
+* Adjust behavioral parameters per wellbeing levels (stress)
+  * Explore vs exploit?
+  * Adjust activation thresholds
+  * Forget to save on low resources
+    * Drop old timeframes
+    * Drop ineffective policies
+* Life and death
+  * Decide whether to give birth to a new CA (sibling or parent) via "mitosis"
+    * Decide whether to remove self from the SOM (apoptosis)
+* Remember timeframe
+* (repeat)
