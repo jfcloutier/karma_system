@@ -10,6 +10,16 @@ A belief is pleasant if it was derived in the context of high or improving wellb
 
 The more competent a CA is, the more likely it is that its parents CAs will be competent and survive, and thus the more likely it is that the CA itself will survive; orphaned CAs are susceptible to removing themselves when wellbeing is consistently low.
 
+## Types of cognition actors
+
+There are two broad types of cognition actors, dynamic CAs and a priori CAs.
+
+A priori CAs, sensor CAs and effector CAs, are determined by the sensors and effectors that are on the agent's body. They populate the bottom layer of the SOM and persist throughout the life of the SOM.
+
+Dynamic CAs populate all other layers of the SOM and are added and removed throughout the life of the SOM as the agent searches the space of SOM configurations for one that, at the very least, keeps it alive.
+
+Dynamic CAs have umwelts and they have causal theories to make sense of their observations of their umwelts. A priori CAs have neither.
+
 ## Timeframe and memory
 
 A CA operates one timeframe after another. The current timeframe of a CA corresponds to a "thick now"; all observations made and all beliefs abstracted by the CA during this timeframe are considered synchronous. Timeframes are not synchronized across CAs. The timeframe of a CA starts and stops independently of those of other CAs. The current timeframes of CAs partially and randomly overlap.
@@ -27,7 +37,7 @@ When the maximum number of remembered states is reached and the latest state is 
 
 ## Observing (its umwelt's beliefs)
 
-* A CA predicts its observations of the beliefs of CAs in its umwelt
+* A (dynamic) CA predicts its observations of the beliefs of CAs in its umwelt
   * A CA begins life with an empty causal theory that predicts random, domain-bounded observations or prior observations.
   * If the CA has a causal theory, it uses it to predict the next observations.
 * A CA predicts the success of its policies using its causal theory. It also remembers the effecticeness of previously executed policies.
