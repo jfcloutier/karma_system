@@ -12,13 +12,13 @@ The more competent a CA is, the more likely it is that its parents CAs will be c
 
 ## Types of cognition actors
 
-There are two broad types of cognition actors, dynamic CAs and a priori CAs.
+There are two broad types of cognition actors, dynamic CAs and static CAs.
 
-A priori CAs, sensor CAs and effector CAs, are determined by the sensors and effectors that are on the agent's body. They populate the bottom layer of the SOM and persist throughout the life of the SOM.
+Static CAs -sensor CAs and effector CAs- are determined a priori by the sensors and effectors that are on the agent's body. They populate the bottom layer of the SOM and persist throughout the life of the SOM.
 
 Dynamic CAs populate all other layers of the SOM and are added and removed throughout the life of the SOM as the agent searches the space of SOM configurations for one that, at the very least, keeps it alive.
 
-Dynamic CAs have umwelts and they have causal theories to make sense of their observations of their umwelts. A priori CAs have neither.
+Dynamic CAs have umwelts and they have causal theories to make sense of their observations of their umwelts. A static CAs have neither.
 
 ## Timeframe and memory
 
