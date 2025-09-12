@@ -202,23 +202,24 @@ At the end of a timeframe, a CA
 * selects a goal -this becomes a "self-directed" goal because it originated with the CA-
 * and formulates a policy (a list of directives) to achieve the goal,
 * and marks the goal as "in play",
-* and broadcasts the policy *intent* to its umwelt CAs.
+* and broadcasts the policy *intents* (as directives) to its umwelt CAs.
 
-A CA keeps a list of the policies (as a conjunction of directives) it receives from its parents within its current timeframe.
+A CA keeps a list of the directives (prioritized goals) it receives from its parents within its current timeframe.
 
 At the end of its current timeframe, a CA:
 
-* rejects irrelevant policies (none of the goals of the policy reference beliefs the CA holds or could hold),
-* sorts the remaining policies by priority (highest first),
-* selects the highest priority policy remaining, if any,
-* processes these directives, if any
-* notifies originating CAs of the directives from that policy it can actuate,
+* rejects irrelevant directives (none of the goals reference beliefs the CA holds or could hold),
+* sorts the remaining directives by priority (highest first),
+* selects the highest priority directive it can actuate
+  * builds or selects a policy (list of directives) to achieve the directive and emits it to its umwelt
+  * waits for confirmation that the policy can be actuateed by its umwelt
+* notifies originating CAs of the directive it can actuate,
 
-Note: A CA processes at most one policy at a time. A new timeframe is started only once the selected policy, if any, is rejected or executed.
+Note: A CA processes at most one directive to actuate at a time. A new timeframe is started only once the selected directive, if any, is rejected or executed.
 
 A CA's timeframe must thus be qualitatively longer than that of its umwelt CAs, to the point where, to an observer, it operates on a different time scale than its umwelt.
 
-For each goal in the retained policy directives:
+For each goal in the retained directives:
 
 * If the CA is an effector, the goal is marked as "ready to actuate" and the CA communicates to the CA of origin that the goal is "actuation-ready"
 * else, for higher-level CAs, the goal is marked "in play" and the CA formulates a policy to realize it (i.e. recursively executes the steps)
@@ -265,3 +266,84 @@ The CA remembers, for a while, a policy it executed (the goal -the belief to imp
 A policy is deemed successful if it precedes closely the intended belief change. It is even more successful if it correlates with an increase in wellbeing.
 
 A CA might repeat a past policy considered the most successful in attempting to achieve a goal, or it might try another pre-built policy, or it might even construct a new one, all depending on the stress felt by the CA from changes in its wellbeing.
+
+## Actuation flow
+
+```mermaid
+---
+title: ACTUATING - CA 3 is in the umwelt of CA 2 - CA 2 and CAS 2S are in the umwelt of CA 1
+---
+sequenceDiagram;
+  participant CA 1
+  participant CA 2
+  participant CA 2S
+  participant CA 3
+  participant body
+  CA 1-)CA 2: intent(id1, priority, [goal1.1, goal1.2...])
+  CA 1-)CA 2S: intent(id1, priority, [goal1.1, goal1.2...])
+  CA 2->>CA 1: can actuate(goal1.2, false)
+  CA 2-)CA 3: goal1.1:intent(id2, priority, [goal2.1,goal2.2...])
+  CA 3->>CA 2: can actuate(goal2.1, true)
+  CA 3->>CA 2: can actuate(goal2.2, true)
+  CA 2->>CA 1: can actuate(goal1.1, true)
+  CA 2S->>CA 1: can actuate(goal1.1, true)
+  CA 2S->>CA 1: can actuate(goal1.2, true)
+  CA 2S->>CA 2S: terminate timeframe
+
+  CA 1->>CA 2S: ready_actuation(goal1.1, false)
+  CA 1->>CA 2: ready_actuation(goal1.1, true)
+  CA 2->>CA 3: ready_actuation(goal2.1, true)
+  CA 2->>CA 3: ready_actuation(goal2.2, true)
+  CA 3->>body: actuate effector
+  CA 3->>CA 2: actuation_ready(goal2.1)
+  CA 3->>CA 2: actuation_ready(goal2.2)
+  CA 2->>CA 1: actuation_ready(goal1.1)
+  CA 1->>CA 2S: ready_actuation(goal1.2, true)
+  CA 2S->>body: actuate effector
+  CA 2S->>CA 1: actuation_ready(goal1.2)
+
+  CA 1-->>body: execute
+  CA 2-)CA 3: intent completed(id2, true)
+  CA 2->>CA 2: terminate timeframe
+  CA 1-)CA 2S: intent completed(id1, true)
+  CA 1-)CA 2: intent completed(id1, true)
+  CA 1->>CA 1: terminate timeframe
+```
+
+### Timeframe termination
+
+* If a CA emits an intent, it terminates its timeframe once its intent is completed.
+* A CA that received an intent but did not emit one, terminates its timeframe once it confirmed which goals it could actuate.
+  * The potential actuations are retained into the new timeframe awaiting readying requests.
+* A CA that did not receive an intent nor emitted one terminates immediately.
+
+### Flow details
+
+* CAs may receive intent events during their open timeframes (intents received when a timeframe is closed but not ended are accumulated and given to the next timeframe when it opens)
+* At the close of its timeframe, a CA produces its own self-serving goals, prioritize them and compare priorities with the received intents
+* A CA selects either a received intent it can help realize, or a self-assigned goal it intends to realize
+  * The CA allocates an amount to time in which to try to realize the received intent or the self-assigned goal
+  * If a self-assigned goal is selected
+    * The CA builds/reuses a policy to realize it and emits an intent with the policy directives and a priority
+    * It messages the parents that sent intents that the intended goals can not be actuated
+  * If a received intent is selected
+    * For each goal matching a belief it holds
+      * It builds/reuses a policy and emits an intent
+      * If the intent can be realized,
+        * the child CA tells the intending parent CA that it can actuate the goal in the received intent
+      * else
+        * the chiild CA tells the intending parent CA that it can not actuate the goal
+    * For each goal not matching a belief
+      * Tell the intending parent CA that the goal can not be actuated by this child CA
+* When the intending CA hears from all child CAs about all goals in the intent it emitted
+  * If any intended goal can not be actuated by any child CA, then the intent can not be realized
+    * The CA emits that the intent completed in failure
+    * The CA looks for an alternative policy unless time allotted is expired
+  * If all intended goals can be actuated
+    * For each goal
+      * The CA select one child CA who can actuate and tells it to ready actuation
+        * It tells the others not to actuate
+    * Once all selected CAs have reported that they have readied actuation
+      * If the CA originated the intent from a self-selected goal, it tell the body to execute
+      * Else if the intent was to realize a received goal (as a directive in an intent from a parent CA)
+        * Tell the parent CA that the received intent's goal actuation is readied
