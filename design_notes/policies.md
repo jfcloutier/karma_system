@@ -269,45 +269,72 @@ A CA might repeat a past policy considered the most successful in attempting to 
 
 ## Actuation flow
 
+Let's assume:
+
+* CA_3 is in the umwelt of CA_2.
+* CA_2 and CA_2s are in the umwelt of CA_1.
+
 ```mermaid
 ---
-title: ACTUATING - CA 3 is in the umwelt of CA 2 - CA 2 and CAS 2S are in the umwelt of CA 1
+title: UMWELTS (ER diagram)
+---
+erDiagram
+CA_1 {
+  type dynamic
+}
+CA_2 {
+  type dynamic
+}
+CA_2s {
+  type effector
+}
+CA_3 {
+  type effector
+}
+
+ CA_1 ||--|| CA_2 : has_child
+ CA_1 ||--|| CA_2s : has_child
+ CA_2 ||--|| CA_3 : has_child
+ CA_2s ||..|| Body : actuates
+ CA_3 ||..|| Body : actuates
+```
+
+```mermaid
+---
+title: ACTUATING (sequence diagram) 
 ---
 sequenceDiagram;
-  participant CA 1
-  participant CA 2
-  participant CA 2S
-  participant CA 3
-  participant body
-  CA 1-)CA 2: intent(id1, priority, [goal1.1, goal1.2...])
-  CA 1-)CA 2S: intent(id1, priority, [goal1.1, goal1.2...])
-  CA 2->>CA 1: can actuate(goal1.2, false)
-  CA 2-)CA 3: goal1.1:intent(id2, priority, [goal2.1,goal2.2...])
-  CA 3->>CA 2: can actuate(goal2.1, true)
-  CA 3->>CA 2: can actuate(goal2.2, true)
-  CA 2->>CA 1: can actuate(goal1.1, true)
-  CA 2S->>CA 1: can actuate(goal1.1, true)
-  CA 2S->>CA 1: can actuate(goal1.2, true)
-  CA 2S->>CA 2S: terminate timeframe
+  participant CA_1
+  participant CA_2
+  participant CA_2s
+  participant CA_3
+  participant Body
+  CA_1-)CA_2: intent(id1, priority, [goal1.1, goal1.2...])
+  CA_1-)CA_2s: intent(id1, priority, [goal1.1, goal1.2...])
+  CA_2-)CA_3: goal1.1:intent(id2, priority, [goal2.1,goal2.2...])
+  CA_3->>CA_2: can actuate([goal2.1, goal2.2])
+  CA_2->>CA_1: can actuate([goal1.1])
+  CA_2s->>CA_1: can actuate([goal1.1, goal1.2])
+  CA_2s->>CA_2s: terminate timeframe
 
-  CA 1->>CA 2S: ready_actuation(goal1.1, false)
-  CA 1->>CA 2: ready_actuation(goal1.1, true)
-  CA 2->>CA 3: ready_actuation(goal2.1, true)
-  CA 2->>CA 3: ready_actuation(goal2.2, true)
-  CA 3->>body: actuate effector
-  CA 3->>CA 2: actuation_ready(goal2.1)
-  CA 3->>CA 2: actuation_ready(goal2.2)
-  CA 2->>CA 1: actuation_ready(goal1.1)
-  CA 1->>CA 2S: ready_actuation(goal1.2, true)
-  CA 2S->>body: actuate effector
-  CA 2S->>CA 1: actuation_ready(goal1.2)
+  CA_1->>CA_2s: ready_actuation(goal1.1, false)
+  CA_1->>CA_2: ready_actuation(goal1.1, true)
+  CA_2->>CA_3: ready_actuation(goal2.1, true)
+  CA_2->>CA_3: ready_actuation(goal2.2, true)
+  CA_3->>Body: actuate effector
+  CA_3->>CA_2: actuation_ready(goal2.1)
+  CA_3->>CA_2: actuation_ready(goal2.2)
+  CA_2->>CA_1: actuation_ready(goal1.1)
+  CA_1->>CA_2s: ready_actuation(goal1.2, true)
+  CA_2s->>Body: actuate effector
+  CA_2s->>CA_1: actuation_ready(goal1.2)
 
-  CA 1-->>body: execute
-  CA 2-)CA 3: intent completed(id2, true)
-  CA 2->>CA 2: terminate timeframe
-  CA 1-)CA 2S: intent completed(id1, true)
-  CA 1-)CA 2: intent completed(id1, true)
-  CA 1->>CA 1: terminate timeframe
+  CA_1-->>Body: execute
+  CA_2-)CA_3: intent completed(id2, true)
+  CA_2->>CA_2: terminate timeframe
+  CA_1-)CA_2s: intent completed(id1, true)
+  CA_1-)CA_2: intent completed(id1, true)
+  CA_1->>CA_1: terminate timeframe
 ```
 
 ### Timeframe termination
@@ -315,7 +342,9 @@ sequenceDiagram;
 * If a CA emits an intent, it terminates its timeframe once its intent is completed.
 * A CA that received an intent but did not emit one, terminates its timeframe once it confirmed which goals it could actuate.
   * The potential actuations are retained into the new timeframe awaiting readying requests.
-* A CA that did not receive an intent nor emitted one terminates immediately.
+    * It is possible that, by the time, a CA receives a readying request, its beliefs have shifted and the actuation is obsolete.
+    * This is disregarded and the actuation is nonetheless readied.
+* A CA that did not receive an intent nor emitted one terminates its current timeframe immediately.
 
 ### Flow details
 
@@ -329,21 +358,16 @@ sequenceDiagram;
   * If a received intent is selected
     * For each goal matching a belief it holds
       * It builds/reuses a policy and emits an intent
-      * If the intent can be realized,
-        * the child CA tells the intending parent CA that it can actuate the goal in the received intent
-      * else
-        * the chiild CA tells the intending parent CA that it can not actuate the goal
-    * For each goal not matching a belief
-      * Tell the intending parent CA that the goal can not be actuated by this child CA
-* When the intending CA hears from all child CAs about all goals in the intent it emitted
+    * The child CA tells the intending parent CA that what goals it can actuate
+* When the intending CA hears from all child CAs about all actualizable goals in the intent it emitted
   * If any intended goal can not be actuated by any child CA, then the intent can not be realized
     * The CA emits that the intent completed in failure
     * The CA looks for an alternative policy unless time allotted is expired
   * If all intended goals can be actuated
-    * For each goal
+    * For each such goal
       * The CA select one child CA who can actuate and tells it to ready actuation
         * It tells the others not to actuate
     * Once all selected CAs have reported that they have readied actuation
-      * If the CA originated the intent from a self-selected goal, it tell the body to execute
+      * If the CA originated the intent from a self-selected goal, it tells the body to execute readied actuations
       * Else if the intent was to realize a received goal (as a directive in an intent from a parent CA)
         * Tell the parent CA that the received intent's goal actuation is readied
