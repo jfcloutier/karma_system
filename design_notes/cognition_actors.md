@@ -109,58 +109,44 @@ When the maximum number of remembered states is reached and the latest state is 
 
 * See [wellbeing.md](./wellbeing.md)
 
-## Lifecycle
+## The lifecycle of a cognition actor
 
-* Start a new timeframe
-* Make observations directed by attention
-  * Predict umwelt beliefs
-    * Supporting goal beliefs in received directives
-    * Supporting sufficiently pleasant/unpleasant beliefs
-    * Expected from causal theory
-* Update held beliefs
-  * Elevate all action beliefs
-    * Subject to consistency and abstraction-hiding constraints
-  * Attempt to compose or elevate received goal beliefs
-  * Update already abstracted beliefs
-  * Discover new abstracted beliefs, wellbeing allowing
-* Assess past policies
-  * Update success measures of executed policies in light of
-    * Revised beliefs vs policy goals (impact achieved?)
-    * Modulate success measure by
-      * Time elapsed since execution of policy (correlation)
-      * Signal vs noise (other actions taken are noise degrading the signal)
-* Choose whether and how to act
-  * Formulate a goal
-    * Select own belief to act on
-    * Prioritize against received goals (from parents)
-  * Choose highest priority goal
-  * Build or reuse a policy
-  * Emit policy intent and execute if feasible
-* Review causal theory
-  * Evaluate efficacy and costs of the causal theory
-  * Evaluate obsolescence (new actions takens?, new observations?, new observed belief domains?)
-  * Maybe request new causal theory
-* Update and share wellbeing
-  * Throughout lifecyle: add to/substract from wellbeing measures from
-    * work
-      * obtaining/applying causal theories
-      * making predictions, producing prediction errors
-      * executing actions, taking sensor readings
-      * abstracting/updating beliefs
-      * building and emitting policies
-      * remembering past timeframes
-    * effects from specific sensor readings (food, bumps)
-  * Carry out "osmotic" sharing
-  * Update wellbeing measures
-  * Emit updated measures
-* Adjust behavioral parameters per wellbeing levels (stress)
-  * Explore vs exploit?
-  * Change activation thresholds
-  * Maybe forget to reduce fullness drain
-    * Drop old timeframes
-    * Drop ineffective policies
-* Perhaps make life and death decisions
-  * Decide whether to give birth to a new CA (sibling or parent) via "mitosis"
-  * Decide whether to remove self from the SOM (apoptosis)
-* Remember the completed timeframe
-* (repeat)
+The lifecycle of a dynamic CA (sensor and effector CAs are static) is cyclical and is driven by messages it sends itself to progress through lifecycle stages.
+
+The lifecycle of a dynamic CA ends when it decides to terminate itself.
+
+At any point in the lifecycle, the CA immediately processes all events and messages from other CAs and updates its state.
+
+Executing a lifecycle stage:
+
+1. Receive a lifecycle message from itself with an updated state
+2. Merge the current state with the updated state
+3. Start a timeboxed, async task for this stage with the new state
+4. The task may emit events and messages to other CAs
+5. On ending the task (b/c its done or time has expired),
+   send the next stage lifecycle message to self with the modified state
+
+Pattern: Message to self -> Task -> Follow-up message to self
+
+begin -> Initialize new time frame from the previous one -> observe
+observe -> Make predictions about umwelt beliefs -> believe
+believe -> Update own beliefs from observations -> act
+act -> Select a goal (a held belief to impact) and attempt to realize it via a policy directing the umwelt to change its beliefs -> assess
+assess -> Evaluate the accuracy of the causal model and the effectiveness of past policies -> age
+age -> Maybe modify the SOM (cytosis/apoptosis) and diffuse stress -> begin
+
+```mermaid
+---
+title: Cognition actor lifecycle
+---
+stateDiagram-v2
+    [*] --> begin: CA created with an umwelt
+    begin --> observe: Initialize new time frame
+
+    observe --> believe: Make predictions about umwelt beliefs
+    believe --> act: Update own beliefs from observations
+    act --> assess: Impact held belief via policy sent to umwelt
+    assess --> age: Evaluate competency of causal model and past policies
+    age --> begin: Diffuse stress
+    age --> [*]: Teminate self
+```
