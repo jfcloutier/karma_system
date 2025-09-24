@@ -117,14 +117,14 @@ The lifecycle of a dynamic CA ends when the CA decides to terminate itself.
 
 At any stage in a time frame, the CA immediately processes all events and messages from other CAs and updates its state.
 
-Time frame stages are:
+The stages of a time frame are:
 
 begin -> Initialize new time frame from the previous one -> observe
 observe -> Make predictions about umwelt beliefs -> believe
 believe -> Update own beliefs from observations -> act
 act -> Select a goal (a held belief to impact) and attempt to realize it via a policy directing the umwelt to change its beliefs -> assess
 assess -> Evaluate the accuracy of the causal model and the effectiveness of past policies -> age
-age -> Maybe mgrow/shrink the SOM (cytosis/apoptosis) and diffuse stress -> begin
+age -> Maybe grow/shrink the SOM (cytosis/apoptosis) and diffuse stress -> begin
 
 The pattern is *Message to self -> Task -> Follow-up message to self*
 
@@ -148,7 +148,7 @@ Executing a time frame stage:
 
 1. Receive a "start stage" message from itself with an updated state
 2. Merge the current state with the updated state
-3. Start a timeboxed, async task for this stage with the new state
+3. Start a timeboxed, asynchronous task for this stage with the new state
 4. The task may emit events and messages to other CAs
 5. On ending the task (b/c its done or time has expired),
    send the next stage message to self with the modified state
