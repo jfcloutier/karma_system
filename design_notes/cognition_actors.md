@@ -111,33 +111,26 @@ When the maximum number of remembered states is reached and the latest state is 
 
 ## The lifecycle of a cognition actor
 
-The lifecycle of a dynamic CA (sensor and effector CAs are static) is cyclical and is driven by messages it sends itself to progress through lifecycle stages.
+The lifecycle of a dynamic CA (sensor and effector CAs are static) is a sequence of time frames. Each time frame goes through stages driven by messages the CA sends itself to progress from one to the next.
 
-The lifecycle of a dynamic CA ends when it decides to terminate itself.
+The lifecycle of a dynamic CA ends when the CA decides to terminate itself.
 
-At any point in the lifecycle, the CA immediately processes all events and messages from other CAs and updates its state.
+At any stage in a time frame, the CA immediately processes all events and messages from other CAs and updates its state.
 
-Executing a lifecycle stage:
-
-1. Receive a lifecycle message from itself with an updated state
-2. Merge the current state with the updated state
-3. Start a timeboxed, async task for this stage with the new state
-4. The task may emit events and messages to other CAs
-5. On ending the task (b/c its done or time has expired),
-   send the next stage lifecycle message to self with the modified state
-
-Pattern: Message to self -> Task -> Follow-up message to self
+Time frame stages are:
 
 begin -> Initialize new time frame from the previous one -> observe
 observe -> Make predictions about umwelt beliefs -> believe
 believe -> Update own beliefs from observations -> act
 act -> Select a goal (a held belief to impact) and attempt to realize it via a policy directing the umwelt to change its beliefs -> assess
 assess -> Evaluate the accuracy of the causal model and the effectiveness of past policies -> age
-age -> Maybe modify the SOM (cytosis/apoptosis) and diffuse stress -> begin
+age -> Maybe mgrow/shrink the SOM (cytosis/apoptosis) and diffuse stress -> begin
+
+The pattern is *Message to self -> Task -> Follow-up message to self*
 
 ```mermaid
 ---
-title: Cognition actor lifecycle
+title: Cognition actor time frame stages
 ---
 stateDiagram-v2
     [*] --> begin: CA created with an umwelt
@@ -147,6 +140,15 @@ stateDiagram-v2
     believe --> act: Update own beliefs from observations
     act --> assess: Impact held belief via policy sent to umwelt
     assess --> age: Evaluate competency of causal model and past policies
-    age --> begin: Diffuse stress
+    age --> begin: Diffuse stress, maybe birth new CA
     age --> [*]: Teminate self
 ```
+
+Executing a time frame stage:
+
+1. Receive a "start stage" message from itself with an updated state
+2. Merge the current state with the updated state
+3. Start a timeboxed, async task for this stage with the new state
+4. The task may emit events and messages to other CAs
+5. On ending the task (b/c its done or time has expired),
+   send the next stage message to self with the modified state
