@@ -119,12 +119,11 @@ At any stage in a time frame, the CA immediately processes all events and messag
 
 The stages of a time frame are:
 
-begin -> Initialize new time frame from the previous one -> observe
 observe -> Make predictions about umwelt beliefs -> believe
 believe -> Update own beliefs from observations -> act
 act -> Select a goal (a held belief to impact) and attempt to realize it via a policy directing the umwelt to change its beliefs -> assess
 assess -> Evaluate the accuracy of the causal model and the effectiveness of past policies -> age
-age -> Maybe grow/shrink the SOM (cytosis/apoptosis) and diffuse stress -> begin
+age -> Maybe grow/shrink the SOM (cytosis/apoptosis) and diffuse stress -> observe
 
 The pattern is *Message to self -> Task -> Follow-up message to self*
 
@@ -133,14 +132,13 @@ The pattern is *Message to self -> Task -> Follow-up message to self*
 title: Cognition actor time frame stages
 ---
 stateDiagram-v2
-    [*] --> begin: CA created with an umwelt
-    begin --> observe: Initialize new time frame
+    [*] --> observe: CA created with an umwelt
 
     observe --> believe: Make predictions about umwelt beliefs
     believe --> act: Update own beliefs from observations
     act --> assess: Impact held belief via policy sent to umwelt
     assess --> age: Evaluate competency of causal model and past policies
-    age --> begin: Diffuse stress, maybe birth new CA
+    age --> observe: Diffuse stress, maybe birth new CA
     age --> [*]: Teminate self
 ```
 
