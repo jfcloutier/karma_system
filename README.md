@@ -7,7 +7,7 @@ world it knows initially almost nothing about?
 
 The name of the software system under development is Karma. [Why the name](https://en.wikipedia.org/wiki/Karma)
 
-> Karma [...] is a concept of action, work, or deed, and its effect or consequences> In Indian religions, the term more specifically refers to a principle of cause an> effect, often descriptively called the principle of karma, wherein individual> intent and actions (cause) influence their future [...]
+> Karma [...] is a concept of action, work, or deed, and its effect or consequences. In Indian religions, the term more specifically refers to a principle of cause and effect, often descriptively called the principle of karma, wherein individual intent and actions (cause) influence their future [...]
 
 The objective of this project is to realize *artificial agency*.
 
