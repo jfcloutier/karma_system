@@ -4,7 +4,7 @@ In my design, a robot's agency is implemented by a dynamic collective of cogniti
 
 Central to my design is the concept of wellbeing as carrier of normativity. Fullness, integrity and engagement are a CA's three measures of wellbeing.
 
-The wellbeing of each CA fluctuates over its lifetime, with low or dropping wellbeing signalling risk to survival and creating stress. Stress affects the behavior of a CA, causing it to take actions to terminate beliefs it associates with "bad feelings". Stress also makes a CA more "plastic", such as lowering the thresholds for the CA to try new policies or prompting it to revise the current causal theory by which it makes sense of its umwelt.
+The wellbeing of each CA fluctuates over its lifetime, with low or dropping wellbeing signalling risk to survival and creating stress. Stress affects the behavior of a CA, causing it to take actions to terminate experiences it associates with "bad feelings". Stress also makes a CA more "plastic", such as lowering the thresholds for the CA to try new affordances or prompting it to revise the current causal theory by which it makes sense of its umwelt.
 
 Wellbeing, positive or negative, is contagious; it spreads from CA to CA up and down umwelt relationships. This diffusion of wellbeing signals is key to multiple CAs behaving as a collective. If, for example, a CA's feeling of integrity lowers dramatically from directly observing repeated collisions, the stress it feels needs to be shared with other CAs if they are to get involved in preventing further collisions. Stress acts as a cognitive glue for the collective.
 

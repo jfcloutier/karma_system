@@ -25,8 +25,8 @@ Stress on a CA is caused by it having low or dropping wellbeing measures.
 Stress makes a CA more *plastic*. When stressed, it is more likely to:
 
 * revise its causal model
-* temporarily ignore aquired policy habits
-* temporarily ignore strongly held beliefs, to act instead on other beliefs
+* temporarily ignore aquired affordance habits
+* temporarily ignore strongly held experiences, to act instead on other experiences
 * lower its threshold for action
 * trigger its mitosis or apoptosis
 
@@ -95,7 +95,7 @@ At the end of its current timeframe, a CA at level L might undergo apoptosis (re
 If:
 
 * It's wellbeing measures are low or consistently dropping
-* The CA is dispensable to all level L+1 CAs (i.e. none of its beliefs uniquely supports a level L+1 belief)
+* The CA is dispensable to all level L+1 CAs (i.e. none of its experiences uniquely supports a level L+1 experience)
 
 Then:
 
@@ -123,4 +123,4 @@ A holarchy emerges over time from CA mitosis, organized around the agent's physi
 
 A CA is singled out as **specialized** if its umwelt transitively controls a *unique* set of sensors and effectors.
 
-At most one CA *per level of the SOM* is allowed to control any one set of sensors and effectors. It is unique, at a given level of abstraction, in having beliefs and policies covering a given sensorium (set of sensors) and effedorium (set of effectors).
+At most one CA *per level of the SOM* is allowed to control any one set of sensors and effectors. It is unique, at a given level of abstraction, in having experiences and affordances covering a given sensorium (set of sensors) and effedorium (set of effectors).

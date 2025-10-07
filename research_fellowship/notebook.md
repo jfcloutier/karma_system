@@ -2,7 +2,7 @@
 
 ## August 20, 2025
 
-Better framing for beliefs and a rethink of the possible types of beliefs. Clearer integration with wellbeing, causal theories and policies.
+Better framing for experiences and a rethink of the possible types of experiences. Clearer integration with wellbeing, causal theories and affordances.
 
 ## August 1, 2025
 
@@ -22,7 +22,7 @@ Sketched mechanisms for wellbeing osmosis and capacitance.
 
 ## April 18, 2025
 
-Meeting with Elliott H. Discussed parametrization leading to exploit vs explore tendencies. Wellbeing diffusion across CAs and wellbeing capacitance. And the need for lower-level CAs to sometimes override the policy dictates from on high, being closer to the ground truth though with a narrower view.
+Meeting with Elliott H. Discussed parametrization leading to exploit vs explore tendencies. Wellbeing diffusion across CAs and wellbeing capacitance. And the need for lower-level CAs to sometimes override the affordance dictates from on high, being closer to the ground truth though with a narrower view.
 
 ## April 17, 2025
 
@@ -38,7 +38,7 @@ Work session with Elliott Hauser. Leads to a number of design changes, with remo
 
 ## February 18, 2025
 
-More details on policies, with a algorithm for their execution
+More details on affordances, with a algorithm for their execution
 
 ## February 7, 2025
 
@@ -87,7 +87,7 @@ Presented an intro to the project
 
 ## July 9, 2024
 
-Wrote about intents and action policies.
+Wrote about intents and action affordances.
 
 ## June 27, 2024
 
@@ -95,7 +95,7 @@ Clarified the nature and role of Wellbeing measures, and wrote about it.
 
 ## June 24, 2024
 
-Formalized the nature and origins of a CA's beliefs entailing the synthesis of objects, and wrote about it.
+Formalized the nature and origins of a CA's experiences entailing the synthesis of objects, and wrote about it.
 
 ## June 23, 2024
 

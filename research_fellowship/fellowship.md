@@ -61,7 +61,7 @@ In 2024, the project's name was changed to Symbolic Cognitive Robotics. It is cu
 
 This research project makes a number of key assumptions:
 
-* Active Inference is an as-if framework[10]; it *prescribes that* an autonomous, self-maintaining agent must minimize surprisal through behavior and belief updating. However it does not *prescribe how* such agency is implemented.
+* Active Inference is an as-if framework[10]; it *prescribes that* an autonomous, self-maintaining agent must minimize surprisal through behavior and experience updating. However it does not *prescribe how* such agency is implemented.
 
 * All intelligence is collective intelligence [2]; it is from the interplay of cognitive parts that emerges an agent's purposeful and intelligent behavior.
 
@@ -87,27 +87,27 @@ I realize that each of the (interlocking) questions below could be the basis of 
 
 * How does the predictive accuracy of causal theories -obtained from apperception- relate to perceptual precision?
 
-* How are symbolically-expressed beliefs formed from remembered perceptions, and how does the precision of perceptions transfer to belief certainty?
+* How are symbolically-expressed experiences formed from remembered perceptions, and how does the precision of perceptions transfer to experience certainty?
 
-* Can an external observer make sense of the intrinsic beliefs of an agent?
+* Can an external observer make sense of the intrinsic experiences of an agent?
 
-* How is normativity determined so that a robot can distinguish between desirable and undesirable beliefs?
+* How is normativity determined so that a robot can distinguish between desirable and undesirable experiences?
 
-* What mechanisms relate normativity and belief certainty to attention?
+* What mechanisms relate normativity and experience certainty to attention?
 
 * How does attention constrain apperception?
 
-* What role do feelings, as homeostatic signals, play in assigning normativity to beliefs?
+* What role do feelings, as homeostatic signals, play in assigning normativity to experiences?
 
 * How are feelings generated and communicated internally?
 
-* How and when are action policies synthesized from simpler actions?
+* How and when are action affordances synthesized from simpler actions?
 
-* How are actions evaluated for their effectiveness at acquiring new beliefs, invalidating undesirable beliefs and challenging desirable beliefs?
+* How are actions evaluated for their effectiveness at acquiring new experiences, invalidating undesirable experiences and challenging desirable experiences?
 
 * Can cognition be realized as a collective of simple parts -cognition actors-, each with its own limited "umwelt" and action repertoire?
 
-* How are beliefs abstracted within the collective, namely how do the *beliefs* of a cognition actor become the *perceptions* of another, more abstract, cognition actor?
+* How are experiences abstracted within the collective, namely how do the *experiences* of a cognition actor become the *perceptions* of another, more abstract, cognition actor?
 
 * How is consensus realized within a collective of cognition actors as to what actions the robot should take next?
 
@@ -177,7 +177,7 @@ The project is divided in three phases:
 
 * Feelings computation, updating and signaling
 
-* Cognition actor logic (prediction, perception, belief updating, action synthesis)
+* Cognition actor logic (prediction, perception, experience updating, action synthesis)
 
 * Metacognition logic (cognition actor creation, competency evaluation, destruction)
 

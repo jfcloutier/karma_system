@@ -7,8 +7,8 @@ Three + 1 levels:
 - Metacognitive (effective - embodied/effectively counterfactual) <= when does this emerge
 - External observation (researchers, who have generative models we believe to be causally accurate)
 
-Policies are operational: they are configuration of insensate dynamics
-Policies "surface" affordances that are sensate
+Affordances are operational: they are configuration of insensate dynamics
+Affordances "surface" affordances that are sensate
 
 Selecting/pursuing a generated affordance should operationally reinforce it - at the insensate level => Pavlovian/Levin type basal cognition
 Chemotaxis reinforces chemotaxis
@@ -37,7 +37,7 @@ Characteristic dynamics:
 
 Capacitor would be operationalized by capacity, threshold of activation, and amplitude/magnitude of activation.
 
-=> Policies are operational and should never be _directly_ transmitted
+=> Affordances are operational and should never be _directly_ transmitted
 
 Metacognitive: taxis <= affordance surfaced by generative model that broadcasts resource
 Cognitive level: resource received <= simplistic dynamics

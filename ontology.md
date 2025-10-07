@@ -24,7 +24,7 @@ The being's meaningful inner-world
 
 ## Sentience
 
-> Processes of **being** instantiating the **feelings**, **experiences**, **beliefs** and **actions** of the being
+> Processes of **being** instantiating the **feelings**, **experiences**, **experiences** and **actions** of the being
 
 ## Action
 
@@ -40,7 +40,7 @@ Feelings of low precariousness are good feelings
 
 > Durable changes to the **innenwelt** from unifying in space-time prior changes, and associating them with **feelings**
 
-## Beliefs
+## Experiences
 
 > Durable changes to the **innenwelt** that stand for detecting regularities, or the loss thereof, in **experiences**
 
@@ -52,4 +52,4 @@ A being is minimally conscious the moment it experiences any one aspect of its s
 
 ## Agent
 
-> A **sentient** **being**, possibly **conscious**, who **acts** in accordance to its **beliefs** to have **experiences** that **feel** good
+> A **sentient** **being**, possibly **conscious**, who **acts** in accordance to its **experiences** to have **experiences** that **feel** good

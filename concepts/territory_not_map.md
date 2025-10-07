@@ -10,6 +10,6 @@ Causal theories generalize sequences of remembered observations into rules, rule
 
 Temporal patterns are facts detected in sequences of remembered observations, for example, the existence of a downward trend in the observed distances to an obstacle, or the interruption of this trend.
 
-Note that, in my design, I call these (felt) temporal patterns "beliefs", which can be confusing since they represent only one type of regularities, the other being symbolic generative models.
+Note that, in my design, I call these (felt) temporal patterns "experiences", which can be confusing since they represent only one type of regularities, the other being symbolic generative models.
 
 Also note that the temporal patterns detected by a cognition actor become observations available to cognition actors one level up. The higher-level cognition actors would then examine these "elevated" observations for more abstract rules and temporal patterns.

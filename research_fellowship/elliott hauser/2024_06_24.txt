@@ -1,9 +1,9 @@
 JF
  — 
 Today at 9:06 AM
-The hope is that this formalization of a CA's beliefs will be enough for an agent's collective of CAs to autonomously make pragmatic sense of the agent's world by abstracting up useful beliefs from the examination of more concrete, observed beliefs.
+The hope is that this formalization of a CA's experiences will be enough for an agent's collective of CAs to autonomously make pragmatic sense of the agent's world by abstracting up useful experiences from the examination of more concrete, observed experiences.
 
-The conjecture is that sufficiently abstracted beliefs correlate clearly with wellbeing trends and can be reliably impacted by action policies so as to keep the agent's wellbeing within survivable bounds. 
+The conjecture is that sufficiently abstracted experiences correlate clearly with wellbeing trends and can be reliably impacted by action affordances so as to keep the agent's wellbeing within survivable bounds. 
 Elliott Hauser
  — 
 Today at 10:10 AM
@@ -40,7 +40,7 @@ Yes. That's a key intent of this project. The society of mind will evolve and ma
 
     what's the 'Object'? A characteristic (patternable) relationship between the environment and sensors. 
 
-Yes. That is precisely the nature of the objects Cognition Actors abduce from synthesizing beliefs from detecting counts, trends and endings.
+Yes. That is precisely the nature of the objects Cognition Actors abduce from synthesizing experiences from detecting counts, trends and endings.
 
     Hierarchies would emerge as well
 
@@ -60,7 +60,7 @@ Today at 10:25 AM
 
     see under what conditions the inference of the existence of poison might emerge
 
-That's a great idea! My conjecture is that the belief generation process I describe, combined with wellbeing evaluation and communication to CAs would be sufficient for the agent to figure out that some food is good while other is bad.
+That's a great idea! My conjecture is that the experience generation process I describe, combined with wellbeing evaluation and communication to CAs would be sufficient for the agent to figure out that some food is good while other is bad.
 
 I can see how to add "poison" to the experimental setup (virtual and real) I envision.
 Elliott Hauser
@@ -71,7 +71,7 @@ That suggests that, like trends, they're a higher level of basal cognition
 JF
  — 
 Today at 10:26 AM
-Counts are co-presence and Endings are discontinuations. Like Trends, they are higher level in the sense that they elevate observations into beliefs (which are observations to other CAs, and on and on, climbing the meta ladder) 
+Counts are co-presence and Endings are discontinuations. Like Trends, they are higher level in the sense that they elevate observations into experiences (which are observations to other CAs, and on and on, climbing the meta ladder) 
 Elliott Hauser
  — 
 Today at 10:29 AM
@@ -95,7 +95,7 @@ Today at 10:36 AM
 Yes, but, inspired by FEP/coarse graining, I'm talking about internal stigmergy. That is, at some level of abstraction, an agent treating sub-agents as stigmergic resources. Although it's not external to the Markov blanket, it's external to the cognitive abstraction utilizing it as memory.
 
 "Sub system, increment" => sub-system increments, via unknown dynamics, to an unknown internal state
-"Sub system, what's you belief about the increment?" => recalling this stigmergic memory from a sub-system.
+"Sub system, what's you experience about the increment?" => recalling this stigmergic memory from a sub-system.
 
 External stigmergic memory (scoring on a tree trunk) is roughly equivalent, cognitively, except the prerequisites, cost of access, and reliability parameters are all different.
 JF
@@ -120,7 +120,7 @@ Today at 10:40 AM
 
     I'm talking about internal stigmergy
 
-It applies. A CA keeps a memory of past states from which it synthesizes beliefs. These beliefs are observed by other CAs that also memorize their observations from which they can synthesize beliefs from detected trends. The whole society of mind is internal stygmergy.
+It applies. A CA keeps a memory of past states from which it synthesizes experiences. These experiences are observed by other CAs that also memorize their observations from which they can synthesize experiences from detected trends. The whole society of mind is internal stygmergy.
 
      the parameters of the internal and external stigmergic substrates would have to be inferred by the CA at a given level of abstratction, like all the rest
 
@@ -136,7 +136,7 @@ Today at 10:47 AM
 
     Whether the marks degrade or are altered would once again need to be inferred,
 
-A more abstract  CA will not revise the past observations from which it derives its beliefs but will revise its beliefs from new observations. However, the CA which beliefs were observed may change! Thus the beliefs of the more abstract CA degrade if their base of support shifts.
+A more abstract  CA will not revise the past observations from which it derives its experiences but will revise its experiences from new observations. However, the CA which experiences were observed may change! Thus the experiences of the more abstract CA degrade if their base of support shifts.
 
 There is also that a CA will eventually forget its oldest memories and it will forget more of them if the agent's energy resources become low (memory is metabilically expensive).
 Elliott Hauser
@@ -267,7 +267,7 @@ DOn't let anyone bug you about the details of CA: your CA is a hypothesis. You'l
 I've got my doubts about CA but they'll evaporate if you can demonstrate that it induces FEP-like phenomena in a simulation like this. 
 Which is in part why I'm not poking at it too hard. Even if you don't, for instance, implment explict, fallable memory, you might get FEP phenomena.
 If you don't, or it's weak, I think you'll probably to make your agent's abilities noisy in some way, and we'll have a metric of the role of cognitive fallibility in FEP phenomena.
-Regardless, I predict that the kinds of entities CAs evolve into will be characteristically dependent upon the regularity/predictability of the environment. I won't get any signal on that belief unless your ontology exceeds epistemic capacity by some meaningful margin, with consequences for metabolism or other components of the instantiated architecture of an individuals
+Regardless, I predict that the kinds of entities CAs evolve into will be characteristically dependent upon the regularity/predictability of the environment. I won't get any signal on that experience unless your ontology exceeds epistemic capacity by some meaningful margin, with consequences for metabolism or other components of the instantiated architecture of an individuals
 Which is why I'm lobbying for that as a Phase I feature.
 JF
  — 

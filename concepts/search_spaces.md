@@ -41,15 +41,15 @@ The agent searches its "inner space" (aka what the agent was, is, and can become
   * and predict future changes to it (spontaneous or from acting on it)
 * Why: To maximize predictive accuracy and minimize theory complexity (Occam's Razor)
 
-### Belief space
+### Experience space
 
-* What: A CA searching for regularities (or loss thereof) in its latest observations that then become its beliefs
+* What: A CA searching for regularities (or loss thereof) in its latest observations that then become its experiences
   * For example, a CA detecting that observed distances are trending down might believe that the agent is approaching an obstacle
-  * A belief is how a CAs has made sense of past observations of its umwelt
+  * An experience is how a CAs has made sense of past observations of its umwelt
 * Why: To detect signals in past observation while minimizing noise
 
 ### Affordance space
 
-* What: A CA searching for how it can act to most effectively impact its own beliefs
-  * By disrupting unpleasant (wellbeing-reducing) beliefs and promoting pleasant (wellbeing-increasing) beliefs
-* Why: To increase policy effectiveness and reliability, and minimize misfires
+* What: A CA searching for how it can act to most effectively impact its own experiences
+  * By disrupting unpleasant (wellbeing-reducing) experiences and promoting pleasant (wellbeing-increasing) experiences
+* Why: To increase affordance effectiveness and reliability, and minimize misfires
