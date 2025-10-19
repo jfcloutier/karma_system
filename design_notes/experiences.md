@@ -117,9 +117,12 @@ A CA's experience can be "elevated" to also be, as-is, the experience of a paren
 
 An experience from a child CA can be elevated
 
+* if observed
 * if it is not contradicted by a sibling CA
-* the elevated experience is not a component of an abstract experience of the parent CA
-  * the CA has "abstracted out" the child's experience
+* if the elevated experience does not contribute to an experience of the parent CA
+  * i.e. the CA has not "abstracted out" the child's experience
+
+An elevated experience may benefit from a different wellbeing valuation and from higher-level affordances.
 
 ## An experience economy
 
