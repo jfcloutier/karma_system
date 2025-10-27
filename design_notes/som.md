@@ -106,7 +106,7 @@ A holarchy emerges over time from CA mitosis, organized around the agent's physi
 
 A CA is singled out as **specialized** if its umwelt transitively controls a *unique* set of sensors and effectors.
 
-At most one CA *per level of the SOM* is allowed to control any one set of sensors and effectors. It is unique, at a given level of abstraction, in having experiences and affordances covering a given sensorium (set of sensors) and effedorium (set of effectors).
+At most one CA *per level of the SOM* is allowed to control any one set of sensors and effectors. It is unique, at a given level of abstraction, in having experiences and plans covering a given sensorium (set of sensors) and effedorium (set of effectors).
 
 ## Communication between CAs
 
@@ -137,12 +137,12 @@ Communications are done either via broadcasted events that CAs either listen to 
 * Bottom-up constraints
   * Umwelt CAs determine what their parents can observe and do. They...
     * determine the set of experiences the level parent CAs can observe, build causal theories from, and compose into abstract experiences
-    * determine set of meaningful goals in a parent CA's affordance
+    * determine set of meaningful goals in a parent CA's plan
 * Top-down constraints
   * A CA models its umwelt CAs but not vice-versa
     * umwelt CAs can't make sense of why they are directed to impact their experiences - they simply accept it (Froese's Irruption Theory?)
   * A CA reduces the agency of its umwelt
-    * it imposes directives (affordances to execute or goals to achieve) on umwelt CAs to achieve its own goals
+    * it imposes directives (goals to achieve) on umwelt CAs to achieve its own goals
       * umwelt CAs however decide how to fulfill received directives (they are not micromanaged, just directed)
       * but they can't fulfill their own goals while fulfilling their parent CA's goals
       * and they have fewer opportunity to intend their own goals and work on being/staying relevant

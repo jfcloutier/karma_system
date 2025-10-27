@@ -2,7 +2,7 @@
 
 ## August 20, 2025
 
-Better framing for experiences and a rethink of the possible types of experiences. Clearer integration with wellbeing, causal theories and affordances.
+Better framing for experiences and a rethink of the possible types of experiences. Clearer integration with wellbeing, causal theories and plans.
 
 ## August 1, 2025
 
@@ -22,7 +22,7 @@ Sketched mechanisms for wellbeing osmosis and capacitance.
 
 ## April 18, 2025
 
-Meeting with Elliott H. Discussed parametrization leading to exploit vs explore tendencies. Wellbeing diffusion across CAs and wellbeing capacitance. And the need for lower-level CAs to sometimes override the affordance dictates from on high, being closer to the ground truth though with a narrower view.
+Meeting with Elliott H. Discussed parametrization leading to exploit vs explore tendencies. Wellbeing diffusion across CAs and wellbeing capacitance. And the need for lower-level CAs to sometimes override the plan dictates from on high, being closer to the ground truth though with a narrower view.
 
 ## April 17, 2025
 
@@ -38,7 +38,7 @@ Work session with Elliott Hauser. Leads to a number of design changes, with remo
 
 ## February 18, 2025
 
-More details on affordances, with a algorithm for their execution
+More details on plans, with a algorithm for their execution
 
 ## February 7, 2025
 
@@ -87,7 +87,7 @@ Presented an intro to the project
 
 ## July 9, 2024
 
-Wrote about intents and action affordances.
+Wrote about intents and action plans.
 
 ## June 27, 2024
 

@@ -1,6 +1,6 @@
-# Affordances
+# Plans
 
-A Cognition Actor (CA) seeks, through the execution of affordances, to persist pleasant experiences it holds and to terminate its unpleasant experiences.
+A Cognition Actor (CA) seeks, through the execution of plans, to persist pleasant experiences it holds and to terminate its unpleasant experiences.
 
 ## Recap
 
@@ -26,15 +26,15 @@ An intent by a CA consists of
 
 * a goal - an experience held by the CA and a desired impact on it, i.e. the persisting of a pleasant experience, or the termination of an unpleasant experience
 * a priority - determined by the graded normativity of the experience targeted by the intent
-* an affordance - how to achieve the goal by impacting (initiating, persisting, terminating) the observed experiences held by the umwelt CAs from which the targeted CA's experience was synthesized
+* a plan - how to achieve the goal by impacting (initiating, persisting, terminating) the observed experiences held by the umwelt CAs from which the targeted CA's experience was synthesized
 
-A CA's affordance is a list of directives, to be communicated to the umwelt CAs, to achieve the CA's goal. 
+A CA's plan is a list of directives, to be communicated to the umwelt CAs, to achieve the CA's goal. 
 
 A **directive** is a delegated, goal (an experience of umwelt CAs to impact) to be achieved by the umwelt *however it chooses*.
 
-The priority of an affordance reflects how unpleasant/pleasant the experience to impact is. Generally a directive from a high-level CA will have greater priority than that of a lower-level CA, but not always; low level CAs facing an "emergency" can override the affordances of higher-level CAs.
+The priority of a plan reflects how unpleasant/pleasant the experience to impact is. Generally a directive from a high-level CA will have greater priority than that of a lower-level CA, but not always; low level CAs facing an "emergency" can override the plans of higher-level CAs.
 
-The affordance's directives are communicated all at once by the CA to its umwelt at the end of the CA's current timeframe. Keep in mind that, at any point in time, multiple CAs may be intending to act.
+The plan's directives are communicated all at once by the CA to its umwelt at the end of the CA's current timeframe. Keep in mind that, at any point in time, multiple CAs may be intending to act.
 
 ## Attention and action thresholds
 
@@ -50,19 +50,19 @@ The normativity of an experience is set as a combination of absolute wellbeing v
 
 The CA selects which experience, if any, is *most worthy* of action in the current timeframe. Invalidating an unpleasant experience it cares about takes precedence over validating a pleasant experience. Typically, the CA will intend to terminate the most unpleasant, action-worthy experience. Else it will intend to persist the most pleasant, action-worthy experience, or iy may do something random (babble) if there is no action-worthy experience and fullness is high and steady/rising.
 
-## Constructing an affordance
+## Constructing a plan
 
-A CA builds an affordance when it has identified an experience it holds that need impacting, or when it receives a higher priority affordance (a set of directives) from a parent CA. When receiving directives "from above", it determines which goals are relevant to it; the others are likely relevant to sibling CAs participating in the same umwelt.
+A CA builds a plan when it has identified an experience it holds that need impacting, or when it receives a higher priority plan (a set of directives) from a parent CA. When receiving directives "from above", it determines which goals are relevant to it; the others are likely relevant to sibling CAs participating in the same umwelt.
 
-Goals name umwelt experiences and the desired impacts (initiate, persist or terminate). It is *entirely* up to the goal-receiving umwelt CA to construct an affordance for the experiences it wants to or has been requested to impact.
+Goals name umwelt experiences and the desired impacts (initiate, persist or terminate). It is *entirely* up to the goal-receiving umwelt CA to construct a plan for the experiences it wants to or has been requested to impact.
 
-Once a CA has identified (or been told by a parent CA of) an experience to initiate, persist or terminate, the CA must determine its own affordance to achieve this goal. The composition of the affordance depends on the type of experience and on the desired impact (initiate/persist/terminate). The affordance's priority depends on the CA's wellbeing (value and gradient) if originating with the CA, or on the priority of the received directive.
+Once a CA has identified (or been told by a parent CA of) an experience to initiate, persist or terminate, the CA must determine its own plan to achieve this goal. The composition of the plan depends on the type of experience and on the desired impact (initiate/persist/terminate). The plan's priority depends on the CA's wellbeing (value and gradient) if originating with the CA, or on the priority of the received directive.
 
 How to impact an experience depends on how it was arrived at. A constructed (aka abstract) experience is composed of observations (its base of support) which are themselves experiences once or currently held in the CA's umwelt. To impact an experience a CA holds, the CA needs to impact supporting experiences held in its umwelt.
 
 A CA always owns a causal theory. At first, it is a trivial one that predicts what it already observed ("it is what it is"), or predicts randomly if it has yet to make observations. At some point, the CA ask sthe Apperception Engine for a causal theory informed by its history of observations of its umwelt.
 
-The CA can use its causal theory to predict changes to the experiences of its umwelt (i.e. incoming observations) as a result of realizing directives. This can be put to use when constructing an affordance.
+The CA can use its causal theory to predict changes to the experiences of its umwelt (i.e. incoming observations) as a result of realizing directives. This can be put to use when constructing a plan.
 
 A causal theory has three kinds of rules
 
@@ -81,11 +81,11 @@ The observed umwelt experiences involved in the composition of an abstract exper
 
 Since observations by the CA are experiences held in the umwelt of the CA, one can see how acting becomes a recursive operation that will unfold across multiple layers of CAs and over multiple CA timeframes, until effector CAs (on the lowest level of the hierarchy of CAs) become involved and the agent's relationship with its environment is modified by running mototrs etc.
 
-The task of constructing an affordance -in order to impact an experience held by the CA- consists in deciding which supporting and observed umwelt experiences to impact and how.
+The task of constructing a plan -in order to impact an experience held by the CA- consists in deciding which supporting and observed umwelt experiences to impact and how.
 
-There will likely be different combinations of supporting experiences that could be impacted and thus there could be many alternate affordances to choose from.
+There will likely be different combinations of supporting experiences that could be impacted and thus there could be many alternate plans to choose from.
 
-The causal theory, a model of the generative processes causing these observations, informs the CA in the construction of hopefully effective affordances by anticipating their consequences.
+The causal theory, a model of the generative processes causing these observations, informs the CA in the construction of hopefully effective plans by anticipating their consequences.
 
 To recap, the CA can seek to impact an experience it holds by impacting supporting experiences held in its umwelt.
 This is achieved indirectly by the CA directing its umwelt to find a way to impact these supporting experiences in prescribed ways (initiate vs persist vs terminate).
@@ -95,7 +95,7 @@ Concrete experiences -sensing, action taken or imagined- can not be impacted; th
 
 A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading already taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
 
-Since abstract experiences are composed of experiences observed in the umwelt which can themselves be abstract experiences, an affordance might be realized by more (lower-level) affordances and so on until we reach only goals that can be directly impacted by activating effectors.
+Since abstract experiences are composed of experiences observed in the umwelt which can themselves be abstract experiences, a plan might be realized by more (lower-level) plans and so on until we reach only goals that can be directly impacted by activating effectors.
 
 A CA seeking to impact an umwelt experience supporting an experience it holds can do so *directly* or *indirectly*.
 
@@ -107,17 +107,17 @@ How a CA might **directly** impact a held experience is modulated by the kind of
 
 A `count` experience encapsulates how many of a given kind of experiences observed in its umwelt there are (for e.g., this motor was spun once).
 
-To persist a count experience, a CA's affordance would direct its umwelt CAs to persist *all of* the counted (observed) experiences.
+To persist a count experience, a CA's plan would direct its umwelt CAs to persist *all of* the counted (observed) experiences.
 
-To initiate or terminate a count experience, a CA's affordance would direct its umwelt CAs to to add a counted experience or terminate *any of* the counted experiences.
+To initiate or terminate a count experience, a CA's plan would direct its umwelt CAs to to add a counted experience or terminate *any of* the counted experiences.
 
 #### Impacting a more experience
 
 A `more` experience expresses that there is more of than another in its umwelt.
 
-To initiate or teminate a more experience, a CA's affordance would direct its umwelt to initiate or to terminate a compared, count experience.
+To initiate or teminate a more experience, a CA's plan would direct its umwelt to initiate or to terminate a compared, count experience.
 
-To persist a more experience, a CA's affordance would direct its umwelt CAs to persist both compared counts.
+To persist a more experience, a CA's plan would direct its umwelt CAs to persist both compared counts.
 
 #### Impacting a coincide experience
 
@@ -133,9 +133,9 @@ A coincide experience be terminated by terminating any of the co-occuring umwelt
 
 A `trend` experience captures how a given kind of observed experience is changing across the latest timeframes of the CA, for example, "distance keeps diminishing" is a "down" trend.
 
-To initiate a trend experience, a CA's affordance could change the ordinal value of the trending umwelt experience.
-To persist a trend experience, a CA's affordance would direct its umwelt to **further** the trend.
-To terminate a trend experience, a CA's affordance would direct its umwelt to **disrupt** the trend.
+To initiate a trend experience, a CA's plan could change the ordinal value of the trending umwelt experience.
+To persist a trend experience, a CA's plan would direct its umwelt to **further** the trend.
+To terminate a trend experience, a CA's plan would direct its umwelt to **disrupt** the trend.
 
 How a trend experience is impacted depends on the assigned value of the trend (up or down).
 
@@ -168,31 +168,31 @@ A CA can impact an experience A **indirectly** by impacting a *causally linked*,
   * persisting B should persist or eventually initiate A
   * terminating B *might* terminate A
 
-## Executing an affordance
+## Executing a plan
 
-An affordance is a set of directives to be realized by a CA's umwelt in order to impact an experience held by the parent CA.
+A plan is a set of directives to be realized by a CA's umwelt in order to impact an experience held by the parent CA.
 
-A directive is a prioritized goal meant by the CA for its umwelt, a goal being an observed experience plus its desired initiation, continuation or termination (the umwelt is free to formulate an appropriate affordance).
+A directive is a prioritized goal meant by the CA for its umwelt, a goal being an observed experience plus its desired initiation, continuation or termination (the umwelt is free to formulate an appropriate plan).
 
-If the the CA is an *effector CA*, the goals it receives will simply be to activate effectors, like spinning a wheel forward or backward a number of times. Effector CAs are at the bottom level of the hierarchy of CAs and are indirectly and transitively in the umwelts of every CAs. An affordance is thus ultimately realized via cumulated actions taken by effector CAs.
+If the the CA is an *effector CA*, the goals it receives will simply be to activate effectors, like spinning a wheel forward or backward a number of times. Effector CAs are at the bottom level of the hierarchy of CAs and are indirectly and transitively in the umwelts of every CAs. A plan is thus ultimately realized via cumulated actions taken by effector CAs.
 
-A CA executes an affordance it formulates or has received at the close of its current timeframe, once it has made new observations and updated its experiences from them.
+A CA executes a plan it formulates or has received at the close of its current timeframe, once it has made new observations and updated its experiences from them.
 
-### Observing action experiences from executed affordances
+### Observing action experiences from executed plans
 
-When a CA executes an affordance it formulated, the execution of the affordance possibly becomes a set of `Action(Effector, Boolean)` experiences (a.k.a. action experiences) held by effector CAs sitting at the bottom of the CA hierarchy.
+When a CA executes a plan it formulated, the execution of the plan possibly becomes a set of `Action(Effector, Boolean)` experiences (a.k.a. action experiences) held by effector CAs sitting at the bottom of the CA hierarchy.
 
 These action experiences held by effector CAs are automatically elevated up the hierarchy, becoming experiences shared by ancestor CAs, subject to consistency constraints (no disagreement among siblings) and abstraction constraints (they are not combined into abstract experiences).
 
-Crucially, the action experiences from the execution of the affordance, like any other umwelt experiences observed by a CA, can become incorporated into the CA's causal theory when it is updated.
+Crucially, the action experiences from the execution of the plan, like any other umwelt experiences observed by a CA, can become incorporated into the CA's causal theory when it is updated.
 
-### Evaluating the success of reusable affordances
+### Evaluating the success of reusable plans
 
-The CA remembers, for a while, an affordance it executed (the goal -the experience to impact- and the directives emitted) together with the wellbeing values at the time, so as to later be able to gauge the success of the affordance.
+The CA remembers, for a while, a plan it executed and why (the goal -the experience to impact- and the directives emitted) together with the wellbeing values at the time, so as to later be able to gauge the success of the plan.
 
-An affordance is deemed successful if it precedes closely the intended experience change. It is even more successful if it correlates with an increase in wellbeing.
+A plan is deemed successful if it precedes closely the intended experience change. It is even more successful if it correlates with an increase in wellbeing. The CA remembers a successful plan and its goal as an affordance,
 
-A CA might repeat a past affordance considered the most successful in attempting to achieve a goal, or it might try another pre-built affordance, or it might even construct a new one, all depending on the stress felt by the CA from changes in its wellbeing.
+A CA might try pre-built affordance, or it might even construct a new plan, all depending on the stress felt by the CA from changes in its wellbeing.
 
 ### Execution protocole
 
@@ -201,16 +201,16 @@ A CA might repeat a past affordance considered the most successful in attempting
 * A CA selects either a received intent it can help realize, or a self-assigned goal it intends to realize
   * The CA allocates an amount to time in which to try to realize the received intent or the self-assigned goal
   * If a self-assigned goal is selected
-    * The CA builds/reuses an affordance to realize it and emits an intent with the affordance directives and a priority
+    * The CA builds/reuses a plan to realize it and emits an intent with the plan directives and a priority
     * It messages the parents that sent intents that the intended goals can not be actuated
   * If a received intent is selected
     * For each goal matching an experience it holds
-      * It builds/reuses an affordance and emits an intent
+      * It builds/reuses a plan and emits an intent
     * The child CA tells the intending parent CA that what goals it can actuate
 * When the intending CA hears from all child CAs about all actualizable goals in the intent it emitted
   * If any intended goal can not be actuated by any child CA, then the intent can not be realized
     * The CA emits that the intent completed in failure
-    * The CA looks for an alternative affordance unless time allotted is expired
+    * The CA looks for an alternative plan unless time allotted is expired
   * If all intended goals can be actuated
     * For each such goal
       * The CA select one child CA who can actuate and tells it to ready actuation

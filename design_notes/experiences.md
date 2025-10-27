@@ -122,7 +122,7 @@ An experience from a child CA can be elevated
 * if the elevated experience does not contribute to an experience of the parent CA
   * i.e. the CA has not "abstracted out" the child's experience
 
-An elevated experience may benefit from a different wellbeing valuation and from higher-level affordances.
+An elevated experience may benefit from a different wellbeing valuation and from higher-level plans.
 
 ## An experience economy
 

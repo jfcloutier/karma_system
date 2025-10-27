@@ -101,7 +101,7 @@ I realize that each of the (interlocking) questions below could be the basis of 
 
 * How are feelings generated and communicated internally?
 
-* How and when are action affordances synthesized from simpler actions?
+* How and when are action plans synthesized from simpler actions?
 
 * How are actions evaluated for their effectiveness at acquiring new experiences, invalidating undesirable experiences and challenging desirable experiences?
 

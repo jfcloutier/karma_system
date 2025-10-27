@@ -25,7 +25,7 @@ Stress on a CA is caused by it having low or dropping wellbeing measures.
 Stress makes a CA more *plastic*. When stressed, it is more likely to:
 
 * revise its causal model
-* temporarily ignore aquired affordance habits
+* temporarily ignore aquired habits (e.g. affordances)
 * temporarily ignore strongly held experiences, to act instead on other experiences
 * lower its threshold for action
 * trigger its mitosis or apoptosis

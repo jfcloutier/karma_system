@@ -3,7 +3,7 @@ JF
 Today at 9:06 AM
 The hope is that this formalization of a CA's experiences will be enough for an agent's collective of CAs to autonomously make pragmatic sense of the agent's world by abstracting up useful experiences from the examination of more concrete, observed experiences.
 
-The conjecture is that sufficiently abstracted experiences correlate clearly with wellbeing trends and can be reliably impacted by action affordances so as to keep the agent's wellbeing within survivable bounds. 
+The conjecture is that sufficiently abstracted experiences correlate clearly with wellbeing trends and can be reliably impacted by action plans so as to keep the agent's wellbeing within survivable bounds. 
 Elliott Hauser
  — 
 Today at 10:10 AM

@@ -40,7 +40,7 @@ When the maximum number of remembered states is reached and the latest state is 
 * A (dynamic) CA predicts its observations of the experiences of CAs in its umwelt
   * A CA begins life with an empty causal theory that predicts random, domain-bounded observations or prior observations.
   * If the CA has a causal theory, it uses it to predict the next observations.
-* A CA predicts the success of its affordances using its causal theory. It also remembers the effecticeness of previously executed affordances.
+* A CA predicts the success of its plans using its causal theory. It also remembers the effecticeness of previously executed plans.
 * If a prediction is met with a prediction error, the prediction error becomes the latest observation, else the uncontested prediction is the observation.
 * A CA drops repeated states (state = observations in the same timeframe) - i.e. a CA's perceived time stands still while its umwelt does not appear to change.
 
@@ -48,11 +48,11 @@ When the maximum number of remembered states is reached and the latest state is 
 
 * To be competent, a CA needs to make sense of its observations via a causal theory of
   * how its umwelt changes on its own
-  * how its umwelt changes from the CA executing affordances
+  * how its umwelt changes from the CA executing plans
 * A CA requests a causal theory from the Apperception Engine when
   * it has no theory and a theory could be generated from its remembered states
   * it has a theory and its predictive capabilities have degraded since acquired such that it is no longer good enough
-  * it has a theory but has had new affordances executed since the theory was generated
+  * it has a theory but has had new plans executed since the theory was generated
 
 * A CA's causal theory makes causal sense of experiences observed in its umwelt
   * necessary co-occurrences of observations from static rules
@@ -65,7 +65,7 @@ When the maximum number of remembered states is reached and the latest state is 
     * e.g. the color will become gray if the color is green and both wheels spin
 
 * The CA applies the theory's causal rules to predict the next state so it can predict umwelt experiences
-  * from the considered execution of an affordance selected to achieve an intent (impacting a held experience)
+  * from the considered execution of an plan selected to achieve an intent (impacting a held experience)
   * due to "spontaneous" changes in the umwelt
 
 * Up-down and down-up constraints
@@ -89,7 +89,7 @@ When the maximum number of remembered states is reached and the latest state is 
   * By furthering or interrupting (i.e. impacting) sub-experiences via intents delegated to umwelt CAs
 * Realizing an intent is recursive because an experience is a recursive structure of experiences held by umwelt CAs
 
-* See [affordances.md](./affordances.md)
+* See [plans.md](./plans.md)
 
 ## Attention
 
@@ -121,8 +121,8 @@ The stages of a time frame are:
 
 observe -> Make predictions about umwelt experiences -> believe
 believe -> Update own experiences from observations -> act
-act -> Select a goal (a held experience to impact) and attempt to realize it via an affordance directing the umwelt to change its experiences -> assess
-assess -> Evaluate the accuracy of the causal model and the effectiveness of past affordances -> age
+act -> Select a goal (a held experience to impact) and attempt to realize it via an plan directing the umwelt to change its experiences -> assess
+assess -> Evaluate the accuracy of the causal model and the effectiveness of past plans -> age
 age -> Maybe grow/shrink the SOM (cytosis/apoptosis) and diffuse stress -> observe
 
 The pattern is *Message to self -> Task -> Follow-up message to self*
@@ -136,8 +136,8 @@ stateDiagram-v2
 
     observe --> believe: Make predictions about umwelt experiences
     believe --> act: Update own experiences from observations
-    act --> assess: Impact held experience vian affordance sent to umwelt
-    assess --> age: Evaluate competency of causal model and past affordances
+    act --> assess: Impact held experience vi a plan sent to umwelt
+    assess --> age: Evaluate competency of causal model and past plans
     age --> observe: Diffuse stress, maybe birth new CA
     age --> [*]: Teminate self
 ```
