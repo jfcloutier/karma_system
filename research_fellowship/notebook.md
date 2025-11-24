@@ -1,5 +1,14 @@
 # Research notebook
 
+## November 24m 2025
+
+Framework for implementing dynamic CA timeframes and timeframe phases largely in place.
+
+## November 13, 2025
+
+Presentation of "The Phenomeno-Logical Robot" at the 5th Annual Active Inference Symposium.
+Augmented slide deck published on Zenodo.
+
 ## August 20, 2025
 
 Better framing for experiences and a rethink of the possible types of experiences. Clearer integration with wellbeing, causal theories and plans.
