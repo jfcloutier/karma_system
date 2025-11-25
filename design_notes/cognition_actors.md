@@ -111,42 +111,40 @@ When the maximum number of remembered states is reached and the latest state is 
 
 ## The lifecycle of a cognition actor
 
-The lifecycle of a dynamic CA (sensor and effector CAs are static) is a sequence of time frames. Each time frame goes through stages driven by messages the CA sends itself to progress from one to the next.
+The lifecycle of a dynamic CA (sensor and effector CAs are static) is a sequence of time frames.
+Each time frame goes through phases driven by messages the CA sends itself to progress from one to the next.
 
 The lifecycle of a dynamic CA ends when the CA decides to terminate itself.
 
-At any stage in a time frame, the CA immediately processes all events and messages from other CAs and updates its state.
+At any phase in a time frame, the CA immediately processes all events and messages from other CAs and updates its state.
 
-The stages of a time frame are:
+The phases of a time frame are:
 
-observe -> Make predictions about umwelt experiences -> believe
-believe -> Update own experiences from observations -> act
-act -> Select a goal (a held experience to impact) and attempt to realize it via an plan directing the umwelt to change its experiences -> assess
-assess -> Evaluate the accuracy of the causal model and the effectiveness of past plans -> age
-age -> Maybe grow/shrink the SOM (cytosis/apoptosis) and diffuse stress -> observe
+* begin         - the timeframe begins - update wellbeing from diffusion
+* predict       - (30% - to allow time for prediction errors to come in) make predictions from current observations
+* observe       - merge predictions and prediction errors into new observations, elevate umwelt observations, remove obsolete observations
+* experience    - integrate updated history of observations into new experiences, remove obsolete experiences, (re)assign value
+* plan          - (70% - to allow for the action protocol to play out) formulate and prioritize goals (formulated and received), select a goal, construct a plan and emit it
+* act           - confirm plan feasibility, execute it, remember the goal and plan for later assessment
+* assess        - evaluate causal theory and request new one if unsatisfactory, grant past plans affordance status if their goals were achieved
+* conclude      - the timeframe concludes - update wellbeing measures and emit wellbeing changes
 
 The pattern is *Message to self -> Task -> Follow-up message to self*
 
 ```mermaid
 ---
-title: Cognition actor time frame stages
+title: The phases of each timeframe of a Cognition Actor
 ---
 stateDiagram-v2
-    [*] --> observe: CA created with an umwelt
-
-    observe --> believe: Make predictions about umwelt experiences
-    believe --> act: Update own experiences from observations
-    act --> assess: Impact held experience vi a plan sent to umwelt
-    assess --> age: Evaluate competency of causal model and past plans
-    age --> observe: Diffuse stress, maybe birth new CA
-    age --> [*]: Teminate self
+    [*] --> initialize: Create a new CA with an umwelt
+    initialize --> begin: Set up the initial state of the CA
+    begin --> predict: Set up a new timeframe, update wellbeing from diffusion
+    predict --> observe: Make predictions about umwelt experiences
+    observe --> experience: Merge predictions and prediction errors into new observations
+    experience --> plan: Unify observations into experiences
+    plan --> act: Formulate a plan to impact standout experience
+    act --> assess: Confirm plan directives feasibility and execute them
+    assess --> conclude: Evaluate competency of causal model and past plans
+    conclude --> begin: Update and diffuse wellbeing, choose to go on
+    conclude --> [*]: Choose to terminate self
 ```
-
-Executing a time frame stage:
-
-1. Receive a "start stage" message from itself with an updated state
-2. Merge the current state with the updated state
-3. Start a timeboxed, asynchronous task for this stage with the new state
-4. The task may emit events and messages to other CAs
-5. On ending the task (b/c its done or time has expired),
-   send the next stage message to self with the modified state
