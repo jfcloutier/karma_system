@@ -16,73 +16,7 @@ Experiences associated with high risks are unpleasant. Experiences associated wi
 
 ## Growth and shrinking
 
-The SOM grows and shrinks, exploring a space of configurations of CAs, searching for competent (life-sustaining) configurations. The SOM grows via "mitosis" (CA birth) and shrinks via "apoptosis" (CA death).
-
-CAs beget other CAs (mitosis) and CAs remove themselves (apoptosis).
-
-### Mitosis
-
-At the end of its current timeframe, a CA at abstraction level L might birth another CA, at its own SOM level **or** one level up, but not both.
-
-Whether or not a CA is added or removed is probabilistic and dependent on the circumstances of the SOM.
-
-When a CA is added by another, it starts with these wellbeing measures:
-
-* half the fullness of its originator CA
-* the integrity of its originator CA
-* mimimum engagement
-
-#### Adding a CA one level up
-
-This is done with a probability proportional to the CA's fullness (modulated up by stress).
-
-If:
-
-* the level above is empty of CAs and all CAs at the level below are in umwelts and
-* the CA attempting mitosis can recruit 1 or more CAs at at its level to be with it in the umwelt of the newly created CA one level above
-
-Then:
-
-* the mitotic CA creates a CA one level above with itself and the recruited CAs as its umwelt.
-
-#### Adding a CA at the same level
-
-This is done with a probability proportional to the CA's fullness (modulated up by stress):
-
-If:
-
-* A level L+1 CA was not created in the current timeframe and
-* the mitotic CA can recruit 1 or more CAs at level L-1 not in its umwelt and
-* the CA's resulting transitive umwelt is uniquely specialized (see Holarchy and specialization below)
-
-Then:
-
-* the mitotic CA creates a CA at its level L with an umwelt composed of the recruited CAs plus one or more of its own, randomly chosen, umwelt CAs.
-
-#### Recruiting a CA
-
-When a CA is asked to join an umwelt as part of the mitosis of another CA, it either accepts or refuses with probability modulated by its state.
-
-It refuses being recruited if it does not yet have a symbolic generative model (a.k.a causal theory).
-
-The probability that it accepts goes down:
-
-* the more it participates in umwelts already (it converges to 0 rather quickly)
-* the lower its wellbeing
-
-### Apoptosis
-
-At the end of its current timeframe, a CA at level L might undergo apoptosis (remove itself from the SOM), with a probability inversely proportional to the CA's fullness, modulated up by stress:
-
-If:
-
-* It's wellbeing measures are low or consistently dropping
-* The CA is dispensable to all level L+1 CAs (i.e. none of its experiences uniquely supports a level L+1 experience)
-
-Then:
-
-* It removes itself from the SOM
-* after dispersing its fullness to its parents
+See [Searching morphospace](./searching%20morphospace.md)
 
 ## Parameterizing exploration vs exploitation
 
