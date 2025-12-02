@@ -1,31 +1,33 @@
 # Searching for a competent collective of Cognition Actors
 
-My rover robot will be animated by a collective of "mind processes" I call Cognition Actors. This collective starts life minimally defined and grows and shapes itself to capture what the robot learns as it strives to survive.
+My rover robot will be animated by a collective of "mind processes" I call Cognition Actors. This collective starts life minimally defined and grows to capture what the robot learns as it strives to survive. The collective grows into an abstraction hierarchy where Cognition Actors in a given layer make up the umwelt of Cognition Actors in the layer above.
 
-The collective is in effect searching for an organization of its Cognition Actors that will produce behaviors by which the robot will thrive in a dissipative environment. If we think of the organization of the collective as its "shape" then the problem is one of searching in morphospace.
+The collective is in effect searching for an organization of Cognition Actors that will produce behaviors by which the robot thrives in a dissipative environment. If we think of the topology of the collective (how the Cognition Actors relate to each other) as its "shape" then the problem is one of searching in morphospace (the space of possible shapes) for a survivable one.
 
-The odds are very low of a random search finding a competent shape for the collective. The problem is compounded by how slow and involved the search is since it is driven by the trials and errors of an agent acting in its world and assessing the short and long term consequences of its sense making and actions.
+This space is large. The odds are very low of a random search finding a competent shape for the collective. The problem is compounded by how slow and involved the search is since it is driven by the trials and errors of the collective acting in the world and assessing the short and long term consequences of its sense making and actions.
 
-The way I have this search set up right now is probably at best slightly better than random. I needed to do better before committing to more coding.
+The way I have this search set up right now is probably at best slightly better than random. I need to do better before committing to more coding.
 
-I have been thinking lately that optimizing the search in morphospace is not a new problem and that Nature has solved it many times. I needed to take a closer look at principles of developmental biology.
+Optimizing searches in morphospace is not a new problem. Nature has solved it many times. It's worth looking some more at developmental biology.
 
-What follows is my pick of such morphogenetic principles and how they can be applied to growing a collective of Cognition Actors that is more likely to home in on a competent organization.
+What follows is my pick of morphogenetic principles. They can be applied to growing a collective of Cognition Actors so it is more likely to home in on a competent organization.
 
-This is work in progress. Coding these rules and experimenting with them will reveal whether they cause a collective to converge predictably to a competent shape. Or not.
+This is work in progress. Coding these principles as rules and experimenting with them will reveal whether they help a collective converge to competency.
 
 ## Morphogenetic principles
 
-* Parts from wholes, not wholes from parts: Grow from a single process via replication, division and differentiation.
+* Parts from wholes, not wholes from parts: Grow from one to many via replication, division and differentiation.
 * Participation sculpts cognition: Grow to an over-abundance then move to a "use it or lose it" regime.
-* Stress motivates change: No or low stress means a stable shape.
-* The more other parts a part integrates, the slower it changes: Higher-level abstractions are less volatile than lower-level ones.
+* Stress motivates change: There is no pressure to change when stress stays low.
+* The more layers a part integrates, the slower it changes: Higher-level abstractions are less volatile than lower-level ones.
 
 ## Morphogenesis rules
 
-The rules are for the creation, replication, division and death of dynamic Cognition Actors.
+The collective is shaped by participating in its environment via a robot embodiment. It is composed of two kinds of Cognition Actors, static and dynamic. Only dynamic Cognition Actors in the collective are subject to morphogenetic forces. Static Cognition Actors are unchanging. They make up the first layer of a collective and mediate with the robot's sensors and motors. A collective of Cognition Actors evolves by adding and removing dynamic Cognition Actors in layers above.
 
-Only dynamic Cognition Actors (dCAs) are subject to morphogenegetic processes. Static Cognition Actors are unchanging and make up the first layer of a collective. A collective of Cognition Actors grows and is shaped by its embodiment as a robot participating in the world.
+A dCA experiences stress if any of its wellbeing measures (fullness, integrity and engagement) is low or is falling. Stress eventually diffuses throughout the collective.
+
+The following rules are for the creation, replication, division and death of dynamic Cognition Actors (dCAs).
 
 * A dCA is created and added to a new layer of a collective of CAs when the previously top layer is the static layer or it has stopped dividing and is under too much stress.
 
@@ -47,4 +49,4 @@ Only dynamic Cognition Actors (dCAs) are subject to morphogenegetic processes. S
 
 * A dCA dies if it has been a source of stress for too many consecutive timeframes.
 
-* The death of a dCA and its removal from a layer may turn replication back on for some dCAs in that layer.
+* The death of a dCA and its removal from a layer may turn replication back on for some dCAs in that layer (if they fall below their replication limit).
