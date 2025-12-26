@@ -40,7 +40,7 @@ The plan's directives are communicated all at once by the CA to its umwelt at th
 
 The first step by a CA when preparing to act is to identify an experience to attend to, even if a parent CA has already directed the CA to impact some of its own choosing.
 
-Only abstract (composite) experiences can be acted on and impacted, namely `count`, `more`, `trend` and `coincide`. Concrete experiences, those from sensor and effector CAs, and those imagined by a causal theory, represent "givens" that can not be changed though actions.
+Only abstract (composite) experiences can be acted on and impacted, namely `count`, `more` and`trend`. Concrete experiences, those from sensor and effector CAs, and those imagined by a causal theory, represent "givens" that can not be changed though actions.
 
 Which actionable experience is identified depends on its pleasantness/unpleasantness and whether or not it is *sufficiently* pleasant or unpleasant (activation threshold) for the CA to pay attention to it. The activation threshold is set by the current wellbeing of the CA which propagates "osmotically" throughout the entire collective.
 
@@ -74,7 +74,7 @@ An additional but implied rule is that a previous observation survives as a curr
 
 A trivial causal theory has empty sets of all three kinds of rules, yielding a trivial "it is what it is" causal theory.
 
-A CA's abstract experience integrates multiple observations (predicted experiences in the CA's umwelt), either within the bounds of the current timeframe (`count`, `more` and `coincide` experiences)
+A CA's abstract experience integrates multiple observations (predicted experiences in the CA's umwelt), either within the bounds of the current timeframe (`count`, and `more` experiences)
 or of past *and* current timeframes (`trend` experiences).
 
 The observed umwelt experiences involved in the composition of an abstract experience constitute the base of support of that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
@@ -90,7 +90,7 @@ The causal theory, a model of the generative processes causing these observation
 To recap, the CA can seek to impact an experience it holds by impacting supporting experiences held in its umwelt.
 This is achieved indirectly by the CA directing its umwelt to find a way to impact these supporting experiences in prescribed ways (initiate vs persist vs terminate).
 
-The only types of experiences that can be impacted are `count`, `more`, `coincide`, and `trend` experiences.
+The only types of experiences that can be impacted are `count`, `more` and `trend` experiences.
 Concrete experiences -sensing, action taken or imagined- can not be impacted; they are givens.
 
 A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading already taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
@@ -118,16 +118,6 @@ A `more` experience expresses that there is more of than another in its umwelt.
 To initiate or teminate a more experience, a CA's plan would direct its umwelt to initiate or to terminate a compared, count experience.
 
 To persist a more experience, a CA's plan would direct its umwelt CAs to persist both compared counts.
-
-#### Impacting a coincide experience
-
-A `coincide` experience captures the fact that two or more umwelt experiences are consistently observed together.
-
-A coincide experience can be intentionally initiated by initiating all missing co-occuring umwelt experiences.
-
-A coincide experience be persisted by persisting all the co-occuring umwelt experiences.
-
-A coincide experience be terminated by terminating any of the co-occuring umwelt experiences.
 
 #### Impacting a trend experience
 

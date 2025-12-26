@@ -13,7 +13,7 @@ Observations in a given timeframe are considered synchronous, as are the experie
 
 A CA gets *concrete* experiences from directly sensing properties of its environment (if it is a sensor CA), from acting in/on the environment, and from its causal theory in the form of the properties and relations imagined in order to unify the theory.
 
-A CA synthesizes *abstract* experiences from observations of its umwelt. It notices quantities (counts and comparisons), coincidences and trends in the observed experiences of its umwelt.
+A CA synthesizes *abstract* experiences from observations of its umwelt. It notices quantities (counts and comparisons), and trends in the observed experiences of its umwelt.
 
 The CA makes its own experiences available for observation by its "parent" CAs. And so on, up an abstraction hierarchy of experiences about experiences about experiences etc.
 
@@ -57,7 +57,7 @@ The concrete experiences (experiences not derived from other experiences) are
 
 Abstract experiences are composed by a CA of *multiple* observations by the CA (of experiences in its umwelt), past and/or present.
 
-There are four kinds of abstract experiences: **count**, **more**, **coincide**, and **trend**.
+There are four kinds of abstract experiences: **count**, **more**, *and **trend**.
 
 Each abstract experience is expressed as a `property` (linking an object and a value) or as a `relation` (linking two objects). Remember that objects are made of observed experiences.
 
@@ -65,7 +65,7 @@ Each abstract experience is expressed as a `property` (linking an object and a v
 
 > The experience that something can be counted in the current timeframe.
 
-e.g. this motor spun twice, this object coincides with three others, there are two upward trends
+e.g. this motor spun twice, there are two upward trends
 
 * What
   * A property
@@ -87,23 +87,11 @@ e.g. this motor executed more spins than this other motor, the distance reported
 * Observed as `more(Object1, Object2)` where
   * `Object1`, `Object2` are unique names created from `count(Object, Value)`
 
-### coincide
-
-> The experience that two or more umwelt experiences are consistently co-occuring
-
-e.g. increase in luminance and reduction in distance are observed together
-
-* What
-  * A property
-* Observed as `coincide(Object, Boolean)` where
-  * `Object` names a set of experiences
-  * `Boolean` is true if all experiences in the set are currently observed
-
 ### trend
 
 > The experience that the ordinal values of a property of an object is trending up or down or not at all, as observed over timeframes leading to, and including, the current timeframe.
 
-e.g. luminance from this sensor is increasing, the number of coincidences with this object is decreasing
+e.g. luminance from this sensor is increasing, the distance is decreasing
 
 * What
   * A property
