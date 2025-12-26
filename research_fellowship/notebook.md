@@ -1,6 +1,18 @@
 # Research notebook
 
-## November 24m 2025
+## December 26, 2025
+
+Connected experiences with causal theories
+
+Detailed more representations making up the state of a CA
+
+Making progress implementing the phases of a CA's timeframe
+
+## November 28, 2025
+
+Morphogenesis principles and rules
+
+## November 24, 2025
 
 Framework for implementing dynamic CA timeframes and timeframe phases largely in place.
 

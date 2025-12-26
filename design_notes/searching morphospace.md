@@ -16,10 +16,10 @@ This is work in progress. Coding these principles as rules and experimenting wit
 
 ## Morphogenetic principles
 
-* Parts from wholes, not wholes from parts: Grow from one to many via replication, division and differentiation.
-* Participation sculpts cognition: Grow to an over-abundance then move to a "use it or lose it" regime.
-* Stress motivates change: There is no pressure to change when stress stays low.
-* The more layers a part integrates, the slower it changes: Higher-level abstractions are less volatile than lower-level ones.
+* Parts from wholes, not wholes from parts: Grow by replication, division and differentiation, not by assembly
+* Use it or lose it: Grow to over-abundance then trim to essential
+* Stress as cognitive glue: The stress felt by parts at risk propagates and motivates global change
+* Stable wholes, transient parts: The simpler the parts, the faster they are replaced
 
 ## Morphogenesis rules
 
