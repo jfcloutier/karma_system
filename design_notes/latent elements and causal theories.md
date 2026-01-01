@@ -9,7 +9,7 @@ A causal theory may require more than the observations actually made by the CA t
 The following describes the involvement of latent elements (hidden objects, properties and relations) in the CA's sense-making processes.
 
 * The robot's sensors and effectors are the only a priori objects making up the vocabularies of causal theories (one per CA); note that there is no a priori 'self' object (which would require 'other').
-* All other objects in a causal theory are latent (they are abduced by a causal theory).
+* All other objects in a causal theory are latent (they are abduced by the causal theory).
 * Observations are the result of predictions produced by a causal theory; observations may contain latent elements.
 * Latent observations predicted by a causal theory can not and thus need not be validated by umwelt CAs.
 * A CA might adopt a new causal theory at any time; this new causal theory might have different or no latent elements.
