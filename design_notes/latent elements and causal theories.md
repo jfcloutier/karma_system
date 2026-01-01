@@ -18,4 +18,4 @@ The following describes the involvement of latent elements (hidden objects, prop
 * A previous causal theory can be reinstated as the current one if it is, once again, the better one.
 * Reinstating a prior causal theory reactivates the observations expressed in term of latent elements in the causal theory's vocabulary.
 * When searching for a new causal theory, the search starts constrained to candidates with the same vocabulary as the current one; this constraint is relaxed as needed to find a successful causal theory (this constraint is to prevent unnecessarily inactivating latent elements making up past observations).
-* When relaxing vocabulary constraints on candidate causal theories, the least referenced latent element in observations is removed first.
+* When relaxing vocabulary constraints on candidate causal theories, the latent element least referenced in observations is removed first.
