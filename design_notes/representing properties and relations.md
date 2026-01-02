@@ -2,8 +2,8 @@
 
 Experiences, Predictions, Prediction Errors, Predictables and Observations represent different perspectives held by CAs about properties/relations.
 
-* Observations: The experienced properties/relations of its umwelt CAs a CA perceives
-* Predictions: The next observations a CA anticipates making
+* Observations: The experienced properties/relations a CA perceives of its umwelt CAs
+* Predictions: The next observations a CA anticipates
 * Prediction errors: Corrections a CA receives from its umwelt about the values of predictions it made
 * Predictables: Specifications of what predictions a CA can respond to
 * Experiences:  Properties/relations abstracting the CA's past and current observations
@@ -19,7 +19,7 @@ Observations, Experiences, Predictions and Prediction Errors add meta-data such 
 
 ## Kinds of properties/relations
 
-There are four kinds of property/relation names:
+Sensors and effectors name their sense and action properties respectively. The causal theory of a CA can invent properties and relations that it also names. A CA creates properties and relations of three possible pre-defined kinds when it synthesizes experiences by abstracting observations.
 
 * (sense name) - only when the origin is a sensor, e.g. `distance`, `color`, `contact`, `state` etc.
 * (action name) - only when the origin is an effector, e.g. `spin`, `reverse_spin`
