@@ -58,7 +58,7 @@ The values of action properties of effectors (e.g. `spin`) are either `true` or 
 
 ### Values of synthetic properties and relations
 
-A `trend` property (on a set of past and current observations) can have value `up`, `down` or `same`.
+A `trend` property (on a set of past and current observations) can have value `up`, `down`, `same` or `ended`.
 
 A `count` property (on a set of current observations) is either `1`, `2`, `3` or `many` because a CA can not count very far and has no notion of zero (this is to mimic the limited counting abilities of simple living beings).
 

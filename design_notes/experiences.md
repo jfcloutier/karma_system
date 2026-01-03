@@ -97,7 +97,7 @@ e.g. luminance from this sensor is increasing, the distance is decreasing
   * A property
 * Observed as `trend(Object, Value)` where
   * `Object` is a unique name created from `trending(PropertyName, Object)`
-  * `Value` is `up` or `down` or `none`
+  * `Value` is `up` or `down` or `same` or `ended`
 
 ## Elevating experiences
 

@@ -127,10 +127,12 @@ To initiate a trend experience, a CA's plan could change the ordinal value of th
 To persist a trend experience, a CA's plan would direct its umwelt to **further** the trend.
 To terminate a trend experience, a CA's plan would direct its umwelt to **disrupt** the trend.
 
-How a trend experience is impacted depends on the assigned value of the trend (up or down).
+How a trend experience is impacted depends on the assigned value of the trend (up, down, same or ended).
 
 An `up` trend captures an upwardly changing ordinal value for a given property of a given object.
 A `down` trend captures a downwardly changing ordinal value for a given property of a given object.
+A `same` trend captures a steady ordinal value for a given property of a given object.
+An `ended` trend captures an unknown ordinal value for a given property of a given object after it trending.
 
 If the nature of the trend to impact is
 
@@ -140,6 +142,12 @@ If the nature of the trend to impact is
 * down
   * to disrupt it, increase or stabilize the values of the observed, trending experience
   * to further it, decrease the values of the observed, trending experience
+* same
+  * to disrupt it, increase or decrease the values of the observed, trending experience
+  * to further it, maintain the values of the observed, trending experience
+* ended
+  * to disrupt it, cause a value for the previously observed, trending experience
+  * to further it, keep unknown the value of the previously observed, trending experience
 
 ### Indirectly impacting an experience given a causal theory
 
