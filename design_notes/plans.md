@@ -131,7 +131,6 @@ How a trend experience is impacted depends on the assigned value of the trend (u
 
 An `up` trend captures an upwardly changing ordinal value for a given property of a given object.
 A `down` trend captures a downwardly changing ordinal value for a given property of a given object.
-A `same` trend captures a steady ordinal value for a given property of a given object.
 An `ended` trend captures an unknown ordinal value for a given property of a given object after it trending.
 
 If the nature of the trend to impact is

@@ -9,7 +9,7 @@ Integrate current and past observations into experiences by:
 
 * count: 1, 2, 3, `many`
 * more: another synthetic object
-* trend: `up`, `down`, `same`, `ended`
+* trend: `up`, `down`, `ended`
 
 ## Synthesizing experiences
 
@@ -35,8 +35,8 @@ Integrate current and past observations into experiences by:
     * Relations with same kind and origin X 2 (more object A --X-> * than object B --Y-> * - object A has more relations X than object B has relations Y)
   * trend: 2 or more trendables over the last N > 1 time frames
     * Properties with the same origin and kind
-      * If values are numerical, the values can be `up`, `down` or `same`
-      * Otherwise, the trend values can only be `same`
+      * If values are numerical, the values can be `up`, `down`
+      * Otherwise, if a trend stopped, its value is `ended`
 
 ## Assigning a confidence to an experience
 

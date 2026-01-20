@@ -120,14 +120,14 @@ At any phase in a time frame, the CA immediately processes all events and messag
 
 The phases of a time frame are:
 
-* begin         - the timeframe begins - update wellbeing from diffusion
-* predict       - (30% - to allow time for prediction errors to come in) make predictions from current observations
-* observe       - merge predictions and prediction errors into new observations, elevate umwelt observations, remove obsolete observations
-* experience    - integrate updated history of observations into new experiences, remove obsolete experiences, (re)assign value
-* plan          - (70% - to allow for the action protocol to play out) formulate and prioritize goals (formulated and received), select a goal, construct a plan and emit it
+* predict       - make predictions from current observations 
+* observe       - merge predictions and prediction errors into new observations
+* experience    - integrate current and past observations into terminated, updated and new experiences
+* feel          - assign a normative value (from worst to best feeling) to each experience
+* plan          - formulate and prioritize goals (formulated and received), select a goal, construct a plan and emit it
 * act           - confirm plan feasibility, execute it, remember the goal and plan for later assessment
 * assess        - evaluate causal theory and request new one if unsatisfactory, grant past plans affordance status if their goals were achieved
-* conclude      - the timeframe concludes - update wellbeing measures and emit wellbeing changes
+* bind          - update and diffuse wellbeing (create cognitive glue)
 
 The pattern is *Message to self -> Task -> Follow-up message to self*
 
@@ -136,15 +136,15 @@ The pattern is *Message to self -> Task -> Follow-up message to self*
 title: The phases of each timeframe of a Cognition Actor
 ---
 stateDiagram-v2
-    [*] --> initialize: Create a new CA with an umwelt
-    initialize --> begin: Set up the initial state of the CA
-    begin --> predict: Set up a new timeframe, update wellbeing from diffusion
+    [*] --> new: Create a new CA with an umwelt
+    new --> predict: Set up the initial state of the CA
     predict --> observe: Make predictions about umwelt experiences
     observe --> experience: Merge predictions and prediction errors into new observations
-    experience --> plan: Unify observations into experiences
+    experience --> feel: Unify observations into experiences
+    feel --> plan: Make experiences good or bad
     plan --> act: Formulate a plan to impact standout experience
     act --> assess: Confirm plan directives feasibility and execute them
-    assess --> conclude: Evaluate competency of causal model and past plans
-    conclude --> begin: Update and diffuse wellbeing, choose to go on
-    conclude --> [*]: Choose to terminate self
+    assess --> bind: Evaluate competency of causal model and past plans, , choose to go on
+    bind --> predict: Update and diffuse wellbeing
+    bind --> [*]: Choose to terminate self
 ```

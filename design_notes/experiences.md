@@ -89,15 +89,15 @@ e.g. this motor executed more spins than this other motor, the distance reported
 
 ### trend
 
-> The experience that the ordinal values of a property of an object is trending up or down or not at all, as observed over timeframes leading to, and including, the current timeframe.
+> The experience that the ordinal values of a property of an object is trending up or down or not anymore, as observed over timeframes leading to, and including, the current timeframe.
 
-e.g. luminance from this sensor is increasing, the distance is decreasing
+e.g. luminance from this sensor is increasing, the distance is decreasing, the change in distances ended
 
 * What
   * A property
 * Observed as `trend(Object, Value)` where
   * `Object` is a unique name created from `trending(PropertyName, Object)`
-  * `Value` is `up` or `down` or `same` or `ended`
+  * `Value` is `up` or `down` or `ended`
 
 ## Elevating experiences
 
