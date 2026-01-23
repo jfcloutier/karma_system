@@ -28,7 +28,7 @@ An intent by a CA consists of
 * a priority - determined by the graded normativity of the experience targeted by the intent
 * a plan - how to achieve the goal by impacting (initiating, persisting, terminating) the observed experiences held by the umwelt CAs from which the targeted CA's experience was synthesized
 
-A CA's plan is a list of directives, to be communicated to the umwelt CAs, to achieve the CA's goal. 
+A CA's plan is a list of directives, to be communicated to the umwelt CAs, to achieve the CA's goal.
 
 A **directive** is a delegated, goal (an experience of umwelt CAs to impact) to be achieved by the umwelt *however it chooses*.
 
