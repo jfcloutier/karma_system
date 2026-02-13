@@ -1,0 +1,72 @@
+# Rethinking observations from predictions
+
+## Recap
+
+A robot is an autonomous and mortal agent animated by an evolving collective of communicating processes called Cognition Actors (CAs). The collective captures and applies what the robot learns about how to survive. The robot learns by changing the hierarchical structure of its mind-collective and by growing the competency of the individual CAs composing it.
+
+The collective forms an abstraction hierarchy where each CA has an umwelt composed of more "concrete" CAs that it observes, experiences, feels and acts upon. The bottom layer of CAs mediates access to the robot's sensors and motors, whereas the upper layers deal with the "big picture" of surviving.
+
+Each CA goes through a repeated "OODA loop" cycle (once per timeframe) where it runs through a sequence of predict, observe, experience, feel, plan, act and assess steps. The more abstract the CA, the longer its timeframe. CAs run as separate, non-synchronized processes that interact with one another via queued messages.
+
+The hope is that, from the interactions within an adaptive collective of CAs, competent agency will emerge
+
+## Predictions, prediction errors and observations
+
+In each timeframe ("thick now") of its life, a CA generates observations by making predictions and maybe receiving prediction errors as a consequence.
+
+An observation is either an uncontested prediction or a prediction error.
+
+A CA assigns a confidence (between 1% and 100%) to each prediction it sends to its umwelt CAs. It does the same with each prediction error it sends back in response to an incorrect prediction received from parent CAs.
+
+When a CA receives a prediction it can neither confirm nor contradict, it returns a fully confident prediction error with value `unknown`
+
+An uncontested prediction is one that has only received unknown-valued prediction errors and only from a strict subset of its umwelt; at least one umwelt CA matched the prediction with an experience.
+
+It is possible for a prediction to not cause an observation if consequent unknown-valued prediction errors were received from all umwelt CAs; the prediction was meaningless to the entire umwelt.
+  
+Different umwelt CAs can reply to a prediction with prediction errors that have conflicting values. Only the most confident among conflicting, value-bearing prediction errors becomes an observation. A tie is resolved by using the last prediction error received.
+
+A prediction error that is at least as confident as the contradicted prediction overrides the prediction and confers its confidence to the resulting observation.
+
+A prediction error less confident than the prediction it corrects is dropped but it erodes the confidence in the resulting observation-from-prediction.
+
+## Making predictions
+
+A CA must decide which prediction(s) to make within the current timeframe.
+
+The CA collects all the predictions it could make and drops those that fall too far below the average confidence of the lot (e.g. below half average).
+
+The sources of predictions, in decreasing order of priority, are:
+
+* Inferring predictions by applying the causal theory to prior observations
+* Extrapolating from prior experiences
+* Predicting unchanged prior observations
+* Making an empty prediction (only if no other prediction can be made)
+
+When uncontested predictions conflict (different values are predicted), the one from the highest priority source will be made. When conflicting predictions have equal priority, the one with highest confidence is the one that will be made.
+
+## Predictions from experiences
+
+Making predictions from prior synthetic experiences (either `trend`, `count` or `more` experiences):
+
+* Trend: Predict an observation that continues the experienced trend by the increment recently observed
+* Count: Predict the experienced count of observations
+* More: Predict the experienced magnitude comparison between observations
+
+## Empty predictions
+
+At the start of its life, a CA has no observations, experiences or causal theory. The CA can only make an empty prediction.
+
+Each umwelt CA responds to an empty prediction with fully confident prediction errors, essentially stating each of its experiences.
+
+An empty prediction is always overridden by prediction errors; it never becomes an observation.
+
+Making an empty prediction is a last resort because receiving the consequent prediction errors provides no information to the CA about its own competency; there is nothing to evaluate and improve upon when a prediction is made from zero knowledge.
+
+## Causal theory and confidence
+
+When a CA applies its causal theory to generate a prediction, a prediction error contradicting it reduces the CA's confidence in the theory. 
+
+Absence of prediction errors to a causal theory-generated prediction increases the CA's confidence in the theory.
+
+The confidence the CA has in its causal theory is conferred to the predictions generated by it.
