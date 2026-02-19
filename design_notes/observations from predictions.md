@@ -14,21 +14,21 @@ The hope is that, from the interactions within an adaptive collective of CAs, co
 
 An autonomous agent must learn to predict what happens next in order to survive. The more informed its predictions, the more it can learn from prediction errors.
 
- I now see four provenances for predictions, each one more informed than the other.
+ I see four provenances for predictions, each one more informed than the other.
 
 1. Predicting that nothing can be observed (predicting from complete absence of information)
 2. Predicting that nothing last observed will change
-3. Predicting that observations will maintain current experiences (of counts, comparisons or trends, synthesized from observations)
-4. Predicting observations from understanding (from having a causal model)
+3. Predicting that incoming observations will maintain current experiences (of counts, comparisons and trends, as constructed from observations)
+4. Predicting observations from understanding (from having a model of latent processes causing observations)
 
-Depending on the provenance of a prediction, a consequent prediction error will be more or less informative and thus provide a greater or lesser learning opportunity to the cognition actor.
+Given the provenance of a prediction, a consequent prediction error can present a learning opportunity of lesser or greater value:
 
-1. A prediction error provides a completely unanticipated observation
-2. A prediction error can provide an observation creating a new experience
-3. A prediction error can alter or terminate an experience
-4. A prediction error can trigger the revision of a causal model
+1. A prediction error as completely unanticipated observation (least value because the prediction came from ignorance)
+2. A prediction error as surprising observation causing a new experience (some value)
+3. A prediction error as surprising observation altering or terminating an experience (more value)
+4. A prediction error as surprising observation triggering the revision of a causal model (greatest value because the prediction came from understanding)
 
-When a cognition actor is created, it has everything to learn and can only predict that nothing will be observed. As it accumulates observations and then the experiencing of these observations, it can make more informed predictions. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to also make highly informed predictions from understanding.
+When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations and then the experiencing of these observations, it can make more informed predictions and thus learn more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from its understanding of what causes observations, and potentially correct this understanding from errors.
 
 ## Predictions, prediction errors and observations
 
