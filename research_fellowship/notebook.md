@@ -1,5 +1,15 @@
 # Research notebook
 
+## February 27, 2026
+
+Cleaned up the phases framework
+
+Rethought where predictions come from, how feelings are computed and assigned
+
+Clarified how activations (of actions/directives) are observed and experienced
+
+Implemented the predict, observe, experience and feel phases
+
 ## December 26, 2025
 
 Connected experiences with causal theories

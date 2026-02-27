@@ -57,9 +57,21 @@ The concrete experiences (experiences not derived from other experiences) are
 
 Abstract experiences are composed by a CA of *multiple* observations by the CA (of experiences in its umwelt), past and/or present.
 
-There are four kinds of abstract experiences: **count**, **more**, *and **trend**.
+There are four kinds of abstract experiences: **activation**, and the so-called synthetic experiences **count**, **more**, *and **trend**.
 
 Each abstract experience is expressed as a `property` (linking an object and a value) or as a `relation` (linking two objects). Remember that objects are made of observed experiences.
+
+### activation
+
+A dynamic CA receives events from the execution of directives it sent to its umwelt CAs. For each such received event, the CA adds cumulates an observation.
+Equivalent (repeated) activation observations are counted and combined into an activation experience.
+
+* What
+  * A property
+* Observed as `activation(Object, Value)` where
+  * `Object` is a unique name created from
+    * `Execution(CA, Directive/Action)` - how many objects connect to/from a given object via a given relation
+  * `Value` is the number of executions
 
 ### count
 
@@ -99,19 +111,6 @@ e.g. luminance from this sensor is increasing, the distance is decreasing, the c
   * `Object` is a unique name created from `trending(PropertyName, Object)`
   * `Value` is `up` or `down` or `ended`
 
-## Elevating experiences
-
-A CA's experience can be "elevated" to also be, as-is, the experience of a parent CA (the parent CA's experience is a "pointer" to the child's experience).
-
-An experience from a child CA can be elevated
-
-* if observed
-* if it is not contradicted by a sibling CA
-* if the elevated experience does not contribute to an experience of the parent CA
-  * i.e. the CA has not "abstracted out" the child's experience
-
-An elevated experience may benefit from a different wellbeing valuation and from higher-level plans.
-
 ## An experience economy
 
 A CA works to increase engagement by holding useful experiences and by acting on them. However, creating and holding experiences is costly and the CA has limited resources.
@@ -123,16 +122,6 @@ Abstract experiences of no use to parent CAs are eventually dropped, freeing res
 If a parent CA predicts an experience the child CA does not hold (and is possibly not yet in its experiences domain), the child CA will attempt to synthesize it (since it matters), potentially at the expense of another, less useful, experience.
 
 A CA will try not to drop a held experience that is of use to a parent CA (useful because predictions about the experience are received) because doing so reduces the CA's engagement wellbeing.
-
-## Experience domains
-
-The experience domain of a CA is a representation that subsumes all experiences held by the CA.
-
-The experience domain of a CA grows and shrinks with the experiences it holds.
-
-A CA advertises changes to its experience domain so that parent CAs know what they can predict that might not be inferrable from their causal theory.
-
-Experience domains constrain what a parent CA can predict of their umwelt's experiences, and thus constrain what a CA can observe, and thus the signatures of their causal models.
 
 ## About naming of objects in experiences
 
