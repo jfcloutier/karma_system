@@ -1,12 +1,12 @@
 # Plans
 
-A Cognition Actor (CA) seeks, through the execution of plans, to persist pleasant experiences it holds and to terminate its unpleasant experiences.
+A Cognition Actor (CA) seeks, through the execution of plans, to persist pleasant experiences it has and to terminate its unpleasant experiences.
 
 ## Recap
 
 A CA is part of a hierarchichal collective of CAs that animate an agent. Each CA has an umwelt composed of a small number of CAs from the (abstraction) layer below.
 
-A CA synthesizes its experiences from its observations, past and current, of the experiences in its umwelt. It observes by predicting umwelt experiences and receiving prediction errors when the predictions are wrong.
+A CA synthesizes its experiences from its observations, past and current, of the experiences in its umwelt. It observes by being informed of activations (actions/directives executed), and by predicting umwelt experiences and receiving prediction errors when the predictions are wrong.
 
 The experiences of a CA exist in the context of wellbeing measures, current and trending. The wellbeing measures are fullness (energy), integrity (health) and engagement (relevance). They signal risks, present or absent, growing, steady or decreasing, to the survivability of a CA and, possibly and transitively, the entire collective of CAs.
 
@@ -14,7 +14,7 @@ Experiences associated with high or growing risks are unpleasant. Experiences as
 
 A CA operates one timeframe after another. Each timeframe corresponds to a "thick now". The timeframe of a CA starts and stops independently of other CAs; timeframes are not synchronized. CAs higher up in the collective's hierarchy have qualitatively longer timeframes.
 
-During its current timeframe, a CA observes the latest experiences in its umwelt (via predictions made and prediction errors received), reads the wellbeing measures "diffused" by other CAs, refreshes its set of experiences by integrating its latest observations with past ones, and assigns up-to-date normative values (pleasantness/unpleasantness) to its updated experiences.
+During its current timeframe, a CA observes the latest experiences in its umwelt (by receiving activation events and via predictions made and prediction errors received), reads the wellbeing measures "diffused" by other CAs, refreshes its set of experiences by integrating its latest observations with past ones, and assigns up-to-date normative values (pleasantness/unpleasantness) to its updated experiences.
 
 At the end of the current timeframe, a CA decides whether to act on updated experiences and, if so, which ones, to what effect, and how.
 
@@ -24,25 +24,25 @@ A CA *intends* to take action to impact its experiences; an intent is not guaran
 
 An intent by a CA consists of
 
-* a goal - an experience held by the CA and a desired impact on it, i.e. the persisting of a pleasant experience, or the termination of an unpleasant experience
+* a goal - an experience held by the CA and a desired impact on it, i.e. persisting an experience that feels good, or the termination of an experience that feels bad
 * a priority - determined by the graded normativity of the experience targeted by the intent
 * a plan - how to achieve the goal by impacting (initiating, persisting, terminating) the observed experiences held by the umwelt CAs from which the targeted CA's experience was synthesized
 
 A CA's plan is a list of directives, to be communicated to the umwelt CAs, to achieve the CA's goal.
 
-A **directive** is a delegated, goal (an experience of umwelt CAs to impact) to be achieved by the umwelt *however it chooses*.
+A **directive** is a delegated goal (an experience of umwelt CAs they are asked to impact). A directive is to be achieved by the umwelt *however it chooses*.
 
 The priority of a plan reflects how unpleasant/pleasant the experience to impact is. Generally a directive from a high-level CA will have greater priority than that of a lower-level CA, but not always; low level CAs facing an "emergency" can override the plans of higher-level CAs.
 
-The plan's directives are communicated all at once by the CA to its umwelt at the end of the CA's current timeframe. Keep in mind that, at any point in time, multiple CAs may be intending to act.
+The plan's directives are communicated all at once by the CA to its umwelt at a dedicated phase of the CA's current timeframe. Keep in mind that, at any point in time, multiple CAs may be intending to act.
 
 ## Attention and action thresholds
 
 The first step by a CA when preparing to act is to identify an experience to attend to, even if a parent CA has already directed the CA to impact some of its own choosing.
 
-Only abstract (composite) experiences can be acted on and impacted, namely `count`, `more` and`trend`. Concrete experiences, those from sensor and effector CAs, and those imagined by a causal theory, represent "givens" that can not be changed though actions.
+Only synthetic experiences can be acted on and impacted, namely `count`, `more` and`trend`. Activation experiences and concrete experiences, those from sensor CAs, as well as those imagined by a causal theory, represent "givens" that can not be changed directly by intending to.
 
-Which actionable experience is identified depends on its pleasantness/unpleasantness and whether or not it is *sufficiently* pleasant or unpleasant (activation threshold) for the CA to pay attention to it. The activation threshold is set by the current wellbeing of the CA which propagates "osmotically" throughout the entire collective.
+Which actionable experience is identified depends on its pleasantness/unpleasantness and whether or not it is *sufficiently* pleasant or unpleasant (activation threshold) for the CA to pay attention to it. The threshold is set by the current wellbeing of the CA which propagates "osmotically" throughout the entire collective.
 
 In a low fullness context (depleted energy stores), a CA raises the threshold for action (conserve energy!), whereas, when energy is plentiful and agent engagement is low, a CA lowers the threshold for action (try something, anything!). Only an experience with normativity (pleasantness/unpleasantness) above the dynamic threshold is attended to and deemed worthy of action.
 
@@ -52,15 +52,15 @@ The CA selects which experience, if any, is *most worthy* of action in the curre
 
 ## Constructing a plan
 
-A CA builds a plan when it has identified an experience it holds that need impacting, or when it receives a higher priority plan (a set of directives) from a parent CA. When receiving directives "from above", it determines which goals are relevant to it; the others are likely relevant to sibling CAs participating in the same umwelt.
+A CA builds a plan when it has identified an experience it holds that need impacting, or when it receives a higher priority plan (as a set of directives) from a parent CA. When receiving directives "from above", it determines which goals are relevant to it; the others are likely relevant to sibling CAs participating in the same umwelt.
 
 Goals name umwelt experiences and the desired impacts (initiate, persist or terminate). It is *entirely* up to the goal-receiving umwelt CA to construct a plan for the experiences it wants to or has been requested to impact.
 
 Once a CA has identified (or been told by a parent CA of) an experience to initiate, persist or terminate, the CA must determine its own plan to achieve this goal. The composition of the plan depends on the type of experience and on the desired impact (initiate/persist/terminate). The plan's priority depends on the CA's wellbeing (value and gradient) if originating with the CA, or on the priority of the received directive.
 
-How to impact an experience depends on how it was arrived at. A constructed (aka abstract) experience is composed of observations (its base of support) which are themselves experiences once or currently held in the CA's umwelt. To impact an experience a CA holds, the CA needs to impact supporting experiences held in its umwelt.
+How to impact an experience depends on how it was arrived at. A constructed (aka synthetic) experience is composed of observations (its base of support) which are themselves umwelt experiences the CA observed. To impact an experience a CA holds, the CA needs to impact experiences held in its umwelt.
 
-A CA always owns a causal theory. At first, it is a trivial one that predicts what it already observed ("it is what it is"), or predicts randomly if it has yet to make observations. At some point, the CA ask sthe Apperception Engine for a causal theory informed by its history of observations of its umwelt.
+A CA may have a causal theory. At first, it has none. At some point, the CA ask sthe Apperception Engine for a causal theory informed by its history of observations of its umwelt.
 
 The CA can use its causal theory to predict changes to the experiences of its umwelt (i.e. incoming observations) as a result of realizing directives. This can be put to use when constructing a plan.
 
@@ -72,32 +72,29 @@ A causal theory has three kinds of rules
 
 An additional but implied rule is that a previous observation survives as a current observation if it does not contradict any constraint or static rule.
 
-A trivial causal theory has empty sets of all three kinds of rules, yielding a trivial "it is what it is" causal theory.
-
 A CA's abstract experience integrates multiple observations (predicted experiences in the CA's umwelt), either within the bounds of the current timeframe (`count`, and `more` experiences)
 or of past *and* current timeframes (`trend` experiences).
 
 The observed umwelt experiences involved in the composition of an abstract experience constitute the base of support of that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
 
-Since observations by the CA are experiences held in the umwelt of the CA, one can see how acting becomes a recursive operation that will unfold across multiple layers of CAs and over multiple CA timeframes, until effector CAs (on the lowest level of the hierarchy of CAs) become involved and the agent's relationship with its environment is modified by running mototrs etc.
+Since observations by the CA are experiences held in the umwelt of the CA, one can see how acting becomes a recursive operation that will unfold across multiple layers of CAs and over multiple CA timeframes, until effector CAs (on the lowest level of the hierarchy of CAs) become involved and the agent's relationship with its environment is modified by running motors etc.
 
-The task of constructing a plan -in order to impact an experience held by the CA- consists in deciding which supporting and observed umwelt experiences to impact and how.
+The task of constructing a plan -in order to impact an experience held by the CA- consists in deciding which observed umwelt experiences to impact and how.
 
-There will likely be different combinations of supporting experiences that could be impacted and thus there could be many alternate plans to choose from.
+There will likely be different combinations of umwelt experiences that could be impacted and thus there could be many alternate plans to choose from.
 
-The causal theory, a model of the generative processes causing these observations, informs the CA in the construction of hopefully effective plans by anticipating their consequences.
+The causal theory, a model of the generative processes causing these observations, if present, informs the CA in the construction of hopefully effective plans by anticipating their consequences.
 
-To recap, the CA can seek to impact an experience it holds by impacting supporting experiences held in its umwelt.
-This is achieved indirectly by the CA directing its umwelt to find a way to impact these supporting experiences in prescribed ways (initiate vs persist vs terminate).
+To recap, the CA can seek to impact an experience it holds by impacting causative experiences held in its umwelt.
+This is achieved indirectly by the CA directing its umwelt to find a way to impact these experiences in prescribed ways (initiate vs persist vs terminate).
 
-The only types of experiences that can be impacted are `count`, `more` and `trend` experiences.
-Concrete experiences -sensing, action taken or imagined- can not be impacted; they are givens.
+The only types of experiences that can be impacted are `count`, `more` and `trend` experiences;
+sensor CAs can not be asked to change what they perceive, activation experiences are records of actions takens, and a causal theory can not be told to imagine something else.
 
 A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading already taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
 
-Since abstract experiences are composed of experiences observed in the umwelt which can themselves be abstract experiences, a plan might be realized by more (lower-level) plans and so on until we reach only goals that can be directly impacted by activating effectors.
-
-A CA seeking to impact an umwelt experience supporting an experience it holds can do so *directly* or *indirectly*.
+A CA seeking to impact an umwelt experience causing an experience it holds can do so *directly* or *indirectly*.
+Since synthetic experiences are composed of experiences observed in the umwelt which can themselves be synthetic experiences, a plan might be realized by more (lower-level) plans and so on until we reach only goals that can be directly impacted by activating effectors.
 
 ### Directly impacting an experience
 
@@ -141,12 +138,8 @@ If the nature of the trend to impact is
 * down
   * to disrupt it, increase or stabilize the values of the observed, trending experience
   * to further it, decrease the values of the observed, trending experience
-* same
-  * to disrupt it, increase or decrease the values of the observed, trending experience
-  * to further it, maintain the values of the observed, trending experience
 * ended
-  * to disrupt it, cause a value for the previously observed, trending experience
-  * to further it, keep unknown the value of the previously observed, trending experience
+  * to disrupt it, cause a value for the previously observed, trending experience to stay the same or become unknown
 
 ### Indirectly impacting an experience given a causal theory
 
@@ -179,8 +172,6 @@ A CA executes a plan it formulates or has received at the close of its current t
 
 When a CA executes a plan it formulated, the execution of the plan possibly becomes a set of `Action(Effector, Boolean)` experiences (a.k.a. action experiences) held by effector CAs sitting at the bottom of the CA hierarchy.
 
-These action experiences held by effector CAs are automatically elevated up the hierarchy, becoming experiences shared by ancestor CAs, subject to consistency constraints (no disagreement among siblings) and abstraction constraints (they are not combined into abstract experiences).
-
 Crucially, the action experiences from the execution of the plan, like any other umwelt experiences observed by a CA, can become incorporated into the CA's causal theory when it is updated.
 
 ### Evaluating the success of reusable plans
@@ -191,10 +182,10 @@ A plan is deemed successful if it precedes closely the intended experience chang
 
 A CA might try pre-built affordance, or it might even construct a new plan, all depending on the stress felt by the CA from changes in its wellbeing.
 
-### Execution protocole
+### Execution protocol
 
-* CAs may receive intent events during their open timeframes (intents received when a timeframe is closed but not ended are accumulated and given to the next timeframe when it opens)
-* At the close of its timeframe, a CA produces its own self-serving goals, prioritize them and compare priorities with the received intents
+* CAs may receive directive events at any time during their lifecycle
+* In the `plan` phase, a CA produces its own self-serving goals, prioritize them and compare priorities with the received intents
 * A CA selects either a received intent it can help realize, or a self-assigned goal it intends to realize
   * The CA allocates an amount to time in which to try to realize the received intent or the self-assigned goal
   * If a self-assigned goal is selected
