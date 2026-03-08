@@ -28,7 +28,7 @@ All this happens at specific phases of the CA's lifecycle. The CA repeats this l
 
 The lifecycle of a CA consists of these repeating steps constituting the equivalent of an OODA loop:
 
-`predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> `bind` -> (and back to predict)
+`predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to predict)
 
 The phases `act` and `assess` are involved in setting goals, making plans, executing plans, and reviewing goals and plans.
 
