@@ -12,7 +12,7 @@ A *directive* is a delegated goal (a goal sent by a CA to its umwelt CAs request
 
 A **plan** is a set of directives designed by a CA to achieve a goal (either its own intent or a directive it received) with some priority.
 
-An *affordance* is a plan with an effectiveness score justifying its reuse by the CA.
+An *affordance* is a plan with an effectiveness score justifying its reuse.
 
 Note that the only two "ground" concepts are `goal` and `plan`; `intent`, `directive` and `affordance` are perspectives on goals and plans.
 
@@ -22,15 +22,15 @@ The mind of a robot is a collective of CAs organizing itself into an abstraction
 
 Each Cognition Actor (CA) observes (the experiences of) lower-level CAs making up its umwelt. The CA integrates these observations into its own experiences and assigns a feeling to each experience based on how its wellbeing fluctuates.
 
-Each CA aims at improving how it feels by terminating experiences that feel bad and persisting experiences that feel good. It does so by giving itself and its umwelt goals, by finding action plans to achieving its own goals (intents) as well as goals delegated to it (directives), and by executing them. The CA eventually decides whether a plan execution achieved its intended goal or whether a lingering goal or plan should be abandoned.
+Each CA aims at improving how it feels by terminating experiences that feel bad and persisting experiences that feel good. It does so by giving itself and its umwelt goals, by finding action plans to achieving its own goals (intents) as well as achieving goals delegated to it (directives), and by executing them. The CA eventually decides whether a plan execution achieved its intended goal or whether a lingering goal or plan should be abandoned.
 
 All this happens at specific phases of the CA's lifecycle. The CA repeats this lifecyle in a loop for as long as it exists. CAs higher up the hierarchy have longer lifecycles than lower-down CAs.
 
-The lifecycle of a CA consists of these repeating steps constituting the equivalent of an OODA loop:
+The lifecycle of a CA consists of these repeating phases constituting the equivalent of an OODA loop:
 
-`predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to predict)
+`predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to `predict`)
 
-The phases `act` and `assess` are involved in setting goals, making plans, executing plans, and reviewing goals and plans.
+The phases `act` and `assess` are involved in setting goals, making plans, executing plans, and reviewing extant goals and plans.
 
 During any phase, a CA:
 
@@ -38,8 +38,8 @@ During any phase, a CA:
   * from parent CAs:
     * `to_do` (add this plan to your to-do's - a plan is an all-or-none list of goals/directives to achieve)
     * `get_ready` (go ahead and try to find a plan for this directive in a to-do plan I sent you)
-    * `execute` (execute the plan you said was ready)
-    * `abandon` (remove this plan from your to_do's)
+    * `execute` (execute the plan you said was ready to achieve a directive)
+    * `abandon` (remove this plan I previously sent you to do)
   * from umwelt CAs:
     * `can_actuate` (I could conceivably find on a plan for this directive)
     * `cannot_actuate` (I can't possibly find a plan for this directive)
@@ -48,22 +48,22 @@ During any phase, a CA:
     * `executed` (I successfully executed a plan to hopefully achieve this directive)
     * `execution_failed` (I failed to execute a plan to achieve this directive)
 
-At the `act` phase, a CA works to
+At the `act` phase, a CA works to:
 
 * Update the currently most urgent intent
   * only if no intent is already progressing toward being executed
-* Advance, as priority dictates, the statuses of
-  * its own intent
-  * directives in plans to-do (moving them toward being executed)
+* Advance, as priority dictates, the statuses
+  * of its own intent
+  * of directives in plans to-do (moving them toward being executed)
   
-At the `assess` phase, a CA works to
+At the `assess` phase, a CA works to:
 
 * Determine if its intent is stale
   * If so, it abandons the intent
     * It messages its umwelt that it is abandoning its plan for it
 * Determine the success or failure of previously executed plans
   * Were goals achieved or not?
-  * Score executed plans built by the CA
+  * Give a score to executed plans built by the CA
     * Perhaps turning them into affordances
 
 ## Action-related state
