@@ -118,13 +118,12 @@ At any phase in a time frame, the CA immediately processes all events and messag
 
 The phases of a time frame are:
 
-* predict       - make predictions from current observations 
+* predict       - make predictions from current observations
 * observe       - merge predictions and prediction errors into new observations
 * experience    - integrate current and past observations into terminated, updated and new experiences
 * feel          - assign a normative value (from worst to best feeling) to each experience
 * act          - formulate, accept and prioritize goals, make plans to achieve goals and execute them
-* assess        - evaluate causal theory and request new one if unsatisfactory, grant past plans affordance status if their goals were achieved, abandon stale goals
-* bind          - update and diffuse wellbeing (create cognitive glue)
+* assess        - evaluate causal theory and request new one if unsatisfactory, grant past plans affordance status if their goals were achieved, abandon stale goals, update and diffuse wellbeing (create cognitive glue)
 
 The pattern is *Message to self -> Task -> Follow-up message to self*
 
@@ -133,14 +132,12 @@ The pattern is *Message to self -> Task -> Follow-up message to self*
 title: The phases of each timeframe of a Cognition Actor
 ---
 stateDiagram-v2
-    [*] --> new: Create a new CA with an umwelt
-    new --> predict: Set up the initial state of the CA
+    [*] --> predict: Create a new CA with an umwelt
     predict --> observe: Make predictions about umwelt experiences
     observe --> experience: Merge predictions and prediction errors into new observations
     experience --> feel: Unify observations into experiences
-    feel --> act: Make experiences be good or bad
+    feel --> act: Make experiences feel good or bad
     act --> assess: Formulate and execute plans to impact experiences
-    assess --> bind: Evaluate competency of causal model and past plans, review active goals, choose to go on
-    bind --> predict: Update and diffuse wellbeing
-    bind --> [*]: Choose to terminate self
+    assess --> predict: Evaluate competency of causal model and past plans, review active goals, update and diffuse wellbeing, choose to go on
+    assess --> [*]: Choose to terminate self
 ```
