@@ -2,11 +2,9 @@
 
 A CA strives to become increasingly competent at surviving by making sense of its umwelt and taking actions beneficial to its wellbeing.
 
-A CA makes sense of its umwelt (a few lower-level CAs) by predicting changes to it (i.e. predicting incoming observations of its umwelt CAs' experiences)
-and by abstracting experiences from observations of its umwelt. Its experiencesn become observations available to parent CAs (higher-level CAs that have the CA in their umwelts).
+A CA makes sense of its umwelt (a few lower-level CAs) by predicting changes to it (i.e. predicting incoming observations of its umwelt CAs' experiences) and by abstracting experiences from observations of its umwelt. Its experiencesn become observations available to parent CAs (higher-level CAs that have the CA in their umwelts).
 
-A CA is effective at impacting its umwelt if it has reliable affordances it can apply to validate pleasant experiences or invalidate unpleasant experiences.
-An experience is pleasant if it was derived in the context of high or improving wellbeing, unpleasant in the context of low or worsening wellbeing
+A CA is effective at impacting its umwelt if it has reliable affordances it can apply to validate pleasant experiences or invalidate unpleasant experiences. An experience is pleasant if it was derived in the context of high or improving wellbeing, unpleasant in the context of low or worsening wellbeing
 
 The more competent a CA is, the more likely it is that its parents CAs will be competent and survive, and thus the more likely it is that the CA itself will survive; orphaned CAs are susceptible to removing themselves when wellbeing is consistently low.
 
@@ -74,7 +72,7 @@ When the maximum number of remembered states is reached and the latest state is 
   * Umwelt CAs constrain the space of experiences of their parent CAs
     * By constraining what the parent CAs's experiences can be derived from
 
-## Believing (detecting patterns of change in observations)
+## Experiencing (detecting patterns of change in observations)
 
 * A sensor CA has atomic experiences obtained from sensor readings
 * A non-sensor CA gets its experiences
@@ -93,7 +91,7 @@ When the maximum number of remembered states is reached and the latest state is 
 
 ## Attention
 
-* An experience, when synthesized, is associated with a wellbeing/pleasantness trend (better, worse, same)
+* An experience, when synthesized, is associated with a feeling based on wellbeing/pleasantness trend (better, worse, same)
   * A CA remembers the ambient wellbeing at each timeframe
 * A CA normally does not intend to further/disrupt experiences when wellbeing trends not far enough from neutral
 * Higher-level experiences are more likely to be associated with clear wellbeing trends than lower-level experiences
@@ -124,9 +122,8 @@ The phases of a time frame are:
 * observe       - merge predictions and prediction errors into new observations
 * experience    - integrate current and past observations into terminated, updated and new experiences
 * feel          - assign a normative value (from worst to best feeling) to each experience
-* plan          - formulate and prioritize goals (formulated and received), select a goal, construct a plan and emit it
-* act           - confirm plan feasibility, execute it, remember the goal and plan for later assessment
-* assess        - evaluate causal theory and request new one if unsatisfactory, grant past plans affordance status if their goals were achieved
+* act          - formulate, accept and prioritize goals, make plans to achieve goals and execute them
+* assess        - evaluate causal theory and request new one if unsatisfactory, grant past plans affordance status if their goals were achieved, abandon stale goals
 * bind          - update and diffuse wellbeing (create cognitive glue)
 
 The pattern is *Message to self -> Task -> Follow-up message to self*
@@ -141,10 +138,9 @@ stateDiagram-v2
     predict --> observe: Make predictions about umwelt experiences
     observe --> experience: Merge predictions and prediction errors into new observations
     experience --> feel: Unify observations into experiences
-    feel --> plan: Make experiences good or bad
-    plan --> act: Formulate a plan to impact standout experience
-    act --> assess: Confirm plan directives feasibility and execute them
-    assess --> bind: Evaluate competency of causal model and past plans, , choose to go on
+    feel --> act: Make experiences be good or bad
+    act --> assess: Formulate and execute plans to impact experiences
+    assess --> bind: Evaluate competency of causal model and past plans, review active goals, choose to go on
     bind --> predict: Update and diffuse wellbeing
     bind --> [*]: Choose to terminate self
 ```
