@@ -18,68 +18,68 @@ Note that the only two "ground" concepts are `goal` and `plan`; `intent`, `direc
 
 ## How Cognition Actors act
 
-The mind of a robot is a collective of CAs organizing itself into an abstraction hierarchy.
+The mind of a robot is a collective of CAs organizing themselves into an abstraction hierarchy.
 
-Each Cognition Actor (CA) observes (the experiences of) lower-level CAs making up its umwelt. The CA integrates these observations into its own experiences and assigns a feeling to each experience based on how its wellbeing fluctuates.
+Each Cognition Actor (CA) observes (the experiences of) lower-level CAs making up its umwelt. The CA aggregates and integrates these observations into its own experiences and assigns a feeling to each experience based on how its wellbeing fluctuates.
 
-Each CA aims at improving how it feels by terminating experiences that feel bad and persisting experiences that feel good. It does so by giving itself and its umwelt goals, by finding action plans to achieving its own goals (intents) as well as achieving goals delegated to it (directives), and by executing them. The CA eventually decides whether a plan execution achieved its intended goal or whether a lingering goal or plan should be abandoned.
+Each CA aims at improving how it feels by terminating experiences that feel bad and persisting experiences that feel good. It does so by giving itself and its umwelt goals, by finding action plans to achieving its own goals (intents) and goals delegated to it (directives), and by executing them. The CA eventually decides whether a plan execution achieved its associated goal or whether a lingering goal or plan should be abandoned.
 
-All this happens at specific phases of the CA's lifecycle. The CA repeats this lifecyle in a loop for as long as it exists. CAs higher up the hierarchy have longer lifecycles than lower-down CAs.
+All this happens at specific phases of the CA's lifecycle. The CA repeats this lifecyle in a loop for as long as it persists. CAs higher up the hierarchy have longer lifecycles than lower-down CAs, which provides room for sub-plans to execute and realize higher-level plans that spawned them.
 
 The lifecycle of a CA consists of these repeating phases constituting the equivalent of an OODA loop:
 
 `predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to `predict`)
 
-The phases `act` and `assess` are involved in setting goals, making plans, executing plans, and reviewing extant goals and plans.
+The phases `act` and `assess` are involved in setting goals, making plans, executing plans, and reviewing the success of extant goals and plans.
 
-During any phase, a CA:
+The achieving of a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs.
 
-* receives messages
-  * from parent CAs:
-    * `to_do` (add this plan to your to-do's - a plan is an all-or-none list of goals/directives to achieve)
-    * `get_ready` (go ahead and try to find a plan for this directive in a to-do plan I sent you)
-    * `execute` (execute the plan you said was ready to achieve a directive)
-    * `abandon` (remove this plan I previously sent you to do)
-  * from umwelt CAs:
-    * `can_actuate` (I could conceivably find on a plan for this directive)
-    * `cannot_actuate` (I can't possibly find a plan for this directive)
-    * `ready` (I have a plan I can execute to achieve this directive)
-    * `not_ready` (I tried but did not find a plan for this directive)
-    * `executed` (I successfully executed a plan to hopefully achieve this directive)
-    * `execution_failed` (I failed to execute a plan to achieve this directive)
+During any phase of its lifecycle, a CA receives messages
 
-At the `act` phase, a CA works to:
+* from parent CAs:
+  * `to_do` (add this plan to your to-do's - a plan is an all-or-none list of goals/directives to achieve)
+  * `get_ready` (go ahead and try to find a plan for this directive in a to-do plan I sent you)
+  * `execute` (execute the plan you said was ready to achieve a directive)
+  * `abandon` (remove this plan I previously sent you to do)
+* from umwelt CAs:
+  * `can_actuate` (I could conceivably find on a plan for this directive)
+  * `cannot_actuate` (I can't possibly find a plan for this directive)
+  * `ready` (I have a plan I can execute to achieve this directive)
+  * `not_ready` (I tried but did not find a plan for this directive)
+  * `executed` (I successfully executed a plan to hopefully achieve this directive)
+  * `execution_failed` (I failed to execute a plan to achieve this directive)
 
-* Update the currently most urgent intent
-  * only if no intent is already progressing toward being executed
-* Advance, as priority dictates, the statuses
+During the `act` phase, a CA works to:
+
+* Update what is currently its most urgent intent
+  * but only if no intent is already progressing toward being executed
+* Advance, toward beging achieved and as priority dictates, the statuses
   * of its own intent
-  * of directives in plans to-do (moving them toward being executed)
+  * of directives in plans it received from parent CAs
   
 At the `assess` phase, a CA works to:
 
 * Determine if its intent is stale
-  * If so, it abandons the intent
-    * It messages its umwelt that it is abandoning its plan for it
+  * If so, it abandons it and lets its umwelt know
 * Determine the success or failure of previously executed plans
-  * Were goals achieved or not?
-  * Give a score to executed plans built by the CA
-    * Perhaps turning them into affordances
+  * If success, give a score to executed plans built by the CA, perhaps making them affordances
 
 ## Action-related state
 
-Each CA manages a changing state. The data composing this state captures, in the current and past timeframes, what the CA has observed, experienced, felt etc. and also its goals, plans and how they are progressing.
+Each CA manages a changing state. The data composing this state captures, in the current and past timeframes, what the CA has observed, experienced, felt etc. as well as its goals, plans and how they are progressing.
   
 ### Goal status
 
-The status of a goal indicates where it is in its progression toward being achieved, including being stuck at a dead end.
+The status of a goal indicates where it is in its progression toward being achieved, including being at a dead end.
+
+The possible statuses are:
 
 * `none` (no progress yet)
-* `can_actuate` (the goal relates to experiences)
+* `can_actuate` (the goal was found to relate to one or more experiences)
 * `cannot_actuate` (the goal does not relate to any experience)
-* `getting_ready` (working on a plan)
-* `ready` (the plan is ready)
-* `executed` (the plan was executed)
+* `getting_ready` (working on a plan to achieve the goal)
+* `ready` (the plan for the goal is ready)
+* `executed` (the plan for the goal was executed)
 * `achieved` (the goal was achieved)
 
 ```mermaid
@@ -102,7 +102,9 @@ stateDiagram-v2
 
 ### Plan status
 
-The status of a plan is infered from the statuses of its component goals (aka directives)
+The status of a plan is infered from the statuses of its component goals (aka directives).
+
+The possible status of a plan are:
 
 * `pending` (still determining the readiness of the plan's directives)
 * `ready` (all directives in the plan are ready to have their own plans executed)
@@ -131,20 +133,22 @@ The state of the CA consist of many properties, including the following it uses 
 
 * `intent`- Goal - The CA's current intent
 * `plans_in` - [Plan, ...] - All the plans received from parent CAs and being worked on
-* `plans_out` - [Plan, ...] - The plans sent out to achieve the intent and the directives in received plans
-* `goal_states` - [GoalState, ...] - The states of the intent and of directives in plans received from parents (how is the CA doing responding to directives received from parent CAs) and in plans sent to the umwelt (how are umwelt CAs responding to directives sent by the CA)
+* `plans_out` - [Plan, ...] - The plans sent out to umwelt CAs to achieve the CA's intent and the directives from received plans
+* `goal_states` - [GoalState, ...] - The statuses of the CA's intent and of directives the CA received and sent, as well as messages it received that caused the status changes and messages it sent to report them
 
 ### Data structures
 
-`goal{id: ID, target: Target, impact: Impact}`
+The coded representations of goals, plans and goal states.
+
+#### `goal{id: ID, target: Target, impact: Impact}`
 
 > ID: A goal's ID is fully determined by Target and Impact - two goals in different plans will have the same ID if they are semantically the same
 >
-> Target: `target{origin: Origin, kind: Kind, value: Value}` - property or relation
+> Target: `target{origin: Origin, kind: Kind, value: Value}` - the state of a property or relation
 >
 > Impact: `create` | `persist` | `terminate`
 
-`plan{id: ID, goal: GoalID, directives: [Goal, ...], , priority: Priority, score: Score, by: CA_ID}`
+#### `plan{id: ID, goal: GoalID, directives: [Goal, ...], , priority: Priority, score: Score, by: CA_ID}`
 
 > ID: A unique id for the plan. No two plans have the same id.
 >
@@ -154,14 +158,14 @@ The state of the CA consist of many properties, including the following it uses 
 >
 > Priority: 0.0..1.0 - How important is this plan to the CA that sent it out
 >
-> Score: 0.0..1.0 | none - Score is always none for plans received
+> Score: 0.0..1.0 | none - Score is always none for plans received (it is up to the sender to score them)
 >
 > CA_ID: The id of the CA that built the plan (can be the CA if for its intent, or a parent CA)
 
-`goal_state{goal: GoalID, status: Status, messages: [GoalMessage, ...]}`
+#### `goal_state{goal: GoalID, status: Status, messages: [GoalMessage, ...]}`
 
-> GoalID: The id of the goal - Note that multiple plans might contain a given goal
+> GoalID: The id of the goal - Note that multiple plans might unknowingly contain the same goal
 >
 > Status: `none` | `can_actuate` | `cannot_actuate` | `getting_ready` | `ready` | `executed` | `achieved`
 >
-> GoalMessage - A message received or sent about the goal, latest first. The messages reflect the status history of a goal.
+> GoalMessage - A message received or sent about the goal, latest first. A received message causes the status of a goal to change or and a sent message communicates the change.
