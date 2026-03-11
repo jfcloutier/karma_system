@@ -70,7 +70,7 @@ At the `assess` phase, a CA:
 
 ### Plan execution
 
-Executing a plan to achieve a goal is *recursive* since the execution of the directives (delegated goals) in the plan means executing the (sub) plans readied for the directives. The recursion resolves at the bottom of the hierarchy of CAs with effector CAs activating the robot's effectors (mostly motors).
+Executing a plan to achieve a goal is *recursive* since the execution of the directives (delegated goals) in the plan means executing the (sub) plans readied for achieving the directives. The recursion resolves at the bottom of the hierarchy of CAs with effector CAs activating the robot's effectors (mostly motors).
 
 A recursive execution **always** begins with a CA executing a plan it readied to achieve its own intent.
 
