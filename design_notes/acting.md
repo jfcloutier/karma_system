@@ -18,7 +18,7 @@ An *intent* is a self-assigned goal to impact one of its own felt experiences.
 
 A *directive* is a goal delegated by a CA to its umwelt CAs requesting that they impact experiences that the CA observed them having.
 
-A **plan** is a set of directives designed by a CA for its umwelt to achieve, with some priority, either an intent or a directive it received.
+A **plan** is a prioritized set of directives designed by a CA and sent to its umwelt CAs to achieve either its own intent or a directive it received.
 
 An *affordance* is a plan with an effectiveness score justifying its reuse.
 
@@ -34,9 +34,9 @@ The lifecycle of a CA consists of these repeating phases constituting the equiva
 
 `predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to `predict`)
 
-The phases `act` and `assess` are involved in setting goals, making plans, executing plans, and reviewing the success of extant goals and plans.
+The phases `act` and `assess` are involved in setting goals, making and prioritizing plans, executing plans, and reviewing the success of extant goals and plans.
 
-Achieving of a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs. Coordination happens via the exchange of messages.
+Achieving a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs. Coordination happens via the exchange of messages.
 
 During any phase of its lifecycle, a CA receives messages
 
@@ -57,7 +57,7 @@ During the `act` phase, a CA:
 
 * Updates what it curently considers to be its most urgent intent
   * but only if no intent is already progressing toward being executed
-* Advances toward completion and as priority dictates the statuses
+* Advances toward completion, as priority dictates, the statuses
   * of its own intent
   * of directives in plans it received from parent CAs
   
@@ -68,13 +68,21 @@ At the `assess` phase, a CA:
 * Determines the success or failure of previously executed plans
   * If successful, it gives a score to executed plans built by the CA, perhaps making them affordances
 
+### Plan execution
+
+Executing a plan to achieve a goal is *recursive* since the execution of the directives (delegated goals) in the plan means executing the (sub) plans readied for the directives. The recursion resolves at the bottom of the hierarchy of CAs with effector CAs activating the robot's effectors (mostly motors).
+
+A recursive execution **always** begins with a CA executing a plan it readied to achieve its own intent.
+
+It is possible for a CA to participate at once in the executions of intents from multiple ancestor CAs (parent CAs or parent CAs of parent CAs etc.). Such overlapping executions may or may not conflict with each other.
+
 ## Action-related state
 
 Each CA independently manages its own changing state. The data composing this state captures, in the current and in remembered timeframes, what the CA has observed, experienced, felt etc. as well as its goals, plans and their progress.
   
 ### Goal status
 
-The status of a goal indicates where it is in its progression toward being achieved, including being at a dead end.
+The status of a goal indicates where it is in its progression toward, hopefully, being achieved, including the possibility of reaching a dead end.
 
 The possible statuses are:
 
