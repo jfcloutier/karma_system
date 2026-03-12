@@ -38,20 +38,25 @@ The phases `act` and `assess` are involved in setting goals, making and prioriti
 
 Achieving a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs. Coordination happens via the exchange of messages.
 
-During any phase of its lifecycle, a CA receives messages
+During any phase of its lifecycle, a CA receives events and messages. Events are multicated by a CA to its umwelt CAs whereas umwelt CAs send messages to their parent CAs.
 
-* from parent CAs:
-  * `to_do`  - add this plan to your to-do's - a plan is an all-or-none list of goals/directives to achieve
-  * `get_ready` - go ahead and try to find a plan for this directive in a to-do plan I sent you
-  * `execute` - execute the plan you said was ready to achieve a directive
-  * `abandon` - remove this plan I previously sent you to do
-* from umwelt CAs:
-  * `can_actuate` - I could conceivably find on a plan for this directive
-  * `cannot_actuate` - I can't possibly find a plan for this directive
-  * `ready` - I have a plan I can execute to achieve this directive
-  * `not_ready` - I tried but did not find a plan for this directive
-  * `executed` - I successfully executed a plan to hopefully achieve this directive
-  * `execution_failed` - I failed to execute a plan to achieve this directive
+### Events from parent CAs:
+
+* `to_do([id=PlanId, priority=Priority, directives=[Goal, ...])` - add this plan to your to-do's - a plan isan all-or-none list of goals/directives to achieve
+* `get_ready([goal_id=GoalId])` - go ahead and try to find a plan for this directive in a to-do plan I sentyou
+* `execute([goal_id=GoalId])` - execute the plan you said was ready to achieve a directive
+* `abandon([pland_id=PlanId])` - remove this plan I previously sent you to do
+
+### Messages from umwelt CAs:
+
+* `can_actuate(GoalId)` - I could conceivably find on a plan for this directive
+* `cannot_actuate(GoalId)` - I can't possibly find a plan for this directive
+* `ready(GoalId)` - I have a plan I can execute to achieve this directive
+* `not_ready(GoalId)` - I tried but did not find a plan for this directive
+* `executed((GoalId))` - I successfully executed a plan to hopefully achieve this directive
+* `execution_failed(GoalId)` - I failed to execute a plan to achieve this directive
+
+### Action phases
 
 During the `act` phase, a CA:
 
