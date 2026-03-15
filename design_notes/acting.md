@@ -40,14 +40,14 @@ Achieving a goal and the planned sub-goals it depends on requires coordination b
 
 During any phase of its lifecycle, a CA receives events and messages. Events are multicated by a CA to its umwelt CAs whereas umwelt CAs send messages to their parent CAs.
 
-### Events from parent CAs:
+### Events from parent CAs
 
 * `to_do([id=PlanId, priority=Priority, directives=[Goal, ...])` - add this plan to your to-do's - a plan isan all-or-none list of goals/directives to achieve
 * `get_ready([goal_id=GoalId])` - go ahead and try to find a plan for this directive in a to-do plan I sentyou
 * `execute([goal_id=GoalId])` - execute the plan you said was ready to achieve a directive
 * `abandon([pland_id=PlanId])` - remove this plan I previously sent you to do
 
-### Messages from umwelt CAs:
+### Messages from umwelt CAs
 
 * `can_actuate(GoalId)` - I could conceivably find on a plan for this directive
 * `cannot_actuate(GoalId)` - I can't possibly find a plan for this directive
