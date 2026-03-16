@@ -40,22 +40,6 @@ Achieving a goal and the planned sub-goals it depends on requires coordination b
 
 During any phase of its lifecycle, a CA receives events and messages. Events are multicated by a CA to its umwelt CAs whereas umwelt CAs send messages to their parent CAs.
 
-### Events from parent CAs
-
-* `to_do([id=PlanId, priority=Priority, directives=[Goal, ...])` - add this plan to your to-do's - a plan isan all-or-none list of goals/directives to achieve
-* `get_ready([goal_id=GoalId])` - go ahead and try to find a plan for this directive in a to-do plan I sentyou
-* `execute([goal_id=GoalId])` - execute the plan you said was ready to achieve a directive
-* `abandon([pland_id=PlanId])` - remove this plan I previously sent you to do
-
-### Messages from umwelt CAs
-
-* `can_actuate(GoalId)` - I could conceivably find on a plan for this directive
-* `cannot_actuate(GoalId)` - I can't possibly find a plan for this directive
-* `ready(GoalId)` - I have a plan I can execute to achieve this directive
-* `not_ready(GoalId)` - I tried but did not find a plan for this directive
-* `executed((GoalId))` - I successfully executed a plan to hopefully achieve this directive
-* `execution_failed(GoalId)` - I failed to execute a plan to achieve this directive
-
 ### Action phases
 
 During the `act` phase, a CA:
@@ -73,13 +57,89 @@ At the `assess` phase, a CA:
 * Determines the success or failure of previously executed plans
   * If successful, it gives a score to executed plans built by the CA, perhaps making them affordances
 
-### Plan execution
+### Communication
 
-Executing a plan to achieve a goal is *recursive* since the execution of the directives (delegated goals) in the plan means executing the (sub) plans readied for achieving the directives. The recursion resolves at the bottom of the hierarchy of CAs with effector CAs activating the robot's effectors (mostly motors).
+#### From parent to umwelt
 
-A recursive execution **always** begins with a CA executing a plan it readied to achieve its own intent.
+`todo([Directive, ...])`
 
-It is possible for a CA to participate at once in the executions of intents from multiple ancestor CAs (parent CAs or parent CAs of parent CAs etc.). Such overlapping executions may or may not conflict with each other.
+* For each directive,
+  * if not relevant to the umwelt CA, respond to parent with `cannot_seek(Directive)`
+  * if relevant, respond with `can_seek(Directive)`
+
+`execute(Directive, PlanId)`
+
+* Search for a feasible plan for the directive
+* If plan **not** found
+  * send back `failed_to_execute(Directive)`
+* Else
+  * retain the directive (associating it with a parent's plan)
+  * execute the plan for it
+
+`abandon(PlanId)`
+
+* Forget all directives associated with the parent's plan
+
+#### From umwelt to parent
+
+`can_seek(Directive)`
+
+* Sent if the directive is relevant to the umwelt CA
+
+`cannot_seek(Directive)`
+
+* Sent if the directive is not relevant to the umwelt CA
+
+`executed(Directive)`
+
+* Sent when the umwelt CA's plan for the directive completed execution successfully
+
+`failed_to_execute(Directive)`
+
+* Sent when the umwelt CA's plan for the directive failed to complete execution
+
+#### When umwelt CAs are effector CAs (level 0)
+
+A parent CA's plan (at level 1) are composite actions (e.g. [left_wheel:spin, left_wheel:spin, right_wheel:reverse_spin]) known to be meaningful to its umwelt.
+
+Being composite actions, plans are execute at once instead of as a sequence of directives. Execution always succeeds.
+
+`ready_actions([Action, ...], PlanId)`
+
+* Sent to each umwelt CA who then prepares the body to execute the relevant actions
+
+### Searching for a feasible plan to achieve a goal
+
+* Construct a plan that might achieve the goal
+  * Submit it as `todo([Directive, ...])` to the umwelt for consideration
+* Wait for confirmation that all its directives can be sought, confirmed by `can_seek(Directive)`(feasible)
+  * or for a directive that can't be sought by the entire umwelt, confirmed by `cannot_seek(Directive)` (not feasible)
+* If feasible, execute it
+  * If execution failed for any of the plan's directives
+    * search for another feasible plan and execute it
+* If not feasible,
+  * search for another plan
+* If no feasible plan can be found
+  * send back `execution_failed(Directive)`
+* If replacing an intent that is not yet executed,
+  * tell the umwelt to `abandon(Directive)` for each the directive associated with the intent's plan
+
+### Executing a plan to achieve a goal
+
+* If CA level > 1
+  * Select the next ready directive in the plan
+  * Select an umwelt CA who can seek to achieve the directive
+  * Send it `execute(Directive, PlanId)`
+  * If `execute_failed(Directive)` is received
+    * select another umwelt CA that can_seek it and tell it to execute it
+    * if none left and the plan's goal was a directive
+      * send `failed_to_execute(Directive)` to the parent who sent the goal
+  * If all directives in the plan were executed and if the plan's goal was a directive
+    * send `executed(Directive)` to parent who sent the directive
+* If level 1 - a plan for a directive is a single act composed of actions to be taken all at once
+  * send static umwelt `ready_actions([Action, ...])`
+  * call `body:execute`
+  * send `executed(Directive)` to parent who sent the directive
 
 ## Action-related state
 
@@ -92,12 +152,11 @@ The status of a goal indicates where it is in its progression toward, hopefully,
 The possible statuses are:
 
 * `none` - no progress yet
-* `can_actuate` - the goal was found to relate to one or more experiences of the CA
-* `cannot_actuate` - the goal does not relate to any experience
-* `getting_ready` - working on a plan to achieve the goal
-* `ready` - the plan for the goal is ready
-* `not_ready` - could not come up with a plan for the goal
+* `can_seek` - the goal was found to relate to one or more experiences of the CA
+* `cannot_seek` - the goal does not relate to any experience
+* `executing` - working on finding and executing a plan to achieve the goal
 * `executed` - the plan for the goal was executed
+* `failed_to_execute` - no plan can be found that could be successfully executed
 * `achieved` - the goal was achieved
 
 ```mermaid
@@ -106,53 +165,24 @@ title: Goal status
 ---
 stateDiagram-v2
     [*] --> none
-    none --> can_actuate : an experience matches the goal
-    none --> cannot_actuate : no experience matches the goal
-    cannot_actuate --> [*]
-    can_actuate --> getting_ready : finding a workable plan
-    getting_ready --> ready : a workable plan was found
-    getting_ready --> not_ready : no workable plan could be found
-    not_ready --> [*]
-    ready --> executed : the plan is executed
+    none --> can_seek : an experience matches the goal
+    none --> cannot_seek: no experience matches the goal
+    cannot_seek --> [*]
+    can_seek --> executing : looking for a feasible plan or executing it
+    executing --> executed : the plan was executed
+    executing --> failed_to_execute : no feasible plan could be found or executed successfully
     executed --> achieved : the goal was realized
+    failed_to_execute --> [*]
     executed --> [*] : the goal was not realized
     achieved --> [*]
 ```  
-
-### Plan status
-
-The status of a plan is infered from the statuses of its component goals (aka directives).
-
-The possible status of a plan are:
-
-* `pending` - still determining the readiness of the plan's directives
-* `ready` - all directives in the plan are ready to have their own plans executed
-* `not_ready` - some directives in the plan can not be made ready
-* `executed` - all directives in the plan had their plans successfully executed
-* `failed` - not all directives in the plan had their plans successfully executed
-
-```mermaid
----
-title: Plan status
----
-stateDiagram-v2
-    [*] --> pending : plans for directives under construction
-    pending --> ready : all directives have workable plans
-    pending --> not_ready : some directives can not have plans
-    ready --> executed : all plans for the directives were executed successfully
-    ready --> failed : some plans for the directives failed to execute
-    not_ready --> [*]
-    executed --> [*]
-    failed --> [*]
-```
   
 ### Relevant state properties
 
 The state of the CA consist of many properties, including the following it uses to manage its actions:
 
 * `intent`- `goal{...}` - The CA's current intent
-* `plans_in` - [`plan{...}`, ...] - All the plans received from parent CAs and being worked on
-* `plans_out` - [`plan{...}`, ...] - The plans sent out to umwelt CAs to achieve the CA's intent and to achieve the directives from received plans
+* `plans` - [`plan{...}`, ...] - All the plans built to achieve the intent and directives to execute
 * `goal_states` - [`goal_state{...}`, ...] - The statuses of the CA's intent and of directives the CA received and sent, as well as messages it received that caused the status changes and messages it sent to report them
 
 ### Data structures
@@ -183,6 +213,6 @@ How goals, plans and goal states are encoded as data:
 
 > GoalID: The id of the goal - Note that multiple plans might unknowingly contain the same goal
 >
-> Status: `none` | `can_actuate` | `cannot_actuate` | `getting_ready` | `ready` | `executed` | `achieved`
+> Status: `none` | `can_seek` | `cannot_seek` | `executing` | `failed_to_execute` | `executed` | `achieved`
 >
 > GoalMessage - A message received or sent about the goal, latest first. A received message can cause the status of a goal to change, a sent message communicates that change.
