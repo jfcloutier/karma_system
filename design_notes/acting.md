@@ -12,7 +12,7 @@ A CA initiates action by:
 
 A workable plan is found if there is a workable (sub) plan for each of its directives.
 
-At any point in time, there may be multiple CAs attempting to achieve their own intents. These attempts may get in each other's way. Such conflicts are minimized by executing according to precedence. Precedence is determined by the hierarchical level of owner of the causal intent and by the priority it assigned to the achievement of its intent.
+At any point in time, there may be multiple CAs attempting to achieve their own intents. These attempts may get in each other's way. Such conflicts are minimized by executing according to precedence. Precedence is determined by the hierarchical level of owner of the causal intent (higher-ups matter more) and by the priority a CA assigned to the achievement of its intent.
 
 ## About Cognition Actors
 
@@ -186,11 +186,11 @@ A CA may receive at any time an event telling it that an ancestor abandoned achi
 
 Let's assume that a CA has an intent and directives it received to achieve the intent of an ancestor CA.
 
-The CA selects the pending (not executing or executed) and planned goal (intent or received directive) that has precedence. The plan for the goal being feasible implies that, for each directive in the plan, these is an umwelt CA with a feasible plan of its own to achieve that directive.
+The CA selects the pending (not executing or executed) and goal (intent or received directive) with a feasible plan that has precedence. The plan for the goal being feasible implies that, for each directive in the plan, these is an umwelt CA with a feasible plan of its own to achieve that directive.
 
-The CA takes each pending directive in the plan in turn and asks the umwelt CA that is known to have a plan for it to execute its plan in the context of an intent. (`execute_plan(PlanId, IntentId)`). When the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, it broadcasts `executed(Directive)` to its parents. The execution of a plan is stepwise.
+The execution of a plan is stepwise. The CA takes each pending directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute_plan(PlanId, IntentId)`). When the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed(Directive)` to its parents.
 
-However, if a CA is level 1 (its umwelt are static CAs), its plan is a list of effector actions. They are not executed stepwise but all at once by telling effector CAs to accumulate them (wait for umwelt confirmation), then ready them for actuation (wait for umwelt confirmation), and then by telling the body to execute accumulated actions for the directives.
+However, if a CA is at level 1 of the hierarchy (its umwelt are static CAs), its plan is a list of effector actions. They are not executed stepwise but all at once by telling effector CAs to accumulate them (wait for umwelt confirmation), then ready them for actuation (wait for umwelt confirmation), and then by telling the body to execute accumulated actions for the directives.
 
 ## Action-related state
 
