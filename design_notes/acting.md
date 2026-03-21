@@ -1,18 +1,18 @@
 # Acting
 
-A Cognition Actor (CA) acts by giving itself a goal (its intent) or being given goals (directives), by finding plans that might achieve some or all of these goals, and by executing these plans.
+A Cognition Actor (CA) acts by giving itself a goal (its intent) or being given goals (directives), then finding plans that might achieve some or all of these goals, and by executing these plans.
 
-A CA with intent triggers the recursive execution of a plan to achieve the intent when the plan is (transitively) ready to execute.
+A CA with intent triggers the recursive, stepwise execution of a plan to achieve the intent when the plan is (transitively) ready to execute.
 
 A CA initiates action by:
 
 1- Giving itself an intent and assigning it a priority
-2- Finding a workable plan for it to be carried out its umwelt (with its sub-plans etc. down to effector actions)
-3- Executing it (executing sub-plans etc. down to actieffectorsons)
+2- Finding a workable plan for it to be carried out by its umwelt (with its sub-plans etc. down to effector actions)
+3- Executing it (stepwise and recursively via sub-plans,  down to effector actions)
 
-A workable plan is found if there is a workable (sub) plan for each of its directives.
+A workable plan is found if there is a workable plan for each of its directives.
 
-At any point in time, there may be multiple CAs attempting to achieve their own intents. These attempts may get in each other's way. Such conflicts are minimized by executing according to precedence. Precedence is determined by the hierarchical level of owner of the causal intent (higher-ups matter more) and by the priority a CA assigned to the achievement of its intent.
+At any point in time, there may be multiple CAs attempting to achieve their own intents. These attempts may get in each other's way. Such conflicts are minimized by executing according to precedence. Precedence is determined by the hierarchical level of the owner of the causal intent (higher-ups matter more) and by the priority a CA assigned to the achievement of its intent.
 
 ## About Cognition Actors
 
@@ -20,15 +20,17 @@ The mind of a robot is a collective of CAs organizing themselves into an abstrac
 
 Each Cognition Actor (CA) observes what lower-level CAs making up its umwelt experience. The CA aggregates and integrates these observations into its own experiences and assigns a feeling to each one based on how wellbeing fluctuates.
 
-A CA acts to improve how it feels by achieving goals of terminating bad experiences and persisting good ones. Over its lifetime, a CA gives itself goals (intents) and delegates sub-goals (directives) to its umwelt for achieving them. A CA finds plans to achieve goals and executes them. The CA eventually decides whether the execution of a plan achieved its goal, or whether a goal or plan has become stale and should be abandoned.
+A CA acts to improve how it feels by achieving the goals of terminating bad experiences and persisting good ones. Over its lifetime, a CA gives itself goals (intents) and, to achieve them, delegates sub-goals (directives) to its umwelt.
+
+A CA finds plans to achieve goals and executes them. The CA eventually decides whether the execution of a plan achieved its goal, or whether a goal or plan has become stale and should be abandoned.
 
 ## Definitions
 
 A **goal** is a relation/property, observed or experienced, that a CA aims to impact in a certain way.
 
-An *intent* is a self-assigned goal to impact an own felt experience.
+An *intent* is a self-assigned goal by the CA to impact a felt experience.
 
-A *directive* is a goal delegated by a CA to its umwelt CAs requesting that they impact experiences that the CA observed them having.
+A *directive* is a goal delegated by a CA to its umwelt CAs requesting that they impact experiences that the CA observed them having and that caused its own felt experiences.
 
 A **plan** is a prioritized set of directives designed by a CA and sent to its umwelt CAs to achieve either its own intent or a directive it received from a parent CA.
 
@@ -40,7 +42,7 @@ Note that the only two "ground" concepts are `goal` and `plan`; `intent`, `direc
 
 Acting happens at specific phases of the CA's lifecycle.
 
-The CA repeats this lifecyle in a loop for as long as it persists. CAs higher up the hierarchy have longer lifecycles than lower-down CAs, which provides room for sub-plans to execute and to realize higher-level goals that spawned them.
+The CA repeats this lifecyle in a loop for as long as it persists. CAs higher up the hierarchy have longer lifecycles than lower-down CAs, which provides room for sub-plans to execute and to realize the higher-level goals that spawned them.
 
 The lifecycle of a CA consists of these repeating phases constituting the equivalent of an OODA loop:
 
@@ -48,7 +50,7 @@ The lifecycle of a CA consists of these repeating phases constituting the equiva
 
 The phases `act` and `assess` are involved in setting goals, making and prioritizing plans, executing plans, and reviewing the success of extant goals and plans.
 
-Achieving a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs. During any phase of its lifecycle, a CA receives events and messages. Events are multicasted by a CA to its umwelt CAs, whereas umwelt CAs send messages to their parent CAs.
+Achieving a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs. During any phase of its lifecycle, a CA receives events and messages. An event is multicasted by a CA to its umwelt or parent CAs, whereas a message targets a single CA.
 
 ### Action phases
 
@@ -56,14 +58,14 @@ During the `act` phase, a CA:
 
 * Updates what it curently considers to be its most urgent intent and assigns it a priority
   * but only if no intent is already progressing toward being executed
-* Advances toward completion, as priority dictates, the statuses
-  * of its own intent
-  * of directives received from parent CAs trying to achiev their own goals
+* Advances toward completion, as precedence dictates,
+  * the status of its own intent
+  * the statuses of directives received from parent CAs trying to achieve their own self-assigned or received goals
   
 At the `assess` phase, a CA:
 
 * Determines if its intent is stale
-  * If so, it abandons it and lets its umwelt know
+  * If so, the CA abandons it and lets its umwelt know
 * Determines the success or failure of previously executed plans
   * If successful, it gives a score to executed plans built by the CA, perhaps making them affordances
 
@@ -71,50 +73,69 @@ At the `assess` phase, a CA:
 
 #### From parent to umwelt
 
-Event `todo([Directive, ...])`
+##### Event `todo([Directive, ...])`
+
+A CA wants to know if its umwelt could potentially execute the sequence of directives of a plan it constructed.
 
 * For each directive,
   * if not relevant to the umwelt CA, respond to parent with `cannot_seek(Directive)`
   * if relevant, respond with `can_seek(Directive)`
 
-Message `plan_for(Directive, Priority, IntentId)`
+##### Message `plan_for(Directive, Priority, IntentId)`
 
-* Find with some priority a plan to achieve a directive in the context of achieving an ancestor's intent
+A CA asks an umwelt CA to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
+
 * If a plan is found
   * hold on to it
   * message back `plan_found_for(Directive, PlanId)`
 * If plan **not** found
   * send back `no_plan_for(Directive)`
 
-Event `execute(PlanId, IntentId)`
+##### Message `execute(PlanId)`
 
-* Execute this plan found for a directive in the context of achieving an ancestor's intent
+A CA asks an umwelt CA to execute the plan the umwelt CA constructed to achieve a directive previously received from the CA.
 
-`abandon(IntentId)`
+* If the umwelt CA receiving this message is at level 1 (one level above effector CAs)
+  * Execute the plan (a list of actions) at once
+* Else
+  * For each directive in the plan
+    * Tell the CA that has a plan for this directive (an umwelt CA of the umwelt CA) to execute it
+    * Wait for a confirmation message (`executed(Directive)`)
+  * Send the parent CA confirmation message that the plan for the received directive was executed
 
-* Forget all directives to be executed and associated with an ancestors' intent
+See -Executing a Plan-.
+
+##### Event `abandon(IntentId)`
+
+A CA tells its *transitive* umwelt to forget about all directives received and plans conceived in the context of an intent, its own or that of an ancestor CA.
 
 #### From umwelt to parent(s)
 
-Event `can_seek(Directive)`
+##### Event `can_seek(Directive)`
 
-* Sent if the directive is relevant to the umwelt CA
+A CA tells its parent CAs, in response to a parent broadcasting a `todo` event to its umwelt, that a directive refers to one of its experiences (the CA might be able to impact it as requested).
 
-Event `cannot_seek(Directive)`
+##### Event `cannot_seek(Directive)`
 
-* Sent if the directive is not relevant to the umwelt CA
+A CA tells its parent CAs, in response to a parent broadcasting a `todo` event to its umwelt, that a directive does **not** refer to one of its experiences
 
-Event `plan_found_for(Directive, PlanId)`
+##### Event `plan_found_for(Directive, PlanId)`
 
-* Sent when the umwelt CA's found a plan for the directive
+A CA tells its parent CAs, in response to a `plan_for` message sent to it by a parent, that it successfully built a plan, refered to by its unique id, to potentially achieve a directive.
 
-Event `no_plan_for(Directive)`
+See -Searching for a plan-.
 
-* Sent when the umwelt CA's can not find a plan for the directive
+##### Event `no_plan_for(Directive)`
 
-Event `executed(Directive)`
+A CA tells its parent CAs, in response to a `plan_for` message sent to it by a parent, that it failed to build a plan to potentially achieve a directive.
 
-* Sent when a plan to achieve the directive was executed
+See -Searching for a plan-
+
+##### Event `executed(Directive)`
+
+A CA tells its parent CAs, in response to an `execute` event broadcasted by a parent, that it executed the plan it had constructed for that directive.
+
+See -Executing a Plan-.
 
 #### From CA to all umwelt effector CAs (level 1 to level 0)
 
@@ -122,28 +143,36 @@ A parent CA's plan (at level 1) are composite actions (e.g. [left_wheel:spin, le
 
 Being composite actions, such plans are executed at once instead of as a sequence of directives. Execution always succeeds.
 
-Event `actions([Action, ...], IntentId)`
+##### Event `actions([Action, ...], IntentId)`
+
+A level 1 CA tells its umwelt effector CAs of the actions it will want executed in the context of an intent (its own or that of an ancestor CA). An effector CA might have multiple parents concurrently wanting a list of actions executed. The effector CA sees the lists of actions, received in the context of a given intent, as overlapping, and not as cumulative.
 
 * Effector CA accumulates the relevant actions in the context of an intent
 * If an effector CA is asked by a parent to ready N identical actions for an intent and then by another to ready N + M actions
   * It accumulates N + M, not N + N + M in the context of the intent
 * The effector CA sends `actions_received(IntentId)` back to the parent CA
 
-Event `ready_actuations(IntentId)`
+##### Event `ready_actuations(IntentId)`
+
+A level 1 CA tells its umwelt effector CAs to prepare the body to realize the actions it associated with an intent.
 
 * The effector CA takes all actions accumulated for the intent and sends them to the body for actuation (the parent CA will later tell the body to execute them)
 * The effector CA sends `actuations_ready(IntentId)` back to the parent CA
 
-#### From effector CA to parent CA
+#### From effector CA to level 1 parent CA
 
-An intent is executed one directive at a time at each level of the hierarchy, thus also at level 1.
+Note: An intent is executed one directive at a time at any level of the hierarchy, thus also at level 1.
 
-Message `actions_received(IntentId)`
+##### Message `actions_received(IntentId)`
+
+An effector CA tells a parent CA that had broadcasted `actions` to its umwelt that it has received them.
 
 * When all effector CAs have confirmed receipt of actions for the intent from a parent
   * the parent can send `ready_actuations` to its umwelt
 
-Message `actuations_ready(IntentId)`
+##### Message `actuations_ready(IntentId)`
+
+An effector CA tells a parent CA that had broadcasted `ready_actuations` to its umwelt that it has prepared the body to actuate them.
 
 * When all effector CAs have confirmed acutations are ready for the intent to a parent
   * the parent can send `execute` to the `body`
@@ -154,21 +183,21 @@ When the CA has an intent to achieve, or has received a directive to achieve:
 
 * Construct a plan that might achieve the goal
   * Submit it as `todo([Directive, ...])` to the umwelt for consideration
-* Wait for confirmation that all its directives can be sought, confirmed by `can_seek(Directive)`(meaningful)
-  * or for a directive that can't be sought by the entire umwelt, confirmed by `cannot_seek(Directive)` (not meaningful)
-* If at least one directive in the plan cannot be sought by all umwelt CAs
+* Wait for affirmation or negation of relevance from all umwelt CAs (`can_seek(Directive)` and`cannot_seek(Directive)`)
+* If at least one directive in the plan is irrelevant to all umwelt CAs
   * the plan is not possible
   * send back `no_plan_for(Directive)`
-* If all directives in the plan can be sought by at least of umwelt CA
+* If each directive in the plan is relevant to at least one umwelt CA
   * the plan is possible
 * If a plan is possible
   * for each directive in the plan
-    * select an umwelt that can seek it
+    * select an umwelt CA that can seek it
     * ask it to `plan_for(Directive, Priority, IntentId)`
-  * the plan is feasible if all umwelt CAs asked respond with `plan_found_for(Directive, PlanId)`
-  * the plan is not feasible if any umwelt CA responds with `no_plan_for(Directive)`
+    * ask another if it responds with `no_plan_for(Directive)` instead of `plan_found_for(Directive, PlanId)`
+  * the plan is feasible if, for all directives in it, there's an umwelt CA with a plan
+  * the plan is not feasible, for any directive in the plan, there is no umwelt CA with a plan
 * If the plan is feasible
-  * give it a `PlanId` and hold on to it (associated with an intent and priority) and wait to be asked to execute it
+  * give it a `PlanId` and hold on to it (associate it with an intent and a priority) and wait to be asked to execute it
   * send back `plan_found_for(Directive, PlanId)`
 * If not feasible,
   * search for another plan
@@ -180,13 +209,13 @@ When the CA has an intent to achieve, or has received a directive to achieve:
 A CA may receive at any time an event telling it that an ancestor abandoned achieving an intent.
 
 * Whenever receiving `abandon(IntentId)`
-  * let go of any plan associated with the intent
+  * let go of any goal and plan associated with the intent
 
-### Executing a plan by the CA to achieve a goal (directive or intent)
+### Executing a plan
 
-Let's assume that a CA has an intent and directives it received to achieve the intent of an ancestor CA.
+Let's assume that a CA has an intent as well as directives received to achieve intents of ancestor CAs.
 
-The CA selects the pending (not executing or executed) and goal (intent or received directive) with a feasible plan that has precedence. The plan for the goal being feasible implies that, for each directive in the plan, these is an umwelt CA with a feasible plan of its own to achieve that directive.
+The CA selects the pending (not executing or executed) goal (intent or received directive) with a feasible plan that has highest precedence. The plan for the goal being feasible implies that, for each directive in the plan, these is an umwelt CA with a feasible plan of its own to achieve that directive.
 
 The execution of a plan is stepwise. The CA takes each pending directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute_plan(PlanId, IntentId)`). When the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed(Directive)` to its parents.
 
@@ -236,7 +265,6 @@ The status of a plan is implied by the statuses of its component directives.
 * `not_feasible` - there is a directive for which no plan could be found by the umwelt
 * `executed` - all directives had their umwelt plans executed
 * `successful` - the goal planned for was achieved
-
 
 ```mermaid
 ---
