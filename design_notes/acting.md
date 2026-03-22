@@ -69,11 +69,11 @@ At the `assess` phase, a CA:
 * Determines the success or failure of previously executed plans
   * If successful, it gives a score to executed plans built by the CA, perhaps making them affordances
 
-### Communication
+### Communications
 
 #### From parent to umwelt
 
-##### Event `todo([Directive, ...])`
+##### Event `todo([directives=[Directive, ...]])`
 
 A CA wants to know if its umwelt could potentially execute the sequence of directives of a plan it constructed. The event is received by all CAs in the umwelt of the broadcasting CA.
 
@@ -81,7 +81,7 @@ A CA wants to know if its umwelt could potentially execute the sequence of direc
   * if not relevant to the umwelt CA, respond to parent with `cannot_seek(Directive)`
   * if relevant, respond with `can_seek(Directive)`
 
-##### Message `plan_for(Directive, Priority, IntentId)`
+##### Message `plan_for([directive=Directive, priority=Priority, intent_id=IntentId])`
 
 A CA asks an umwelt CA to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
 
@@ -105,33 +105,37 @@ A CA asks an umwelt CA to execute the plan the umwelt CA constructed to achieve 
 
 See -Executing a Plan-.
 
-##### Event `abandon(IntentId)`
+##### Event `abandon([intent_id=IntentId])`
 
 A CA tells its *transitive* umwelt to forget about all directives received and plans conceived in the context of an intent, its own or that of an ancestor CA.
 
+##### Event `intent_completed([intent_id=IntentId])`
+
+A CA tells its *transitive* umwelt a plan to achieve its intent was execuited.
+
 #### From umwelt to parent(s)
 
-##### Event `can_seek(Directive)`
+##### Event `can_seek([directive=Directive])`
 
 A CA tells its parent CAs, in response to a parent broadcasting a `todo` event to its umwelt, that a directive refers to one of its experiences (the CA might be able to impact it as requested).
 
-##### Event `cannot_seek(Directive)`
+##### Event `cannot_seek([directive=Directive])`
 
 A CA tells its parent CAs, in response to a parent broadcasting a `todo` event to its umwelt, that a directive does **not** refer to one of its experiences
 
-##### Event `plan_found_for(Directive, PlanId)`
+##### Event `plan_found_for([directive=Directive, plan_id=PlanId])`
 
 A CA tells its parent CAs, in response to a `plan_for` message sent to it by a parent, that it successfully built a plan as requested, refering to by its unique id, to potentially achieve a directive.
 
 See -Searching for a plan-.
 
-##### Event `no_plan_for(Directive)`
+##### Event `no_plan_for([directive=Directive])`
 
 A CA tells its parent CAs, in response to a `plan_for` message sent to it by a parent, that it failed to build a plan to potentially achieve a directive.
 
 See -Searching for a plan-
 
-##### Event `executed(Directive)`
+##### Event `executed([directive=Directive])`
 
 A CA tells its parent CAs, in response to an `execute` event broadcasted by a parent, that it executed the plan it had constructed for that directive.
 
@@ -143,21 +147,21 @@ A parent CA's plan (at level 1) are composite actions (e.g. [left_wheel:spin, le
 
 Being composite actions, such plans are executed at once instead of as a sequence of directives. Execution is assumed to always succeed.
 
-##### Event `actions([Action, ...], IntentId)`
+##### Event `actions([actions=[Action, ...], intent_id=IntentId])`
 
 A level 1 CA tells its umwelt effector CAs of the actions it will want executed in the context of an intent (its own or that of an ancestor CA). An effector CA might have multiple parents concurrently wanting a list of actions executed. The effector CA sees the lists of actions, received in the context of a given intent, as overlapping, and not as cumulative.
 
 * Effector CA accumulates the relevant actions in the context of an intent
 * If an effector CA is asked by a parent to ready N identical actions for an intent and then by another to ready N + M actions for the same intent
   * It accumulates N + M, not N + N + M in the context of the intent
-* The effector CA sends `actions_received(IntentId)` back to the parent CA
+* The effector CA sends `actions_received` back to the parent CA
 
-##### Event `ready_actuations(IntentId)`
+##### Event `ready_actuations([intent_id=IntentId])`
 
 A level 1 CA tells its umwelt effector CAs to prepare the body to realize the actions it associated with an intent.
 
 * The effector CA takes all actions accumulated for the intent and sends them to the body for actuation (the parent CA will later tell the body to execute all readied actuations)
-* The effector CA sends `actuations_ready(IntentId)` back to the parent CA
+* The effector CA sends `actuations_ready` back to the parent CA
 
 #### From effector CA to level 1 parent CA
 
@@ -222,7 +226,7 @@ The execution of a plan is stepwise. The CA takes each pending directive in the 
 
 However, if a CA is at level 1 of the hierarchy (its umwelt are static CAs), its plan is a list of effector actions. They are not executed stepwise but all at once by telling effector CAs to accumulate them (wait for umwelt confirmation), then ready them for actuation (wait for umwelt confirmation), and then by telling the body to execute accumulated actions for the directives.
 
-Note: An intent is recursively executed one directive at a time at any level of the hierarchy greater than 1. At level 1, a plan is a list of actions to be executed at once.
+Note: An intent is recursively executed one directive at a time at any level of the hierarchy greater than 1. At level 1, a plan is a list of actions to be executed at once. Once the plan for an intent is executed, the CA with the intent broadcasts `intent_completed([intent_id=IntentId])`.
 
 ## Action-related state
 
