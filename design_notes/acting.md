@@ -252,8 +252,8 @@ title: Goal status
 ---
 stateDiagram-v2
     [*] --> none : a potential goal the CA gathers info about
-    none --> pending : the goal is dclared
-    [*] --> pending : the goal is declared
+    none --> pending : the goal is (self) assigned
+    [*] --> pending : the goal is (self) assigned
     none --> [*]
     pending --> can_seek : an experience matches the goal
     pending --> cannot_seek: no experience matches the goal
@@ -271,7 +271,7 @@ The status of a plan is implied by the statuses of its component directives.
 
 * `pending` - waiting to hear from all umwelt CAs if each directive is meaningful or not
 * `possible` - all directives are meaningful to some CA(s) in the umwelt
-* `not_possible` - at least one directive is not meaningful to all CAs in umwelt
+* `not_possible` - at least one directive is not meaningful to any CA in the umwelt
 * `feasible` - the umwelt has a (transitively) feasible plan for all directives
 * `not_feasible` - there is a directive for which no plan could be found by the umwelt
 * `executed` - all directives in the plan were (recursively) executed
@@ -282,15 +282,15 @@ The status of a plan is implied by the statuses of its component directives.
 title: Plan status
 ---
 stateDiagram-v2
-  [*] --> pending
-  pending --> possible
-  pending --> not_possible
+  [*] --> pending : waiting to hear from umwelt
+  pending --> possible : all directives meaningful to the umwlet
+  pending --> not_possible : some directives not meaningful to the umwlet
   not_possible --> [*]
-  possible --> feasible
-  possible --> not_feasible
+  possible --> feasible : the plan could be executed by the umwelt
+  possible --> not_feasible : the plan can not be executed by the umwelt
   not_feasible --> [*]
-  feasible --> executed
-  executed --> successful
+  feasible --> executed : the plan was executed
+  executed --> successful : the goal was achieved
   successful --> [*]
   executed --> [*]
 ```
