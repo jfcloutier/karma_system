@@ -26,7 +26,7 @@ A CA finds plans to achieve goals and executes them. The CA eventually decides w
 
 ## Definitions
 
-A **goal** is a relation/property, observed or experienced, that a CA aims to impact in a certain way.
+A **goal** is a relation/property, observed (the goal is an intent) or experienced (the goal is a directive), that a CA aims to impact in a certain way.
 
 An *intent* is a self-assigned goal of the CA to impact a felt experience.
 
@@ -42,7 +42,7 @@ Note that the only two "ground" concepts are `goal` and `plan`; `intent`, `direc
 
 Acting happens at specific phases of the CA's lifecycle.
 
-The CA repeats this lifecyle in a loop for as long as it survives. CAs higher up the hierarchy have longer lifecycles than lower-down CAs, which provides room for sub-plans to execute and to realize the higher-level goals that spawned them.
+The CA repeats its lifecyle in a loop for as long as it survives. CAs higher up the hierarchy have longer lifecycles than lower-down CAs, which provides room for sub-plans to execute and to realize the higher-level goals that spawned them.
 
 The lifecycle of a CA consists of these repeating **phases** constituting the equivalent of an OODA loop:
 
@@ -83,13 +83,13 @@ A CA wants to know if its umwelt could potentially execute the sequence of direc
 
 ##### Message `find_plan_for([directive=Directive, priority=Priority, intent_id=IntentId])`
 
-A CA asks an umwelt CA to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
+Once it has received feedback from (enough) of its umwelt about what it plans to do, a CA asks a "can do" umwelt CA to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
 
 * If a plan is found
-  * hold on to it
-  * message back `plan_found_for(Directive, PlanId)`
+  * the receiving umwelt CA holds on to it
+  * and messages back `plan_found_for(Directive, PlanId)`
 * If a plan is **not** found
-  * send back `no_plan_for(Directive)`
+  * the receiving CA sends back `no_plan_for(Directive)`
 
 ##### Message `execute(PlanId)`
 
@@ -105,7 +105,7 @@ A CA asks an umwelt CA to execute the plan the umwelt CA constructed to achieve 
 
 See -Executing a Plan-.
 
-##### Event `abandon([intent_id=IntentId])`
+##### Event `abandoned([intent_id=IntentId])`
 
 A CA tells its *transitive* umwelt to forget about all directives received and plans conceived in the context of an intent, its own or that of an ancestor CA.
 
@@ -186,7 +186,7 @@ An effector CA tells a parent CA that had broadcasted `ready_actuations` to its 
 When the CA has given itself an intent or received a directive to achieve, it:
 
 * Constructs a plan that might achieve the goal
-  * Submits it as `todo([Directive, ...])` to the umwelt for consideration
+  * Submits it as `todo([Directive, ...])` to the umwelt for feedback
 * Waits for affirmation or negation of relevance from all umwelt CAs (`can_seek(Directive)` and`cannot_seek(Directive)`)
 * If at least one directive in the plan is irrelevant to all umwelt CAs
   * the plan is not possible
@@ -213,7 +213,7 @@ When the CA has given itself an intent or received a directive to achieve, it:
 
 A CA may receive at any time an event telling it that an ancestor abandoned an intent.
 
-* Whenever receiving `abandon(IntentId)`
+* Whenever receiving `abandoned(IntentId)`
   * a CA lets go of any goal and plan associated with the intent
 
 ### Executing a plan
@@ -222,7 +222,7 @@ Let's assume that a CA has an intent as well as directives received to achieve i
 
 The CA selects the pending (not executing or executed) goal (intent or received directive) with a feasible plan that has highest precedence. The plan being feasible implies that, for each directive in it, these is an umwelt CA with a feasible plan of its own to achieve that directive.
 
-The execution of a plan is stepwise. The CA takes each pending directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute_plan(PlanId, IntentId)`). When the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed(Directive)` to its parents.
+The execution of a plan is stepwise. The CA takes each `can_execute` directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute_plan(PlanId, IntentId)`). When the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed(Directive)` to its parents.
 
 However, if a CA is at level 1 of the hierarchy (its umwelt are static CAs), its plan is a list of effector actions. They are not executed stepwise but all at once by telling effector CAs to accumulate them (wait for umwelt confirmation), then ready them for actuation (wait for umwelt confirmation), and then by telling the body to execute accumulated actions for the directives.
 
@@ -242,9 +242,10 @@ The possible statuses are:
 * `pending` - no progress yet on declared goal
 * `can_seek` - the goal was found to relate to one or more experiences of the CA
 * `cannot_seek` - the goal does not relate to any experience
-* `executing` - working on finding and executing a plan to achieve the goal
-* `executed` - the plan for the goal was executed
-* `achieved` - the goal was achieved
+* `can_execute` - the goal has a feasible plan
+* `executing` - transitively executing the plan to achieve the goal
+* `executed` - the plan for the goal was executed "all the way down"
+* `achieved` - the goal was achieved from executing a plan for it
 
 ```mermaid
 ---
@@ -258,7 +259,8 @@ stateDiagram-v2
     pending --> can_seek : an experience matches the goal
     pending --> cannot_seek: no experience matches the goal
     cannot_seek --> [*]
-    can_seek --> executing : looking for a feasible plan or executing it
+    can_seek --> can_execute : the goal has a feasible plan
+    can_execute --> executing : executing the goal's plan
     executing --> executed : the plan was executed
     executed --> achieved : the goal was realized
     executed --> [*] : the goal was not realized
@@ -274,6 +276,7 @@ The status of a plan is implied by the statuses of its component directives.
 * `not_possible` - at least one directive is not meaningful to any CA in the umwelt
 * `feasible` - the umwelt has a (transitively) feasible plan for all directives
 * `not_feasible` - there is a directive for which no plan could be found by the umwelt
+* `executing` - in the process of executing the directives of the plan
 * `executed` - all directives in the plan were (recursively) executed
 * `successful` - the goal of the plan was achieved
 
@@ -289,7 +292,8 @@ stateDiagram-v2
   possible --> feasible : the plan could be executed by the umwelt
   possible --> not_feasible : the plan can not be executed by the umwelt
   not_feasible --> [*]
-  feasible --> executed : the plan was executed
+  feasible --> executing : the plan is being executed
+  executing --> executed : the plan was executed
   executed --> successful : the goal was achieved
   successful --> [*]
   executed --> [*]
@@ -300,12 +304,12 @@ stateDiagram-v2
 The state of the CA consist of many properties, including the following the CA uses to manage making progress on its goals, self-assigned or received:
 
 * `intent`- `goal{...}` - The CA's current intent
-* `plans` - [`plan{...}`, ...] - All the plans built to achieve the intent and directives to execute
+* `plans` - [`plan{...}`, ...] - All the plans the CA built to achieve the intent and (some) directives
 * `goal_states` - [`goal_state{...}`, ...] - The statuses of the CA's intent and of directives the CA received and sent, as well as messages it received that caused the status changes and messages it sent to report them
 
 ### Data structures
 
-How goals, plans and goal states are encoded as data:
+How goals, plans and goal states are encoded as acting-related properties of the CA's state:
 
 #### `goal{id: ID, of: CA_ID, target: Target, impact: Impact, priority: Priority, intent_level: Level}`
 
@@ -313,26 +317,26 @@ How goals, plans and goal states are encoded as data:
 >
 > **CA_ID**: The id of the CA that assiged the goal (can be the CA itself if its intent, or a parent CA if a directive)
 >
-> **Target**: `target{origin: Origin, kind: Kind, value: Value}` - the state of a property or relation
+> **Target**: `target{origin: Origin, kind: Kind, value: Value}` - the state of an observed/experienced property/relation to be impacted
 >
 > **Impact**: `create` | `persist` | `terminate`
 >
 > **Priority**: 0.0..1.0 - How important is achieving this goal
 >
-> **Level**: The level of the CA who's intent transitively led to this goal
+> **Level**: The level of the CA who's intent transitively led to this goal (affects precedence)
 
 #### `plan{id: ID, goal: GoalID, directives: [goal{...}, ...], , score: Score}`
 
 > **ID**: A unique id for the plan. *No two plans have the same id, ever.*
 >
-> **GoalID**: The id of the goal this plan is for
+> **GoalID**: The id of the goal (intent or directive) this plan is for
 >
 > **Score**: 0.0..1.0 | none - Score is always none for plans received (it is up to the sender to score them)
 
 #### `goal_state{goal: GoalID, status: Status, messages: [GoalMessage, ...]}`
 
-> **GoalID**: The id of the goal - *Multiple plans might independently contain the same directive*
+> **GoalID**: The id of the goal - *Multiple plans from multiple CAs might independently reference the same directive*
 >
-> **Status**: `none` | `pending` | `can_seek` | `cannot_seek` | `executing` | `executed` | `achieved`
+> **Status**: `none` | `pending` | `can_seek` | `cannot_seek` | `can_execute` | `executing` | `executed` | `achieved`
 >
 > **GoalMessage** - A message received or sent about the goal, latest first. A received message can cause the status of a goal to change, a sent message communicates that change.
