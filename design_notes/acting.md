@@ -81,7 +81,7 @@ A CA wants to know if its umwelt could potentially execute the sequence of direc
   * if not relevant to the umwelt CA, respond to parent with `cannot_seek(Directive)`
   * if relevant, respond with `can_seek(Directive)`
 
-##### Message `plan_for([directive=Directive, priority=Priority, intent_id=IntentId])`
+##### Message `find_plan_for([directive=Directive, priority=Priority, intent_id=IntentId])`
 
 A CA asks an umwelt CA to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
 
@@ -125,13 +125,13 @@ A CA tells its parent CAs, in response to a parent broadcasting a `todo` event t
 
 ##### Event `plan_found_for([directive=Directive, plan_id=PlanId])`
 
-A CA tells its parent CAs, in response to a `plan_for` message sent to it by a parent, that it successfully built a plan as requested, refering to by its unique id, to potentially achieve a directive.
+A CA tells its parent CAs, in response to a `find_plan_for` message sent to it by a parent, that it successfully built a plan as requested, refering to by its unique id, to potentially achieve a directive.
 
 See -Searching for a plan-.
 
 ##### Event `no_plan_for([directive=Directive])`
 
-A CA tells its parent CAs, in response to a `plan_for` message sent to it by a parent, that it failed to build a plan to potentially achieve a directive.
+A CA tells its parent CAs, in response to a `find_plan_for` message sent to it by a parent, that it failed to build a plan to potentially achieve a directive.
 
 See -Searching for a plan-
 
@@ -147,12 +147,12 @@ A parent CA's plan (at level 1) are composite actions (e.g. [left_wheel:spin, le
 
 Being composite actions, such plans are executed at once instead of as a sequence of directives. Execution is assumed to always succeed.
 
-##### Event `actions([actions=[Action, ...], intent_id=IntentId])`
+##### Event `intended_actions([actions=[Action, ...], intent_id=IntentId])`
 
 A level 1 CA tells its umwelt effector CAs of the actions it will want executed in the context of an intent (its own or that of an ancestor CA). An effector CA might have multiple parents concurrently wanting a list of actions executed. The effector CA sees the lists of actions, received in the context of a given intent, as overlapping, and not as cumulative.
 
-* Effector CA accumulates the relevant actions in the context of an intent
-* If an effector CA is asked by a parent to ready N identical actions for an intent and then by another to ready N + M actions for the same intent
+* Effector CA accumulates the relevant actuations-to-be in the context of an intent
+* If an effector CA is asked by a parent to anticipate N identical actions for an intent and then by another to anticipate N + M actions for the same intent
   * It accumulates N + M, not N + N + M in the context of the intent
 * The effector CA sends `actions_received` back to the parent CA
 
@@ -169,7 +169,7 @@ An effector CA provides feedback to its parents during the execution of actions.
 
 ##### Message `actions_received(IntentId)`
 
-An effector CA tells a parent CA that had broadcasted `actions` to its umwelt that it has received them.
+An effector CA tells a parent CA that had broadcasted `intended_actions` to its umwelt that it has received them.
 
 * When all effector CAs have confirmed receipt of actions for the intent from a parent
   * the parent can send `ready_actuations` to its umwelt
@@ -196,7 +196,7 @@ When the CA has given itself an intent or received a directive to achieve, it:
 * If a plan is possible
   * for each directive in the plan
     * the CA selects an umwelt CA that can seek it
-    * asks it to `plan_for(Directive, Priority, IntentId)`
+    * asks it to `find_plan_for(Directive, Priority, IntentId)`
     * if the umwelt CA responds with `no_plan_for(Directive)` instead of `plan_found_for(Directive, PlanId)`
       * the CA asks another umwelt CA
   * The plan is feasible if, for all directives in it, there's an umwelt CA with a plan
