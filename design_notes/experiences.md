@@ -70,8 +70,9 @@ Equivalent (repeated) activation observations are counted and combined into an a
   * A property
 * Observed as `activation(Object, Value)` where
   * `Object` is a unique name created from
-    * `Execution(CA, Directive/Action)` - how many objects connect to/from a given object via a given relation
+    * `execution(Executed)` - how many objects connect to/from a given object via a given relation
   * `Value` is the number of executions
+  * `Executed` is a GoalId or Action
 
 ### count
 

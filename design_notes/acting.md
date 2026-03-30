@@ -220,7 +220,7 @@ A CA may receive at any time an event telling it that an ancestor abandoned an i
 
 Let's assume that a CA has an intent as well as directives received to achieve intents of ancestor CAs.
 
-The CA selects the pending (not executing or executed) goal (intent or received directive) with a feasible plan that has highest precedence. The plan being feasible implies that, for each directive in it, these is an umwelt CA with a feasible plan of its own to achieve that directive.
+The CA selects the pending (at least to_do but not executing or executed) goal (intent or received directive) with a feasible plan that has highest precedence. The plan being feasible implies that, for each directive in it, these is an umwelt CA with a feasible plan of its own to achieve that directive.
 
 The execution of a plan is stepwise. The CA takes each `can_execute` directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute_plan(PlanId, IntentId)`). When the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed(Directive)` to its parents.
 
@@ -239,7 +239,7 @@ The status of a goal indicates where it is in its progression toward, hopefully,
 The possible statuses are:
 
 * `none` - an undeclared  but potential goal - typically a goal from a sibling CA the CA gathers info about in case it later becomes a declared goal
-* `pending` - no progress yet on declared goal
+* `to_do` - no progress yet on to_do goal
 * `can_seek` - the goal was found to relate to one or more experiences of the CA
 * `cannot_seek` - the goal does not relate to any experience
 * `can_execute` - the goal has a feasible plan
@@ -253,11 +253,11 @@ title: Goal status
 ---
 stateDiagram-v2
     [*] --> none : a potential goal the CA gathers info about
-    none --> pending : the goal is (self) assigned
-    [*] --> pending : the goal is (self) assigned
+    none --> to_do : the goal is (self) assigned
+    [*] --> to_+do : the goal is (self) assigned
     none --> [*]
-    pending --> can_seek : an experience matches the goal
-    pending --> cannot_seek: no experience matches the goal
+    to_do --> can_seek : an experience matches the goal
+    to_do --> cannot_seek: no experience matches the goal
     cannot_seek --> [*]
     can_seek --> can_execute : the goal has a feasible plan
     can_execute --> executing : executing the goal's plan
@@ -311,7 +311,7 @@ The state of the CA consist of many properties, including the following the CA u
 
 How goals, plans and goal states are encoded as acting-related properties of the CA's state:
 
-#### `goal{id: ID, of: CA_ID, target: Target, impact: Impact, priority: Priority, intent_level: Level}`
+#### `goal{id: ID, of: CA_ID, target: Target, impact: Impact, priority: Priority, intent_id:IntentId, intent_level: Level}`
 
 > **ID**: A goal's ID is fully determined by Target and Impact - *two goals in different plans will have the same ID if they are semantically the same*
 >
@@ -325,7 +325,7 @@ How goals, plans and goal states are encoded as acting-related properties of the
 >
 > **Level**: The level of the CA who's intent transitively led to this goal (affects precedence)
 
-#### `plan{id: ID, goal: GoalID, directives: [goal{...}, ...], , score: Score}`
+#### `plan{id: ID, goal_id: GoalID, directives: [goal{...}, ...], , score: Score}`
 
 > **ID**: A unique id for the plan. *No two plans have the same id, ever.*
 >
@@ -333,10 +333,16 @@ How goals, plans and goal states are encoded as acting-related properties of the
 >
 > **Score**: 0.0..1.0 | none - Score is always none for plans received (it is up to the sender to score them)
 
-#### `goal_state{goal: GoalID, status: Status, messages: [GoalMessage, ...]}`
+#### `goal_state{goal: Goal, status: Status, messages: GoalMessages}`
 
-> **GoalID**: The id of the goal - *Multiple plans from multiple CAs might independently reference the same directive*
+> **Goal**: The goal being moved along (or not)
 >
-> **Status**: `none` | `pending` | `can_seek` | `cannot_seek` | `can_execute` | `executing` | `executed` | `achieved`
+> **Status**: `none` | `to_do` | `can_seek` | `cannot_seek` | `can_execute` | `executing` | `executed` | `achieved`
 >
-> **GoalMessage** - A message received or sent about the goal, latest first. A received message can cause the status of a goal to change, a sent message communicates that change.
+> **GoalMessages**: [goal_message{...}`, ...] - The first message in the list is the last received
+
+#### `goal_message{about: About, from: CA_ID}`
+
+> **About**: `to_do`, `can_seek`, `cannot_seek`, `plan_found`, `no_plan_found`, `executed`
+>
+> **CA_ID**: the ID of the source CA
