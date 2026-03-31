@@ -71,6 +71,14 @@ At the `assess` phase, a CA:
 
 ### Communications
 
+A directive (goal sent or received) is either communicated by value or by reference.
+It is communicated by reference when the target of the message or event is fully expected to know of the referenced directive.
+It is communicated by value when it is broadcast to parents and some parents may not yet have been requested to do it but might.
+An intent (self-assigned goal) is always referenced.
+
+Umwelt CAs always communicate with parents via events (multicasts), so they all update goal states for directives they sent or may send.
+A CA communicate via events with its umwelt when it addresses all umwelt CAs and via messages when it singles out an umwelt CA.
+
 #### From parent to umwelt
 
 ##### Event `todo([directives=[Directive, ...]])`
@@ -81,17 +89,17 @@ A CA wants to know if its umwelt could potentially execute the sequence of direc
   * if not relevant to the umwelt CA, respond to parent with `cannot_seek(Directive)`
   * if relevant, respond with `can_seek(Directive)`
 
-##### Message `find_plan_for([directive=Directive, priority=Priority, intent_id=IntentId])`
+##### Message `find_plan_for([directive_id=DirectiveId, priority=Priority, intent_id=IntentId])`
 
-Once it has received feedback from (enough) of its umwelt about what it plans to do, a CA asks a "can do" umwelt CA to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
+Once it has received feedback from (enough) of its umwelt about what it plans to do, a CA asks a "can seek" umwelt CA to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA). The plan can be executed if it is transitively feasible.
 
 * If a plan is found
   * the receiving umwelt CA holds on to it
-  * and messages back `plan_found_for(Directive, PlanId)`
+  * and broadcasts to its parents`can_execute([directive=Directive])`
 * If a plan is **not** found
-  * the receiving CA sends back `no_plan_for(Directive)`
+  * the receiving CA broadcasts to its parents `cannot_execute([directive=Directive])`
 
-##### Message `execute(PlanId)`
+##### Message `execute(DirectiveId)`
 
 A CA asks an umwelt CA to execute the plan the umwelt CA constructed to achieve a directive previously received from the CA.
 
@@ -100,8 +108,8 @@ A CA asks an umwelt CA to execute the plan the umwelt CA constructed to achieve 
 * Else
   * For each directive in the plan
     * Tell the CA that has a (sub) plan for this directive (an umwelt CA of the umwelt CA) to execute it
-    * Wait for a confirmation message (`executed(Directive)`)
-  * Send the parent CA confirmation message that the plan for the received directive was executed
+    * Wait for a confirmation event (`executed([[directive_id=DirectiveId])`)
+  * Send the parent CA confirmation event that the plan for the received directive was executed
 
 See -Executing a Plan-.
 
@@ -123,19 +131,19 @@ A CA tells its parent CAs, in response to a parent broadcasting a `todo` event t
 
 A CA tells its parent CAs, in response to a parent broadcasting a `todo` event to its umwelt, that a directive does **not** refer to one of its experiences
 
-##### Event `plan_found_for([directive=Directive, plan_id=PlanId])`
+##### Event `can_execute([directive=Directive])`
 
 A CA tells its parent CAs, in response to a `find_plan_for` message sent to it by a parent, that it successfully built a plan as requested, refering to by its unique id, to potentially achieve a directive.
 
 See -Searching for a plan-.
 
-##### Event `no_plan_for([directive=Directive])`
+##### Event `cannot_execute([directive=Directive])`
 
 A CA tells its parent CAs, in response to a `find_plan_for` message sent to it by a parent, that it failed to build a plan to potentially achieve a directive.
 
 See -Searching for a plan-
 
-##### Event `executed([directive=Directive])`
+##### Event `executed([directive_id=DirectiveId])`
 
 A CA tells its parent CAs, in response to an `execute` event broadcasted by a parent, that it executed the plan it had constructed for that directive.
 
@@ -147,36 +155,42 @@ A parent CA's plan (at level 1) are composite actions (e.g. [left_wheel:spin, le
 
 Being composite actions, such plans are executed at once instead of as a sequence of directives. Execution is assumed to always succeed.
 
-##### Event `intended_actions([actions=[Action, ...], intent_id=IntentId])`
+##### Event `planned_actions([actions=[Action, ...], plan_id=PlanId, intent_id=IntentId])`
 
-A level 1 CA tells its umwelt effector CAs of the actions it will want executed in the context of an intent (its own or that of an ancestor CA). An effector CA might have multiple parents concurrently wanting a list of actions executed. The effector CA sees the lists of actions, received in the context of a given intent, as overlapping, and not as cumulative.
+A level 1 CA tells its umwelt effector CAs of the actions it will want executed for a plan in the context of an intent (its own or that of an ancestor CA). An effector CA might have multiple parents concurrently wanting a list of actions executed. The effector CA sees the lists of actions, received in the context of a given intent, as overlapping, and not as cumulative.
 
 * Effector CA accumulates the relevant actuations-to-be in the context of an intent
 * If an effector CA is asked by a parent to anticipate N identical actions for an intent and then by another to anticipate N + M actions for the same intent
   * It accumulates N + M, not N + N + M in the context of the intent
 * The effector CA sends `actions_received` back to the parent CA
 
-##### Event `ready_actuations([intent_id=IntentId])`
+##### Event `ready_actuations([plan_id=PlanId])`
 
-A level 1 CA tells its umwelt effector CAs to prepare the body to realize the actions it associated with an intent.
+A level 1 CA tells its umwelt effector CAs to prepare the body to realize the actions it associated with a plan.
 
 * The effector CA takes all actions accumulated for the intent and sends them to the body for actuation (the parent CA will later tell the body to execute all readied actuations)
 * The effector CA sends `actuations_ready` back to the parent CA
+
+##### Event `plan_executed([plan_id:PlanId])
+
+A level 1 CA tells its umwelt effector CAs that a plan of action was executed.
+
+* The effector CA drops all actuations associated with the plan
 
 #### From effector CA to level 1 parent CA
 
 An effector CA provides feedback to its parents during the execution of actions.
 
-##### Message `actions_received(IntentId)`
+##### Message `actions_received(PlanId)`
 
-An effector CA tells a parent CA that had broadcasted `intended_actions` to its umwelt that it has received them.
+An effector CA tells a parent CA that had broadcasted planned `actions` to its umwelt that it has received them.
 
 * When all effector CAs have confirmed receipt of actions for the intent from a parent
   * the parent can send `ready_actuations` to its umwelt
 
-##### Message `actuations_ready(IntentId)`
+##### Message `actuations_ready(PlanId)`
 
-An effector CA tells a parent CA that had broadcasted `ready_actuations` to its umwelt that it has prepared the body to actuate them.
+An effector CA tells a parent CA that had broadcasted `ready_actuations` for a plan to its umwelt that it has prepared the body to actuate them.
 
 * When all effector CAs have confirmed to the parent that actuations in the context of an intent are ready
   * the parent sends `execute` to the `body`
@@ -190,24 +204,24 @@ When the CA has given itself an intent or received a directive to achieve, it:
 * Waits for affirmation or negation of relevance from all umwelt CAs (`can_seek(Directive)` and`cannot_seek(Directive)`)
 * If at least one directive in the plan is irrelevant to all umwelt CAs
   * the plan is not possible
-  * it sends back `no_plan_for(Directive)`
+  * it sends back `cannot_execute(Directive)`
 * If each directive in the plan is relevant to at least one umwelt CA
   * the plan is possible
 * If a plan is possible
   * for each directive in the plan
     * the CA selects an umwelt CA that can seek it
-    * asks it to `find_plan_for(Directive, Priority, IntentId)`
-    * if the umwelt CA responds with `no_plan_for(Directive)` instead of `plan_found_for(Directive, PlanId)`
+    * asks it to `find_plan_for(DirectiveId, Priority, IntentId)`
+    * if the umwelt CA responds with event `cannot_execute([directive=Directive])` instead of `can_execute([directive=Directive])`
       * the CA asks another umwelt CA
   * The plan is feasible if, for all directives in it, there's an umwelt CA with a plan
   * The plan is not feasible, for any directive in the plan, there is no umwelt CA with a plan
 * If the plan is feasible
-  * the CA gives it a `PlanId` and holds on to it (associating it with an intent and a priority) and waits to be asked to execute it
-  * the CA sends `plan_found_for(Directive, PlanId)` back to the parent who made the request
+  * the CA holds on to it (associating it with an intent and a priority) and waits to be asked to execute it
+  * the CA sends event `can_execute([directive=Directive])` back to the parent who made the request
 * If the plan is not feasible,
   * the CA searches for another plan
 * If no feasible plan can be found
-  * the CA sends back `no_plan_for(Directive)` back to the parent CA
+  * the CA sends back `cannot_execute([directive=Directive])` back to the parent CA
 
 ### Abandoning an intent
 
@@ -220,9 +234,9 @@ A CA may receive at any time an event telling it that an ancestor abandoned an i
 
 Let's assume that a CA has an intent as well as directives received to achieve intents of ancestor CAs.
 
-The CA selects the pending (at least to_do but not executing or executed) goal (intent or received directive) with a feasible plan that has highest precedence. The plan being feasible implies that, for each directive in it, these is an umwelt CA with a feasible plan of its own to achieve that directive.
+The CA selects the pending (at least todo but not executing or executed) goal (intent or received directive) with a feasible plan that has highest precedence. The plan being feasible implies that, for each directive in it, these is an umwelt CA with a feasible plan of its own to achieve that directive.
 
-The execution of a plan is stepwise. The CA takes each `can_execute` directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute_plan(PlanId, IntentId)`). When the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed(Directive)` to its parents.
+The execution of a plan is stepwise. The CA takes each `can_execute` directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute(DirectiveId)`). When the directive is confirmed as executed (`executed([directive_id=DirectiveId])`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed([directive_id=DirectiveId])` to its parents.
 
 However, if a CA is at level 1 of the hierarchy (its umwelt are static CAs), its plan is a list of effector actions. They are not executed stepwise but all at once by telling effector CAs to accumulate them (wait for umwelt confirmation), then ready them for actuation (wait for umwelt confirmation), and then by telling the body to execute accumulated actions for the directives.
 
@@ -239,9 +253,10 @@ The status of a goal indicates where it is in its progression toward, hopefully,
 The possible statuses are:
 
 * `none` - an undeclared  but potential goal - typically a goal from a sibling CA the CA gathers info about in case it later becomes a declared goal
-* `to_do` - no progress yet on to_do goal
+* `todo` - no progress yet on todo goal
 * `can_seek` - the goal was found to relate to one or more experiences of the CA
 * `cannot_seek` - the goal does not relate to any experience
+* `planning` - searching for a transitively feasible plan to achieve the goal
 * `can_execute` - the goal has a feasible plan
 * `executing` - transitively executing the plan to achieve the goal
 * `executed` - the plan for the goal was executed "all the way down"
@@ -253,13 +268,16 @@ title: Goal status
 ---
 stateDiagram-v2
     [*] --> none : a potential goal the CA gathers info about
-    none --> to_do : the goal is (self) assigned
-    [*] --> to_+do : the goal is (self) assigned
+    none --> todo : the goal is (self) assigned
+    [*] --> todo : the goal is assigned
     none --> [*]
-    to_do --> can_seek : an experience matches the goal
-    to_do --> cannot_seek: no experience matches the goal
+    todo --> can_seek : an experience matches the goal
+    todo --> cannot_seek: no experience matches the goal
     cannot_seek --> [*]
-    can_seek --> can_execute : the goal has a feasible plan
+    can_seek --> planning : looking for a feasible plan
+    planning --> can_execute : the goal has a feasible plan
+    planning --> cannot_execute : no feasible plan found
+    cannot_execute --> [*]
     can_execute --> executing : executing the goal's plan
     executing --> executed : the plan was executed
     executed --> achieved : the goal was realized
@@ -311,11 +329,9 @@ The state of the CA consist of many properties, including the following the CA u
 
 How goals, plans and goal states are encoded as acting-related properties of the CA's state:
 
-#### `goal{id: ID, of: CA_ID, target: Target, impact: Impact, priority: Priority, intent_id:IntentId, intent_level: Level}`
+#### `goal{id: ID, target: Target, impact: Impact, priority: Priority, intent_id:IntentId, intent_level: Level}`
 
 > **ID**: A goal's ID is fully determined by Target and Impact - *two goals in different plans will have the same ID if they are semantically the same*
->
-> **CA_ID**: The id of the CA that assiged the goal (can be the CA itself if its intent, or a parent CA if a directive)
 >
 > **Target**: `target{origin: Origin, kind: Kind, value: Value}` - the state of an observed/experienced property/relation to be impacted
 >
@@ -323,26 +339,34 @@ How goals, plans and goal states are encoded as acting-related properties of the
 >
 > **Priority**: 0.0..1.0 - How important is achieving this goal
 >
+> **IntentId**: Id of the intent that initiated this goal. When Goal.id == Goal.intent_id, the goal is an intent
+>
 > **Level**: The level of the CA who's intent transitively led to this goal (affects precedence)
 
-#### `plan{id: ID, goal_id: GoalID, directives: [goal{...}, ...], , score: Score}`
+#### `plan{id: ID, goal_id: GoalID, directives: [Directive, ...], , score: Score}`
 
 > **ID**: A unique id for the plan. *No two plans have the same id, ever.*
 >
 > **GoalID**: The id of the goal (intent or directive) this plan is for
 >
+> **Directive**: goal{...} | Action
+>
+> **Action**: The name of an effector action
+>
 > **Score**: 0.0..1.0 | none - Score is always none for plans received (it is up to the sender to score them)
 
-#### `goal_state{goal: Goal, status: Status, messages: GoalMessages}`
+#### `goal_state{goal: Goal, received:Received, status: Status, messages: GoalMessages}`
 
 > **Goal**: The goal being moved along (or not)
 >
-> **Status**: `none` | `to_do` | `can_seek` | `cannot_seek` | `can_execute` | `executing` | `executed` | `achieved`
+> **Received**: true | false - Whether this goal was received (a directive from a parent), as opposed to (a directive) sent to umwelt or self-assigned (an intent)
+>
+> **Status**: `none` | `todo` | `can_seek` | `cannot_seek` | `planning` | `can_execute` | `executing` | `executed` | `achieved`
 >
 > **GoalMessages**: [goal_message{...}`, ...] - The first message in the list is the last received
 
 #### `goal_message{about: About, from: CA_ID}`
 
-> **About**: `to_do`, `can_seek`, `cannot_seek`, `plan_found`, `no_plan_found`, `executed`
+> **About**: `todo` | `can_seek` | `cannot_seek` | `planning` | `can_execute` | `cannot_execute` | `executed`
 >
 > **CA_ID**: the ID of the source CA
