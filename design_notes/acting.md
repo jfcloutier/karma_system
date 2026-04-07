@@ -104,7 +104,7 @@ Once it has received feedback from (enough) of its umwelt about what it plans to
 A CA asks an umwelt CA to execute the plan the umwelt CA constructed to achieve a directive previously received from the CA.
 
 * If the umwelt CA receiving this message is at level 1 (one level above effector CAs)
-  * Execute the plan (a list of actions) at once
+  * Execute the plan (a list of actions) in one go and at once
 * Else
   * For each directive in the plan
     * Tell the CA that has a (sub) plan for this directive (an umwelt CA of the umwelt CA) to execute it
@@ -164,7 +164,7 @@ A level 1 CA tells its umwelt effector CAs of the actions it will want executed 
   * It accumulates N + M, not N + N + M in the context of the intent
 * The effector CA sends `actions_received` back to the parent CA
 
-##### Event `ready_actuations([plan_id=PlanId])`
+##### Event `ready_actuations([plan_id=PlanId, intent_id:IntentId])`
 
 A level 1 CA tells its umwelt effector CAs to prepare the body to realize the actions it associated with a plan.
 
