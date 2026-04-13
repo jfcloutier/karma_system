@@ -4,7 +4,7 @@
 
 A CA's observations are predictions it makes about the *experiences* of its umwlet CAs. These predictions may be value-corrected by prediction errors from the umwelt. The predictions are the product of a causal theory held by the CA and induced from its prior observations. Predictions about incoming observations are produced by giving the causal theory current observations as input.
 
-A CA synthesizes its past and present observations into experiences. An experience, for example, could be a trend detected in the observations, such as a shortening of distances observed. Each experience abstracts and is thus supported by a subset of the CA's observations.
+A CA synthesizes its past and present observations into experiences. An experience, for example, could be a trend detected in the observations, such as a shortening of distances observed. Each experience abstracts and is thus evidenced by a subset of the CA's observations.
 
 ## About latent elements
 

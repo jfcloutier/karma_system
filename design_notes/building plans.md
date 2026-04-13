@@ -10,7 +10,7 @@ Goals name umwelt experiences and the desired impacts (initiate, persist or term
 
 Once a CA has identified (or been told by a parent CA of) an experience to initiate, persist or terminate, the CA must determine its own plan to achieve this goal. The composition of the plan depends on the type of experience and on the desired impact (initiate/persist/terminate). The plan's priority depends on the CA's wellbeing (value and gradient) if originating with the CA, or on the priority of the received directive.
 
-How to impact an experience depends on how it was arrived at. A constructed (aka synthetic) experience is composed of observations (its base of support) which are themselves umwelt experiences the CA observed. To impact an experience a CA holds, the CA needs to impact experiences held in its umwelt.
+How to impact an experience depends on how it was arrived at. A constructed (aka synthetic) experience is composed of observations (as evidence) which are themselves umwelt experiences the CA observed. To impact an experience a CA holds, the CA needs to impact experiences held in its umwelt.
 
 A CA may have a causal theory. At first, it has none. At some point, the CA ask sthe Apperception Engine for a causal theory informed by its history of observations of its umwelt.
 
@@ -27,7 +27,7 @@ An additional but implied rule is that a previous observation survives as a curr
 A CA's abstract experience integrates multiple observations (predicted experiences in the CA's umwelt), either within the bounds of the current timeframe (`count`, and `more` experiences)
 or of past *and* current timeframes (`trend` experiences).
 
-The observed umwelt experiences involved in the composition of an abstract experience constitute the base of support of that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
+The observed umwelt experiences involved in the composition of an abstract experience constitute the the evidence for that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
 
 Since observations by the CA are experiences held in the umwelt of the CA, one can see how acting becomes a recursive operation that will unfold across multiple layers of CAs and over multiple CA timeframes, until effector CAs (on the lowest level of the hierarchy of CAs) become involved and the agent's relationship with its environment is modified by running motors etc.
 

@@ -95,7 +95,7 @@ At the end of its current timeframe, a CA at level L might undergo apoptosis (re
 If:
 
 * It's wellbeing measures are low or consistently dropping
-* The CA is dispensable to all level L+1 CAs (i.e. none of its experiences uniquely supports a level L+1 experience)
+* The CA is dispensable to all level L+1 CAs (i.e. none of its experiences uniquely supports as evidence a level L+1 experience)
 
 Then:
 
