@@ -58,7 +58,7 @@ During the `act` phase, a CA:
 
 * Updates what it curently considers to be its most urgent intent and assigns it a priority
   * but only if no intent is already progressing toward being executed
-* Advances toward completion, as precedence dictates,
+* Advances toward completion, as urgency dictates,
   * the status of its own intent
   * the statuses of directives received from parent CAs trying to achieve their own self-assigned or received goals
   
@@ -258,6 +258,7 @@ The possible statuses are:
 * `cannot_seek` - the goal does not relate to any experience
 * `planning` - searching for a transitively feasible plan to achieve the goal
 * `can_execute` - the goal has a feasible plan
+* `cannot_execute` - no feasible plan found
 * `executing` - transitively executing the plan to achieve the goal
 * `executed` - the plan for the goal was executed "all the way down"
 * `achieved` - the goal was achieved from executing a plan for it
