@@ -221,6 +221,15 @@ When the CA has given itself an intent or received a directive to achieve, it:
 * If no feasible plan can be found
   * the CA sends back `cannot_execute([directive=Directive])` back to the parent CA
 
+A goal state stays in planning status until a plan is found that can be executed, or no plan can be found that can be executed:
+
+If there is already a plan for the goal
+  if the plan can_execute (inferred from messages from umwelt), advance to can_execute and publish if for a directive
+  if the plan cannot_execute (inferred from messages), find another plan
+      if no other plan can be found, advance to cannot_execute and publish if for directive
+     if its executability is TBD, the goal's state can not be advanced at the moment (in limbo)
+If there is no plan yet for the directive/intent, find one.
+
 ### Abandoning an intent
 
 A CA may receive at any time an event telling it that an ancestor abandoned an intent.
