@@ -30,15 +30,17 @@ An experience, whether concrete or abstract, is represented, depending on its ty
 A property is expressed as `Property(Object, Value)` where
 
 * `Property` is a property name
-* `Object` is the unique name of an observed experience what's starting, trending, ending, or counted
-  * the identity (derivation) of the named object is known only to the CA that named it
-  * note that objects are not physical "things"; they are observed experiences.
+* `Object` is the subject of an observed experience, i.e. what's sensed, trending, or counted
+  * an object is described by
+    * its type: sensor, synthetic, dynamic_ca
+    * its id: respectively, the sensor's id, a hash of the observations from which the experience was synthesized, or the id of the CA that took an action.
+  * If an experience is synthetic (evidenced by multiple observations), only the experiencing CA knowns what these observations are.
 * `Value` is a literal belonging to the property's domain (e.g. blue, up, true, 4, etc.)
 
 A relation is expressed as  `Relation(Object, Object)`, where
 
 * `Relation` is a relation name
-* `Object` is a name of an observed experience (note that an object can no relate to itsef)
+* `Object` is either the subject or object of a relational experience (note that an object can not relate to itsef)
 
 Note that the object of a CA's experience is not a physical object but an observed experience in the CA's umwelt.
 
@@ -69,7 +71,7 @@ Equivalent (repeated) activation observations are counted and combined into an a
 * What
   * A property
 * Observed as `activation(Object, Value)` where
-  * `Object` is a unique name created from
+  * `Object` is a unique subject created from
     * `execution(Executed)` - how many objects connect to/from a given object via a given relation
   * `Value` is the number of executions
   * `Executed` is a GoalId or Action
@@ -83,11 +85,10 @@ e.g. this motor spun twice, there are two upward trends
 * What
   * A property
 * Observed as `count(Object, Value)` where
-  * `Object` is a unique name possibly created from
-    * `Direction(RelationName, InternalObject)` - how many objects connect to/from a given object via a given relation
-    * `properties(PropertyName, Value)` - how many objects are known to possess a given property value
-  * `Direction` is `to` or `from`
-  * `Value` is an enumerated value
+  * `Object` synthesizes countable observations
+    * Same kind and value - counting objects with same description, or
+    * Same origin and kind - counting alternate relations of a kind for one object
+  * `Value` is an integer
 
 ### more
 
@@ -98,7 +99,7 @@ e.g. this motor executed more spins than this other motor, the distance reported
 * What
   * A relation
 * Observed as `more(Object1, Object2)` where
-  * `Object1`, `Object2` are unique names created from `count(Object, Value)`
+  * `Object1`, `Object2` syntesizes counted observations
 
 ### trend
 
@@ -109,7 +110,7 @@ e.g. luminance from this sensor is increasing, the distance is decreasing, the c
 * What
   * A property
 * Observed as `trend(Object, Value)` where
-  * `Object` is a unique name created from `trending(PropertyName, Object)`
+  * `Object` synthesizes trending observations
   * `Value` is `up` or `down` or `ended`
 
 ## An experience economy
