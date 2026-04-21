@@ -89,7 +89,7 @@ A CA wants to know if its umwelt could potentially execute the sequence of direc
   * if not relevant to the umwelt CA, respond to parent with `cannot_seek(Directive)`
   * if relevant, respond with `can_seek(Directive)`
 
-##### Event `find_plan_for([directive_id=DirectiveId])`
+##### Event `find_plan([directive_id=DirectiveId])`
 
 Once it has received feedback from (enough) of its umwelt about what it plans to do, a CA asks its umwelt CAs to construct, with some priority, a plan to achieve a directive from its own plan, in the context of an intent (its own or that of an ancestor CA). Only the umwelt CAs who ca_seek the directive work on a plan, the others ignore the event. The plan can be executed if it is transitively feasible.
 
@@ -133,13 +133,13 @@ A CA tells its parent CAs, in response to a parent broadcasting a `todo` event t
 
 ##### Event `can_execute([directive=Directive])`
 
-A CA tells its parent CAs, in response to a `find_plan_for` message sent to it by a parent, that it successfully built a plan as requested, refering to by its unique id, to potentially achieve a directive.
+A CA tells its parent CAs, in response to a `find_plan` event sent to it by a parent, that it successfully built a plan as requested, refering to by its unique id, to potentially achieve a directive.
 
 See -Searching for a plan-.
 
 ##### Event `cannot_execute([directive=Directive])`
 
-A CA tells its parent CAs, in response to a `find_plan_for` message sent to it by a parent, that it failed to build a plan to potentially achieve a directive.
+A CA tells its parent CAs, in response to a `find_plan` event sent to it by a parent, that it failed to build a plan to potentially achieve a directive.
 
 See -Searching for a plan-
 
@@ -209,7 +209,7 @@ When the CA has given itself an intent or received a directive to achieve, it:
   * the plan is possible
 * If a plan is possible
   * for each directive in the plan
-    * asks its umwelt to `find_plan_for(DirectiveId, Priority, IntentId)`
+    * asks its umwelt to `find_plan([directive=DirectiveId])`
     * each umwelt CA responds with event `cannot_execute([directive=Directive])` or `can_execute([directive=Directive])`
   * The plan is feasible if, for all directives in it, there's at least one umwelt CA with a plan
   * The plan is not feasible, for any directive in the plan, there is no umwelt CA with a plan
