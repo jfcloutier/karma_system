@@ -351,7 +351,7 @@ How goals, plans and goal states are encoded as acting-related properties of the
 >
 > **Level**: The level of the CA who's intent transitively led to this goal (affects precedence)
 
-#### `plan{id: ID, goal_id: GoalID, directives: [Directive, ...], , score: Score}`
+#### `plan{id: ID, goal_id: GoalID, directives: [Directive, ...], status: Status, score: Score}`
 
 > **ID**: A unique id for the plan. *No two plans have the same id, ever.*
 >
@@ -360,6 +360,8 @@ How goals, plans and goal states are encoded as acting-related properties of the
 > **Directive**: goal{...} | Action
 >
 > **Action**: The name of an effector action
+>
+> **Status**: possible | not_possible | executing | executed
 >
 > **Score**: 0.0..1.0 | none - Score is always none for plans received (it is up to the sender to score them)
 
