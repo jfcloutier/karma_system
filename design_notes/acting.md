@@ -34,7 +34,7 @@ A *directive* is a goal delegated by a CA to its umwelt CAs requesting that they
 
 A **plan** is a prioritized set of directives designed by a CA and sent to its umwelt CAs to achieve either its own intent or achieve a directive it received from a parent CA.
 
-An *affordance* is a plan with an effectiveness score justifying its reuse.
+An *affordance* is a plan with an effectiveness score affecting the probability of its reuse.
 
 Note that the only two "ground" concepts are `goal` and `plan`; `intent`, `directive` and `affordance` are perspectives on goals and plans.
 
@@ -297,31 +297,23 @@ stateDiagram-v2
 
 The status of a plan is implied by the statuses of its component directives.
 
-* `pending` - waiting to hear from all umwelt CAs if each directive is meaningful or not
-* `possible` - all directives are meaningful to some CA(s) in the umwelt
-* `not_possible` - at least one directive is not meaningful to any CA in the umwelt
-* `feasible` - the umwelt has a (transitively) feasible plan for all directives
-* `not_feasible` - there is a directive for which no plan could be found by the umwelt
-* `executing` - in the process of executing the directives of the plan
-* `executed` - all directives in the plan were (recursively) executed
-* `successful` - the goal of the plan was achieved
+* `possible` - waiting to hear from all umwelt CAs if each directive is meaningful or not
+* `not_possible` - at least one directive can not be planned for by any CA in the umwelt
+* `can_execute` - the umwelt has at least one plan for each directive
+* `executing` - the umwelt is in the process of executing the directives of the plan
+* `executed` - all directives in the plan were (recursively) executed by the umwelt
 
 ```mermaid
 ---
 title: Plan status
 ---
 stateDiagram-v2
-  [*] --> pending : waiting to hear from umwelt
-  pending --> possible : all directives meaningful to the umwlet
-  pending --> not_possible : some directives not meaningful to the umwlet
+  [*] --> possible : waiting to hear from umwelt
+  possible --> not_possible : the plan can not be executed by the umwelt
   not_possible --> [*]
-  possible --> feasible : the plan could be executed by the umwelt
-  possible --> not_feasible : the plan can not be executed by the umwelt
-  not_feasible --> [*]
-  feasible --> executing : the plan is being executed
+  possible --> can_execute : the plan can be executed by the umwelt
+  can_execute --> executing : the plan is being executed
   executing --> executed : the plan was executed
-  executed --> successful : the goal was achieved
-  successful --> [*]
   executed --> [*]
 ```
 
@@ -361,7 +353,7 @@ How goals, plans and goal states are encoded as acting-related properties of the
 >
 > **Action**: The name of an effector action
 >
-> **Status**: possible | not_possible | executing | executed
+> **Status**: possible | not_possible | can_execute | executing | executed
 >
 > **Score**: 0.0..1.0 | none - Score is always none for plans received (it is up to the sender to score them)
 

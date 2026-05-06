@@ -12,22 +12,22 @@ Once a CA has identified (or been told by a parent CA of) an experience to initi
 
 How to impact an experience depends on how it was arrived at. A constructed (aka synthetic) experience is composed of observations (as evidence) which are themselves umwelt experiences the CA observed. To impact an experience a CA holds, the CA needs to impact experiences held in its umwelt.
 
-A CA may have a causal theory. At first, it has none. At some point, the CA ask sthe Apperception Engine for a causal theory informed by its history of observations of its umwelt.
+A CA may have a causal theory. At first, it has none. At some point, the CA asks the Apperception Engine for a causal theory informed by its history of observations of its umwelt.
 
 The CA can use its causal theory to predict changes to the experiences of its umwelt (i.e. incoming observations) as a result of realizing directives. This can be put to use when constructing a plan.
 
 A causal theory has three kinds of rules
 
 * Constraints: What is expected *never* to be observed simultaneously - e.g. not (A and B) now
-* Static rules: What is expected to *always* be observed simultaneoulsy - e.g. if A and B and then also C now
-* Causal rules: What is expected to be observed *next* given what was observed previously - e.g. A and B then C next
+* Static rules: What is expected to *always* be observed simultaneoulsy - e.g. if A and B now and then also C now
+* Causal rules: What is expected to be observed *next* given what is observed now - e.g. if A and B now then C next
 
-An additional but implied rule is that a previous observation survives as a current observation if it does not contradict any constraint or static rule.
+An additional but implied rule is that a previous observation survives as a current observation if it does not contradict any constraint or static rule. Until it fades.
 
 A CA's abstract experience integrates multiple observations (predicted experiences in the CA's umwelt), either within the bounds of the current timeframe (`count`, and `more` experiences)
 or of past *and* current timeframes (`trend` experiences).
 
-The observed umwelt experiences involved in the composition of an abstract experience constitute the the evidence for that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
+The observed umwelt experiences involved in the composition of an abstract experience constitute the evidence for that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
 
 Since observations by the CA are experiences held in the umwelt of the CA, one can see how acting becomes a recursive operation that will unfold across multiple layers of CAs and over multiple CA timeframes, until effector CAs (on the lowest level of the hierarchy of CAs) become involved and the agent's relationship with its environment is modified by running motors etc.
 
@@ -40,12 +40,9 @@ The causal theory, a model of the generative processes causing these observation
 To recap, the CA can seek to impact an experience it holds by impacting causative experiences held in its umwelt.
 This is achieved indirectly by the CA directing its umwelt to find a way to impact these experiences in prescribed ways (initiate vs persist vs terminate).
 
-The only types of experiences that can be impacted are `count`, `more` and `trend` experiences;
-sensor CAs can not be asked to change what they perceive, activation experiences are records of actions takens, and a causal theory can not be told to imagine something else.
+The only types of experiences that can be impacted are `count`, `more` and `trend` experiences. A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading that was taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
 
-A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading already taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
-
-A CA seeking to impact an umwelt experience causing an experience it holds can do so *directly* or *indirectly*.
+A CA seeking to impact an umwelt experience from which it synthesized an experience it itself holds can do so *directly* or *indirectly*.
 Since synthetic experiences are composed of experiences observed in the umwelt which can themselves be synthetic experiences, a plan might be realized by more (lower-level) plans and so on until we reach only goals that can be directly impacted by activating effectors.
 
 ### Building a plan to impact an experience
@@ -58,11 +55,11 @@ A `count` experience encapsulates how many of a given kind of experiences observ
 
 To persist a count experience, a CA's plan would direct its umwelt CAs to persist *all of* the counted (observed) experiences.
 
-To initiate or terminate a count experience, a CA's plan would direct its umwelt CAs to to add a counted experience or terminate *any of* the counted experiences.
+To initiate or terminate a count experience, a CA's plan would direct its umwelt CAs to add a counted experience or terminate *any of* the counted experiences.
 
 #### Impacting a more experience
 
-A `more` experience expresses that there is more of than another in its umwelt.
+A `more` experience expresses that there is more of something than another in its umwelt.
 
 To initiate or teminate a more experience, a CA's plan would direct its umwelt to initiate or to terminate a compared, count experience.
 
@@ -80,7 +77,7 @@ How a trend experience is impacted depends on the assigned value of the trend (u
 
 An `up` trend captures an upwardly changing ordinal value for a given property of a given object.
 A `down` trend captures a downwardly changing ordinal value for a given property of a given object.
-An `ended` trend captures an unknown ordinal value for a given property of a given object after it trending.
+An `ended` trend captures an unknown ordinal value for a given property of a given object after it trended.
 
 If the nature of the trend to impact is
 
