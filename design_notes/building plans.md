@@ -25,7 +25,7 @@ A causal theory has three kinds of rules
 An additional but implied rule is that a previous observation survives as a current observation if it does not contradict any constraint or static rule. Until it fades.
 
 A CA's abstract experience integrates multiple observations (predicted experiences in the CA's umwelt), either within the bounds of the current timeframe (`count`, and `more` experiences)
-or of past *and* current timeframes (`trend` experiences).
+or of past *and* current timeframes (`trend` and `unchanged` experiences).
 
 The observed umwelt experiences involved in the composition of an abstract experience constitute the evidence for that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
 
@@ -40,7 +40,7 @@ The causal theory, a model of the generative processes causing these observation
 To recap, the CA can seek to impact an experience it holds by impacting causative experiences held in its umwelt.
 This is achieved indirectly by the CA directing its umwelt to find a way to impact these experiences in prescribed ways (initiate vs persist vs terminate).
 
-The only types of experiences that can be impacted are `count`, `more` and `trend` experiences. A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading that was taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
+The only types of experiences that can be impacted are `count`, `more`, `unchanged` and `trend` experiences. A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading that was taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
 
 A CA seeking to impact an umwelt experience from which it synthesized an experience it itself holds can do so *directly* or *indirectly*.
 Since synthetic experiences are composed of experiences observed in the umwelt which can themselves be synthetic experiences, a plan might be realized by more (lower-level) plans and so on until we reach only goals that can be directly impacted by activating effectors.
@@ -64,6 +64,13 @@ A `more` experience expresses that there is more of something than another in it
 To initiate or teminate a more experience, a CA's plan would direct its umwelt to initiate or to terminate a compared, count experience.
 
 To persist a more experience, a CA's plan would direct its umwelt CAs to persist both compared counts.
+
+#### Impacting an unchanged experience
+
+An `unchanged` experience expresses that an observation is persisting uninterrupted from previous timeframes intot the current one.
+
+To terminate an unchanged experience, a CA's plan would direct changing the value of the unchanging observation, or terminating it.
+To persist an unchanged experience, a CA's plan would direct the continuance of the observation.
 
 #### Impacting a trend experience
 

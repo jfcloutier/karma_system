@@ -38,7 +38,7 @@ The plan's directives are communicated all at once by the CA to its umwelt at a 
 
 The first step by a CA when preparing to act is to identify an experience to attend to, even if a parent CA has already directed the CA to impact some of its own choosing.
 
-Only synthetic experiences can be acted on and impacted, namely `count`, `more` and`trend`. Activation experiences and concrete experiences, those from sensor CAs, as well as those imagined by a causal theory, represent "givens" that can not be changed directly by intending to.
+Only synthetic experiences can be acted on and impacted, namely `count`, `more`, `unchanged`, and`trend`. Activation experiences and concrete experiences, those from sensor CAs, as well as those imagined by a causal theory, represent "givens" that can not be changed directly by intending to.
 
 Which actionable experience is identified depends on its pleasantness/unpleasantness and whether or not it is *sufficiently* pleasant or unpleasant (activation threshold) for the CA to pay attention to it. The threshold is set by the current wellbeing of the CA which propagates "osmotically" throughout the entire collective.
 

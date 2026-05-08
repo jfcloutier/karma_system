@@ -9,6 +9,7 @@ Integrate current and past observations into experiences by:
 
 * count: 1, 2, 3, `many`
 * more: another synthetic object
+* unchanged: 1, 2, 3, `many`
 * trend: `up`, `down`, `ended`
 
 ## Synthesizing experiences
@@ -21,7 +22,7 @@ Integrate current and past observations into experiences by:
 
 ## Finding a novel experience
 
-* Choose in order a kind from [count, more, trend]
+* Choose in order a kind from [count, more, trend, unchanged]
 * Find a non-empty, maximal set of observations to which the kind applies
 * The maximal set of observations defines a synthetic object as the origin of the property/relation
   * count: 2 or more countables:
@@ -37,11 +38,13 @@ Integrate current and past observations into experiences by:
     * Properties with the same origin and kind
       * If values are numerical, the values can be `up`, `down`
       * Otherwise, if a trend stopped, its value is `ended`
+  * unchanged: the same observation over contiguous timeframes with th number of timeframes as value
 
 ## Assigning a confidence to an experience
 
-* Take the minimum confidence in the observed set(s) composing the synthetic object(s) of the experience (don't multiply)
-* if a trend, decrease the minimum confidence C by C/N where N is the number of trending observations
+* Take the minimum confidence in the observed set(s) composing the synthetic object(s) of the experience (don't multiply).
+* If a `trend`, boost the minimum confidence with the number of trending observations.
+* If an `unchanged` boost the observation's confidence with the number of timeframes
 
 ## Elevating unused observations
 

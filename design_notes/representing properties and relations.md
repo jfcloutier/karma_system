@@ -24,7 +24,7 @@ Sensors and effectors name their sense and action properties respectively. The c
 * (sense name) - only when the origin is a sensor, e.g. `distance`, `color`, `contact`, `state` etc.
 * (action name) - only when the origin is an effector, e.g. `spin`, `reverse_spin`
 * (latent property/relation name) - when the property/relation is abduced and named by a causal theory
-* (synthesis name) - names of abstractions, namely `count`, `more` or `trend`
+* (synthesis name) - names of abstractions, namely `count`, `more`, `unchanged` or `trend`
 
 ## Objects in properties/relations
 
@@ -57,6 +57,8 @@ A sensor (or motor) provides the domain of values it can report upon sensing. Fo
 The values of action properties of effectors (e.g. `spin`) are either `true` or `false`, to designate whether the action was taken or not.
 
 ### Values of synthetic properties and relations
+
+An `unchanged` property (on an observation across timeframes) `1`, `2`, `3` or `many`, depending on the number timeframes over which it persists
 
 A `trend` property (on a set of past and current observations) can have value `up`, `down`, or `ended`.
 

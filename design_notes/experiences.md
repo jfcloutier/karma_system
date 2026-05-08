@@ -30,7 +30,7 @@ An experience, whether concrete or abstract, is represented, depending on its ty
 A property is expressed as `Property(Object, Value)` where
 
 * `Property` is a property name
-* `Object` is the subject of an observed experience, i.e. what's sensed, trending, or counted
+* `Object` is the subject of an observed experience, i.e. what's sensed, trending, unchaging, or counted
   * an object is described by
     * its type: sensor, synthetic, dynamic_ca
     * its id: respectively, the sensor's id, a hash of the observations from which the experience was synthesized, or the id of the CA that took an action.
@@ -59,7 +59,7 @@ The concrete experiences (experiences not derived from other experiences) are
 
 Abstract experiences are composed by a CA of *multiple* observations by the CA (of experiences in its umwelt), past and/or present.
 
-There are four kinds of abstract experiences: **activation**, and the so-called synthetic experiences **count**, **more**, *and **trend**.
+There are five kinds of abstract experiences: **activation**, and the so-called synthetic experiences **count**, **more**, **unchanged** and **trend**.
 
 Each abstract experience is expressed as a `property` (linking an object and a value) or as a `relation` (linking two objects). Remember that objects are made of observed experiences.
 
@@ -100,6 +100,18 @@ e.g. this motor executed more spins than this other motor, the distance reported
   * A relation
 * Observed as `more(Object1, Object2)` where
   * `Object1`, `Object2` syntesizes counted observations
+
+### unchanged
+
+> The experience that the ordinal values of a property of an object is staying the same, as observed over timeframes leading to, and including, the current timeframe.
+
+e.g. luminance from this sensor is the same, the distance is not changing, the trend is still up
+
+* What
+  * A property
+* Observed as `unchanged(Object, Value)` where
+  * `Object` represents an observation
+  * `Value` is 1, 2, 3 or `many`, representing the number of contiguous, prior timeframes with this observation
 
 ### trend
 

@@ -18,7 +18,7 @@ An autonomous agent must learn to predict what happens next in order to survive.
 
 1. Predicting that nothing can be observed (predicting from complete absence of information)
 2. Predicting that nothing last observed will change
-3. Predicting that incoming observations will maintain current experiences (of counts, comparisons and trends, as constructed from observations)
+3. Predicting that incoming observations will maintain current experiences (of counts, comparisons, unchanging and trends, as constructed from observations)
 4. Predicting observations from understanding (from having a model of latent processes causing observations)
 
 Given the provenance of a prediction, a consequent prediction error can present a learning opportunity of lesser or greater value:
@@ -69,8 +69,9 @@ When uncontested predictions conflict (different values are predicted), the one 
 
 A CA synthesizes its experiences from observations it makes of its umwelt. The CA can predict a number of observations on the basis of its current experiences.
 
-Making predictions from prior synthetic experiences (either `trend`, `count` or `more` experiences):
+Making predictions from prior synthetic experiences (either `trend`, `count`, `unchanged` or `more` experiences):
 
+* Unchanged: Predict an observation persisting
 * Trend: Predict an observation that continues the experienced trend by the increment recently observed
 * Count: Predict the counted observations
 * More: Predict the compared observations
