@@ -111,7 +111,7 @@ e.g. luminance from this sensor is the same, the distance is not changing, the t
   * A property
 * Observed as `unchanged(Object, Value)` where
   * `Object` represents an observation
-  * `Value` is 1, 2, 3 or `many`, representing the number of contiguous, prior timeframes with this observation
+  * `Value` is 2, 3 or `many`, representing the number of contiguous, prior timeframes with this observation, including the current timeframe (values of 0 or 1 are nonsensical)
 
 ### trend
 
