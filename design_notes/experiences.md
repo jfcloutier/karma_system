@@ -9,7 +9,7 @@ At the bottom of the hierachy sit sensor CAs, with body sensors as their umwelt,
 
 The agent's umwelt is the world as perceived by the integration of the CAs' umwelts.
 
-Observations in a given timeframe are considered synchronous, as are the experiences derived in the timeframe.
+Observations in a given timeframe are considered synchronous, as are the experiences synthesized/derived in the timeframe.
 
 A CA gets *concrete* experiences from directly sensing properties of its environment (if it is a sensor CA), from acting in/on the environment, and from its causal theory in the form of the properties and relations imagined in order to unify the theory.
 
@@ -65,16 +65,16 @@ Each abstract experience is expressed as a `property` (linking an object and a v
 
 ### activation
 
+> The experience of recent planned executions on a goal (observed activations fade over timeframes).
+
 A dynamic CA receives events from the execution of directives it sent to its umwelt CAs. For each such received event, the CA adds cumulates an observation.
-Equivalent (repeated) activation observations are counted and combined into an activation experience.
+Equivalent (repeated) and recent activation observations are counted and combined into an activation experience.
 
 * What
   * A property
-* Observed as `activation(Object, Value)` where
-  * `Object` is a unique subject created from
-    * `execution(Executed)` - how many objects connect to/from a given object via a given relation
+* Predicate `activation(Object, Value)` where
+  * `Object` synthesizes identical, recent activation observations
   * `Value` is the number of executions
-  * `Executed` is a GoalId or Action
 
 ### count
 
@@ -84,7 +84,7 @@ e.g. this motor spun twice, there are two upward trends
 
 * What
   * A property
-* Observed as `count(Object, Value)` where
+* Predicate `count(Object, Value)` where
   * `Object` synthesizes countable observations
     * Same kind and value - counting objects with same description, or
     * Same origin and kind - counting alternate relations of a kind for one object
@@ -98,7 +98,7 @@ e.g. this motor executed more spins than this other motor, the distance reported
 
 * What
   * A relation
-* Observed as `more(Object1, Object2)` where
+* Predicate `more(Object1, Object2)` where
   * `Object1`, `Object2` syntesizes counted observations
 
 ### unchanged
@@ -109,7 +109,7 @@ e.g. luminance from this sensor is the same, the distance is not changing, the t
 
 * What
   * A property
-* Observed as `unchanged(Object, Value)` where
+* Predicate `unchanged(Object, Value)` where
   * `Object` represents an observation
   * `Value` is 2, 3 or `many`, representing the number of contiguous, prior timeframes with this observation, including the current timeframe (values of 0 or 1 are nonsensical)
 
@@ -121,7 +121,7 @@ e.g. luminance from this sensor is increasing, the distance is decreasing, the c
 
 * What
   * A property
-* Observed as `trend(Object, Value)` where
+* Predicate `trend(Object, Value)` where
   * `Object` synthesizes trending observations
   * `Value` is `up` or `down` or `ended`
 

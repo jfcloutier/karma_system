@@ -1,14 +1,14 @@
 # Building plans
 
-A Cognition Actor (CA) seeks, through the execution of plans, to persist pleasant experiences it has and to terminate its unpleasant experiences.
+A Cognition Actor (CA) seeks, through the execution of plans, to create pleasant experiences, persist those it already has, and terminate unpleasant ones.
 
 ## The logic of plans
 
-A CA builds a plan when it has identified an experience it holds that need impacting (an intended goal), or when it receives a higher priority plan (as a set of directives) from a parent CA. When receiving directives "from above", it determines which goals are relevant to it; the others are likely relevant to sibling CAs participating in the same umwelt.
+A CA builds a plan when it has identified an experience it wants or one it holds that need impacting (an intended goal), or when it receives a higher priority plan (as a set of directives) from a parent CA. When receiving directives "from above", it determines which received goals are relevant to it; the others are likely relevant to sibling CAs participating in the same umwelt.
 
-Goals name umwelt experiences and the desired impacts (initiate, persist or terminate). It is *entirely* up to the goal-receiving umwelt CA to construct a plan for the experiences it wants to or has been requested to impact.
+Goals name umwelt experiences and the desired impacts (create, persist or terminate). It is *entirely* up to the goal-receiving umwelt CA what plan it constructs given a goal to achieve.
 
-Once a CA has identified (or been told by a parent CA of) an experience to initiate, persist or terminate, the CA must determine its own plan to achieve this goal. The composition of the plan depends on the type of experience and on the desired impact (initiate/persist/terminate). The plan's priority depends on the CA's wellbeing (value and gradient) if originating with the CA, or on the priority of the received directive.
+The composition of the plan depends on the type of experience and on the desired impact (create/persist/terminate). The plan's priority depends on the CA's wellbeing (value and gradient) if originating with the CA, or on the priority of the received directive.
 
 How to impact an experience depends on how it was arrived at. A constructed (aka synthetic) experience is composed of observations (as evidence) which are themselves umwelt experiences the CA observed. To impact an experience a CA holds, the CA needs to impact experiences held in its umwelt.
 
@@ -27,7 +27,7 @@ An additional but implied rule is that a previous observation survives as a curr
 A CA's abstract experience integrates multiple observations (predicted experiences in the CA's umwelt), either within the bounds of the current timeframe (`count`, and `more` experiences)
 or of past *and* current timeframes (`trend` and `unchanged` experiences).
 
-The observed umwelt experiences involved in the composition of an abstract experience constitute the evidence for that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to initiate new experiences.
+The observed umwelt experiences involved in the composition of an abstract experience constitute the evidence for that experience. To impact an abstract experience it holds, a CA directs its umwelt to impact experiences from which the held experience is derived and perhaps also to create new experiences.
 
 Since observations by the CA are experiences held in the umwelt of the CA, one can see how acting becomes a recursive operation that will unfold across multiple layers of CAs and over multiple CA timeframes, until effector CAs (on the lowest level of the hierarchy of CAs) become involved and the agent's relationship with its environment is modified by running motors etc.
 
@@ -38,9 +38,9 @@ There will likely be different combinations of umwelt experiences that could be 
 The causal theory, a model of the generative processes causing these observations, if present, informs the CA in the construction of hopefully effective plans by anticipating their consequences.
 
 To recap, the CA can seek to impact an experience it holds by impacting causative experiences held in its umwelt.
-This is achieved indirectly by the CA directing its umwelt to find a way to impact these experiences in prescribed ways (initiate vs persist vs terminate).
+This is achieved indirectly by the CA directing its umwelt to find a way to impact these experiences in prescribed ways (create vs persist vs terminate).
 
-The only types of experiences that can be impacted are `count`, `more`, `unchanged` and `trend` experiences. A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading that was taken. There is no point denying it. The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is being used.
+The only types of experiences that can be impacted are `count`, `more`, `unchanged` and `trend` experiences. A sensing experience (e.g. distance(ir_sensor_1, 10)) is a record of a sensor reading that was taken. There is no point denying it (the CA might still want to validate it though). The same applies to action experiences (e.g. spin(motor_1, true)). There is also no point in denying it happened. An imagined experience is one abduced by the Apperception Engine to unify a causal theory. It must be accepted for as long as the causal theory is used.
 
 A CA seeking to impact an umwelt experience from which it synthesized an experience it itself holds can do so *directly* or *indirectly*.
 Since synthetic experiences are composed of experiences observed in the umwelt which can themselves be synthetic experiences, a plan might be realized by more (lower-level) plans and so on until we reach only goals that can be directly impacted by activating effectors.
@@ -55,13 +55,13 @@ A `count` experience encapsulates how many of a given kind of experiences observ
 
 To persist a count experience, a CA's plan would direct its umwelt CAs to persist *all of* the counted (observed) experiences.
 
-To initiate or terminate a count experience, a CA's plan would direct its umwelt CAs to add a counted experience or terminate *any of* the counted experiences.
+To create or terminate a count experience, a CA's plan would direct its umwelt CAs to add a counted experience or terminate *any of* the counted experiences.
 
 #### Impacting a more experience
 
 A `more` experience expresses that there is more of something than another in its umwelt.
 
-To initiate or teminate a more experience, a CA's plan would direct its umwelt to initiate or to terminate a compared, count experience.
+To create or teminate a more experience, a CA's plan would direct its umwelt to create or to terminate a compared, count experience.
 
 To persist a more experience, a CA's plan would direct its umwelt CAs to persist both compared counts.
 
@@ -76,7 +76,7 @@ To persist an unchanged experience, a CA's plan would direct the continuance of 
 
 A `trend` experience captures how a given kind of observed experience is changing across the latest timeframes of the CA, for example, "distance keeps diminishing" is a "down" trend.
 
-To initiate a trend experience, a CA's plan could change the ordinal value of the trending umwelt experience.
+To create a trend experience, a CA's plan could change the ordinal value of the trending umwelt experience.
 To persist a trend experience, a CA's plan would direct its umwelt to **further** the trend.
 To terminate a trend experience, a CA's plan would direct its umwelt to **disrupt** the trend.
 
@@ -106,10 +106,10 @@ A CA can impact an experience A **indirectly** by impacting a *causally linked*,
   * persisting B should prevent A
   * terminating B should allow for A
 * if A and B must co-exist under some condition then
-  * initiating B should initiate A
+  * initiating B should create A
   * persisting B should persist A
   * terminating B should terminate A
 * if B causes A under some condition then
-  * initiating B should eventually initiate A
-  * persisting B should persist or eventually initiate A
+  * initiating B should eventually create A
+  * persisting B should persist or eventually create A
   * terminating B *might* terminate A
