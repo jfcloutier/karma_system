@@ -203,7 +203,7 @@ When the CA has given itself an intent or received a directive to achieve, it:
   * Submits it as `todo([Directive, ...])` to the umwelt for feedback
 * Waits for affirmation or negation of relevance from all umwelt CAs (`can_seek(Directive)` and`cannot_seek(Directive)`)
 * If at least one directive in the plan is irrelevant to all umwelt CAs
-  * the plan is not possible
+  * the plan cannot execute
   * it sends back `cannot_execute(Directive)`
 * If each directive in the plan is relevant to at least one umwelt CA
   * the plan is possible
@@ -298,7 +298,7 @@ stateDiagram-v2
 The status of a plan is implied by the statuses of its component directives.
 
 * `possible` - waiting to hear from all umwelt CAs if each directive is meaningful or not
-* `not_possible` - at least one directive can not be planned for by any CA in the umwelt
+* `cannot_execute` - at least one directive can not be planned for by any CA in the umwelt
 * `can_execute` - the umwelt has at least one plan for each directive
 * `executing` - the umwelt is in the process of executing the directives of the plan
 * `executed` - all directives in the plan were (recursively) executed by the umwelt
@@ -309,8 +309,8 @@ title: Plan status
 ---
 stateDiagram-v2
   [*] --> possible : waiting to hear from umwelt
-  possible --> not_possible : the plan can not be executed by the umwelt
-  not_possible --> [*]
+  possible --> cannot_execute : the plan can not be executed by the umwelt
+  cannot_execute --> [*]
   possible --> can_execute : the plan can be executed by the umwelt
   can_execute --> executing : the plan is being executed
   executing --> executed : the plan was executed
@@ -353,7 +353,7 @@ How goals, plans and goal states are encoded as acting-related properties of the
 >
 > **Action**: The name of an effector action
 >
-> **Status**: possible | not_possible | can_execute | executing | executed
+> **Status**: possible | cannot_execute | can_execute | executing | executed
 >
 > **Score**: 0.0..1.0 | none - Score is always none for plans received (it is up to the sender to score them)
 
