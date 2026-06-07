@@ -120,7 +120,7 @@ A CA tells its *transitive* umwelt to forget about all directives received and p
 
 ##### Event `intent_completed([intent_id=IntentId])`
 
-A CA tells its *transitive* umwelt that a plan it built to achieve its intent was execuited.
+A CA tells its *transitive* umwelt that a plan it built to achieve its intent was executed. This is of interest to effector CAs only.
 
 #### From umwelt to parent(s)
 
@@ -200,36 +200,29 @@ An effector CA tells a parent CA that had broadcasted `ready_actuations` for a p
 
 When the CA has given itself an intent or has received a directive to achieve an intent by some ancestor, it:
 
-* Constructs a possible plan, one that might achieve the goal
+* Constructs a plan, one that might achieve the goal
   * and submits it as `todo([Directive, ...])` to the umwelt for feedback
 * Waits for affirmation or negation of relevance from all umwelt CAs (`can_seek(Directive)` and`cannot_seek(Directive)`)
 * If at least one directive in the plan is irrelevant to all umwelt CAs
   * the plan cannot execute
   * it sends back `cannot_execute(Directive)`
 * If each directive in the plan is relevant to at least one umwelt CA
-  * the plan remains possible
+  * the plan becomes possible
 * If a plan is possible
   * for each directive in the plan
     * asks its umwelt to `find_plan([directive=DirectiveId])`
     * each umwelt CA responds with event `cannot_execute([directive=Directive])` or `can_execute([directive=Directive])`
-  * The plan is feasible if, for all directives in it, there's at least one umwelt CA with a plan
-  * The plan is not feasible, for any directive in the plan, there is no umwelt CA with a plan
-* If the plan is feasible
+  * The plan `can_execute` if, for all directives in it, there's at least one umwelt CA with a plan that `can_execute`
+  * The plan `cannot_execute`, for any directive in the plan, there is no umwelt CA with a plan that `can_execute`
+* If the plan `can_execute`
   * the CA holds on to it (associating it with an intent and a priority) and waits to be asked to execute it
   * the CA sends event `can_execute([directive=Directive])` back to the parent who made the request
-* If the plan is not feasible,
+* If the plan `cannot_execute`,
   * the CA searches for another plan
-* If no feasible plan can be found
-  * the CA sends back `cannot_execute([directive=Directive])` back to the parent CA
+  * If no such plan can be found
+    * the CA sends back `cannot_execute([directive=Directive])` back to the parent CA
 
-A goal state stays in planning status until a plan is found that can be executed, or no plan can be found that can be executed:
-
-If there is already a plan for the goal
-  if the plan can_execute (inferred from messages from umwelt), advance to can_execute and publish if for a directive
-  if the plan cannot_execute (inferred from messages), find another plan
-      if no other plan can be found, advance to cannot_execute and publish if for directive
-     if its executability is TBD, the goal's state can not be advanced at the moment (in limbo)
-If there is no plan yet for the directive/intent, find one.
+A goal state stays in planning status until a plan is found that can be executed and is not being executed.
 
 ### Abandoning an intent
 
@@ -242,9 +235,9 @@ A CA may receive at any time an event telling it that an ancestor abandoned an i
 
 Let's assume that a CA has an intent as well as directives received to achieve intents of ancestor CAs.
 
-The CA selects the pending (at least todo but not executing or executed) goal (intent or received directive) with a feasible plan that has highest precedence. The plan being feasible implies that, for each directive in it, these is an umwelt CA with a feasible plan of its own to achieve that directive.
+The CA may have a plan it can execute for its intent or for some or all of the directives it received. It waits on a parent to be told to execute such a plan.
 
-The execution of a plan is stepwise. The CA takes each `can_execute` directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute(DirectiveId)`). When the directive is confirmed as executed (`executed([directive_id=DirectiveId])`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed([directive_id=DirectiveId])` to its parents.
+The execution of a plan is stepwise. The CA takes each (`can_execute`) directive in the plan in turn and asks the umwelt CA known to have a plan for it to execute its plan in the context of an intent. (`execute(DirectiveId)`). When the directive is confirmed as executed (`executed([directive_id=DirectiveId])`) by the umwelt CA, it moves to executing the next directive until the entire plan is executed. If the plan was for a received directive, the CA broadcasts `executed([directive_id=DirectiveId])` to its parents.
 
 However, if a CA is at level 1 of the hierarchy (its umwelt are static CAs), its plan is a list of effector actions. They are not executed stepwise but all at once by telling effector CAs to accumulate them (wait for umwelt confirmation), then ready them for actuation (wait for umwelt confirmation), and then by telling the body to execute accumulated actions for the directives.
 
