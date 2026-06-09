@@ -8,7 +8,7 @@ In short, yes. What's required is for the robot to have free agency, that is, th
 
 To have free agency, the robot must be both aware and adaptive. It must perceive aspects of a changing world it inhabits (its umwelt), continuously make sense of it, and explore a dynamic landscape of affordances. As it adapts from experiences, the robot extends its original programming. It is important that it must do this on its own, as opposed to being instructed by another cognitive being (a human with a very different umwelt). We can of course debate whether or not the robot's self-programming is fully determined by its original programming. I would argue it's not but that's a can of worms best opened in its own space.
 
-Crucially to having free will, the robot must be mortal so that what is good vs bad for it is existentially grounded. Without mortality, everything is of equal significance and importance to the robot (the frame problem). Without mortality there is no reason for free agency and thus no meaning to having free will. 
+Crucially to having free will, the robot must be mortal so that what is good vs bad for it is existentially grounded. Without mortality, everything is of equal significance and importance to the robot (the frame problem). Without mortality there is no reason for free agency and thus no meaning to having free will.
 
 ## What about consciousness?
 
@@ -20,7 +20,7 @@ Basal consciousness in a robot should not be that hard to achieve, if we accept 
 
 By recursively folding awareness upon itself, a robot could even achieve multiple levels of consciousness. However in a resource-limited setting, usefulness might decline rapidly with each successive level, quickly shutting down consciousness regress to optimize resource usage.
 
-I keep separate achieving consciousness from understanding what it feels like to be conscious. The mystery of qualia remains whole. What it feels like to be conscious may be as impenetrable to objective study as what it feels like to see red, or to be a bat. 
+I keep separate achieving consciousness from understanding what it feels like to be conscious. The mystery of qualia remains whole. What it feels like to be conscious may be as impenetrable to objective study as what it feels like to see red, or to be a bat.
 
 ## Can only living beings be conscious?
 
