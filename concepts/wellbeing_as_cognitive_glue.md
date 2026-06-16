@@ -8,8 +8,10 @@ The wellbeing of each CA fluctuates over its lifetime, with low or dropping well
 
 Wellbeing, positive or negative, is contagious; it spreads from CA to CA up and down umwelt relationships. This diffusion of wellbeing signals is key to multiple CAs behaving as a collective. If, for example, a CA's feeling of integrity lowers dramatically from directly observing repeated collisions, the stress it feels needs to be shared with other CAs if they are to get involved in preventing further collisions. Stress acts as a cognitive glue for the collective.
 
-A CA can decide to act as a "wellbeing capacitor" by "hoarding" wellbeing signals it receives from its umwelt CAs and releasing them back later on. Alternatively, a CA might decline wellbeing signals from its umwelt, letting them temporarily accumulate  in it. Such internal actions allow a CA to manipulate the "mood" of its umwelt CAs and alter their usual priorities. For example, a CA way up in the hierarchy might decide to have the CAs underneath it tolerate more pain while the collective is urgently seeking food; it would do so by declining integrity signals and letting them accumulate in its umwelt. Or it might decide to make them more responsive to hunger, by hoarding fullness signals and draining them from its umwelt.
+Once a consciousness layer of CAs is implemented (see the note on Free will and consciousness), a CA could be acted upon from an upper (consciousness) layer so that it changes how it handles wellbeing signals. 
 
-I updated my design notes on wellbeing in a collective of cognition actors.
+It could be told to become a "wellbeing capacitor" by "hoarding" wellbeing signals it receives from its umwelt CAs and releasing them back later on. Alternatively, a CA might be told to decline wellbeing signals from its umwelt, letting them temporarily accumulate in it.
+
+Such internal actions allow a "consciousness" CA to manipulate the "mood" of CAs under its control and alter their usual priorities. For example, a CA might decide to have the CAs underneath it tolerate more pain while the collective is urgently seeking food; they would do so by declining integrity signals and letting them accumulate in their umwelts. Or a CA might decide to make CAs under its control more responsive to hunger, by having them hoard fullness signals to drain them from their umwelts.
 
 My thanks to @Elliott Hauser  for bringing cool ideas to this project such as the notions of stress, wellbeing diffusion and wellbeing capacitance.
