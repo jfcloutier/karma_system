@@ -1,11 +1,10 @@
 # Representing properties and relations
 
-Experiences, Predictions, Prediction Errors, Predictables and Observations represent different perspectives held by CAs about properties/relations.
+Experiences, Predictions, Prediction Errors and Observations represent different perspectives held by CAs about properties/relations.
 
 * Observations: The experienced properties/relations a CA perceives of its umwelt CAs
 * Predictions: The next observations a CA anticipates
 * Prediction errors: Corrections a CA receives from its umwelt about the values of predictions it made
-* Predictables: Specifications of what predictions a CA can respond to
 * Experiences:  Properties/relations abstracting the CA's past and current observations
 
 Properties/relations are represented as Origin ---Kind--> Value. A relation is between two objects (its origin and its value). A property is between one object (its origin) and an atomic value.
@@ -82,16 +81,10 @@ A `more` relation (between sets of current observations - both represented as sy
 * of: [(unmwelt_ca), ...]
 * id: UUID
 
-### Predictable
-
-* origin: (object)
-* kind: (kind)
-* domain: (domain) - boolean, [red, green,...], etc.
-* by: (ca)
-
 ### Prediction
 
 * (property or relation)
+* priority: positive integer - how much weight the prediction has - used to resolve conflicting predictions
 * confidence: 0.0..1.0
 * by: (ca)
 * for: [(unmwelt_ca), ...]

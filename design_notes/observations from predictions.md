@@ -88,7 +88,7 @@ Making an empty prediction is a last resort because the consequent prediction er
 
 ## Causal theory and confidence
 
-WWhen a CA uses its causal theory to generate a prediction from current observations, getting a prediction error as a consequence reduces the CA's confidence in the theory. 
+WWhen a CA uses its causal theory to generate a prediction from current observations, getting a prediction error as a consequence reduces the CA's confidence in the theory.
 
 When a CA receives no prediction error from a prediction generated from its causal theory,  it gains confidence in the theory.
 

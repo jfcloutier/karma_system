@@ -8,7 +8,7 @@ The wellbeing of each CA fluctuates over its lifetime, with low or dropping well
 
 Wellbeing, positive or negative, is contagious; it spreads from CA to CA up and down umwelt relationships. This diffusion of wellbeing signals is key to multiple CAs behaving as a collective. If, for example, a CA's feeling of integrity lowers dramatically from directly observing repeated collisions, the stress it feels needs to be shared with other CAs if they are to get involved in preventing further collisions. Stress acts as a cognitive glue for the collective.
 
-Once a consciousness layer of CAs is implemented (see the note on Free will and consciousness), a CA could be acted upon from an upper (consciousness) layer so that it changes how it handles wellbeing signals. 
+Once a consciousness layer of CAs is implemented (see the note on Free will and consciousness), a CA could be acted upon from an upper (consciousness) layer so that it changes how it handles wellbeing signals.
 
 It could be told to become a "wellbeing capacitor" by "hoarding" wellbeing signals it receives from its umwelt CAs and releasing them back later on. Alternatively, a CA might be told to decline wellbeing signals from its umwelt, letting them temporarily accumulate in it.
 
