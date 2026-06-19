@@ -8,7 +8,7 @@ In short, yes. What's required is for the robot to have free agency, that is, th
 
 To have free agency, the robot must be both aware and adaptive. It must perceive aspects of a changing world it inhabits (its umwelt), continuously make sense of it, and explore a dynamic landscape of affordances. As it adapts from experiences, the robot extends its original programming. It is important that it must do this on its own, as opposed to being instructed by another cognitive being (a human with a very different umwelt). We can of course debate whether or not the robot's self-programming is fully determined by its original programming. I would argue it's not but that's a can of worms best opened in its own space.
 
-To need free will, the robot must be mortal so that what is good vs bad for it is existentially grounded. Without mortality, everything is of equal significance and importance to the robot (the frame problem). Without mortality there is no reason for free agency and no meaning to having free will.
+To need free will, the robot must be mortal so that what is good vs bad for it is existentially grounded. Without mortality, everything is of equal significance and importance to the robot (the frame problem). Without mortality there is no drive to survive, no intrinsic motivation for free agency and no meaning to having free will.
 
 ## What about consciousness?
 
