@@ -84,8 +84,8 @@ A `more` relation (between sets of current observations - both represented as sy
 ### Prediction
 
 * (property or relation)
-* priority: positive integer - how much weight the prediction has - used to resolve conflicting predictions
-* confidence: 0.0..1.0
+* weight: 0..3 - how much weight the prediction has given its source - 3 if from causal model, 2 if from experience, 1 if from last observation, 0 if from ignorance
+* confidence: 0.0..1.0 - how confident the CA is about the prediction, irrespective of its source and thus weight
 * by: (ca)
 * for: [(unmwelt_ca), ...]
 
