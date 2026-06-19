@@ -18,9 +18,9 @@ Consciousness, to qualify as such, need not be the full-blown, awe-inspiring "co
 
 Basal consciousness in a robot should not be that hard to achieve if we accept my simple (simplistic?) definition for it. All that's needed is a folding of awareness on itself. The robot's cognitive processes would need to generate signals that other cognitive processes of the robot can sense, derive meaning from, and act upon to intentionally improve the odds of survival. Consciousness uses the same machinery as awareness and is, in my view, no more than awareness applied to itself.
 
-By recursively folding awareness upon itself, a robot could even achieve multiple levels of consciousness. However, in a resource-limited setting, usefulness might decline rapidly with each successive level, quickly shutting down consciousness regress to optimize resource usage.
+By recursively folding awareness upon itself, a robot could even achieve multiple levels of consciousness. However, in a resource-limited setting, usefulness would decline rapidly with each successive level, quickly shutting down consciousness regress to optimize resource usage.
 
-To me, achieving consciousness (however minimally) and understanding the feeling of consciousness are different problems. Here, the larger mystery of qualia remains whole. What it feels like to be conscious may be as resistant to objective study as what it feels like to see red or to be a bat.
+I see implementing a consciousness (however minimally) and what that consciousness feels like as separate problems. To me, the mystery of qualia remains whole. The subjective feeling of consciousness may be as resistant to objective study as what it feels like to see red or to be a bat.
 
 ## Can only living beings be conscious?
 
