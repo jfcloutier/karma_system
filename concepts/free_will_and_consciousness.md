@@ -20,7 +20,7 @@ Basal consciousness in a robot should not be that hard to achieve if we accept m
 
 By recursively folding awareness upon itself, a robot could even achieve multiple levels of consciousness. However, in a resource-limited setting, usefulness would decline rapidly with each successive level, quickly shutting down consciousness regress to optimize resource usage.
 
-I see implementing a consciousness (however minimally) and whether this consciousness will feel like something as two separate problems. To me, the mystery of qualia remains whole. The subjective feeling of consciousness may be as resistant to objective study as what it feels like to see red or to be a bat.
+I see as two separate problems 1- implementing a consciousness (however minimally) and 2- whether this consciousness will feel like something. To me, the mystery of qualia remains whole. The subjective feeling of consciousness may be as resistant to objective study as what it feels like to see red or to be a bat.
 
 ## Can only living beings be conscious?
 
