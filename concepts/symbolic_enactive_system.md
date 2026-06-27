@@ -1,10 +1,8 @@
 # Karma is an emergent/enactive system even if it is symbolic
 
-A reading of ["Embodiment in Cognitive Systems: on the Mutual Dependence of Cognition & Robotics"](https://www.researchgate.net/publication/254400974_Embodiment_in_Cognitive_Systems_on_the_Mutual_Dependence_of_Cognition_Robotics) by David Vernon et al.
+A reading of ["Embodiment in Cognitive Systems: on the Mutual Dependence of Cognition & Robotics"](https://www.researchgate.net/publication/254400974_Embodiment_in_Cognitive_Systems_on_the_Mutual_Dependence_of_Cognition_Robotics) by David Vernon et al. The paper compares two paradigms of empirical cognition, namely **cognitivist** systems and **emergent/enactive** systems.
 
-The paper compares two paradigms of empirical cognition, namely **cognitivist** systems and **emergent/enactive** systems.
-
-TLDR; According to this paper, I am building an embodied, emergent and enactive cognitive system. It is unusual, in part, because it is symbolic, which is widely considered a defining attribute of cognitivist systems, the other major approach.
+*TLDR; According to this paper, I am building an embodied, emergent and enactive cognitive system. It is unusual, in part, because it is symbolic, which is widely considered a defining attribute of cognitivist systems, the other major approach.*
 
     The five central concepts of enactive cognitive science are embodiment, experience, emergence, autonomy and sense-making. In contradistinction to cognitivism, which involves a view of cognition that requires the representation of a given objective pre-determined world, enaction asserts that cognition is a process whereby the issues that are important for the continued existence of a cognitive entity are brought out or enacted: co-determined by the entity as it interacts with the environment in which it is embedded. The term co-determination [...] implies that the process of cognition determines what is real or meaningful for the agent.
 
