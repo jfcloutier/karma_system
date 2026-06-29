@@ -13,13 +13,13 @@ The objective of this project is to realize *artificial agency*.
 
 It asks the question: What does it take, at a minimum, for an autonomous robot to learn to survive in a world it knows initially almost nothing about?
 
-If successful, the software will animate an autonomous rover that can learn, on its own and starting with minimal a priori knowledge, how to survivably engage its environment by progressively making sense of it and discovering its affordances.
+If successful, the software implements an enactive, symbolic cognitive architecture that will animate an autonomous rover that can learn, on its own and starting with minimal a priori knowledge, how to survivably engage its environment by progressively making sense of it and discovering its affordances.
 
 Though it implements a computational model of embodied cognition -software running on mobile hardware-, this effort must not be construed as supporting the view that cognition in *living* beings is computational. I don't believe it is.
 
 Here are key concepts and opinions shaping this effort:
 
-* **Active Inference** - an agent must behave *as if* it actively minimizes surprise to preserve its identity
+* **Active Inference** - to endure, an agent must behave *as if* it actively minimizes surprisal (the negative log probability of some outcome )
 * **Enactivism** - cognition arises through a dynamic interaction between an agent and its environment, and an agent's perceptions and actions are constructively co-dependent
 * **Apperception** - predictive sense-making is realized by the discovery of unified causal theories
 * **Mortal Computing** - meaning is grounded in the agent's drive to survive

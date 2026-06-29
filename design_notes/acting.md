@@ -203,15 +203,15 @@ It then waits on a parent to tell it to execute such a plan.
 
 * If the plan's directives are goals
   * For each directive in the plan in turn
-    * tell the umwelt CAs to execute their executable plan for the directive if they have one, in the context of an intent, via (`execute([directive_id=DirectiveId])`).
-    * when the directive is confirmed as executed (`executed([directive_id=DirectiveId])`) by the umwelt CA, the CA moves to executing the next directive, until the entire plan is executed.
+    * tell the umwelt CAs to execute their executable plan for the directive if they have one, in the context of an intent, via (`execute(DirectiveId)`).
+    * when the directive is confirmed as executed (`executed(DirectiveId)`) by the umwelt CA, the CA moves to executing the next directive, until the entire plan is executed.
 * If the plan's directives are commands
   * tell the effector CAs one level below to execute all planned commands (they ready the body to execute at once the commanded actions)
   * tell the body to execute the readied actuations at once
 * If the plan was for a received directive
-  * the CA broadcasts `executed([directive_id=DirectiveId])` to its parents.
+  * the CA broadcasts `executed(DirectiveId)` to its parents.
 * If the planned goal was the CA's intent
-  * the CA broadcasts `intent_completed([intent_id=IntentId])`.
+  * the CA broadcasts `intent_completed(IntentId)`.
 
 ## Action-related states
 
@@ -329,6 +329,8 @@ How goals, plans and goal states are encoded in the CA's state:
 #### `command{effector_ca: CA_ID, action: Action, intent_id: IntentId}`
 
 > **Action**: spin or reverse_spin, etc.
+>
+> The directive id of a command is implicitly 'CA_ID:Action'
 
 #### `goal_state{goal: Goal, received:Received, status: Status, messages: GoalMessages}`
 
