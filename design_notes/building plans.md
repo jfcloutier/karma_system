@@ -80,7 +80,7 @@ To create a trend experience, a CA's plan could change the ordinal value of the 
 To persist a trend experience, a CA's plan would direct its umwelt to **further** the trend.
 To terminate a trend experience, a CA's plan would direct its umwelt to **disrupt** the trend.
 
-How a trend experience is impacted depends on the assigned value of the trend (up, down, same or ended).
+How a trend experience is impacted depends on the assigned value of the trend (up, down or ended).
 
 An `up` trend captures an upwardly changing ordinal value for a given property of a given object.
 A `down` trend captures a downwardly changing ordinal value for a given property of a given object.
