@@ -73,8 +73,7 @@ At the `assess` phase, a CA:
 
 ### Communications
 
-A directive (goal or command sent or received) is communicated by value or by reference.
-It is communicated by reference when the target of the communication is fully expected to know of the referenced directive.
+A directive (goal or command sent or received) is communicated by value.
 A directive is communicated by value to parents because some parents may not yet have been requested to do it but might later.
 An intent (self-assigned goal) is always communicated by reference (an umwelt CA does not need to know the nature of the intents of its ancestors, only their identifier).
 
@@ -92,7 +91,7 @@ The event is received by all CAs in the umwelt of the broadcasting CA.
   * if not relevant to the umwelt CA, it broadcasts back `cannot_seek(Directive)` to all parents
   * if relevant, it broadcasts back `can_seek(Directive)`
 
-##### Event `find_plan([directive_id=DirectiveId])`
+##### Event `find_plan([directive=Directive])`
 
 Once it has received feedback from (enough) of its umwelt about a plan it built and disseminated to know it might be executable, a CA asks its umwelt CAs to construct, with some priority, a plan to achieve each directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
 
@@ -108,7 +107,7 @@ If the directive is a command, an effector CA need only reply that it can execut
 * If an executable plan can **not** be found
   * the receiving CA broadcasts to its parents that it `cannot_execute([directive=Directive])`
 
-##### Event `execute([directive_id=DirectiveId])`
+##### Event `execute([directive=Directive])`
 
 Once CA knows a plan it built is executable, the CA asks its umwelt CAs to execute each of its directives in turn.
 This means executing any plan they found for each of the directives in the CA's plan.
@@ -160,7 +159,7 @@ A CA tells its parent CAs, in response to a `find_plan` event sent to it by a pa
 
 See -Searching for a plan-
 
-##### Event `executed([directive_id=DirectiveId])`
+##### Event `executed([directive=Directive])`
 
 A CA tells its parent CAs, in response to an `execute` event broadcasted by a parent, that it executed the plan it had constructed for the goal, or readied the body for actuating the command.
 
@@ -180,7 +179,7 @@ When the CA has given itself an intent or has received a directive to achieve an
   * the plan becomes possible
 * If a plan is possible
   * for each directive in the plan
-    * asks its umwelt to `find_plan(DirectiveId)` (trivial for commands, transitive plan building for goals)
+    * asks its umwelt to `find_plan(Directive)` (trivial for commands, transitive plan building for goals)
     * each umwelt CA responds with event `cannot_execute(Directive)` or `can_execute(Directive)`
   * The plan `can_execute` if, for all directives in it, there's at least one umwelt CA with a plan that `can_execute`
   * The plan `cannot_execute`, for any directive in the plan, there is no umwelt CA with a plan that `can_execute`
@@ -203,13 +202,13 @@ It then waits on a parent to tell it to execute such a plan.
 
 * If the plan's directives are goals
   * For each directive in the plan in turn
-    * tell the umwelt CAs to execute their executable plan for the directive if they have one, in the context of an intent, via (`execute(DirectiveId)`).
-    * when the directive is confirmed as executed (`executed(DirectiveId)`) by the umwelt CA, the CA moves to executing the next directive, until the entire plan is executed.
+    * tell the umwelt CAs to execute their executable plan for the directive if they have one, in the context of an intent, via (`execute(Directive)`).
+    * when the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, the CA moves to executing the next directive, until the entire plan is executed.
 * If the plan's directives are commands
   * tell the effector CAs one level below to execute all planned commands (they ready the body to execute at once the commanded actions)
   * tell the body to execute the readied actuations at once
 * If the plan was for a received directive
-  * the CA broadcasts `executed(DirectiveId)` to its parents.
+  * the CA broadcasts `executed(Directive)` to its parents.
 * If the planned goal was the CA's intent
   * the CA broadcasts `intent_completed(IntentId)`.
 
