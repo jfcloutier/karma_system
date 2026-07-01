@@ -1,6 +1,6 @@
 # Karma is an emergent/enactive system even if it is symbolic
 
-A reading of ["Embodiment in Cognitive Systems: on the Mutual Dependence of Cognition & Robotics"](https://www.researchgate.net/publication/254400974_Embodiment_in_Cognitive_Systems_on_the_Mutual_Dependence_of_Cognition_Robotics) by David Vernon et al. The paper compares two paradigms of empirical cognition, namely **cognitivist** systems and **emergent/enactive** systems.
+["Embodiment in Cognitive Systems: on the Mutual Dependence of Cognition & Robotics"](https://www.researchgate.net/publication/254400974_Embodiment_in_Cognitive_Systems_on_the_Mutual_Dependence_of_Cognition_Robotics) by David Vernon et al. compares two paradigms of empirical cognition, namely **cognitivist** systems and **emergent/enactive** systems.
 
 *TLDR; According to this paper, I am building an embodied, emergent and enactive cognitive system. It is unusual, in part, because it is symbolic, which is widely considered a defining attribute of cognitivist systems, the other major approach.*
 
