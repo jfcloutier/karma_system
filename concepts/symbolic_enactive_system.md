@@ -1,6 +1,6 @@
 # Karma is an emergent/enactive system even if it is symbolic
 
-["Embodiment in Cognitive Systems: on the Mutual Dependence of Cognition & Robotics"](https://www.researchgate.net/publication/254400974_Embodiment_in_Cognitive_Systems_on_the_Mutual_Dependence_of_Cognition_Robotics) by David Vernon et al. compares two paradigms of empirical cognition, namely **cognitivist** systems and **emergent/enactive** systems.
+In ["Embodiment in Cognitive Systems: on the Mutual Dependence of Cognition & Robotics"](https://www.researchgate.net/publication/254400974_Embodiment_in_Cognitive_Systems_on_the_Mutual_Dependence_of_Cognition_Robotics), David Vernon et al. compare two paradigms of empirical cognition, namely **cognitivist** systems and **emergent/enactive** systems.
 
 *TLDR; According to this paper, I am building an embodied, emergent and enactive cognitive system. It is unusual, in part, because it is symbolic, which is widely considered a defining attribute of cognitivist systems, the other major approach.*
 
@@ -9,6 +9,10 @@
     [...]
 
     Co-determination means that the agent constructs its reality (its world) as a result of its operation in that world. In this context, cognitive behaviour is inherently specific to the embodiment of the system and dependent on the system’s history of interactions, i.e., its experiences. Thus, nothing is ‘pre-given’. Instead there is an enactive interpretation: a real-time context-based choosing of relevance (i.e. sense-making). 
+
+    [...]
+
+    So, if cognitive systems anticipate, assimilate, and adapt; if they develop and learn, predict, explain, and imagine, the question is how do they do this? Unsurprisingly, many approaches have been taken to address this problem. Among these, however, we can discern two broad classes: the cognitivist approach based on symbolic information processing representational systems, and the emergent systems approach, embracing connectionist systems, dynamical systems, and enactive systems, all based to a lesser or greater extent on principles of self-organization.
 
     [...]
 
@@ -22,18 +26,27 @@ I have only one minor qualm with the paper: It implies that a symbolic approach 
 
     Although the use of symbols is often presented as definitive difference between the cognitivist and emergent positions, they differ more deeply and more fundamentally, well beyond a simple distinction based on symbol manipulation.
 
-Most, if not all all, cognitivist systems rely on symbol manipulation, so I understand the belief.
+Most, if not all all, cognitivist systems rely on symbol manipulation, so I understand the apparent over-generalization.
 
-However the cognitive system I am building is both emergent/enactive **and** symbolic. It is **not** cognitivist even though it is symbolic. My autonomous robot will invent symbols and assign them meaning from its experiences. As a consequence, the robot's emergent ontology will be its own. It may not even be relatable to us humans.
+Here's how I would correct it, focusing on connectionist vs symbolic implementations:
 
-This still begs the question, why attempt a *symbolic* emergent/enactive cognitive system when the vast majority rely on a *connectivist* approach? Some might argue that "symbolic" and "emergent" are mutually exclusive.
+|                   | **Cognitivist** | **Emergent/Enactive**   |
+|-------------------|-----------------|-------------------------|
+| **Connectionist** | Pretrained ANN* | Continuous ANN training |
+| **Symbolic**      | Precoded logic  | Code (re)generation     |
 
-An emergent/enactive cognitive system learns, on its own, a world model from interacting with its environment. Connectionist machine learning is well-understood and has had remarkable successes. A symbolic approach is typically only used to predefine world models in terms of logic rules already learned by humans. It seems it would make sense for me to rely on a connectionist approach.
+> * ANN - Artificial Neural Network
 
-That said, an enactive system capable of *inductive program synthesis* could build its own world model as logic rules. It could then use these logic rules, maybe expressed as a logic program, to make predictions and select action plans. In other words, one can envision a symbolic emergent/enactive system where histories of experiences are generalized on-the-fly, via symbolic machine learning, into predictive/generative logic programs. One advantage to this approach is the small learning set required to induce potentially competent world models (connectionist approaches require large learning sets).
+An emergent/enactive cognitive system learns, on its own, a world model from interacting with its environment. It does unsupervised machine learning. Connectionist machine learning is well-understood and has had remarkable successes whereas a symbolic approach is typically only used to predefine world models in terms of logic rules *already learned* by humans. It seems it would make sense for me to rely on a connectionist approach.
 
-My [cognitive system design](https://zenodo.org/records/17941263) relies on my [implementation of the Apperception Engine](https://zenodo.org/records/15512255) to discover/induce short logic programs on demand, programs that explain and predict the system's experiences. The search spaces of logic programs are kept manageable because the world model is distributed over a collective of cognition actors, each with a limited experiential scope.
+That said, an enactive system capable of *inductive program synthesis*, a kind of symbolic machine learning, could build its own world model as logic rules. It could then use these logic rules, maybe expressed as a logic program, to make predictions and select action plans. In other words, one can envision a *symbolic* emergent/enactive system where histories of experiences are generalized on-the-fly into predictive/generative logic programs. One advantage to this approach is the small learning set required to induce potentially competent world models (connectionist approaches require large learning sets).
 
-So, it is not irrational on my part to attempt a symbolic implementation of an enactive/emergent cognitive system.
+So, it is not entirely irrational on my part to attempt a symbolic implementation of an enactive/emergent cognitive system.
 
-The main driver for choosing a symbolic approach is that I primarily do this work to further my own understanding of cognition. Taking a connectionist approach would lead to the creation of "black boxes" (large matrices of floating point numbers) as the system's learning artifacts. My symbolic emergent/enactive system will generate/update a distributed world model as many small logic programs, which are "white boxes". I am more likely to gain insights from studying small white boxes than large black boxes.
+My [cognitive system design](https://zenodo.org/records/17941263) relies on my [implementation of the Apperception Engine](https://zenodo.org/records/15512255) to discover/induce short logic programs on demand, programs that explain and predict the system's experiences. The search spaces for these logic programs are kept manageable because the world model is distributed over a collective of cognition actors, each with a limited experiential scope.
+
+The cognitive system I am building is thus both emergent/enactive **and** symbolic. It is **not** cognitivist even though it is symbolic. My autonomous robot will invent symbols and assign them meaning from its experiences. As a consequence, the robot's emergent ontology will be its own. It may not even be relatable to us humans.
+
+This still begs the question, why attempt a *symbolic* emergent/enactive cognitive system when the vast majority rely on a *connectivist* approach?
+
+The main driver for choosing a symbolic approach is that I primarily do this work to further my own understanding of cognition. Taking a connectionist approach would lead to the creation of "black boxes" (large matrices of floating point numbers) as the system's learned artifacts. My symbolic emergent/enactive system will generate/update a distributed world model represented as many small logic programs, which are "white boxes". I am more likely to gain insights from studying small white boxes than large black boxes.
