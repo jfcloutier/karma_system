@@ -20,7 +20,7 @@ A CA initiates actions by:
 2. Finding a workable plan for it to be carried out by its umwelt (with its sub-plans etc. down to effector actions)
 3. Executing it (stepwise and recursively via sub-plans,  down to effector actions)
 
-An executable plan is found by a CA only when, for each of the plan's directives (goals or commands), executable plans are found by the CA's umwelt to achieve each of the goals, or the umwelt contains effector CAs capable of carrying out each of the commands.
+An executable plan is found by a CA only when, for each of the plan's directives (goals or commands to be achieved/executed), executable plans are found by the CA's umwelt to achieve each of the goals, or the umwelt contains effector CAs capable of carrying out the commands.
 
 At any point in time, there may be multiple CAs attempting to achieve their own intents. These attempts may get in each other's way. Such conflicts are minimized, if not resolved, by executing plans according to precedence. Precedence is determined by the hierarchical level of the owner of the causal intent (higher-ups matter more) and by the priority assigned to the achievement of the intent.
 
@@ -53,7 +53,10 @@ The lifecycle of a CA consists of these repeating **phases** constituting the eq
 The `act` phase is responsible for setting goals, making and prioritizing plans, and executing them. The `assess` phase is responsible, in part, for reviewing the success of extant goals and plans and possibly dropping some.
 
 Achieving a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs, all opf which are separate processes.
-During any phase of its lifecycle, a CA receives events and messages regarding the status of goals and plans.
+During any phase of its lifecycle, a CA receives events and messages reporting new directives and the progress of directives it received and sent.
+
+The `act` phase is where a CA makes progress realizing its intent and the directives it received.
+
 An event is multicasted by a CA to its umwelt or parent CAs, whereas a message targets a single CA.
 
 ### Phases and acting
@@ -73,11 +76,8 @@ At the `assess` phase, a CA:
 
 ### Communications
 
-A directive (goal or command sent or received) is communicated by value.
-A directive is communicated by value to parents because some parents may not yet have been requested to do it but might later.
-An intent (self-assigned goal) is always communicated by reference (an umwelt CA does not need to know the nature of the intents of its ancestors, only their identifier).
+CAs always communicate about directives with umwelt CAs via events so as to reach all umwelt CAs. One exception is readying and executing commands. This is donr by sending messages to effector CAs. The other exception are intents. They are communicated by their IDs since their nature are of no concern to CAs other then their originators.
 
-CAs always communicate about directives with umwelt CAs via events so as to reach all umwelt CAs.
 Umwelt CAs also always communicate about directives with parents via events (multicasts), so they all update goal states for directives they have sent or might send.
 
 #### Broadcasts from parent to umwelt
@@ -219,7 +219,7 @@ Each CA independently manages its own changing state.
 For a dynamic CA (any CA other than a sensor or effector CA), the data composing this state captures, in the current and in remembered timeframes,
 what the CA has observed, experienced, felt etc. as well the plans it built and progress made in achieving received or self-assigned goals.
 
-An effector CA need only manage the actuation readiness of received commands.
+An effector CA need only manage the actuation readiness of received commands in communication with the body.
   
 ### Goal status
 
