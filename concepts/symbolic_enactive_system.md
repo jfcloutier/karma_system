@@ -50,3 +50,13 @@ The cognitive system I am building is thus both emergent/enactive **and** symbol
 This still begs the question, why attempt a *symbolic* emergent/enactive cognitive system when the vast majority rely on a *connectivist* approach?
 
 The main driver for choosing a symbolic approach is that I primarily do this work to further my own understanding of cognition. Taking a connectionist approach would lead to the creation of "black boxes" (large matrices of floating point numbers) as the system's learned artifacts. My symbolic emergent/enactive system will generate/update a distributed world model represented as many small logic programs, which are "white boxes". I am more likely to gain insights from studying small white boxes than large black boxes.
+
+And so, I am implementing a symbolic, enactivist cognitive architecture for mortal Lego robots.
+
+The architecture is based on an evolving and hierarchically self-organizing collective of cognition actors (actors are message-passing processes). They, together, constitute the “mind” of a robot. They are created and terminated based on their contribution to the survival of the robot.
+
+Each cognition actor operates within its own umwelt which is composed of other, less abstract cognition actors. A cognition actor operates by cycling through phases whereby it predicts changes in its umwelt, observes successful predictions and prediction errors, derives a causal theory from observations, updates its experiences by integrating current and past observations, assigns good vs bad feelings to these experiences based on correlated changes in wellbeing, acts on its umwelt to persist its own good experiences and terminate bad ones, and assesses its own relevance and complexity, possibly dying or dividing, before cycling back to predicting.
+
+The “act” phase of the lifecycle of cognition actors is arguably a keystone life cycle phase since cognition without action is purposeless. It is a surprisingly complex dance that leads to the generation and execution of symbolic action plans within a collective where all cognition actors contribute to the plans they are a part of, and do so in the midst of competing priorities.
+
+Each cognition actor does all this in cooperation/competition with others in its entourage. The expected outcome of this buzzing, autopoietic, sense-making collective is the continued survival of the robot as it explores/exploits a dissipative environment on which it depends.
