@@ -42,6 +42,5 @@ Assessing covers doing retrospectives, making adjustments and executing life eve
 ## Accept life event
 
 * ask SOM what's the next life event: apoptosis, replication, division or none
-* realize it, unless none
   * apoptosis distributes fullness to parents and umwelt
   * replication/division divides fullness equally, integrity is copied, engagement starts full for new CAs
