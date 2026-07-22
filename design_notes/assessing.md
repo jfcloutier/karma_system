@@ -21,14 +21,14 @@ Assessing covers doing retrospectives, making adjustments and executing life eve
 
 ## Score plans
 
-* over all timeframes, check if executed goal states have since been achieved (experience impacts are now realized)
+* over all timeframes, check if goal states went from executed to achieved (have targeted experience impacts been realized?)
 * if achieved, score associated executed plans
 * the closer in time to goal achievement, the higher the (correlation) score
 
 ## Evaluate causal theory
 
 * if none and there's enough history (timeframe count > N), request one from the Apperception Engine
-* if too many prediction errors from applying the current causal theory, request a new one
+* if too many prediction errors from applying the current causal theory, request a new one (hold on to the old ones)
 
 ## Diffuse wellbeing
 
@@ -39,9 +39,9 @@ Assessing covers doing retrospectives, making adjustments and executing life eve
 * send messages transfering wellbeing to needy parents and/or umwelt CAs
   * clear received wellbeing status events
 
-## Execute life event
+## Accept life event
 
 * ask SOM what's the next life event: apoptosis, replication, division or none
-* carry it out, if any
+* realize it, unless none
   * apoptosis distributes fullness to parents and umwelt
   * replication/division divides fullness equally, integrity is copied, engagement starts full for new CAs
