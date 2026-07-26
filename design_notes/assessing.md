@@ -39,8 +39,9 @@ Assessing covers doing retrospectives, making adjustments and executing life eve
 * send messages transfering wellbeing to needy parents and/or umwelt CAs
   * clear received wellbeing status events
 
-## Accept life event
+## Trigger life event
 
-* ask SOM what's the next life event: apoptosis, replication, division or none
+* ask SOM to trigger the next life event: apoptosis, replication, division or none
+* wait for the SOM to realize it, unless none
   * apoptosis distributes fullness to parents and umwelt
   * replication/division divides fullness equally, integrity is copied, engagement starts full for new CAs

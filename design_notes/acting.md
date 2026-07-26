@@ -299,7 +299,7 @@ The state of a dynamic CA consist of many properties, including the following th
 
 How goals, plans and goal states are encoded in the CA's state:
 
-#### `goal{id: ID, target: Target, impact: Impact, priority: Priority, intent_id:IntentId, intent_level: Level}`
+#### `goal{id: ID, target: Target, impact: Impact, priority: Priority, intent_id:IntentId, intent_level: Level, timeframe_index: Index}`
 
 > **ID**: A goal's ID is fully determined by Target and Impact - *two goals in different plans will have the same ID if they are semantically the same*
 >
@@ -312,6 +312,8 @@ How goals, plans and goal states are encoded in the CA's state:
 > **IntentId**: Id of the intent that initiated this goal. When Goal.id == Goal.intent_id, the goal is an intent
 >
 > **Level**: The level of the CA who's intent transitively led to this goal (affects goal precedence)
+>
+> **Index**: The timeframe count at which the goal was created
 
 #### `plan{id: ID, goal_id: GoalID, directives: [Directive, ...], status: Status, score: Score}`
 
