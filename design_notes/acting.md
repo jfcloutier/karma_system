@@ -253,6 +253,7 @@ stateDiagram-v2
     can_seek --> planning : looking for an executable plan
     planning --> can_execute : the goal has an executable plan
     planning --> cannot_execute : no executable plan found
+    planning --> cannot_seek : the goal is no longer relevant
     cannot_execute --> [*]
     can_execute --> executing : executing the goal's plan
     executing --> executed : the plan was executed

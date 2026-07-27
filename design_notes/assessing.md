@@ -12,8 +12,8 @@ Assessing covers doing retrospectives, making adjustments and executing life eve
 
 ## Abandon a directive if
 
-* it is no longer relevant or it is stalled
-* then drop any plan for it and let the parents know that the directive cannot be executed
+* it is no longer relevant
+* then drop any plan for it and let the parents know that the directive status moved/reverted to cannot_seek
 
 ## Abandon a plan if
 
