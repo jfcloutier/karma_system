@@ -316,7 +316,7 @@ How goals, plans and goal states are encoded in the CA's state:
 >
 > **Index**: The timeframe count at which the goal was created
 
-#### `plan{id: ID, goal_id: GoalID, directives: [Directive, ...], status: Status, score: Score}`
+#### `plan{id: ID, goal_id: GoalID, directives: [Directive, ...], status: Status, score: Score, timeframe_index: Index}`
 
 > **ID**: A unique id for the plan. *No two plans have the same id, ever.*
 >
@@ -327,6 +327,8 @@ How goals, plans and goal states are encoded in the CA's state:
 > **Status**: possible | cannot_execute | can_execute | executing | executed
 >
 > **Score**: 0.0..1.0 | none
+>
+> **Index**: The timeframe count at which the plan was created
 
 #### `command{effector_ca: CA_ID, action: Action, intent_id: IntentId}`
 
