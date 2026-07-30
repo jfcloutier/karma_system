@@ -88,7 +88,7 @@ e.g. this motor spun twice, there are two upward trends
   * `Object` synthesizes countable observations
     * Same kind and value - counting objects with same description, or
     * Same origin and kind - counting alternate relations of a kind for one object
-  * `Value` is an integer
+  * `Value`  is 1, 2, 3 or `many` (initially > 1)
 
 ### more
 
@@ -99,7 +99,7 @@ e.g. this motor executed more spins than this other motor, the distance reported
 * What
   * A relation
 * Predicate `more(Object1, Object2)` where
-  * `Object1`, `Object2` syntesizes counted observations
+  * `Object1`, `Object2` syntesizes counted observations (there are more observations synthesized as Object1 than as Object2)
 
 ### unchanged
 
