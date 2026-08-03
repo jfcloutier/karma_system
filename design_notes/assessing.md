@@ -8,14 +8,14 @@ Assessing covers doing retrospectives, making adjustments and executing life eve
 
 When doing the assessment phase of its lifecycle, a CA
 
-* may abandon its current intent (sel-assigned goal)
-* may abandon one or more directives (goals received)
-* may abandon plans it formulated to achieve a goals
+* may abandon its current intent (current self-assigned goal)
+* may abandon one or more directives (goals received from parents)
+* may abandon plans it formulated to achieve goals
 * determine which executed goals, if any, are now achieved
-* give an "efficacy" score to plans of achieved goals
-* decide whether to get a first/replacement causal theory
-* decides how much of its wellbeing to diffuse to its entourage(umwelt and parents)
-* asks the SOM for its next life event, if any
+* give an "efficacy" score to plans which goals were achieved
+* decide whether to get an initial or replacement causal theory
+* decides how much of its wellbeing to diffuse to its entourage (umwelt and parents)
+* asks the SOM for a possible next life event
 
 ### Abandon intent if
 
@@ -38,9 +38,8 @@ When doing the assessment phase of its lifecycle, a CA
 
 ### Score plans
 
-* over all timeframes, check if goal states went from executed to achieved (have targeted experience impacts been realized?)
-* if achieved, score associated executed plans
-* the closer in time to goal achievement, the higher the (correlation) score
+* for each goals just achieved, score associated executed plans
+* the closer in time plan execution is to goal achievement, the higher the (correlation) score
 
 ### Evaluate causal theory
 
@@ -65,19 +64,21 @@ When doing the assessment phase of its lifecycle, a CA
 
 ## Evaluating goal achievement
 
-A goal's target is a property/relation to be experienced.
+A goal's target is a property/relation to be experienced (or no longer experienced) via taking planned actions.
 
-An object in a property or relation is the opaque synthesis (opaque to other CAs) of one or more observations made by the CA.
+An experience is a property or relation synthesized from observations (the evidence for the experience). An object of experience (orgin and/or value) keeps that evidence as a list of observation IDs. This list is known only to the experiencing CA.
 
 The types of properties/relations a CA experiences (and also observes as experiences of its umwelt) are:
 
-* activation(Object, Value) - a property - the value is the number of executions
-* count(Object, Value) - a property - the value is 1, 2, 3 or many (initially > 1) - the number of observations "in" the Object
+* activation(Object, Value) - a property - the value is the number of executions, Object is [observation{origin:object{type:dynamic_ca, id:Source}, kind:activation, value:GoalId-TimeframeIndex, confidence:1.0, by:CA}, ...]
+* count(Object, Value) - a property - the value is 1, 2, 3 or many (initially > 1) - the number of observations making up the Object
 * more(Object1, Object2) - a relation - the set of observations (Object1) is larger than another (Object2)
 * unchanged(Object, Value)- a property - the value is 2, 3 or `many` (the number of contiguous, prior timeframes with the same observation)
 * trend(Object, Value)- a property - the value is `up` or `down` or `ended` (characterization of the change in value between prior and current related observations)
 
-A goal for the CA is achieved if its targeted property/relation is realized as an experience of the CA.
+A goal is to persist, terminate or create an experience.
+
+A goal for the CA is achieved if its targeted property/relation is realized as an experience of the CA that is either made present or absent.
 
 It is realized if the value of the current experience is the one targeted and the observation(s) in a targeted experience match the observation(s) in a current experience.
 
@@ -85,7 +86,19 @@ Depending on the type of impact sought, there is a match between the targeted ex
 
 Specifically, a goal is achieved according to these rules:
 
-* Given the impact is to persist an experience, the goal is achieved if a current experience has same object, kind and value as the goal's target
-* Given the impact is to terminate an experience, the goal is achieved if there is no current experience with same object, kind and value as the goal's target
-* Given the impact is to create an experience, the goal is achieved if there is a current experience of the same kind with a value matching the goal's targeted value
-  * if the target is a relation, the targeted value (a set of observations) is a strict subset of the experienced value.
+* If the goal is to persist an experience, the goal is achieved if a current experience has the exact same origin object (with same evidence), kind and value as the goal's target
+* If the goal is to terminate an experience, the goal is achieved if there is no current experience with the exact same origin object, kind and value as the goal's target
+* If the goal is to create an experience, the goal is achieved if there is a current experience of the same kind and with a value and origin object matching the goal's target
+  * values that are not objects match if and only if they are the same
+  * how objects as origins or values match depend on the kind of experience (targeted and actual)
+    * a "create" goal is either instantiated direcly from a current experience (to impact it) or from the analysis of a causal theory
+      * currently, only from a `trend` experience can a "create" goal be directly instantiated from it in order to impact it
+      * the goal will be to change the value of a current, numerically-valued observation (a numerically-valued experience in the umwelt), to persist/terminate the trend's current value (based on current vs prior observation)
+      * there are three numerically-valued kinds of experiences: `count`, `activation` and `unchanged`
+      * how a current experience is determined to achieve a "create" goal depends on its kind
+        * `count` - a different count is to be realized from the one previously experienced
+          * the target's origin object will contain either too many or too few evidential observations compared to the targeted value (it was created from a count experience with a larger or smaller value)
+          * if the evidence is undercounted in the target, the sought  `count` experience must have a strict superset of this evidence (in its origin object) - its cardinality gives the experienced count
+          * if the evidence is overcounted in the target, the sought `count` experience must have a strict subset of this evidence (etc.)
+        * `activation` - TBD
+        * `unchanged` - TBD
