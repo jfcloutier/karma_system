@@ -64,13 +64,18 @@ When doing the assessment phase of its lifecycle, a CA
 
 ## Evaluating goal achievement
 
-A goal's target is a property/relation to be experienced (or no longer experienced) via taking planned actions.
+A goal's target is a property/relation to be experienced (or no longer experienced) because of the execution of a plan of action.
 
-An experience is a property or relation synthesized from observations (the evidence for the experience). An object of experience (orgin and/or value) keeps that evidence as a list of observation IDs. This list is known only to the experiencing CA.
+An experience is a property or relation synthesized from observations (the evidence for the experience).
+An object of experience (orgin, and value if a relation) keeps that evidence as a list of observation IDs.
+This list is known only to the experiencing CA.
 
 The types of properties/relations a CA experiences (and also observes as experiences of its umwelt) are:
 
-* activation(Object, Value) - a property - the value is the number of executions, Object is [observation{origin:object{type:dynamic_ca, id:Source}, kind:activation, value:GoalId-TimeframeIndex, confidence:1.0, by:CA}, ...]
+* activation(Object, Value) - a property - the value is the number of observed goal executions (i.e. plan executions) by a given umwelt CA in the same timeframe
+  * thus Object is a list of time-based plan activations to execute goals
+  * i.e. [observation{origin:object{type:dynamic_ca, id:Source}, kind:activation, value:GoalId-TimeframeIndex, confidence:1.0, by:CA}, ...]
+    * all observed activations share the value, that is, the same GoalId (from filtering) and TimeframeIndex (from time of construction)
 * count(Object, Value) - a property - the value is 1, 2, 3 or many (initially > 1) - the number of observations making up the Object
 * more(Object1, Object2) - a relation - the set of observations (Object1) is larger than another (Object2)
 * unchanged(Object, Value)- a property - the value is 2, 3 or `many` (the number of contiguous, prior timeframes with the same observation)

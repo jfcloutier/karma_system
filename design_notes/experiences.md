@@ -65,16 +65,15 @@ Each abstract experience is expressed as a `property` (linking an object and a v
 
 ### activation
 
-> The experience of recent planned executions on a goal (observed activations fade over timeframes).
-
-A dynamic CA receives events from the execution of directives it sent to its umwelt CAs. For each such received event, the CA adds cumulates an observation.
-Equivalent (repeated) and recent activation observations are counted and combined into an activation experience.
+> The experience of executing a plan to achieve on a goal in the content of an intent.
 
 * What
   * A property
 * Predicate `activation(Object, Value)` where
-  * `Object` synthesizes identical, recent activation observations
-  * `Value` is the number of executions
+  * `Object` identifies the CA whose plan was executed
+  * `Value` is IntentId-GoalId-timeframeIndex
+
+See "Experiencing activations" below
 
 ### count
 
@@ -141,3 +140,25 @@ A CA will try not to drop a held experience that is of use to a parent CA (usefu
 
 Names of objects are generated in such as way as to be unique to the semantics of an object.
 Objects with the same structure and content will have the same name across CAs.
+
+## Experiencing activations
+
+* A CA *directly* experiences an activation when it executes a plan it previously built toward a current Goal with id GoalId (intent or received directive) in the context of an intent (its own or an ancestor's)
+  * The value of the experience is IntentId-GoalId-TimeframeIndex (why-what-when), where
+    * IntentId references the originating intent, GoalId references the goal the executed plan was for, and TimeframeIndex is the current timeframe
+  * Activation experiences persists across timeframes of a CA for approximately the duration of a parent's own timeframe (so the parent can observe and possibly count them during its own timeframe)
+* Parent CA observes Child CA's activation experiences (by predicting them like it does with any other kind of experience) but only if they are relevant.
+  
+* A Child CA's activation experience is relevant to Parent CA and thus observed by it **unless**:
+  * IntentId is absent (the indirectly experienced activation was in the context of the intent of the Child CA)
+  * or the GoalId and IntentId are the same (the activation directly serves the intent of the Child CA) 
+  * or the Parent CA has abandoned the intent referenced by IntentId (obsolete intent)
+  * or the Parent CA has an intent other than what IntentId references (the ancestor's intent is superseded)
+
+* If observed `activation` experiences can be counted (N > 1), the parent CA synthesizes a `count` experience from them
+  * Activation experiences can be counted if their values share the same IntentId-GoalId (whatever the associated Child CA timeframe index is)
+* Else, Parent CA experiences the individual, observed Child CA's activation experiences
+  * The value of the activation experienced from observation is modified 
+    * by substituting TimeframeIndex with the Parent CA's timeframe count
+    * and, if the IntentId references the ParentCA's intent, removing the IntentId (to block further observation up the hierarchy).
+* Note that the GoalId may be opaque to the Parent CA (the id can't be dereferenced by it) unless it is a directive it sent, and so is the IntentId, unless it is the Parent CA's intent.
