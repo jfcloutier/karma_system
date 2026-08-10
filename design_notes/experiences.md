@@ -65,8 +65,8 @@ Each abstract experience is expressed as a `property` (linking an object and a v
 
 ### activation
 
-> The direct experience of a CA of having executed a plan to achieve a goal either as the intent of the CA or in contribution to achieving the intent of an ancestor CA,
-or the indirect experience of an observed activation in the umwelt.
+> The direct experience of a CA of having executed a plan to achieve a goal either the intent of the CA or a received directive,
+or the indirect experience of being informed of the activation of a directive it sent to its umwelt.
 
 * What
   * A property
@@ -144,20 +144,23 @@ Objects with the same structure and content will have the same name across CAs.
 
 ## Experiencing activations
 
-* A CA *directly* experiences an activation when it executes a plan it previously built toward a current goal with id GoalId
-  * The value of the experience is GoalId-PlanId-TimeframeIndex (what-how-when), where
-    * GoalId references the goal the executed plan was for (could be the CA's intent or a directive it sent),
-    * PlanId references the plan executed to try to achieve the goal
-    * TimeframeIndex is the experiencer's timeframe when the execution happened
-  * Activation experiences persists across timeframes of a CA for approximately the duration of a parent's own timeframe (so the parent can observe and possibly count them during its own timeframe)
+* A CA observes and experiences an activation
+  * **directly**, when it executes a plan it previously built toward realizing a goal (its intent or a received directive)
+  * **indirectly**, by receiving an event from the umwelt about a directive having been executed
 
-* A CA observes relevant (to it) child CA's activation experiences (by predicting them like it does with any other kind of experience) to synthesize its own experiences, including *indirect* activation experiences.
-  
-* A child CA's activation experience is relevant to a parent CA, and thus observed by it, if it is for a directive sent by the CA
+* The value of the experience is GoalId-PlanId-TimeframeIndex (what-how-when), where
+  * GoalId references the goal the executed plan was for
+  * PlanId references the plan executed to try to achieve the goal
+  * TimeframeIndex is the experiencer's timeframe when the execution happened
 
-* If observed `activation` experiences can be counted (N > 1), the CA synthesizes a `count` experience from them
+* The value of the activation experienced from observation is modified
+  * by substituting TimeframeIndex with the Parent CA's timeframe count (since it is indirectly experienced by the CA in its current timeframe)
+
+* The PlanId in the value of an **indirectly** experienced activation is retained
+  * but is is opaque to the CA (i.e. the details of the "how" are only known in the umwelt)
+
+* Activation experiences persists across timeframes of a CA for approximately the duration of a parent's own timeframe
+  * so the parent can observe and possibly count them during its own timeframe
+
+* If `activation` experiences can be counted (N > 1), the CA synthesizes a `count` experience
   * Activation experiences can be counted if their values share the same GoalId
-* Else, the CA experiences the individual, observed child CA's activation experiences
-  * The value of the activation experienced from observation is modified
-    * by substituting TimeframeIndex with the Parent CA's timeframe count (it is indirectly experienced by the CA in its current timeframe)
-* Note that the PlanId in the value of an **indirectly** experienced activation is opaque to the CA (i.e. the details of the "how" are only known in the umwelt)

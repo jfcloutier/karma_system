@@ -123,7 +123,7 @@ Upon receiving an `execute` event for a directive, a CA reacts as follows:
   * Else
     * For each (sub) directive in the plan the CA built for the directive to execute
       * Tell its umwelt CAs to execute any executable plan they have for the sub-directive (it could get messy if there's more than one)
-      * Wait for a confirmation event (`executed([[directive_id=DirectiveId])`) that the sub-directive was (tranistively) executed in the umwelt
+      * Wait for a confirmation event (`executed([[goal=Goal, plan_id=PlanId])`) that the sub-directive was (tranistively) executed in the umwelt
   * Send the parent CA confirmation event that the plan for the received directive was executed
 
 See -Executing a Plan-.
@@ -159,7 +159,7 @@ A CA tells its parent CAs, in response to a `find_plan` event sent to it by a pa
 
 See -Searching for a plan-
 
-##### Event `executed([directive=Directive])`
+##### Event `executed([goal=Goal, plan_id=PlanId])`
 
 A CA tells its parent CAs, in response to an `execute` event broadcasted by a parent, that it executed the plan it had constructed for the goal, or readied the body for actuating the command.
 
@@ -203,12 +203,12 @@ It then waits on a parent to tell it to execute such a plan.
 * If the plan's directives are goals
   * For each directive in the plan in turn
     * tell the umwelt CAs to execute their executable plan for the directive if they have one, in the context of an intent, via (`execute(Directive)`).
-    * when the directive is confirmed as executed (`executed(Directive)`) by the umwelt CA, the CA moves to executing the next directive, until the entire plan is executed.
+    * when the directive is confirmed as executed (`executed(Goal, PlanId)`) by the umwelt CA, the CA moves to executing the next directive, until the entire plan is executed.
 * If the plan's directives are commands
   * tell the effector CAs one level below to execute all planned commands (they ready the body to execute at once the commanded actions)
   * tell the body to execute the readied actuations at once
 * If the plan was for a received directive
-  * the CA broadcasts `executed(Directive)` to its parents.
+  * the CA broadcasts `executed(Goal, PlanId)` to its parents.
 * If the planned goal was the CA's intent
   * the CA broadcasts `intent_completed(IntentId)`.
 

@@ -38,3 +38,5 @@ The code of the Karma project is currently found in these repositories
 * [Karma World](https://github.com/jfcloutier/karma_world) - Elixir code implementing a virtual, simulation environment - to accelerate the development of Agency
 * Karma Observer - TBD - Code providing an outsider's view on the robot's cognition
 * Karma Analyst - TBD - Code facilitating analysis of data gathered from running the robot
+
+Note: This project is 100% GenAI-free.
