@@ -60,7 +60,7 @@ The sources of predictions, in decreasing order of authority, are:
 
 * Inferring predictions by applying the causal theory to prior observations (**predicting observations from an understanding of latent processes**)
 * Extrapolating from prior experiences (**predicting observations that sustain the CA's current experiences**)
-* Predicting unchanged prior observations (**predicting that the umwelt did not change**)
+* Predicting unaltered prior observations (**predicting that the umwelt did not change**)
 * As a last resort, making an empty prediction (**predicting that nothing will be observed**)
 
 When uncontested predictions conflict (different values are predicted), the one with the highest authority will be made. When conflicting predictions have equal authority, the one with highest confidence is the one that will be made.
@@ -69,9 +69,8 @@ When uncontested predictions conflict (different values are predicted), the one 
 
 A CA synthesizes its experiences from observations it makes of its umwelt. The CA can predict a number of observations on the basis of its current experiences.
 
-Making predictions from prior synthetic experiences (either `trend`, `count`, `unchanged` or `more` experiences):
+Making predictions from prior synthetic experiences (either `trend`, `count`, or `more` experiences):
 
-* Unchanged: Predict an observation persisting
 * Trend: Predict an observation that continues the experienced trend by the increment recently observed
 * Count: Predict the counted observations
 * More: Predict the compared observations

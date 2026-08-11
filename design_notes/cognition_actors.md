@@ -77,7 +77,7 @@ When the maximum number of remembered states is reached and the latest state is 
 * A sensor CA has atomic experiences obtained from sensor readings
 * A non-sensor CA gets its experiences
   * from experiences elevated transitively from its umwelt
-  * from composing observed, umwelt experiences into abstract experiences
+  * from composing observed, umwelt experiences into synthetic experiences
 
 * See [experiences.md](./experiences.md)
 

@@ -70,7 +70,7 @@ Communications are done either via broadcasted events that CAs either listen to 
 
 * Bottom-up constraints
   * Umwelt CAs determine what their parents can observe and do. They...
-    * determine the set of experiences the level parent CAs can observe, build causal theories from, and compose into abstract experiences
+    * determine the set of experiences the level parent CAs can observe, build causal theories from, and compose into experiences
     * determine set of meaningful goals in a parent CA's plan
 * Top-down constraints
   * A CA models its umwelt CAs but not vice-versa
@@ -84,5 +84,5 @@ Communications are done either via broadcasted events that CAs either listen to 
     * it can detect the more abstract observation patterns that are more likely to correlate with wellbeing trends
     * and thus can set goals (to initiate/persist/terminate its experiences) that will be more effective at maintaining the entire SOM alive
   * A CA restricts the causal theory search space of its umwelt CAs (by imposing restriction on the vocabulary used)
-    * umwelt CAs can not "unground" parent CA's experiences (by disappearing the vocabulary of umwelt experiences used by the parent CAs to synthesize abstract experiences)
+    * umwelt CAs can not "unground" parent CA's experiences (by disappearing the vocabulary of umwelt experiences used by the parent CAs to synthesize its own experiences)
     * this imposes constraints on the abduced objects/predicates in the signatures of causal theories

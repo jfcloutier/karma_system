@@ -42,7 +42,7 @@ Note that the only "ground" concepts here are `command`, `goal` and `plan`; `int
 
 ## Acting and the CA lifecycle
 
-Acting happens at specific phases of a CA's lifecycle.
+Acting happens throughout a CA's lifecycle.
 
 The CA repeats its lifecyle in a loop for as long as it survives. CAs higher up the hierarchy have longer lifecycles than lower-down CAs, which provides room for sub-plans to execute and to realize the higher-level goals that spawned them.
 
@@ -50,167 +50,158 @@ The lifecycle of a CA consists of these repeating **phases** constituting the eq
 
 `predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to `predict`)
 
-The `act` phase is responsible for setting goals, making and prioritizing plans, and executing them. The `assess` phase is responsible, in part, for reviewing the success of extant goals and plans and possibly dropping some.
+All phases of the lifecycle are involved in acting:
 
-Achieving a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs, all opf which are separate processes.
-During any phase of its lifecycle, a CA receives events and messages reporting new directives and the progress of directives it received and sent.
+* The `predict` phase is responsible for predicting the activation of directives planned by the CA (i.e. making activation predictions)
+* The `observe` phase processes received activation prediction errors, and those not received, into activation observations
+* The `experience` phase updates activation experiences and plan status from activation observations (e.g. a directive in a plan is uniformly not_relevant across the umwelt failing the plan etc,)
+* The `feel` phase assigns a feeling to activation experiences, just as it does for all experiences
+* The `act` phase is responsible for setting intent, making and prioritizing plans for intent and directives, and executing them (executed plans are directly experienced as activations).
+* The `assess` phase is responsible, in part, for reviewing the success of extant goals and plans, and possibly dropping some because of staleness.
 
-The `act` phase is where a CA makes progress realizing its intent and the directives it received.
+Achieving a goal and the planned sub-goals it depends on requires coordination between a parent CA and its umwelt CAs, all of which are separate processes.
 
-An event is multicasted by a CA to its umwelt or parent CAs, whereas a message targets a single CA.
+During any phase of its lifecycle, a CA can receive:
+
+* activation predictions (predictions about the status of a parent plan directives) from its parents
+  * to which it immediately responds with prediction errors if appropriate
+* activation prediction errors from its umwelt, from predictions made earlier, 
+  * about a directive being `not_relevant`, `relevant`, `planned`, `executed` or `failed`
 
 ### Phases and acting
+
+The CA manages the states of its active goals as activation experiences across all phases of its lifecycle.
+
+During all phases, upon receiving an activation prediction, the CA:
+
+* sends back nothing if the status of the directive is as predicted
+* otherwise
+  * if the directive does not correspond to any of its experiences
+    * it sends back a "not_relevant" activation prediction error
+  * else
+    * it creates an activation experience, if the directive is new, to track its progress
+    * and it sends back
+    * a "relevant" prediction error if the CA has is working on a plan, or about to
+    * a "planned" prediction error if the CA has a working plan
+    * a "failed" prediction error if the CA tried but recently failed to find a working plan
+    * an "executed" prediction error if the CA recently executed a plan to achieve the directive
+
+During the `predict` phase, a CA:
+
+* Emits activation predictions for all active umwelt directives in its active plans
+  * an umwelt directive is active if it has neither executed **once**, nor been observed as `not_relevant` or `failed` **in the entire umwelt**
+
+During the `observe` phase, a CA:
+
+* Converts activation prediction errors in activation observations
+* Converts uncontradicated activation predictions into activation observations
+
+During the `experience` phase, a CA:
+
+* Updates activation experiences from activation observations
+  * An activation experience updates to status
+    * `planned`
+      * if, for all directives in the CA's plan for the activated goal, there is at least one umwelt CA observed as having a `planned` activation experience for the directive
+    * `failed`
+      * if, for all directives in the CA's plan for the activated goal, all umwelt CAs are observed as having a `failed` or `not_relevant` activation experience for the directive
+    * `executed`
+      * if, for all directives in the CA's plan for the activated goal, at least one umwelt CA is observed as having an `executed` activation experience for the directive
 
 During the `act` phase, a CA:
 
 * Gives itself an intent and assigns it a priority
-  * but only if no intent is already progressing toward being executed
-* Advances goals (its intent or directives it received) toward completion by building and executing plans, as urgency dictates
+  * but only if no intent is already experienced as progressing toward being executed
+* Builds or reuses a plan for its intent and for each directive predicted by a parent as planned
+  * One plan per goal
+  * As urgency dictates
+  * A plan with all directives observed as `planned` is a working plan, and the goal of the plan is experienced as `planned`
+* Executes the plan for its intent if its activation is experienced as `planned`
+* Executes the plan for a directive currently predicted as `executed` if the directive's activation is (experienced as) `planned`
   
 At the `assess` phase, a CA:
 
 * Determines if its intent is stale
-  * If so, the CA abandons it and lets its umwelt know so they can stop trying to achieve it
+  * If so, the CA abandons it and any plan for it
+* Determines if a plan for a directive is stale
+  * It is stale if no prediction about its goal being `planned` or `executed` was recently received (i.e no parent longer cares)
 * Determines the success or failure of previously executed plans
   * Each built and executed by the CA is given a score (or its score is updated) from an assessment of its success, making it a more or less attractive affordance
 
-### Communications
+### Scenarios
 
-CAs always communicate about directives with umwelt CAs via events so as to reach all umwelt CAs. One exception is readying and executing commands. This is donr by sending messages to effector CAs. The other exception are intents. They are communicated by their IDs since their nature are of no concern to CAs other then their originators.
+There are two goal execution scenarios, one for the CA's intent and another for a received directive.
 
-Umwelt CAs also always communicate about directives with parents via events (multicasts), so they all update goal states for directives they have sent or might send.
+#### Executing an intent
 
-#### Broadcasts from parent to umwelt
+* A CA assigns itself a goal (its intent).
+* The CA experiences an activation of the intent as `relevant`
+* The CA immediately works on building a plan for the intent (this may be in competition with planning for more urgent, received directives)
+* Once the intent activation is experienced as `planned` (a working plan exists for the goal)
+  * until all directives in the plan are observed as `executed` at least once or as uniformly `failed`
+    * an `executed` activation experience is predicted for each directive in the plan
+  * the intent activation is then experienced as either `executed` (all directives executed) or `failed`
 
-##### Event `todo([directives=[Directive, ...]])`
+#### Building a plan to achieve a goal
 
-A CA wants to know if its umwelt could potentially execute the sequence of directives of a plan it constructed.
-The event is received by all CAs in the umwelt of the broadcasting CA.
+* The CA determines a sequence of goals (directives to its umwelt) that, if realized, could achieve the goal.
+* For each directive in the plan, the CA predicts (to its umwelt CAs) that each is a `relevant` activation experience
+* From this moment on, unless the intent is assessed to be stale,
+  * If any of the directive activation is observed (from prediction errors receievd and not) to be uniformly `not_relevant` or `failed`,
+    * the plan is failed and a new plan is attempted
+    * if all possible plans are exhausted,
+      * the CA experiences the activation of the intent as `failed`
+      * the CA sends an event announcing the intent to be abandoned
+  * Else if all directive activations are not yet observed to be `planned`, the CA predicts all to be `planned`
+* Once all directive activations in the plan are observed in the umwelt to be `planned`
+  * the CA experiences the activation of the intent as `planned`
 
-* For each directive,
-  * if not relevant to the umwelt CA, it broadcasts back `cannot_seek(Directive)` to all parents
-  * if relevant, it broadcasts back `can_seek(Directive)`
+#### Executing a received activation prediction
 
-##### Event `find_plan([directive=Directive])`
+A CA receives and reacts to predictions about the activation of directives planned by a parent CA.
+Predictions match or not irrespective of the intents associated with the directives.
 
-Once it has received feedback from (enough) of its umwelt about a plan it built and disseminated to know it might be executable, a CA asks its umwelt CAs to construct, with some priority, a plan to achieve each directive from its own plan, in the context of an intent (its own or that of an ancestor CA).
+A directive activation is predicted to be
 
-Only the umwelt CAs who `can_seek` a directive works on a plan for it. The others ignore the broadcasted request.
-The plan can be executed only if there is, transitively, an executable umwelt plan for each of its directives.
+* `relevant`
+  * If the directive does not correspond to a current experience,
+    * send a prediction error with actual value `not_relevant`
+  * Else experience the activation of the goal (which exists in the context of an intent) as `relevant`
+* `planned`
+  * If the CA has a working plan, do nothing
+  * Else if the directive does not correspond to a current experience
+    * send a prediction error with actual value `not_relevant`
+  * Else if the activation of the directive is experienced as `relevant`,
+    * start working on a plan or keep working on it (see above)
+    * send a prediction error with actual value `relevant`
+  * Else if the CA failed to build a working plan for the directive
+    * send a prediction error with actual value `failed`
+  * Else if the CA recently executed a plan to achieve the directive
+    * send a prediction error with actual value `executed`
+* `executed`
+  * If the directive activation is already experienced as `executed` do nothing
+  * Else if all sub-directives are observed as `executed`
+    * then the directive is experienced as `executed`
+    * else send a prediction error with actual value `planned`
+  * Else if the directive does not correspond to a current experience
+    * send a prediction error with actual value `failed`
+  * Else if the directive activation is experienced as `failed` (any planned sub-directive activation is observed to be failed)
+    * send a prediction error with actual value `failed`
+  * Else if the directive activation is experience as `planned`
+    * if the plan contains goals as directives
+      * predict to each umwelt CA an `executed` activation experience for each directive in the directive's plan
+    * if the directive's plan contains commands as sub-directives, i.e. it prescribes a "movement"
+      * execute the movement
+        * accumulate actuations per effector
+        * ready the body
+        * tell the body to execute
+    * the CA experiences the directive activation as `executed`
 
-If the directive is a goal, umwelt CAs must come up with their own plans to realize the directive
-If the directive is a command, an effector CA need only reply that it can execute the command if it is capabale of realizing the requested action; no actual planning is ever done by effector CAs.
+====  TODO ====
 
-* If an executable plan is found for a directive received by a CA (it was trivially found if the directive is a command, else planning work was required)
-  * the CA holds on to it with its association with the goal is it meant to achieve
-  * and broadcasts to its parents that it `can_execute([directive=Directive])`
-* If an executable plan can **not** be found
-  * the receiving CA broadcasts to its parents that it `cannot_execute([directive=Directive])`
+* do we still need goal states? I think not.
+  * acting state = intent + plans + activation experiences
+  * no need for goal messages since repeated predictions from plans and observations drive acting
 
-##### Event `execute([directive=Directive])`
-
-Once CA knows a plan it built is executable, the CA asks its umwelt CAs to execute each of its directives in turn.
-This means executing any plan they found for each of the directives in the CA's plan.
-
-Upon receiving an `execute` event for a directive, a CA reacts as follows:
-
-* If an effector CA and the command is meaningful to it,
-  * It readies the body for actuation of the action in the command to execute
-* If not an effector CA and the CA has an executable plan for the directive
-  * If the plan is a sequence of commands,
-    * tell the effector CAs one level below to execute all planned commands (they ready the body to execute at once the commanded actions)
-    * and then tell the body to execute the readied actuations at once
-  * Else
-    * For each (sub) directive in the plan the CA built for the directive to execute
-      * Tell its umwelt CAs to execute any executable plan they have for the sub-directive (it could get messy if there's more than one)
-      * Wait for a confirmation event (`executed([[goal=Goal, plan_id=PlanId])`) that the sub-directive was (tranistively) executed in the umwelt
-  * Send the parent CA confirmation event that the plan for the received directive was executed
-
-See -Executing a Plan-.
-
-##### Event `abandoned([intent_id=IntentId])`
-
-A CA tells its *transitive* umwelt to forget about all directives received and plans conceived in the context of an intent from an ancestor CA.
-
-##### Event `intent_completed([intent_id=IntentId])`
-
-A CA tells its *transitive* umwelt that a plan it built to achieve its intent was executed.
-This is of interest if some state cleanup is needed by the transitive umwelt.
-
-#### Broadcasts from umwelt to parent(s)
-
-##### Event `can_seek([directive=Directive])`
-
-A CA tells its parent CAs, in response to a parent broadcasting `todo` directives to its umwelt, that it might be able to impact a given goal (it refers to one of its experiences) or to run the command (it can do the action).
-
-##### Event `cannot_seek([directive=Directive])`
-
-A CA tells its parent CAs, in response to a parent broadcasting `todo` directives to its umwelt, that a given directive is not recognized, i.e. the goal does **not** refer to one of its experiences, or the command's action is not in its repertoire.
-
-##### Event `can_execute([directive=Directive])`
-
-A CA tells its parent CAs, in response to a `find_plan` event broadcasted a parent, that it successfully built such a transitively (all the way down to actions) executable plan for a directive it received. If it received a command for an action it can do, the plan being trivially the command itself, the (effector) CA can execute it.
-
-See -Searching for a plan-.
-
-##### Event `cannot_execute([directive=Directive])`
-
-A CA tells its parent CAs, in response to a `find_plan` event sent to it by a parent, that it failed to build a plan for a directive it received.
-
-See -Searching for a plan-
-
-##### Event `executed([goal=Goal, plan_id=PlanId])`
-
-A CA tells its parent CAs, in response to an `execute` event broadcasted by a parent, that it executed the plan it had constructed for the goal, or readied the body for actuating the command.
-
-See -Executing a Plan-.
-
-### Searching for an executable plan to achieve a goal
-
-When the CA has given itself an intent or has received a directive to achieve an intent by some ancestor, it:
-
-* Constructs a plan, one that might achieve the goal
-  * and submits it as `todo([Directive, ...])` to the umwelt for feedback
-* Waits for affirmation or negation of relevance from all umwelt CAs (`can_seek(Directive)` and`cannot_seek(Directive)`)
-* If at least one directive in the plan is irrelevant to *all* umwelt CAs
-  * the plan cannot execute
-  * it sends back `cannot_execute(Directive)`
-* If each directive in the plan is relevant to *at least one* umwelt CA
-  * the plan becomes possible
-* If a plan is possible
-  * for each directive in the plan
-    * asks its umwelt to `find_plan(Directive)` (trivial for commands, transitive plan building for goals)
-    * each umwelt CA responds with event `cannot_execute(Directive)` or `can_execute(Directive)`
-  * The plan `can_execute` if, for all directives in it, there's at least one umwelt CA with a plan that `can_execute`
-  * The plan `cannot_execute`, for any directive in the plan, there is no umwelt CA with a plan that `can_execute`
-* If the plan `can_execute`
-  * the CA holds on to it (associating it with an intent and a priority) and waits to be asked to execute it
-  * the CA sends event `can_execute(Directive)` back to the parent who made the request
-* If the plan `cannot_execute`,
-  * the CA searches for another plan
-  * If no such plan can be found
-    * the CA sends back `cannot_execute(Directive)` back to the parent CA
-
-A goal state stays in `planning` status until a plan is found that can be executed.
-
-### Executing a plan
-
-Let's assume that a CA has an intent as well as directives received to achieve intents of ancestor CAs.
-
-The CA may have a plan it can execute for its intent or for some or all of the directives it received (as `todo` directives).
-It then waits on a parent to tell it to execute such a plan.
-
-* If the plan's directives are goals
-  * For each directive in the plan in turn
-    * tell the umwelt CAs to execute their executable plan for the directive if they have one, in the context of an intent, via (`execute(Directive)`).
-    * when the directive is confirmed as executed (`executed(Goal, PlanId)`) by the umwelt CA, the CA moves to executing the next directive, until the entire plan is executed.
-* If the plan's directives are commands
-  * tell the effector CAs one level below to execute all planned commands (they ready the body to execute at once the commanded actions)
-  * tell the body to execute the readied actuations at once
-* If the plan was for a received directive
-  * the CA broadcasts `executed(Goal, PlanId)` to its parents.
-* If the planned goal was the CA's intent
-  * the CA broadcasts `intent_completed(IntentId)`.
 
 ## Action-related states
 
@@ -221,55 +212,44 @@ what the CA has observed, experienced, felt etc. as well the plans it built and 
 
 An effector CA need only manage the actuation readiness of received commands in communication with the body.
   
-### Goal status
+### Goal activation status
 
-The status of a goal indicates where it is in its progression toward, hopefully, being achieved, including the possibility of reaching a dead end.
+The status of a goal activation (observed or experienced) indicates where it is in its progression toward, hopefully, being achieved, including the possibility of reaching a dead end.
 
 The possible statuses are:
 
-* `none` - an undeclared  but potential goal - typically a goal from a sibling CA the CA gathers info about in case it later becomes a declared goal of the CA
-* `todo` - no progress yet on a goal received
-* `can_seek` - the goal was found to relate to one or more experiences of the CA
-* `cannot_seek` - the goal does not relate to any experience
-* `planning` - searching for a transitively executable plan to achieve the goal
-* `can_execute` - there is n executable plan for the goal
-* `cannot_execute` - no executable plan waA found for the goal
-* `executing` - the plan to achieve the goal is (tranistively) executing
+* `relevant` - the goal was found to relate to one or more experiences of the CA
+* `not_relevant` - the goal does not relate to any experience
+* `planned` - a working plan exists to (hopefully) achieve the goal
 * `executed` - the plan for the goal was executed "all the way down"
-* `achieved` - the goal was achieved, presumably from executing a plan for it
+* `failed` - no working plan can be found or executed for the goal
 
 ```mermaid
 ---
-title: Goal status
+title: Goal activation status
 ---
 stateDiagram-v2
-    [*] --> none : a potential goal the CA gathers info about
-    none --> todo : the goal is (self) assigned
-    [*] --> todo : the goal is assigned
-    none --> [*]
-    todo --> can_seek : an experience matches the goal or an action matches the command
-    todo --> cannot_seek: no experience matches the goal or no action matches the command
-    cannot_seek --> [*]
-    can_seek --> planning : looking for an executable plan
-    planning --> can_execute : the goal has an executable plan
-    planning --> cannot_execute : no executable plan found
-    planning --> cannot_seek : the goal is no longer relevant
-    cannot_execute --> [*]
-    can_execute --> executing : executing the goal's plan
-    executing --> executed : the plan was executed
-    executed --> achieved : the goal was realized
+    [*] --> relevant : an experience matches the goal
+    [*] --> not_relevant :  no experience matches the goal
+    not_relevant --> [*]
+    relevant --> planned : there is a working plan to hopefully achieve the goal
+    relevant --> failed : no working plan can be found
+    relevant --> not_relevant : the goal is no longer relevant
+    not_relevant --> relevant : a new experience matches the goal
+    planned --> executed : the plan was executed
+    planned --> relevant : the execution of the plan failed but the goal is still relevant
+    planned --> not_relevant : the goal, though planned, is no longer relevant
     executed --> [*] : the goal was not realized
-    achieved --> [*]
 ```  
 
 ### Plan status
 
-The status of a plan is implied by the statuses of its component directives.
+The status of a plan is implied by the observed activation statuses of its component directives.
 
-* `unknown` - waiting to hear from all umwelt CAs if each directive is meaningful or not
-* `possible` - all directive in the plan are meaningful to at least one umwelt CA (they can be asked to find a plan for it)
+* `unknown` - waiting to hear from all umwelt CAs if (the activation of) each directive is relevant or not
+* `possible` - all directives in the plan are relevant to at least one umwelt CA (they can be asked to find a plan for it)
 * `cannot_execute` - at least one directive can not be planned for by any CA in the umwelt
-* `can_execute` - the umwelt has at least one plan for each directive
+* `can_execute` - the umwelt has at least one plan for each directive in the plan
 * `executing` - the umwelt is in the process of executing the directives of the plan
 * `executed` - all directives in the plan were (recursively for directives) executed by the umwelt
 
@@ -294,7 +274,6 @@ The state of a dynamic CA consist of many properties, including the following th
 
 * `intent`- `goal{...}` - The CA's current intent
 * `plans` - [`plan{...}`, ...] - All the plans the CA built to achieve its intent and (some) received directives
-* `goal_states` - [`goal_state{...}`, ...] - The statuses of the CA's intent and of directives the CA received or sent, as well as events it received that caused the status changes and events it sent to report them
 
 ### Data structures
 
@@ -324,30 +303,15 @@ How goals, plans and goal states are encoded in the CA's state:
 >
 > **Directive**: goal{} or command{}
 >
-> **Status**: possible | cannot_execute | can_execute | executing | executed
+> **Status**: possible | cannot_execute | can_execute | executing | executed - This is a function of activations experienced (the CA's own) and observed (in the umwelt)
 >
 > **Score**: 0.0..1.0 | none
 >
 > **Index**: The timeframe count at which the plan was created
 
-#### `command{effector_ca: CA_ID, action: Action, intent_id: IntentId}`
+#### `command{effector_ca: Effector_ID, action: Action}`
 
-> **Action**: spin or reverse_spin, etc.
+> **Effector_ID**: the ID of the effector commanded to take the action
+> **Action**: the name of the action, e.g. spin or reverse_spin, etc.
 >
 > The directive id of a command is implicitly 'CA_ID:Action'
-
-#### `goal_state{goal: Goal, received:Received, status: Status, messages: GoalMessages}`
-
-> **Goal**: The goal being moved along toward being achieved (or not)
->
-> **Received**: true | false - Whether this goal was received (a directive from a parent), as opposed to (a directive) sent to umwelt or self-assigned (intent)
->
-> **Status**: `none` | `todo` | `can_seek` | `cannot_seek` | `planning` | `can_execute` | `executing` | `executed` | `achieved`
->
-> **GoalMessages**: [goal_message{...}`, ...] - The first message in the list is the last received
-
-#### `goal_message{about: About, from: CA_ID}`
-
-> **About**: `todo` | `can_seek` | `cannot_seek` | `planning` | `can_execute` | `cannot_execute` | `executed`
->
-> **CA_ID**: the ID of the source CA

@@ -9,20 +9,18 @@ Integrate current and past observations into experiences by:
 
 * count: 1, 2, 3, `many`
 * more: another synthetic object
-* unchanged: 1, 2, 3, `many`
-* trend: `up`, `down`, `ended`
+* trend: `up`, `down`, `steady`
 
 ## Synthesizing experiences
 
 * Before work, update prior experiences and assign their confidences
   * A prior experience may no longer exist,
-  * or a trend may take value `ended`
-  * or a count may take value 1
+  * or a count may take value 1 (counts are initially detected with values > 1)
 * In each unit of work, find a novel experience and assign a confidence
 
 ## Finding a novel experience
 
-* Choose in order a kind from [count, more, trend, unchanged]
+* Choose in order a kind from [count, more, trend]
 * Find a non-empty, maximal set of observations to which the kind applies
 * The maximal set of observations defines a synthetic object as the origin of the property/relation
   * count: 2 or more countables:
@@ -36,17 +34,14 @@ Integrate current and past observations into experiences by:
     * Relations with same kind and origin X 2 (more object A --X-> * than object B --Y-> * - object A has more relations X than object B has relations Y)
   * trend: 2 or more trendables over the last N > 1 time frames
     * Properties with the same origin and kind
-      * If values are numerical, the values can be `up`, `down`
-      * Otherwise, if a trend stopped, its value is `ended`
-  * unchanged: the same observation over contiguous timeframes with th number of timeframes as value
+      * If values are numerical, the values can be `up`, `down` or `steady`
 
 ## Assigning a confidence to an experience
 
 * Take the minimum confidence in the observed set(s) composing the synthetic object(s) of the experience (don't multiply).
 * If a `trend`, boost the minimum confidence with the number of trending observations.
-* If an `unchanged` boost the observation's confidence with the number of timeframes
 
 ## Elevating unused observations
 
 * Select all observations not composing objects of current experiences
-* Add them as experiences with unchanged confidence
+* Add them as experiences with continued confidence

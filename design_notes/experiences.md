@@ -7,74 +7,63 @@ The mind of an agent is an evolving hierarchy of cognition actors (CA). Each CA 
 A CA, by definition, observes its umwelt (via predictions and prediction errors). Its umwelt is composed of one-level-down CAs. The CAs and their umwelts form a hierarchy.
 At the bottom of the hierachy sit sensor CAs, with body sensors as their umwelt, and effector CAs, with body effectors as their umwelt.
 
-The agent's umwelt is the world as perceived by the integration of the CAs' umwelts.
+The agent's umwelt is the world as experienced by its collective of CAs.
 
-Observations in a given timeframe are considered synchronous, as are the experiences synthesized/derived in the timeframe.
+Observations by a CA in a given timeframe are considered synchronous, as are the experiences synthesized/derived in the timeframe.
 
-A CA gets *concrete* experiences from directly sensing properties of its environment (if it is a sensor CA), from acting in/on the environment, and from its causal theory in the form of the properties and relations imagined in order to unify the theory.
+A CA gets *direct* experiences from directly sensing properties of its environment (if it is a sensor CA), from acting in/on the environment, and from its causal theory in the form of the properties and relations imagined in order to unify the theory.
 
-A CA synthesizes *abstract* experiences from observations of its umwelt. It notices quantities (counts and comparisons), and trends in the observed experiences of its umwelt.
+A CA gets *indirect* experiences from the synthesis or elevation of observations of its umwelt's experiences. Synthesis produces count, comparisons, and trend experiences from observed experiences of its umwelt.
 
 The CA makes its own experiences available for observation by its "parent" CAs. And so on, up an abstraction hierarchy of experiences about experiences about experiences etc.
 
 Each CA decides how to act on the basis of its experiences plus how it felt when deriving them. So experiences are central to agency.
 
-A CA is constrained by wellbeing considerations in the quantity and nature of experiences it holds; believing and acting on experiences is needed to maintain engagement wellbeing, but it is also a draw on fullness, which is a shared and limited resource.
+A CA is constrained by wellbeing considerations in the quantity and nature of experiences it holds; believing and acting on experiences is needed to maintain wellbeing.
 
-A CA hides information. It keeps to itself how it derived its abstract experiences offered for observation by parent CAs; the observed experiences leading to an abstract experience are opaque to the observer of that abstract experience.
+A CA hides information. It keeps to itself how it derived its synthetic experiences when it offers them for observation by parent CAs; the observed experiences leading to a synthetic experience are opaque to the observer of that experience.
 
 ## Representing experiences
 
-An experience, whether concrete or abstract, is represented, depending on its type, either as a property or as a relation.
+An experience, whether direct or indirect, is represented, depending on its type, either as a property or as a relation.
 
 A property is expressed as `Property(Object, Value)` where
 
 * `Property` is a property name
-* `Object` is the subject of an observed experience, i.e. what's sensed, trending, unchaging, or counted
+* `Object` is what the experience is about (a sensor, an effector, observations, a goal)
   * an object is described by
-    * its type: sensor, synthetic, dynamic_ca
-    * its id: respectively, the sensor's id, a hash of the observations from which the experience was synthesized, or the id of the CA that took an action.
-  * If an experience is synthetic (evidenced by multiple observations), only the experiencing CA knowns what these observations are.
-* `Value` is a literal belonging to the property's domain (e.g. blue, up, true, 4, etc.)
+    * its type: sensor, effector, observations, goal
+    * its id: respectively, the sensor's or effector's id, a hash of the observations from which the experience was synthesized, or the id of a goal.
+  * If an experience is synthetic (about and evidenced by multiple observations), only the experiencing CA knowns what these observations are.
+* `Value` is a literal belonging to the property's domain (e.g. blue, up, true, 4, spin, etc.)
 
 A relation is expressed as  `Relation(Object, Object)`, where
 
 * `Relation` is a relation name
 * `Object` is either the subject or object of a relational experience (note that an object can not relate to itsef)
 
-Note that the object of a CA's experience is not a physical object but an observed experience in the CA's umwelt.
+Note that the object of a CA's experience is not a physical object but the "aboutness" (intention) of the experience.
 
-## Concrete experiences
+## Direct experiences
 
-The concrete experiences (experiences not derived from other experiences) are
+The direct experiences (experiences not derived from observed experiences) are
 
 * properties detected by the sensor CAs
-  * `Sense(Sensor, Value)`, e.g. `distance(obstacle, 10)`
-* properties from actuations
-  * `Action(Effector, Boolean)`, e.g. `reverse_spin(motor1, true)` - an actuation is true once executed and false once the reverse actuation is executed
+  * Sense(Sensor, Reading), e.g. `distance(ir_sensor, 12)` - the distance reported by the infrared sensor is 12
+* properties from effector actuations
+  * Action(Effector, Boolean), e.g. `spin(left_wheel, true)` - the left wheel executed a spin
+* properties from goal activations (leading to and including executions of plans meant to achieve goals)
+  * activation(Goal, Status), e.g. `activation(goal_1, executed)` - some plan for achieving the goal with id goal_1 was executed by the CA
 * properties or relations imagined/abduced when generating a unified causal theory for the CA
-  * e.g. `property123(object456, true)`, `relation123(object123, object456)`
+  * an inferred (as opposed to observed) property or relation e.g. `property123(object456, true)` - an unobserved object with id object456 has unobserved property names property123
 
-## Abstract experiences
+## Indirect experiences
 
-Abstract experiences are composed by a CA of *multiple* observations by the CA (of experiences in its umwelt), past and/or present.
+Indirect experiences are about observed experiences in the CA's umwelt.
 
-There are five kinds of abstract experiences: **activation**, and the so-called synthetic experiences **count**, **more**, **unchanged** and **trend**.
+Synthetic experiences combine multiple observations, past ot present.
 
-Each abstract experience is expressed as a `property` (linking an object and a value) or as a `relation` (linking two objects). Remember that objects are made of observed experiences.
-
-### activation
-
-> The direct experience of a CA of having executed a plan to achieve a goal either the intent of the CA or a received directive,
-or the indirect experience of being informed of the activation of a directive it sent to its umwelt.
-
-* What
-  * A property
-* Predicate `activation(Object, Value)` where
-  * `Object` identifies the CA whose plan was executed
-  * `Value` is GoalId-PlanId-TimeframeIndex (what, how, when)
-
-See "Experiencing activations" below
+There are 3 kinds of synthetic experiences: **count**, **more**, and **trend**.
 
 ### count
 
@@ -99,39 +88,41 @@ e.g. this motor executed more spins than this other motor, the distance reported
 * What
   * A relation
 * Predicate `more(Object1, Object2)` where
-  * `Object1`, `Object2` syntesizes counted observations (there are more observations synthesized as Object1 than as Object2)
-
-### unchanged
-
-> The experience that the ordinal values of a property of an object is staying the same, as observed over timeframes leading to, and including, the current timeframe.
-
-e.g. luminance from this sensor is the same, the distance is not changing, the trend is still up
-
-* What
-  * A property
-* Predicate `unchanged(Object, Value)` where
-  * `Object` represents an observation
-  * `Value` is 2, 3 or `many`, representing the number of contiguous, prior timeframes with this observation, including the current timeframe (values of 0 or 1 are nonsensical)
+  * `Object1`, `Object2` synthesizes counted observations (there are more observations synthesized as Object1 than as Object2)
 
 ### trend
 
-> The experience that the ordinal values of a property of an object is trending up or down or not anymore, as observed over timeframes leading to, and including, the current timeframe.
+> The experience that the ordinal values of a property of an object is trending up or down or keeping steady, as observed over timeframes leading to, and including, the current timeframe.
 
-e.g. luminance from this sensor is increasing, the distance is decreasing, the change in distances ended
+e.g. luminance from this sensor is increasing, the distance is decreasing, the trend in distances is steadily up
 
 * What
   * A property
 * Predicate `trend(Object, Value)` where
   * `Object` synthesizes trending observations
-  * `Value` is `up` or `down` or `ended`
+  * `Value` is `up` or `down` or `steady`
+
+## Experiencing activations
+
+* A CA experiences an activation
+  * **directly**, when it is about its intent
+  * **indirectly**, from predicting (and thus observing) the activation status of a directive in a plan it built to achieve a goal
+
+* The possible values of an activation experience are
+
+  * `not_relevant` - the goal (the activation is about) has no meaning - it does not relate to any experience of the CA
+  * `relevant` - the goal has meaning
+  * `planned` - there's a working plan for the goal
+  * `executed` - a plan for the goal was recently executed
+  * `failed` - the CA recently failed to build or execute a plan
 
 ## An experience economy
 
 A CA works to increase engagement by holding useful experiences and by acting on them. However, creating and holding experiences is costly and the CA has limited resources.
 
-A CA will not synthesize all possible abstract experiences it can all at once, only a few to reduce drain on fullness. This relates to attention.
+A CA will not instantiate all possible synthetic experiences it can all at once, only a few to reduce drain on fullness. This relates to attention.
 
-Abstract experiences of no use to parent CAs are eventually dropped, freeing resources for holding other experiences. Elevated experiences are free.
+Indirect experiences of no use to parent CAs are eventually dropped, freeing resources for holding other experiences.
 
 If a parent CA predicts an experience the child CA does not hold (and is possibly not yet in its experiences domain), the child CA will attempt to synthesize it (since it matters), potentially at the expense of another, less useful, experience.
 
@@ -140,27 +131,5 @@ A CA will try not to drop a held experience that is of use to a parent CA (usefu
 ## About naming of objects in experiences
 
 Names of objects are generated in such as way as to be unique to the semantics of an object.
-Objects with the same structure and content will have the same name across CAs.
-
-## Experiencing activations
-
-* A CA observes and experiences an activation
-  * **directly**, when it executes a plan it previously built toward realizing a goal (its intent or a received directive)
-  * **indirectly**, by receiving an event from the umwelt about a directive having been executed
-
-* The value of the experience is GoalId-PlanId-TimeframeIndex (what-how-when), where
-  * GoalId references the goal the executed plan was for
-  * PlanId references the plan executed to try to achieve the goal
-  * TimeframeIndex is the experiencer's timeframe when the execution happened
-
-* The value of the activation experienced from observation is modified
-  * by substituting TimeframeIndex with the Parent CA's timeframe count (since it is indirectly experienced by the CA in its current timeframe)
-
-* The PlanId in the value of an **indirectly** experienced activation is retained
-  * but is is opaque to the CA (i.e. the details of the "how" are only known in the umwelt)
-
-* Activation experiences persists across timeframes of a CA for approximately the duration of a parent's own timeframe
-  * so the parent can observe and possibly count them during its own timeframe
-
-* If `activation` experiences can be counted (N > 1), the CA synthesizes a `count` experience
-  * Activation experiences can be counted if their values share the same GoalId
+If two objects define the same "aboutness", they will have the same id. If not, they won't.
+Thus, objects with the same structure and content will have the same name across all CAs.

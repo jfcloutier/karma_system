@@ -23,7 +23,7 @@ Sensors and effectors name their sense and action properties respectively. The c
 * (sense name) - only when the origin is a sensor, e.g. `distance`, `color`, `contact`, `state` etc.
 * (action name) - only when the origin is an effector, e.g. `spin`, `reverse_spin`
 * (latent property/relation name) - when the property/relation is abduced and named by a causal theory
-* (synthesis name) - names of abstractions, namely `count`, `more`, `unchanged` or `trend`
+* (synthesis name) - names of abstractions, namely `count`, `more`, or `trend`
 
 ## Objects in properties/relations
 
@@ -57,9 +57,7 @@ The values of action properties of effectors (e.g. `spin`) are either `true` or 
 
 ### Values of synthetic properties and relations
 
-An `unchanged` property (on an observation across timeframes) `1`, `2`, `3` or `many`, depending on the number timeframes over which it persists
-
-A `trend` property (on a set of past and current observations) can have value `up`, `down`, or `ended`.
+A `trend` property (on a set of past and current observations) can have value `up`, `down`, or `steady`.
 
 A `count` property (on a set of current observations) is either `1`, `2`, `3` or `many` because a CA can not count very far and has no notion of zero (this is to mimic the limited counting abilities of simple living beings).
 

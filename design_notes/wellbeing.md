@@ -49,7 +49,7 @@ Energy is replenished by the action of `eating` but only when the agent is posit
 Energy is spent individually by each CA when
 
 * obtaining a causal theory (the more time spent searching and the more complex the theory, the higher the energy cost)
-* synthesizing an abstract experience (each experience comes at a metabolic cost)
+* synthesizing an experience (each experience comes at a metabolic cost)
 * using a causal theory (the more complex the theory, the higher the cost per use)
 * remembering past observations, experiences and affordances (additional cost per remembered observation/experience/affordance)
 * completing a timeframe (baseline computational/metabolic cost)
@@ -85,7 +85,7 @@ Engagement keeps track of how engaged a CA is. Engagement is initially empty.
 Engagement goes up for a CA whenever
 
 * it obtains an accurate enough causal theory (making sense of its umwelt),
-* one of its experiences is used in the composition of another CA's abstract experience (it becomes relevant),
+* one of its experiences is elevated or is used in the composition of a parent CA's experience (it becomes relevant),
 * whenever an action it intends is executed (it acts in the world).
 
 Engagement decreases whenever
