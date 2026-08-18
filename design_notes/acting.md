@@ -58,7 +58,7 @@ The lifecycle of a CA consists of these repeating **phases** defining the equiva
 
 ```mermaid
 ---
-title: CA lifecycle
+title: Acting and the CA lifecycle
 ---
 stateDiagram-v2
   [*] --> predict : predict umwelt experiences, inclding goal activation experiences
