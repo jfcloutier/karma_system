@@ -255,7 +255,7 @@ stateDiagram-v2
     planned --> executed : the plan was executed
     planned --> relevant : the execution of the plan failed but the goal is still relevant
     planned --> not_relevant : the goal, though planned, is no longer relevant
-    executed --> [*] : the goal was not realized
+    executed --> [*] : the goal is hopefully realized
 ```  
 
 ### Plan status
