@@ -51,7 +51,7 @@ Energy is spent individually by each CA when
 * obtaining a causal theory (the more time spent searching and the more complex the theory, the higher the energy cost)
 * synthesizing an experience (each experience comes at a metabolic cost)
 * using a causal theory (the more complex the theory, the higher the cost per use)
-* remembering past observations, experiences and affordances (additional cost per remembered observation/experience/affordance)
+* remembering past experiences and affordances (additional cost per remembered experience/affordance)
 * completing a timeframe (baseline computational/metabolic cost)
 
 Energy is also spent whenever the agent progressively and automatically recovers lost integrity, i.e. repairs itself.

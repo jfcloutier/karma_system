@@ -32,19 +32,17 @@ This prioritization is realized by predicting the execution of important goals b
 
 ## Definitions
 
-A *goal* is a relation/property experienced by the CA or its umwelt to be initiated, persisted or terminated.
+An *intent* is a self-assigned goal of the CA to impact one of its felt experiences.
 
-An *intent* is a self-assigned goal of the CA to impact a felt experience it has.
-
-A *directive* is a goal delegated by a CA to its umwelt CAs for them to achieve however they see fit.
+A *goal* is a relation/property, experienced by the CA or its umwelt, to be initiated, persisted or terminated.
 
 A *command* is an action (spin the wheel, reverse-spin the wheel, etc.) requested by a CA of an effector CA in its umwelt.
 
-A *plan* is a prioritized set of directives or commands assembled by a CA to achieve either its own intent or a directive from a parent CA.
+A *plan* is a prioritized sequence of goals or commands assembled by a CA to achieve either its own intent or a goal from a parent CA's plan.
 
-An *affordance* is a pre-built plan with an effectiveness score informing its reuse.
+An *activation* is the predicted progress toward achieving a prioritized goal as part of a plan.
 
-Note that the only "ground" concepts here are `command`, `goal` and `plan`; `intent`, `directive` and `affordance` are "perspectives" on them.
+An *affordance* is a pre-built plan for a stated goal and with an effectiveness score informing its reuse.
 
 ## Acting and the CA lifecycle
 
@@ -178,7 +176,7 @@ Plan executions always originate from intents.
 * Once all directive activations in the plan are observed in the umwelt to be `planned`
   * a working plan was built and the CA experiences the activation of the intent as `planned`
 
-#### Achieving a directive
+#### Achieving a directive activation
 
 A CA receives and reacts to predictions about the activation of directives planned by a parent CA.
 Predictions match or not irrespective of the intents associated with the directives.
@@ -271,7 +269,7 @@ The status of a plan is implied by the observed activation statuses of its compo
 
 ```mermaid
 ---
-title: Plan status
+title: Plan status (implied)
 ---
 stateDiagram-v2
   [*] --> unknown : waiting to hear from umwelt
@@ -290,44 +288,42 @@ The state of a dynamic CA consist of many properties, including the following th
 
 * `intent`- `goal{...}` - The CA's current intent
 * `plans` - [`plan{...}`, ...] - All the plans the CA built to achieve its intent and (some) received directives
+* `affordances` - [affordance{...}, ...] - All goal-achieving plans waiting to be scored, or scored high-enough to be worth remembering
+* `activations` are the subject of predictions and thus prediction errors
 
 ### Data structures
 
-How goals, plans and goal states are encoded in the CA's state:
+How goals, commands, plans, affordances and `activations` are encoded in the CA's state:
 
-#### `goal{id: ID, target: Target, impact: Impact, priority: Priority, intent_id:IntentId, intent_level: Level, timeframe_index: Index}`
+#### `goal{target: Target, impact: Impact}`
 
-> **ID**: A goal's ID is fully determined by Target and Impact - *two goals in different plans will have the same ID if they are semantically the same*
->
 > **Target**: `target{origin: Origin, kind: Kind, value: Value}` - the state of an observed/experienced property/relation to be impacted
 >
 > **Impact**: `create` | `persist` | `terminate`
->
-> **Priority**: 0.0..1.0 - How important is achieving this goal
->
-> **IntentId**: Id of the intent that initiated this goal. When Goal.id == Goal.intent_id, the goal is an intent
->
-> **Level**: The level of the CA who's intent transitively led to this goal (affects goal precedence)
->
-> **Index**: The timeframe count at which the goal was created
 
-#### `plan{id: ID, goal_id: GoalID, directives: [Directive, ...], status: Status, score: Score, timeframe_index: Index}`
+#### `plan{goal: Goal, directives: [Directive, ...]}`
 
-> **ID**: A unique id for the plan. *No two plans have the same id, ever.*
->
 > **GoalID**: The id of the goal this plan is for
 >
 > **Directive**: goal{} or command{}
->
-> **Status**: possible | cannot_execute | can_execute | executing | executed - This is a function of activations experienced (the CA's own) and observed (in the umwelt)
->
-> **Score**: 0.0..1.0 | none
->
-> **Index**: The timeframe count at which the plan was created
 
 #### `command{effector_ca: Effector_ID, action: Action}`
 
 > **Effector_ID**: the ID of the effector commanded to take the action
-> **Action**: the name of the action, e.g. spin or reverse_spin, etc.
+> **Action**: the name of the action, e.g. `spin` or `reverse_spin`, etc.
+
+#### `affordance{plan: Plan, score: Score}`
+
+> **Plan**: plan{...}
 >
-> The directive id of a command is implicitly 'CA_ID:Action'
+> **Score**: 0.0..1.0 | none
+
+#### `activation{goal: Goal, status: Status, priority: Priority, intent_level: Level}`
+
+> **Goal**: goal{}
+>
+> **Status**: `relevant` | `not_relevant` | `planned` | `executed` | `failed`
+>
+> **Priority**: 0.0..1.0 - How important is achieving the originating intent
+>
+> **Level**: The level of the CA who's intent transitively led to this goal (goal precedence is a function of priority and intent level)
