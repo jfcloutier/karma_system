@@ -87,7 +87,7 @@ During any phase of its lifecycle, a CA can receive:
 * activation prediction errors from its umwelt, from predictions it made earlier,
   * about a directive being `not_relevant`, `relevant`, `planned`, `executed` or `failed`
 
-*Progressing toward the realization of a goal is entirely driven by predicting goal activations, reacting to receiving such predictions, responding with prediction errors about predicted goal activations, and reacting to such prediction errors. Once a CA stops making predictions about a goal activation's status, it implicitly signals to its umwelt that it is no longer interested in pursuing the goal.*
+*Progressing toward the realization of a planned goal is entirely driven by predicting goal activations, reacting to receiving such predictions, responding with prediction errors about predicted goal activations, and reacting to such prediction errors. Once a CA stops making predictions about a goal activation's status, it implicitly signals to its umwelt that it is no longer interested in pursuing the goal.*
 
 ### Phases and acting
 
