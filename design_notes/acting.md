@@ -89,12 +89,12 @@ During any phase of its lifecycle, a CA can receive:
 
 Progressing toward the realization of a planned goal is entirely driven by
 
-* predicting (sub) goal activations as `relevant`, `planned` or `executed`,
+* predicting (sub) goals (their activation statuses) as `relevant`, `planned` or `executed`,
 * reacting to these predictions by possibly building and executing plans,
 * responding with prediction errors with the correct status, including `not_relevant` and `failed`,
 * and reacting to these prediction errors.
 
-Once a CA stops making predictions about a goal activation's status, it implicitly signals to its umwelt that it is no longer interested in having it pursue the goal.
+Once a CA stops making predictions about a goal's (activation) status, it implicitly signals to its umwelt that it is no longer interested in having it pursue the goal.
 
 ### Phases and acting
 
