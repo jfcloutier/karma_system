@@ -129,7 +129,13 @@ During the `predict` phase, a CA:
 During the `observe` phase, a CA:
 
 * Converts activation prediction errors in activation observations
-* Converts uncontradicated activation predictions into the other activation observations
+  * Prediction errors about the activation of a given goal/directive are aggregated into a single observation with value:
+    * `failed` if all prediction errors correct to `failed`
+    * `not_relevant` if all prediction error correct to `not_relevant`
+    * `relevant` if all prediction error correct to `relevant`
+    * `executed` if any prediction error corrects to `executed`
+    * `planned` if any prediction error corrects to `planned` and none to `executed`
+* Converts uncontradicated activation predictions into same-valued activation observations
 
 During the `experience` phase, a CA:
 
