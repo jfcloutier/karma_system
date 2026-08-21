@@ -116,13 +116,15 @@ During all phases, upon receiving an activation prediction, the CA:
 
 During the `predict` phase, a CA:
 
-* Emits activation predictions for all active umwelt directives in its plans
-  * A working plan is one where all directives are either already `executed` (an activation is observed as executed), `relevant` or `planned`
-  * An umwelt directive is active if no `executed` activation is observed in the umwelt
-  * A prediction is about the activation of a goal the CA is using in a plan it is building/has built. The CA sends it with status:
-    * `relevant` to validate that the goal/directive is meaningful to the CA's umwelt
-    * `planned` to validate that/cause that the goal/directive is backed by its own working plan in the umwelt
-    * `executed` to validate that/cause the execution of a plan the umwelt built for this goal/directive
+* Emits activation predictions to its umwelt for all directives in an active plan
+  * A plan is active if the directives in it are neither all `executed` nor all `failed`
+  * An activation prediction is sent to the umwelt about a directive as having activation status:
+    * `relevant` to validate that the directive is meaningful to the CA's umwelt
+      * but only if the directive is not already observed as having activation status `relevant`, `planned` or `executed`
+    * `planned` to cause the activation of the directive to be planned by the umwelt
+      * but only if the directive is observed as `relevant` and all other directives in the plan are observed as either `relevant`, `planned` or `executed`
+    * `executed` to cause the execution of plans the umwelt built for the directive
+      * but only if the CA is experiencing the activation of the goal the plan was built for as `executed`
 
 During the `observe` phase, a CA:
 
