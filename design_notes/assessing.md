@@ -66,12 +66,12 @@ This list is known only to the experiencing CA.
 
 The types of properties/relations a CA experiences (and also observes as experiences of its umwelt) are:
 
-* activation(Object, Value) - a property - the object is a goal and the value is the current status of the activation (`relevant`, `not_relevant`, `planned`, `failed`, `executed`)
+* activation(Object, Value) - a property - the object is a goal (identified by its target and impact) and the value is the current status of the activation (`relevant`, `not_relevant`, `planned`, `failed`, `executed`)
 * count(Object, Value) - a property - the value is 1, 2, 3 or many (initially > 1) - the number of observations making up the Object
 * more(Object1, Object2) - a relation - the set of observations (Object1) is larger than another (Object2)
 * trend(Object, Value)- a property - the value is `up` or `down` or `steady` (characterization of the change in value between prior and current related observations)
 
-A intends to or is directed to persist, terminate or create a `count`, `more` or `trend` experience; activation experiences capture progress toward this.
+A CA intends to or is directed to persist, terminate or create a `count`, `more` or `trend` experience; activation experiences capture progress toward such goals.
 
 A goal for the CA is achieved if its targeted property/relation is realized as an experience of the CA that is either made present or absent.
 

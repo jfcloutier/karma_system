@@ -34,13 +34,13 @@ The CA eventually assesses whether the execution of a plan achieved its intended
 
 An *intent* is a self-assigned goal of the CA to impact one of its felt experiences.
 
-A *goal* is a relation/property, experienced by the CA or by its umwelt (and observed by the CA), to be initiated, persisted or terminated.
+A *goal*'s target is a relation/property experienced by a CA, to be impacted, with some priority, on behalf of an intent at some level of abstraction.
 
 A *command* is an action (spin the wheel, reverse-spin the wheel, etc.) requested by a CA of an effector CA in its umwelt.
 
 A *plan* is a prioritized sequence of goals or commands assembled by a CA to achieve either its own intent or a goal from a parent CA's plan (a directive).
 
-An *activation* is the predicted progress toward achieving a prioritized goal as part of a plan.
+An *activation* is a property of a goal whose value is its status in achieving the goal.
 
 An *affordance* is a pre-built plan for achieving a stated goal and with an effectiveness score informing its reuse.
 
@@ -303,17 +303,20 @@ The state of a dynamic CA consist of many properties, including the following th
 * `intent`- `goal{...}` - The CA's current intent
 * `plans` - [`plan{...}`, ...] - All the plans the CA built to achieve its intent and received directives
 * `affordances` - [affordance{...}, ...] - All goal-achieving plans scored high-enough to be worth remembering
-* `activations` - progress toward achieving a goal as the subject of predictions and thus prediction errors
 
 ### Data structures
 
-How goals, commands, plans, affordances and activations are encoded in the CA's state:
+How goals, commands, plans, and affordances are represented:
 
-#### `goal{target: Target, impact: Impact}`
+#### `goal{target: Target, impact: Impact, priority: Priority, intent_level: Level}`
 
 > **Target**: `target{origin: Origin, kind: Kind, value: Value}` - the state of an observed/experienced property/relation to be impacted
 >
 > **Impact**: `create` | `persist` | `terminate`
+>
+> **Priority**: 0.0..1.0 - How important is achieving the originating intent
+>
+> **Level**: The level of the CA who's intent transitively led to this goal (goal precedence is a function of priority and intent level)
 
 #### `plan{goal: Goal, directives: [Directive, ...]}`
 
@@ -331,13 +334,3 @@ How goals, commands, plans, affordances and activations are encoded in the CA's 
 > **Plan**: plan{...}
 >
 > **Score**: 0.0..1.0 | none
-
-#### `activation{goal: Goal, status: Status, priority: Priority, intent_level: Level}`
-
-> **Goal**: goal{}
->
-> **Status**: `relevant` | `not_relevant` | `planned` | `executed` | `failed`
->
-> **Priority**: 0.0..1.0 - How important is achieving the originating intent
->
-> **Level**: The level of the CA who's intent transitively led to this goal (goal precedence is a function of priority and intent level)
