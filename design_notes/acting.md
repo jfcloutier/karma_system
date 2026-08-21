@@ -131,22 +131,23 @@ During the `observe` phase, a CA:
 * Converts activation prediction errors in activation observations
   * Prediction errors about the activation of a given goal/directive are aggregated into a single observation with value:
     * `failed` if all prediction errors correct to `failed`
-    * `not_relevant` if all prediction error correct to `not_relevant`
-    * `relevant` if all prediction error correct to `relevant`
+    * `not_relevant` if all prediction errors correct to `not_relevant`
+    * `relevant` if all prediction errors correct to `relevant`
     * `executed` if any prediction error corrects to `executed`
     * `planned` if any prediction error corrects to `planned` and none to `executed`
 * Converts uncontradicated activation predictions into same-valued activation observations
+  * Necessarily one per goal activation since at most one prediction is ever made for any given goal
 
 During the `experience` phase, a CA:
 
 * Updates activation experiences (about its own intent and the directives it received) from observations of umwelt goal activations
   * An activation experience for a CA's goal updates to status
     * `planned`
-      * if, for all directives in the CA's plan for the CA's goal, there is at least one umwelt CA observed as having a `planned` activation experience for the directive
+      * if, for all directives in the CA's plan for the CA's goal, their activations are observed as `planned`
     * `failed`
-      * if, for all directives in the CA's plan for the CA's goal, all umwelt CAs are observed as having a `failed` or `not_relevant` activation experience for the directive
+      * if, for all directives in the CA's plan for the CA's goal, their activations are observed as `failed`
     * `executed`
-      * if, for all directives in the CA's plan for the CA's goal, at least one umwelt CA is observed as having an `executed` activation experience for the directive
+      * if, for all directives in the CA's plan for the CA's goal, their activations are observed as `executed`
 
 During the `act` phase, a CA:
 
@@ -155,8 +156,7 @@ During the `act` phase, a CA:
 * Builds a plan or reuses an affordance for its intent and for each directive predicted by a parent as planned
   * One plan per goal
   * Plans are built as urgency dictates (plans are built for high-priority goals first)
-  * A plan with all directives observed as `planned` or `executed` is a working plan, and the goal of the plan is experienced as `planned`
-* Executes the plan for its intent if its intet's activation is experienced as `planned`
+* Executes the plan for its intent if its intent's activation is experienced as `planned`
 * Executes the plan for a directive currently predicted as `executed` if the directive's activation is (experienced as) `planned`
   
 At the `assess` phase, a CA:
