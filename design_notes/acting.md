@@ -85,13 +85,13 @@ During any phase of its lifecycle, a CA can receive:
 * activation predictions (predictions about the status of a parent plan directives) from its parents
   * to which it immediately responds with prediction errors if appropriate
 * activation prediction errors from its umwelt, from predictions it made earlier,
-  * about a directive being `not_relevant`, `relevant`, `planning`, `planned`, `executing`, `executed` or `failed`
+  * about a directive being `not_relevant`, `relevant`, `planned`, `executed` or `failed`
 
 Progressing toward the realization of a planned goal is entirely driven by
 
 * predicting (sub) goals (their activation statuses) as `relevant`, `planned` or `executed`,
 * reacting to these predictions by possibly building or executing plans,
-* responding with prediction errors that give the actual status, including `not_relevant`, `planning`, `executing` and `failed`,
+* responding with prediction errors that give the actual status, including `not_relevant`, and `failed`,
 * and reacting to these prediction errors to update observations and experiences about the progress toward goals.
 
 Once a CA stops making predictions about the status of a goal, it implicitly signals to its umwelt that it is no longer interested in having it pursue the goal.
@@ -104,21 +104,10 @@ During all phases, upon receiving an activation prediction, the CA:
 
 * sends back nothing if the status of the directive is as predicted
 * otherwise
-  * if the directive does not correspond to any of its experiences
+  * if the directive does not correspond, or no longer corresponds, to any of its experiences
     * it sends back a `not_relevant` activation prediction error
   * else
     * if the directive is new, it creates an activation experience with status `relevant` to track its progress
-    * if the directive activation is predicted as `executed`
-      * the CA immediately experiences it as `executing` if it was `planned`
-    * if the directive activation is predicted as `planned`
-      * the CA immediately experiences it as `planning` if it was `relevant`
-    * and it sends back a prediction error valued to how it experiences the (received) directive's activation, namely,
-      * `executed` if the CA recently executed a plan to achieve the directive
-      * else`failed` if the CA tried but recently failed to build or execute a plan
-      * else `executing` if the CA is in the process of executing a plan
-      * else `planning` if the CA is in the process of building a plan
-      * else `planned` if the CA has built a plan
-      * else `relevant` if the CA has an experience it could potentially impact as directed
 
 During the `predict` phase, a CA:
 
@@ -126,10 +115,8 @@ During the `predict` phase, a CA:
   * A plan is active if the directives in it are neither all `executed` nor all `failed`
   * An activation prediction is sent to the umwelt about a directive as having activation status:
     * `executed` to cause the execution of plans the umwelt built for the directive
-      * but only if the CA is experiencing the activation of the goal the plan was built for as `executing`
-    * else `planned` to cause the activation of the directive to be planned by the umwelt
-      * but only if the directive is observed as `relevant` and all other directives in the plan are observed as either `relevant`, `planning`, `planned`, `executing` or `executed`
-    * else `relevant` to validate that the directive is (still) meaningful to the CA's umwelt
+    * `planned` to cause the activation of the directive to be planned by the umwelt
+    * `relevant` to otherwise validate that the directive is (still) meaningful to the CA's umwelt
 * Note that only "affirmative" goal activation predictions are made (`relevant`, `planned` or `executed`)
 
 During the `observe` phase, a CA:
@@ -139,9 +126,7 @@ During the `observe` phase, a CA:
     * `failed` if the entire umwelt sent back prediction errors correcting to `failed`
     * else `not_relevant` if the entire umwelt sent back prediction errors correcting to `not_relevant`
     * else `executed` if any prediction error corrects to `executed`
-    * else `executing` if any prediction error corrects to `executing`
     * else `planned` if any prediction error corrects to `planned`
-    * else `planning` if any prediction error corrects to `planning`
     * else `relevant` if any prediction error corrects to `relevant`
 * Aggregates uncontradicated activation predictions into activation observations
   * One per goal activation and as for prediction error values
@@ -162,13 +147,19 @@ During the `act` phase, a CA:
 
 * Gives itself an intent (to impact the most felt experience), assigns it a priority, and experiences it as `relevant`
   * but only if it has none already
-* Builds a plan or reuses an affordance for its intent as well as for each directive experienced as `planning`
-  * One plan per goal
-  * Plans are built as urgency dictates (plans are built for higher-priority goals first)
+  * then it reuses an affordance for its intent and experienced its intent activation as `planned`
+  * or starts/continues building a plan for the intent
+    * until the intent is experienced as `planned`
+* For each (relevant) directive for which it received a `planned` activation prediction, the CA
+  * starts/continues building a plan
+  * until the directive is experienced as `planned`
 * Executes the plan for its intent
   * but only if its intent's activation is experienced as `planned`
-  * and experiences it as `executing`
-* Executes the plan for a directive currently experienced as `executing`
+  * and until it experiences it as `executed`
+* Executes the plan for each directive currently experienced as `planned` and predicted as `executed`
+  * until it experiences it as `executed`
+
+See [design note](../building_plans.md) on building plans.
   
 At the `assess` phase, a CA:
 
@@ -180,23 +171,7 @@ At the `assess` phase, a CA:
   * Each plan built and executed by the CA is given a score (or its score is updated) from an assessment of its success, marking it as a more or less effective
   * Effective plans are retained as affordances
 
-### Scenarios
-
-There are two plan execution scenarios, one for the CA's intent and another for a received directive (a prediction was received about the activation status of a goal).
-Plan executions always originate from intents.
-
-#### Achieving an intent
-
-* A CA assigns itself a goal (its intent) from its experiences.
-* The CA immediately experiences an activation of the intent as `planning`
-* The CA works on building a plan for the intent (this may be in competition with planning for more urgent, received directives)
-* The CA predicts the progress of the activations of the plan's directives for as long as the plan exists and is not fully executed
-  * Once the intent's activation is experienced as `planned` (a working plan exists for the goal)
-    * until all directives in the plan are observed as `executed` at least once, or uniformly as `failed`
-      * an `executed` activation experience is predicted for each directive in the plan
-    * once done, the intent activation is experienced as either `executed` (all directives executed) or `failed`
-
-#### Achieving a directive activation
+### Achieving a goal
 
 A CA receives and reacts to predictions about the activation of directives planned by a parent CA.
 
@@ -207,28 +182,24 @@ If a directive activation is predicted as:
     * send a prediction error with actual value `not_relevant`
   * Else experience the activation of the goal (which exists in the context of an intent) as `relevant`
 * `planned`
-  * If the CA has a working plan, do nothing (the prediction is correct)
+  * If the CA has a plan, do nothing (the prediction is correct)
   * Else if the directive does not correspond to a current experience
     * send a prediction error with actual value `not_relevant`
   * Else if the activation of the directive is experienced as `relevant`,
-    * the CA experiences the directive as `planning`
     * start working on a plan or keep working on it (see below)
-    * send a prediction error with actual value `planning`
+    * send a prediction error with actual value `relevant`
   * Else if the CA failed to build a working plan for the directive
     * send a prediction error with actual value `failed`
   * Else if the CA recently executed a plan to achieve the directive
     * send a prediction error with actual value `executed`
 * `executed`
   * If the directive activation is already experienced as `executed` do nothing
-  * Else if all sub-directives are observed as `executed`
-    * then the directive is experienced as `executed`
-    * send a prediction error with actual value `executed`
   * Else if the directive no longer corresponds to a current experience
     * send a prediction error with actual value `not_relevant`
   * Else if the directive activation is experienced as `failed` (any planned sub-directive activation is observed to be failed)
     * send a prediction error with actual value `failed`
   * Else if the directive activation is experience as `planned`
-    * the activation is now experienced as `executing`
+    * start or continue executing the plan for achieving the directive
     * if the plan contains goals as directives
       * predict to each umwelt CA an `executed` activation experience for each directive in the directive's plan
     * if the directive's plan contains commands as sub-directives, i.e. it prescribes a "movement"
@@ -236,21 +207,6 @@ If a directive activation is predicted as:
         * accumulate actuations per effector
         * ready the body
         * tell the body to execute all accumulated actuations
-      * the CA experiences the directive activation as `executed`
-
-#### Building a plan to achieve a goal
-
-* The CA determines a sequence of goals (directives to its umwelt) that, if realized, could achieve the goal.
-* For each directive in the plan, the CA predicts (to its umwelt CAs) that each is a `relevant` activation experience
-* From this moment on, unless the intent is assessed to be stale,
-  * If any of the directive activation is observed (from prediction errors receievd and not) to be uniformly `not_relevant` or `failed`,
-    * the plan is failed and a new plan is attempted
-    * if all possible plans are exhausted,
-      * the CA experiences the activation of the intent as `failed`
-      * the CA sends an event announcing the intent to be abandoned
-  * Else if all directive activations are not yet observed to be `planned`, the CA predicts all to be `planned`
-* Once all directive activations in the plan are observed in the umwelt to be `planned` or `executed`
-  * a working plan was built and the CA experiences the activation of the intent as `planned`
 
 ## Action-related states
 
@@ -277,7 +233,7 @@ The possible statuses are:
 
 ```mermaid
 ---
-title: Goal activation status (leaving out the "dynamic" statuses `planning` and `executing`)
+title: Goal activation status
 ---
 stateDiagram-v2
     [*] --> relevant : an experience matches the goal
