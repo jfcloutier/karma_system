@@ -125,14 +125,15 @@ During the `predict` phase, a CA:
       * but only if the directive is observed as `relevant` and all other directives in the plan are observed as either `relevant`, `planned` or `executed`
     * `executed` to cause the execution of plans the umwelt built for the directive
       * but only if the CA is experiencing the activation of the goal the plan was built for as `executed`
+* Note that only "positive" goal activation predictions are made (`relevant`, `planned` or `executed`)
 
 During the `observe` phase, a CA:
 
 * Converts activation prediction errors in activation observations
   * Prediction errors about the activation of a given goal/directive are aggregated into a single observation with value:
-    * `failed` if all prediction errors correct to `failed`
-    * `not_relevant` if all prediction errors correct to `not_relevant`
-    * `relevant` if all prediction errors correct to `relevant`
+    * `failed` if the entire umwelt sent back prediction errors correcting to `failed`
+    * `not_relevant` if the entire umwelt sent back prediction errors correcting to `not_relevant`
+    * `relevant` if any prediction error corrects to `relevant`
     * `executed` if any prediction error corrects to `executed`
     * `planned` if any prediction error corrects to `planned` and none to `executed`
 * Converts uncontradicated activation predictions into same-valued activation observations
@@ -153,20 +154,22 @@ During the `act` phase, a CA:
 
 * Gives itself an intent (to impact the most felt experience) and assigns it a priority
   * but only if it has none already
-* Builds a plan or reuses an affordance for its intent and for each directive predicted by a parent as planned
+* Builds a plan or reuses an affordance for its intent as well as for each directive predicted by a parent as `planned`
   * One plan per goal
-  * Plans are built as urgency dictates (plans are built for high-priority goals first)
-* Executes the plan for its intent if its intent's activation is experienced as `planned`
-* Executes the plan for a directive currently predicted as `executed` if the directive's activation is (experienced as) `planned`
+  * Plans are built as urgency dictates (plans are built for higher-priority goals first)
+* Executes the plan for its intent
+  * but only if its intent's activation is experienced as `planned`
+* Executes the plan for a directive currently predicted as `executed`
+  * but only if the directive's activation is (experienced as) `planned`
   
 At the `assess` phase, a CA:
 
 * Determines if its intent is stale or no longer the most urgent
   * If so, the CA abandons it and any plan it has for it
 * Determines if a plan for a directive is stale
-  * It is stale if no prediction about its goal being `planned` or `executed` was recently received (i.e no parent apparently cares anymore)
+  * It is stale if no prediction about its goal was recently received (i.e no parent apparently cares anymore)
 * Determines the success or failure of previously executed plans
-  * Each built and executed by the CA is given a score (or its score is updated) from an assessment of its success, marking it as a more or less effective
+  * Each plan built and executed by the CA is given a score (or its score is updated) from an assessment of its success, marking it as a more or less effective
   * Effective plans are retained as affordances
 
 ### Scenarios
@@ -250,7 +253,7 @@ An effector CA need only manage the actuation readiness of received commands in 
   
 ### Goal activation status
 
-The status of a goal activation (observed or experienced) indicates where it is in its progression toward, hopefully, being achieved, including the possibility of reaching a dead end.
+The status of a goal activation (observed or experienced) indicates where it is in its progression toward, hopefully, being achieved, including the possibility of having reached a dead end.
 
 The possible statuses are:
 
