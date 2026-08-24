@@ -104,4 +104,8 @@ The confidence the CA has in its causal theory is conferred to the predictions g
 
 Predictions received are temporarily "sticky". Unless overridden, an incoming prediction persists across a few lifecycles of a CA to match the longer lifecycles of its parents.
 
+This is needed since not receiving a prediction can be just as meaningful to a CA as receiving one.
+For example, not receiving predictions about the activation of a directive indicates that parent CAs are no longer interested in pursuing it.
+
+A persisted prediction is as active as a just-received one.
 It is possible for a prediction received in lifecycle T of a CA to cause a prediction error to be sent back but not in lifecycle T+1, and vice-versa.
