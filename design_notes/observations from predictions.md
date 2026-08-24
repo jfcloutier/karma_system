@@ -20,7 +20,7 @@ An autonomous agent must learn to predict what happens next in order to survive.
 2. Predicting that nothing last observed will change
 3. Predicting that incoming observations will maintain current experiences (of counts, comparisons, unchanging and trends, as constructed from observations)
 4. Predicting observations from understanding (from having a model of latent processes causing observations)
-5. Predicting goal/directive activations from plans the CA built to achieve its intent or a received directive
+5. Predicting goal/directive activations from plans the CA built to achieve its intent and received directives
 
 Given the provenance of a prediction, a consequent prediction error can present a learning opportunity of lesser or greater value:
 
@@ -28,7 +28,7 @@ Given the provenance of a prediction, a consequent prediction error can present 
 2. A prediction error as surprising observation causing a new experience (some value)
 3. A prediction error as surprising observation altering or terminating an experience (more value)
 4. A prediction error as surprising observation triggering the revision of a causal model (greatest value because the prediction came from understanding)
-5. A prediction error as adjusted observation of a sent directive's activation toward execution
+5. A prediction error as adjusted observation of a sent directive's activation status toward having been executed
 
 When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations, then the experiencing of these observations, and the plans to impact experiences, it can make more informed predictions and thus learn more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from its *understanding of what causes observations*, and potentially correct this understanding from errors.
 
