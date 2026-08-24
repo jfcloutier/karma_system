@@ -14,12 +14,13 @@ The hope is that, from the interactions within an adaptive collective of CAs, co
 
 An autonomous agent must learn to predict what happens next in order to survive. The more informed its predictions, the more it can learn from prediction errors.
 
- I see four provenances for predictions, each one more informed than the other.
+ I see five provenances for predictions, each one more informed than the other.
 
 1. Predicting that nothing can be observed (predicting from complete absence of information)
 2. Predicting that nothing last observed will change
 3. Predicting that incoming observations will maintain current experiences (of counts, comparisons, unchanging and trends, as constructed from observations)
 4. Predicting observations from understanding (from having a model of latent processes causing observations)
+5. Predicting goal/directive activations from plans the CA built to achieve its intent or a received directive
 
 Given the provenance of a prediction, a consequent prediction error can present a learning opportunity of lesser or greater value:
 
@@ -27,8 +28,9 @@ Given the provenance of a prediction, a consequent prediction error can present 
 2. A prediction error as surprising observation causing a new experience (some value)
 3. A prediction error as surprising observation altering or terminating an experience (more value)
 4. A prediction error as surprising observation triggering the revision of a causal model (greatest value because the prediction came from understanding)
+5. A prediction error as adjusted observation of a sent directive's progress toward execution
 
-When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations and then the experiencing of these observations, it can make more informed predictions and thus learn more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from its understanding of what causes observations, and potentially correct this understanding from errors.
+When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations, then the experiencing of these observations, and the plans to impact experiences, it can make more informed predictions and thus learn more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from its understanding of what causes observations, and potentially correct this understanding from errors.
 
 ## Predictions, prediction errors and observations
 
@@ -44,7 +46,7 @@ An uncontested prediction is one that has received no prediction error or has on
 
 It is possible for a prediction to not cause an observation if consequent unknown-valued prediction errors were received from all umwelt CAs; the prediction was meaningless to the entire umwelt, and thus no information about the umwelt was gained from making the prediction.
 
-Different umwelt CAs can reply to a prediction with prediction errors that have conflicting values. Only the most confident among conflicting, value-bearing prediction errors becomes an observation. A tie is resolved by using the last prediction error received.
+Different umwelt CAs can reply to a prediction with prediction errors that have conflicting values. Only the most confident, most informative among conflicting, value-bearing prediction errors becomes an observation. A tie is resolved by using the last prediction error received.
 
 A prediction error that is at least as confident as the contradicted prediction overrides the prediction as observation and confers its confidence to the resulting observation.
 
@@ -58,12 +60,17 @@ The CA collects all the predictions it could make and drops those that fall too 
 
 The sources of predictions, in decreasing order of authority, are:
 
-* Inferring predictions by applying the causal theory to prior observations (**predicting observations from an understanding of latent processes**)
+* Plans built to impact (strongly felt) experiences (**goal activation predictions**)
+* Inferring from the causal theory applied to prior observations (**predicting observations from an understanding of latent processes**)
 * Extrapolating from prior experiences (**predicting observations that sustain the CA's current experiences**)
 * Predicting unaltered prior observations (**predicting that the umwelt did not change**)
 * As a last resort, making an empty prediction (**predicting that nothing will be observed**)
 
 When uncontested predictions conflict (different values are predicted), the one with the highest authority will be made. When conflicting predictions have equal authority, the one with highest confidence is the one that will be made.
+
+## Predictions from plans
+
+See [acting](../acting.md)
 
 ## Predictions from experiences
 
@@ -92,3 +99,9 @@ WWhen a CA uses its causal theory to generate a prediction from current observat
 When a CA receives no prediction error from a prediction generated from its causal theory,  it gains confidence in the theory.
 
 The confidence the CA has in its causal theory is conferred to the predictions generated using it.
+
+## The persistence of predictions
+
+Predictions received are temporarily "sticky". Unless overridden, an incoming prediction persists across a few lifecycles of a CA to match the longer lifecycles of its parents.
+
+It is possible for a prediction received in lifecycle T of a CA to cause a prediction error to be sent back but not in lifecycle T+1, and vice-versa.

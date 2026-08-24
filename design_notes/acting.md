@@ -95,6 +95,8 @@ Progressing toward the realization of a planned goal is entirely driven by
 * and reacting to these prediction errors to update observations and experiences about the progress toward goals.
 
 Once a CA stops making predictions about the status of a goal, it implicitly signals to its umwelt that it is no longer interested in having it pursue the goal.
+Predictions received persist, unless overridden, across a few lifecycles of a CA to match the longer lifecycles of its parents.
+It is possible for a prediction received in lifecycle T to cause a prediction error to be sent back but not in lifecycle T+1, and vice-versa.
 
 ### Phases and acting
 
