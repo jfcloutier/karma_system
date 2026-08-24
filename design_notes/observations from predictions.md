@@ -28,9 +28,9 @@ Given the provenance of a prediction, a consequent prediction error can present 
 2. A prediction error as surprising observation causing a new experience (some value)
 3. A prediction error as surprising observation altering or terminating an experience (more value)
 4. A prediction error as surprising observation triggering the revision of a causal model (greatest value because the prediction came from understanding)
-5. A prediction error as adjusted observation of a sent directive's progress toward execution
+5. A prediction error as adjusted observation of a sent directive's activation toward execution
 
-When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations, then the experiencing of these observations, and the plans to impact experiences, it can make more informed predictions and thus learn more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from its understanding of what causes observations, and potentially correct this understanding from errors.
+When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations, then the experiencing of these observations, and the plans to impact experiences, it can make more informed predictions and thus learn more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from its *understanding of what causes observations*, and potentially correct this understanding from errors.
 
 ## Predictions, prediction errors and observations
 
@@ -78,13 +78,13 @@ A CA synthesizes its experiences from observations it makes of its umwelt. The C
 
 Making predictions from prior synthetic experiences (either `trend`, `count`, or `more` experiences):
 
-* Trend: Predict an observation that continues the experienced trend by the increment recently observed
+* Trend: Predict an observation that continues the experienced trend by the increment/decrement recently observed
 * Count: Predict the counted observations
 * More: Predict the compared observations
 
 ## Empty predictions
 
-At the start of its life, a CA has no observations, experiences or causal theory. The CA can only make an empty prediction.
+At the start of its life, a CA has no observations, experiences, causal theory or plans. The CA can only make an empty prediction.
 
 Each umwelt CA responds to an empty prediction with fully confident prediction errors, essentially stating each of its experiences in the form of a prediction error.
 
@@ -108,4 +108,4 @@ This is needed since not receiving a prediction can be just as meaningful to a C
 For example, not receiving predictions about the activation of a directive indicates that parent CAs are no longer interested in pursuing it.
 
 A persisted prediction is as active as a just-received one.
-It is possible for a prediction received in lifecycle T of a CA to cause a prediction error to be sent back but not in lifecycle T+1, and vice-versa.
+It is possible for a prediction received by a CA in its lifecycle T to cause it to send a prediction error but only in lifecycle T+1, because of a change in the CA's experiences from T to T1.
