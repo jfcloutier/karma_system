@@ -52,14 +52,15 @@ The CA repeats its lifecyle in a loop for as long as it survives. CAs higher up 
 
 The lifecycle of a CA consists of these repeating **phases** defining the equivalent of an OODA loop:
 
-`predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to `predict`)
+`begin` -> `predict` -> `observe` -> `experience` -> `feel` -> `act` -> `assess` -> (and back to `predict`)
 
 ```mermaid
 ---
 title: Acting and the CA lifecycle
 ---
 stateDiagram-v2
-  [*] --> predict : predict umwelt experiences, inclding goal activation experiences
+  [*] --> begin : persist recently received predictions
+  begin --> predict : predict umwelt experiences, inclding goal activation experiences
   predict --> observe : process prediction errors and their absences into observations of the umwelt
   observe --> experience : aggregate observations of the umwelt into experiences of the CA
   experience --> feel : assign feelings to experience given current fluctuations in wellbeing
@@ -71,6 +72,7 @@ stateDiagram-v2
 
 All phases of the lifecycle are involved in acting:
 
+* The `begin` phase persists recently received predictions, including predictions about goal activations
 * The `predict` phase is responsible for predicting the activation of directives planned by the CA (i.e. making activation predictions)
 * The `observe` phase processes received activation prediction errors, and those not received, into activation observations
 * The `experience` phase updates activation experiences and plan status from activation observations (e.g. a directive in a plan is uniformly not_relevant across the umwelt failing the plan etc,)
@@ -110,6 +112,11 @@ During all phases, upon receiving an activation prediction, the CA:
     * it sends back a `not_relevant` activation prediction error
   * else
     * if the directive is new, it creates an activation experience with status `relevant` to track its progress
+
+At the `begin` phase, a CA:
+
+* Persists goal activation predictions received during the approximate timeframe of parent CAs
+  * To signal that the parent CAs' interest in goal activation is maintained for the duration of their current timeframe
 
 During the `predict` phase, a CA:
 

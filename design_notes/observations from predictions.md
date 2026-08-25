@@ -6,7 +6,7 @@ A robot is an autonomous and mortal agent animated by an evolving collective of 
 
 The collective forms an abstraction hierarchy where each CA has an umwelt composed of more "concrete" CAs that it observes, experiences, feels and acts upon. The bottom layer of CAs mediates access to the robot's sensors and motors, whereas the upper layers deal with the "big picture" of surviving.
 
-Each CA goes through a repeated "OODA loop" cycle (once per timeframe) where it runs through a sequence of predict, observe, experience, feel, plan, act and assess steps. The more abstract the CA, the longer its timeframe. CAs run as separate, non-synchronized processes that interact with one another via queued messages.
+Each CA goes through a repeated "OODA loop" cycle (once per timeframe) where it runs through a sequence of begin, predict, observe, experience, feel, plan, act and assess phases. The more abstract the CA, the longer its timeframe. CAs run as separate, non-synchronized processes that interact with one another via queued messages.
 
 The hope is that, from the interactions within an adaptive collective of CAs, competent agency will emerge.
 
