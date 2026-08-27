@@ -40,15 +40,17 @@ A *command* is an action (spin the wheel, reverse-spin the wheel, etc.) requeste
 
 A *plan* is a prioritized sequence of goals or commands assembled by a CA to achieve either its own intent or a goal from a parent CA's plan (a directive).
 
-An *activation* is a property of a goal whose value is its status in achieving the goal.
+An *activation* is a property of a goal whose value is its status toward achieving the goal.
 
-An *affordance* is a pre-built plan for achieving a stated goal and with an effectiveness score informing its reuse.
+An *affordance* is a pre-built plan for achieving a stated goal, with an effectiveness score informing its reuse.
 
 ## Acting and the CA lifecycle
 
 Acting happens throughout all phases of a CA's lifecycle.
 
-The CA repeats its lifecyle in a loop for as long as it survives. CAs higher up the hierarchy have longer lifecycles than lower-down CAs, which provides room for sub-plans to execute and realize the higher-level goals that spawned them.
+The CA repeats its lifecyle in a loop for as long as it survives.
+CAs higher up the hierarchy have longer lifecycles than lower-down CAs
+This gives the CA time to integrate information from its umwelt tasked with executing the CA's plans.
 
 The lifecycle of a CA consists of these repeating **phases** defining the equivalent of an OODA loop:
 
@@ -56,18 +58,18 @@ The lifecycle of a CA consists of these repeating **phases** defining the equiva
 
 ```mermaid
 ---
-title: Acting and the CA lifecycle
+title: Acting during the CA lifecycle
 ---
 stateDiagram-v2
-  [*] --> begin : persist recently received predictions
-  begin --> predict : predict umwelt experiences, including goal activation experiences
-  predict --> observe : process prediction errors and their absences into observations of the umwelt
-  observe --> experience : aggregate observations of the umwelt into experiences of the CA
-  experience --> feel : assign feelings to experience given current fluctuations in wellbeing
-  feel --> act : prioritize intent and build plans to achieve intent and to realize predictions about directives
-  act --> assess : abandon stale intents and plans, score executed plans on goal achievement, decide to live, die, or replicate
-  assess --> predict : keep on living
-  assess --> [*]
+  [*] --> begin : start life
+  begin --> predict : persist recently received predictions
+  predict --> observe : predict umwelt experiences, including goal activation experiences
+  observe --> experience : process prediction errors and their absences into observations of the umwelt
+  experience --> feel : aggregate observations of the umwelt into experiences of the CA
+  feel --> act : assign feelings to experience given current fluctuations in wellbeing
+  act --> assess : prioritize intent vs directives to build plans and execute movements (planned sequences of commands)
+  assess --> predict : abandon stale intents and plans, retain executed plans as scored affordances, decide to live, die, or replicate
+  assess --> [*] : terminate self
 ```
 
 All phases of the lifecycle are involved in acting:
@@ -94,11 +96,11 @@ Progressing toward the realization of a planned goal is entirely driven by
 * predicting (sub) goals (their activation statuses) as `relevant`, `planned` or `executed`,
 * reacting to these predictions by possibly building or executing plans,
 * responding with prediction errors that give the actual status, including `not_relevant`, and `failed`,
-* and reacting to these prediction errors to update observations and experiences about the progress toward goals.
+* and reacting to these goal activation prediction errors to update observations and experiences about the progress toward goals.
 
 Once a CA stops making predictions about the status of a goal, it implicitly signals to its umwelt that it is no longer interested in having it pursue the goal.
 Predictions received persist, unless overridden, across a few lifecycles of a CA to match the longer lifecycles of its parents.
-It is possible for a prediction received in lifecycle T to cause a prediction error to be sent back but not in lifecycle T+1, and vice-versa.
+It is possible for a prediction received in lifecycle T to cause a prediction error to be sent back only in lifecycle T+1.
 
 ### Phases and acting
 
@@ -108,7 +110,7 @@ During all phases, upon receiving an activation prediction, the CA:
 
 * sends back nothing if the status of the directive is as predicted
 * otherwise
-  * if the directive does not correspond, or no longer corresponds, to any of its experiences
+  * if the directive in the goal activation prediction does not correspond, or no longer corresponds, to any of its experiences
     * it sends back a `not_relevant` activation prediction error, and
     * forgets any goal activation experience and plan about the directive
   * else
@@ -117,23 +119,25 @@ During all phases, upon receiving an activation prediction, the CA:
 At the `begin` phase, a CA:
 
 * Persists predictions, including goal activation predictions, received during the approximate timeframe of parent CAs
-  * To signal that the parent CAs' interest in goal activations is maintained for the duration of their current timeframe
+  * To signal that the parent CAs' interest in goal activations is maintained for the duration of their own current timeframe
 
 During the `predict` phase, a CA:
 
 * Emits activation predictions to its umwelt for all directives in an active plan
   * A plan is active if the directives in it are neither all `executed` nor all `failed`
-  * An activation prediction is sent to the umwelt about a directive as having an affirmative activation status of:
+  * An activation prediction about the directive is sent to each CA in the umwelt with value:
     * `executed` to cause the execution of plans the umwelt built for the directive
-      * only if all directives in it are observed as `planned` and
-      * the planned goal is predicted as `executed` if not an intent, else right away
+      * only if
+        * all directives in it are observed as `planned` and
+        * the planned goal is an intent
+        * the planned goal is a received directive predicted as `executed`
     * `planned` to cause the activation of the directive to be planned by the umwelt
       * only if all directives in the plan are observed as `relevant`
     * `relevant` to otherwise validate that the directive is (still) meaningful to the CA's umwelt
 
 During the `observe` phase, a CA:
 
-* Aggregates activation prediction errors about directives sent to the umwelt into activation observations (one per directive)
+* Aggregates into activation observations (one per directive) the activation prediction errors received from the umwelt
   * Prediction errors about the activation of a given directive are aggregated into a single observation with value:
     * `failed` if the entire umwelt sent back prediction errors correcting to `failed`
     * else `not_relevant` if the entire umwelt sent back prediction errors correcting to `not_relevant`
@@ -141,11 +145,11 @@ During the `observe` phase, a CA:
     * else `planned` if any prediction error corrects to `planned`
     * else `relevant` if any prediction error corrects to `relevant`
 * Aggregates uncontradicated activation predictions into activation observations
-  * One per goal activation, and as above
+  * One per goal activation, with value determined as above
 
 During the `experience` phase, a CA:
 
-* Updates activation experiences about is own goals (its own intent and the directives it received), from observations of umwelt directive activations
+* Updates activation experiences about is own goals (its own intent and the directives it received), from its observations of umwelt directive activations
   * An activation experience for a CA's goal updates to status
     * `failed`
       * if, for all directives in the CA's plan for the CA's goal, their activations are observed as `not_relevant` or `failed`
@@ -195,15 +199,13 @@ At the `assess` phase, a CA:
   * If stuck,
     * the plan is dropped
     * and the plan's goal activation is now experienced as only `relevant`
-* Determine the effectiveness of affordances
+* Determines the effectiveness of affordances
   * Add all executed plans to the CA's affordances (no duplication)
     * A plan is executed if its goal activation is experienced as `executed`
-  * Update the score of all affordances
-    * Check goal achievement correlation for recently used affordances (keep maximum)
-      * 1/Distance between goal achievement and time of plan execution
-    * Most recently used affordances correlating most closely to goal achievement are rated highest
-      * They are still effective
-    * An executed plan is considered a most recently used affordance
+  * Update the score of all affordances as a combination of goal achievement correlation and freshness
+    * If the plan's goal is achieved, correlation is inversely proprtional to delta time between goal achievement and plan execution
+      * The maximum correlation value is retained
+    * Freshness decreases with time elapsed since last executed
   * Drop executed plans
 
 ## Action-related states
