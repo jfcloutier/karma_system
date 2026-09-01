@@ -16,15 +16,15 @@ When doing the assessment phase of its lifecycle, a CA
 * decides how much of its wellbeing to diffuse to its entourage (umwelt and parents)
 * asks the SOM for a possible next life event
 
-### Abandon intent if
+### Abandon the current intent if
 
 * it is no longer relevant (the experience to be impacted is gone)
-* it is stalled (not executing/executed for N timeframes)
+* it is stalled (not executed for N timeframes)
 * then drop any plan for it and let umwelt know the intent is abandoned
 
 ### Abandon a plan if
 
-* it is stalled
+* it is stalled (it is not yet executed and too many timeframes passed since it was built)
 
 ### Assess goal achievement
 
@@ -32,8 +32,9 @@ When doing the assessment phase of its lifecycle, a CA
 
 ### Score plans
 
-* for each goals just achieved, score associated executed plans
+* for each goals just achieved, score associated executed and remembered plans (affordances)
 * the closer in time plan execution is to goal achievement, the higher the (correlation) score
+* the more recently used a plan, the higher the score
 
 ### Evaluate causal theory
 
@@ -51,9 +52,9 @@ When doing the assessment phase of its lifecycle, a CA
 
 ### Trigger life event
 
-* ask SOM to trigger the next life event: apoptosis, replication, division or none
+* ask SOM to trigger the next life event: apoptosis (self termination), replication, division or none
 * wait for the SOM to realize it, unless none
-  * apoptosis distributes fullness to parents and umwelt
+  * apoptosis distributes fullness to parents and umwelt equally
   * replication/division divides fullness equally, integrity is copied, engagement starts full for new CAs
 
 ## Evaluating goal achievement
@@ -71,7 +72,7 @@ The types of properties/relations a CA experiences (and also observes as experie
 * more(Object1, Object2) - a relation - the set of observations (Object1) is larger than another (Object2)
 * trend(Object, Value)- a property - the value is `up` or `down` or `steady` (characterization of the change in value between prior and current related observations)
 
-A CA intends to or is directed to persist, terminate or create a `count`, `more` or `trend` experience; activation experiences capture progress toward such goals.
+A CA intends to or is directed to persist, terminate or create a `count`, `more` or `trend` experience. Activation experiences capture progress toward such goals; predicting their value drives action.
 
 A goal for the CA is achieved if its targeted property/relation is realized as an experience of the CA that is either made present or absent.
 
