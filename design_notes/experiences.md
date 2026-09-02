@@ -5,7 +5,7 @@
 The mind of an agent is an evolving hierarchy of cognition actors (CA). Each CA is a separate process always trying to make sense of what it observes in order to cause the agent to act in ways that are hopefully beneficial.
 
 A CA, by definition, observes its umwelt (via predictions and prediction errors). Its umwelt is composed of one-level-down CAs. The CAs and their umwelts form a hierarchy.
-At the bottom of the hierachy sit sensor CAs, with body sensors as their umwelt, and effector CAs, with body effectors as their umwelt.
+At the bottom of the hierachy sit sensor CAs interfacing with body sensors, and effector CAs interfacing with body effectors.
 
 The agent's umwelt is the world as experienced by its collective of CAs.
 
@@ -13,13 +13,13 @@ Observations by a CA in a given timeframe are considered synchronous, as are the
 
 A CA gets *direct* experiences from directly sensing properties of its environment (if it is a sensor CA), from acting in/on the environment, and from its causal theory in the form of the properties and relations imagined in order to unify the theory.
 
-A CA gets *indirect* experiences from the synthesis or elevation of observations of its umwelt's experiences. Synthesis produces count, comparisons, and trend experiences from observed experiences of its umwelt.
+A CA gets *indirect* experiences from the synthesis or elevation of observations of its umwelt's experiences. Synthesis produces `count`,`more`, and `trend` experiences from observed experiences of its umwelt. It also gets indirect experiences from observaing goal activations in its umwelt.
 
 The CA makes its own experiences available for observation by its "parent" CAs. And so on, up an abstraction hierarchy of experiences about experiences about experiences etc.
 
 Each CA decides how to act on the basis of its experiences plus how it felt when deriving them. So experiences are central to agency.
 
-A CA is constrained by wellbeing considerations in the quantity and nature of experiences it holds; believing and acting on experiences is needed to maintain wellbeing.
+A CA is constrained by wellbeing considerations in the quantity and nature of experiences it holds; acquiring experiences and acting on them is needed to maintain wellbeing.
 
 A CA hides information. It keeps to itself how it derived its synthetic experiences when it offers them for observation by parent CAs; the observed experiences leading to a synthetic experience are opaque to the observer of that experience.
 
@@ -30,19 +30,19 @@ An experience, whether direct or indirect, is represented, depending on its type
 A property is expressed as `Property(Object, Value)` where
 
 * `Property` is a property name
-* `Object` is what the experience is about (a sensor, an effector, observations, a goal)
+* `Object` is what the experience is about (a sensor, observations, a goal)
   * an object is described by
-    * its type: sensor, effector, observations, goal
+    * its type: sensor, observations, goal
     * its id: respectively, the sensor's or effector's id, a hash of the observations from which the experience was synthesized, or the id of a goal.
   * If an experience is synthetic (about and evidenced by multiple observations), only the experiencing CA knowns what these observations are.
-* `Value` is a literal belonging to the property's domain (e.g. blue, up, true, 4, spin, etc.)
+* `Value` is a literal belonging to the property's domain (e.g. blue, up, true, 4, etc.)
 
 A relation is expressed as  `Relation(Object, Object)`, where
 
 * `Relation` is a relation name
 * `Object` is either the subject or object of a relational experience (note that an object can not relate to itsef)
 
-Note that the object of a CA's experience is not a physical object but the "aboutness" (intention) of the experience.
+Note that the object of a CA's experience is not a physical object but the "aboutness" of the experience.
 
 ## Direct experiences
 
@@ -50,8 +50,8 @@ The direct experiences (experiences not derived from observed experiences) are
 
 * properties detected by the sensor CAs
   * Sense(Sensor, Reading), e.g. `distance(ir_sensor, 12)` - the distance reported by the infrared sensor is 12
-* properties from effector actuations
-  * Action(Effector, Boolean), e.g. `spin(left_wheel, true)` - the left wheel executed a spin
+* properties from actuations by the effector CAs
+  * actuation(Effector, Action), e.g. `actuation(left_motor, spin)`
 * properties from goal activations (leading to and including executions of plans meant to achieve goals)
   * activation(Goal, Status), e.g. `activation(goal_1, executed)` - some plan for achieving the goal with id goal_1 was executed by the CA
 * properties or relations imagined/abduced when generating a unified causal theory for the CA
@@ -64,6 +64,8 @@ Indirect experiences are about observed experiences in the CA's umwelt.
 Synthetic experiences combine multiple observations, past ot present.
 
 There are 3 kinds of synthetic experiences: **count**, **more**, and **trend**.
+
+See [Synthesizing experiences](../synthesizing_experiences.md)
 
 ### count
 

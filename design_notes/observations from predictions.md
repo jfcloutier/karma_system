@@ -25,12 +25,12 @@ An autonomous agent must learn to predict what happens next in order to survive.
 Given the provenance of a prediction, a consequent prediction error can present a learning opportunity of lesser or greater value:
 
 1. A prediction error as completely unanticipated observation (least value because the prediction came from ignorance)
-2. A prediction error as surprising observation causing a new experience (some value)
-3. A prediction error as surprising observation altering or terminating an experience (more value)
+2. A prediction error as surprising observation causing a new experience
+3. A prediction error as surprising observation altering or terminating an experience
 4. A prediction error as surprising observation triggering the revision of a causal model (greatest value because the prediction came from understanding)
-5. A prediction error as adjusted observation of a sent directive's activation status toward having been executed
+5. A prediction error as adjusted goal/directive activation status
 
-When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations, then the experiencing of these observations, and the plans to impact experiences, it can make more informed predictions and thus learn more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from its *understanding of what causes observations*, and potentially correct this understanding from errors.
+When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations and experiences them, and as it plans to impact these experiences, a CA makes more informed predictions and learns more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from an *understanding of what causes observations*, and potentially correct this understanding from consequent errors.
 
 ## Predictions, prediction errors and observations
 
@@ -42,11 +42,11 @@ A CA assigns a confidence (between 1% and 100%) to each prediction it sends to i
 
 When a CA receives a prediction that is not meaningful to it, it returns a fully confident prediction error with value `unknown`.
 
-An uncontested prediction is one that has received no prediction error or has only received unknown-valued prediction errors from a strict subset of its umwelt (at least one umwelt CA matched the prediction with an experience).
+An uncontested prediction is one that has received no prediction error or has only received unknown-valued prediction errors from a strict subset of its umwelt (implying that at least one umwelt CA matched the prediction with an experience).
 
 It is possible for a prediction to not cause an observation if consequent unknown-valued prediction errors were received from all umwelt CAs; the prediction was meaningless to the entire umwelt, and thus no information about the umwelt was gained from making the prediction.
 
-Different umwelt CAs can reply to a prediction with prediction errors that have conflicting values. Only the most confident, most informative among conflicting, value-bearing prediction errors becomes an observation. A tie is resolved by using the last prediction error received.
+Different umwelt CAs can reply to a prediction with prediction errors that have conflicting values. Only the most confident, most informative among conflicting, value-bearing prediction errors becomes an observation. A tie is resolved by using the most recent prediction error received.
 
 A prediction error that is at least as confident as the contradicted prediction overrides the prediction as observation and confers its confidence to the resulting observation.
 
@@ -72,15 +72,15 @@ When uncontested predictions conflict (different values are predicted), the one 
 
 See [acting](../acting.md)
 
-## Predictions from experiences
+## Predictions from synthetic experiences
 
 A CA synthesizes its experiences from observations it makes of its umwelt. The CA can predict a number of observations on the basis of its current experiences.
 
 Making predictions from prior synthetic experiences (either `trend`, `count`, or `more` experiences):
 
-* Trend: Predict an observation that continues the experienced trend by the increment/decrement recently observed
-* Count: Predict the counted observations
-* More: Predict the compared observations
+* Trend: Predict an observation that continues the experienced trend (up, down, steady) recently observed
+* Count: Predict the counted observations (there are N of this)
+* More: Predict the compared observations (there is more of this than that)
 
 ## Empty predictions
 
@@ -96,7 +96,7 @@ Making an empty prediction is a last resort because the consequent prediction er
 
 WWhen a CA uses its causal theory to generate a prediction from current observations, getting a prediction error as a consequence reduces the CA's confidence in the theory.
 
-When a CA receives no prediction error from a prediction generated from its causal theory,  it gains confidence in the theory.
+When a CA receives no prediction error from a prediction generated from its causal theory, it gains confidence in the theory.
 
 The confidence the CA has in its causal theory is conferred to the predictions generated using it.
 
