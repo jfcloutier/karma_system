@@ -177,13 +177,13 @@ During the `act` phase, a CA:
   * the movement is executed by
     * requesting all commanded effector CAs to prepare actuations
     * telling the body to execute prepared actuations at once
-    * each executed command is experienced as an individual actuation
+    * each executed command becomes an immediate (unpredicted) **observation** of an actuation with
       * origin: object{type: `effector`, id: EffectorName}
       * kind: `actuation`
       * value: Action (`spin`, `reverse_spin` etc.)
   * the goal activation is experienced as `executed`
 
-See [design note](../building_plans.md) on building plans.
+See [design note](../planning.md) on building plans.
   
 At the `assess` phase, a CA:
 

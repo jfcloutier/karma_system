@@ -9,11 +9,11 @@ At the bottom of the hierachy sit sensor CAs interfacing with body sensors, and 
 
 The agent's umwelt is the world as experienced by its collective of CAs.
 
-Observations by a CA in a given timeframe are considered synchronous, as are the experiences synthesized/derived in the timeframe.
+Observations by a CA in a given timeframe are considered synchronous, as are the experiences derived in the timeframe.
 
-A CA gets *direct* experiences from directly sensing properties of its environment (if it is a sensor CA), from acting in/on the environment, and from its causal theory in the form of the properties and relations imagined in order to unify the theory.
+A CA gets *objective* experiences from directly sensing properties of its environment (if it is a sensor CA), from planned goal activations, and from its causal theory in the form of the properties and relations imagined in order to unify the theory. An objective experience is about a singular object: a sensor, a goal, an object imagined by a causal theory.
 
-A CA gets *indirect* experiences from the synthesis or elevation of observations of its umwelt's experiences. Synthesis produces `count`,`more`, and `trend` experiences from observed experiences of its umwelt. It also gets indirect experiences from observaing goal activations in its umwelt.
+A CA gets *synthetic* experiences from the synthesis or elevation of observations of its umwelt's experiences. Synthesis produces `count`,`more`, and `trend` experiences from observed experiences of its umwelt. A synthetic experience is about a set of observations.
 
 The CA makes its own experiences available for observation by its "parent" CAs. And so on, up an abstraction hierarchy of experiences about experiences about experiences etc.
 
@@ -25,7 +25,7 @@ A CA hides information. It keeps to itself how it derived its synthetic experien
 
 ## Representing experiences
 
-An experience, whether direct or indirect, is represented, depending on its type, either as a property or as a relation.
+An experience, whether objective or synthetic, is represented, depending on its type, either as a property or as a relation.
 
 A property is expressed as `Property(Object, Value)` where
 
@@ -44,24 +44,20 @@ A relation is expressed as  `Relation(Object, Object)`, where
 
 Note that the object of a CA's experience is not a physical object but the "aboutness" of the experience.
 
-## Direct experiences
+## Objective experiences
 
-The direct experiences (experiences not derived from observed experiences) are
+The objective experiences (experiences about singular, identified objects) are
 
 * properties detected by the sensor CAs
   * Sense(Sensor, Reading), e.g. `distance(ir_sensor, 12)` - the distance reported by the infrared sensor is 12
-* properties from actuations by the effector CAs
-  * actuation(Effector, Action), e.g. `actuation(left_motor, spin)`
 * properties from goal activations (leading to and including executions of plans meant to achieve goals)
   * activation(Goal, Status), e.g. `activation(goal_1, executed)` - some plan for achieving the goal with id goal_1 was executed by the CA
 * properties or relations imagined/abduced when generating a unified causal theory for the CA
   * an inferred (as opposed to observed) property or relation e.g. `property123(object456, true)` - an unobserved object with id object456 has unobserved property names property123
 
-## Indirect experiences
+## Syntehtic experiences
 
-Indirect experiences are about observed experiences in the CA's umwelt.
-
-Synthetic experiences combine multiple observations, past ot present.
+Synthetic experiences combine multiple, compatible observations, past ot present.
 
 There are 3 kinds of synthetic experiences: **count**, **more**, and **trend**.
 
@@ -71,7 +67,7 @@ See [Synthesizing experiences](../synthesizing_experiences.md)
 
 > The experience that something can be counted in the current timeframe.
 
-e.g. this motor spun twice, there are two upward trends
+e.g. this motor spun twice, this motor was reverse-spun once, there are two upward trends
 
 * What
   * A property
@@ -124,7 +120,7 @@ A CA works to increase engagement by holding useful experiences and by acting on
 
 A CA will not instantiate all possible synthetic experiences it can all at once, only a few to reduce drain on fullness. This relates to attention.
 
-Indirect experiences of no use to parent CAs are eventually dropped, freeing resources for holding other experiences.
+Synthetic experiences of no use to parent CAs are eventually dropped, freeing resources for holding other experiences.
 
 If a parent CA predicts an experience the child CA does not hold (and is possibly not yet in its experiences domain), the child CA will attempt to synthesize it (since it matters), potentially at the expense of another, less useful, experience.
 

@@ -23,7 +23,7 @@ A dynamic CA integrates current and past observations into experiences by:
 * Choose in order a kind from [count, more, trend]
 * Find a non-empty, maximal set of observations to which the kind applies
 * The maximal set of observations defines a synthetic object as the origin of the property/relation
-  * count: 2 or more countable observations with
+  * count: 2 or more synthetic observations, or 1 or more actuation observations, with
     * identical properties (same origin, kind and value)
     * or properties with same kind and value
     * or relations with same kind and value object

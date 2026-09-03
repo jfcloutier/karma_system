@@ -1,4 +1,4 @@
-# Rethinking observations from predictions
+# Observing
 
 ## Recap
 
@@ -10,11 +10,17 @@ Each CA goes through a repeated "OODA loop" cycle (once per timeframe) where it 
 
 The hope is that, from the interactions within an adaptive collective of CAs, competent agency will emerge.
 
-## Synopsis
+## Observations
+
+A CA observes the experiences and actuations of its umwelt CAs. Experiences in the umwelt are observed by predicting them and by processing potential, consequent prediction errors.
+
+Actuations are observed directly by a CA that has effector CAs in its umwelt from executing planned commands targeting these effector CAs. See [acting](../acting.md).
+
+## Learning from predictions and prediction errors
 
 An autonomous agent must learn to predict what happens next in order to survive. The more informed its predictions, the more it can learn from prediction errors.
 
- I see five provenances for predictions, each one more informed than the other.
+ There are five provenances for predictions, each one more informed than the other.
 
 1. Predicting that nothing can be observed (predicting from complete absence of information)
 2. Predicting that nothing last observed will change
@@ -32,7 +38,7 @@ Given the provenance of a prediction, a consequent prediction error can present 
 
 When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations and experiences them, and as it plans to impact these experiences, a CA makes more informed predictions and learns more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from an *understanding of what causes observations*, and potentially correct this understanding from consequent errors.
 
-## Predictions, prediction errors and observations
+## Forming observations from predictions and prediction errors
 
 In each timeframe ("thick now") of its life, a CA makes observations by emitting predictions and maybe receiving prediction errors as a consequence. One way a CA makes predictions is by developing a causal theory about the latent processes that cause what it observes, and then using this theory to predict incoming observations.
 
@@ -52,7 +58,7 @@ A prediction error that is at least as confident as the contradicted prediction 
 
 A prediction error less confident than the prediction it corrects is dropped but it erodes the confidence in the resulting observation-from-prediction.
 
-## Making predictions
+## Prioritizing making predictions
 
 A CA must decide which prediction(s) to make within the current timeframe.
 

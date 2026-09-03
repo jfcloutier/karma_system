@@ -79,7 +79,7 @@ When the maximum number of remembered states is reached and the latest state is 
   * from experiences elevated transitively from its umwelt
   * from composing observed, umwelt experiences into synthetic experiences
 
-* See [experiences.md](./experiences.md)
+* See [experiencing.md](./experiencing.md)
 
 ## Acting (on experiences)
 
@@ -87,7 +87,7 @@ When the maximum number of remembered states is reached and the latest state is 
   * By furthering or interrupting (i.e. impacting) sub-experiences via intents delegated to umwelt CAs
 * Realizing an intent is recursive because an experience is a recursive structure of experiences held by umwelt CAs
 
-* See [plans.md](./plans.md)
+* See [planning.md](./planning.md)
 
 ## Attention
 
