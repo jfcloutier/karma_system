@@ -183,7 +183,7 @@ During the `act` phase, a CA:
       * value: Action (`spin`, `reverse_spin` etc.)
   * the goal activation is experienced as `executed`
 
-See [design note](../planning.md) on building plans.
+See [planning.md](./planning.md) about building plans.
   
 At the `assess` phase, a CA:
 
@@ -212,6 +212,8 @@ At the `assess` phase, a CA:
       * The maximum correlation value is retained
     * Freshness decreases with time elapsed since last executed
   * Drop executed plans
+
+  See [assessing.md](./assessing.md)
 
 ## Action-related states
 

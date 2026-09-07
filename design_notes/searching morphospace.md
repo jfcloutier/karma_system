@@ -1,12 +1,10 @@
 # Searching for a competent collective of Cognition Actors
 
-My rover robot will be animated by a collective of "mind processes" I call Cognition Actors. This collective starts life minimally defined and grows to capture what the robot learns as it strives to survive. The collective grows into an abstraction hierarchy where Cognition Actors in a given layer make up the umwelt of Cognition Actors in the layer above.
+The rover robot will be animated by a collective of "mind processes" I call Cognition Actors. This collective starts life minimally defined and grows to capture what the robot learns as it strives to survive. The collective grows into an abstraction hierarchy where Cognition Actors in a given layer make up the umwelt of Cognition Actors in the layer above.
 
 The collective is in effect searching for an organization of Cognition Actors that will produce behaviors by which the robot thrives in a dissipative environment. If we think of the topology of the collective (how the Cognition Actors relate to each other) as its "shape" then the problem is one of searching in morphospace (the space of possible shapes) for a survivable one.
 
 This space is large. The odds are very low of a random search finding a competent shape for the collective. The problem is compounded by how slow and involved the search is since it is driven by the trials and errors of the collective acting in the world and assessing the short and long term consequences of its sense making and actions.
-
-The way I have this search set up right now is probably at best slightly better than random. I need to do better before committing to more coding.
 
 Optimizing searches in morphospace is not a new problem. Nature has solved it many times. It's worth looking some more at developmental biology.
 
@@ -19,7 +17,7 @@ This is work in progress. Coding these principles as rules and experimenting wit
 * Parts from wholes, not wholes from parts: Grow by replication, division and differentiation, not by assembly
 * Use it or lose it: Grow to over-abundance then trim to essential
 * Stress as cognitive glue: The stress felt by parts at risk propagates and motivates global change
-* Stable wholes, transient parts: The simpler the parts, the faster they are replaced
+* Stable wholes, transient parts: The simpler the parts, the faster they are replaced when ineffective
 
 ## Morphogenesis rules
 

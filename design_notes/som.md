@@ -6,7 +6,7 @@ The SOM is a hierarchichal collective of cognition actors (CAs) that animate an 
 
 ## Cognition Actors
 
-Each CA has an umwelt composed of a small number of CAs from one level below.
+Each CA has an umwelt composed of a small number of CAs from one level below in the (dynamic) hierarchy.
 
 A CA synthesizes its experiences from patterns detected in the observed/predicted experiences, past and present, of the CAs in its umwelt.
 
@@ -26,7 +26,7 @@ An exploitation tendency corresponds to low responsiveness to stress (the CA ten
 
 An exploration tendency corresponds to high responsiveness to stress (the CA tends to "mix things up" when stressed).
 
-The parameters that determine a CA's responsiveness to stress are set once, when it is added to the SOM. They are set separately for each CA with probabilities designed to generate a gaussian distribution across all CAs, whereby most CAs begin and go though their entire lives with a set balance between exploration vs exploitation tendencies.
+The parameters that determine a CA's responsiveness to stress are set once, when it is added to the SOM. They are set separately for each CA whereby most CAs begin and go though their entire lives with a set balance between exploration vs exploitation tendencies.
 
 ## Holarchy and specialization
 
@@ -46,7 +46,7 @@ At most one CA *per level of the SOM* is allowed to control any one set of senso
 
 The CAs form a collective which implies there is communication between them to enable coordination, cooperation, competition etc.
 
-Most communications are between a CA and its umwelt CAs and vice-versa. Other communications span the entire collective.
+Communications are between a CA and its umwelt CAs and vice-versa.
 
 Communications are done either via broadcasted events that CAs either listen to or ignore, or via directed messages.
 
@@ -57,9 +57,7 @@ Communications are done either via broadcasted events that CAs either listen to 
 
 ### Unwelt CAs to parent CAs
 
-* Experiences domain - what predicates are used to express experiences, and their value domains (so the parent CAs knows how to compose predictions, irrespective of its causal theory)
 * Prediction errors - contradicting received predictions
-* Action reports - whether a directive can be actualized, is ready to actualize or was successful
 * Lifecycle - notifying the parent of being added to, or removed from, its umwelt
 
 ### CA to all CAs
@@ -78,10 +76,10 @@ Communications are done either via broadcasted events that CAs either listen to 
   * A CA reduces the agency of its umwelt
     * it imposes directives (goals to achieve) on umwelt CAs to achieve its own goals
       * umwelt CAs however decide how to fulfill received directives (they are not micromanaged, just directed)
-      * but they can't fulfill their own goals while fulfilling their parent CA's goals
+      * but they can't fulfill their own goals while fulfilling their parent CA's more (usually) urgent goals
       * and they have fewer opportunity to intend their own goals and work on being/staying relevant
   * A CA is in a better position than its umwelt to keep the agent alive if
-    * it can detect the more abstract observation patterns that are more likely to correlate with wellbeing trends
+    * it can detect the observation patterns that are more likely to correlate with wellbeing trends
     * and thus can set goals (to initiate/persist/terminate its experiences) that will be more effective at maintaining the entire SOM alive
   * A CA restricts the causal theory search space of its umwelt CAs (by imposing restriction on the vocabulary used)
     * umwelt CAs can not "unground" parent CA's experiences (by disappearing the vocabulary of umwelt experiences used by the parent CAs to synthesize its own experiences)

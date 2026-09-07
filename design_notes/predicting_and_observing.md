@@ -1,4 +1,4 @@
-# Observing
+# Predicting and observing
 
 ## Recap
 
@@ -14,7 +14,7 @@ The hope is that, from the interactions within an adaptive collective of CAs, co
 
 A CA observes the experiences and actuations of its umwelt CAs. Experiences in the umwelt are observed by predicting them and by processing potential, consequent prediction errors.
 
-Actuations are observed directly by a CA that has effector CAs in its umwelt from executing planned commands targeting these effector CAs. See [acting](../acting.md).
+Actuations are observed directly by a CA that has effector CAs in its umwelt from executing planned commands targeting these effector CAs. See [acting](./acting.md).
 
 ## Learning from predictions and prediction errors
 
@@ -76,7 +76,7 @@ When uncontested predictions conflict (different values are predicted), the one 
 
 ## Predictions from plans
 
-See [acting](../acting.md)
+See [acting](./acting.md)
 
 ## Predictions from synthetic experiences
 
@@ -108,10 +108,10 @@ The confidence the CA has in its causal theory is conferred to the predictions g
 
 ## The persistence of predictions
 
-Predictions received are temporarily "sticky". Unless overridden, an incoming prediction persists across a few lifecycles of a CA to match the longer lifecycles of its parents.
+Predictions received are temporarily "sticky". Unless overridden, an incoming prediction persists across a few lifecycles of a CA, long enough to match the longer lifecycles of its parents.
 
 This is needed since not receiving a prediction can be just as meaningful to a CA as receiving one.
-For example, not receiving predictions about the activation of a directive indicates that parent CAs are no longer interested in pursuing it.
+For example, not holding predictions about the activation of a directive indicates that parent CAs are no longer interested in pursuing it.
 
 A persisted prediction is as active as a just-received one.
 It is possible for a prediction received by a CA in its lifecycle T to cause it to send a prediction error but only in lifecycle T+1, because of a change in the CA's experiences from T to T1.

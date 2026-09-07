@@ -2,9 +2,9 @@
 
 A CA strives to become increasingly competent at surviving by making sense of its umwelt and taking actions beneficial to its wellbeing.
 
-A CA makes sense of its umwelt (a few lower-level CAs) by predicting changes to it (i.e. predicting incoming observations of its umwelt CAs' experiences) and by abstracting experiences from observations of its umwelt. Its experiencesn become observations available to parent CAs (higher-level CAs that have the CA in their umwelts).
+A CA makes sense of its umwelt (a few lower-level CAs) by predicting changes to it (i.e. predicting incoming observations of its umwelt CAs' experiences) and by abstracting its own experiences from observations of its umwelt. Its experiences become observations available to parent CAs (higher-level CAs that have the CA in their umwelts).
 
-A CA is effective at impacting its umwelt if it has reliable affordances it can apply to validate pleasant experiences or invalidate unpleasant experiences. An experience is pleasant if it was derived in the context of high or improving wellbeing, unpleasant in the context of low or worsening wellbeing
+A CA is effective at impacting its umwelt if it has reliable affordances it can apply to validate pleasant experiences or invalidate unpleasant experiences. An experience is pleasant if it was derived in the context of high or improving wellbeing, unpleasant in the context of low or worsening wellbeing.
 
 The more competent a CA is, the more likely it is that its parents CAs will be competent and survive, and thus the more likely it is that the CA itself will survive; orphaned CAs are susceptible to removing themselves when wellbeing is consistently low.
 
@@ -12,9 +12,9 @@ The more competent a CA is, the more likely it is that its parents CAs will be c
 
 There are two broad types of cognition actors, dynamic CAs and static CAs.
 
-Static CAs -sensor CAs and effector CAs- are determined a priori by the sensors and effectors that are on the agent's body. They populate the bottom layer of the SOM and persist throughout the life of the SOM.
+Static CAs -sensor CAs and effector CAs- are determined a priori by the sensors and effectors that are on the agent's body. They populate the bottom layer of the Society Of Mind (SOM) and persist throughout the life of the SOM.
 
-Dynamic CAs populate all other layers of the SOM and are added and removed throughout the life of the SOM as the agent searches the space of SOM configurations for one that, at the very least, keeps it alive.
+Dynamic CAs populate all other layers of the SOM and are added and removed throughout the life of the agent as it searches the space of SOM configurations for one that, at the very least, keeps it alive.
 
 Dynamic CAs have umwelts and they have causal theories to make sense of their observations of their umwelts. A static CAs have neither.
 
@@ -26,7 +26,7 @@ During its current timeframe, a CA makes new observations by predicting the late
 
 At the end of the current timeframe, a CA decides whether to act on its updated experiences and, if so, how.
 
-Upon completing its current timeframe, a CA adds the state of the timeframe to its memory of past states. The CA uses its remembered past states to compute its wellbeing gradients, derive its current (pleasant vs unpleasant) experiences, and update the causal theory that explains its past observations and predicts its incoming observations.
+Upon completing its current timeframe, a CA adds the state of the timeframe to its memory of past states. The CA uses its remembered past states to compute its wellbeing gradients, derive current (pleasant vs unpleasant) experiences, and update the causal theory that explains its past observations and predicts incoming ones.
 
 There is a "metabolic" cost associated with memory. The higher a CA's metabolic costs, the faster its fullness wellbeing drains. A CA under stress from low fullness might reduce the size of its memory to reduce this drain. Regaining high fullness would restore the prior bound on the CA's memory size.
 
@@ -35,12 +35,14 @@ When the maximum number of remembered states is reached and the latest state is 
 
 ## Observing (its umwelt's experiences)
 
-* A (dynamic) CA predicts its observations of the experiences of CAs in its umwelt
+* A (dynamic) CA predicts its observations of experiences of CAs in its umwelt
   * A CA begins life with an empty causal theory that predicts random, domain-bounded observations or prior observations.
   * If the CA has a causal theory, it uses it to predict the next observations.
 * A CA predicts the success of its plans using its causal theory. It also remembers the effecticeness of previously executed plans.
 * If a prediction is met with a prediction error, the prediction error becomes the latest observation, else the uncontested prediction is the observation.
 * A CA drops repeated states (state = observations in the same timeframe) - i.e. a CA's perceived time stands still while its umwelt does not appear to change.
+
+* See [predicting_and_observing.md](./predicting_and_observing.md)
 
 ## Understanding (relating observations causally and via constraints)
 
@@ -66,42 +68,38 @@ When the maximum number of remembered states is reached and the latest state is 
   * from the considered execution of an plan selected to achieve an intent (impacting a held experience)
   * due to "spontaneous" changes in the umwelt
 
-* Up-down and down-up constraints
-  * The parent CAs constrain the vocabulary of a CA's causal theory (how the CA can express a symbolic generative model), should the CA look for a better one
-    * by constraining the umwelt CAs' experience domains to cover the umwelt experiences used by the parent to abstract its own experiences
-  * Umwelt CAs constrain the space of experiences of their parent CAs
-    * By constraining what the parent CAs's experiences can be derived from
-
 ## Experiencing (detecting patterns of change in observations)
 
 * A sensor CA has atomic experiences obtained from sensor readings
-* A non-sensor CA gets its experiences
-  * from experiences elevated transitively from its umwelt
-  * from composing observed, umwelt experiences into synthetic experiences
+* A dynamic CA gets its experiences
+  * by composing observed, umwelt experiences into synthetic experiences
+  * by aggregating directive activations experiences (observed in the umwelt) into experiences of the activation of its own, planned, goals
 
 * See [experiencing.md](./experiencing.md)
 
-## Acting (on experiences)
+## Acting (on felt experiences)
 
 * A CA seeks to validate a pleasant experience and invalidate an unplesant experience
   * By furthering or interrupting (i.e. impacting) sub-experiences via intents delegated to umwelt CAs
 * Realizing an intent is recursive because an experience is a recursive structure of experiences held by umwelt CAs
 
-* See [planning.md](./planning.md)
+* See [planning.md](./planning.md) and [acting.md](./acting.md)
 
 ## Attention
 
 * An experience, when synthesized, is associated with a feeling based on wellbeing/pleasantness trend (better, worse, same)
   * A CA remembers the ambient wellbeing at each timeframe
-* A CA normally does not intend to further/disrupt experiences when wellbeing trends not far enough from neutral
-* Higher-level experiences are more likely to be associated with clear wellbeing trends than lower-level experiences
-  * This drives the SOM to add levels until clear wellbeing trends appear
+* A CA attends to strongly felt experiences, those associated with distinctly low/high or dropping/increasing wellbeing
+* Higher-level experiences are expected to be more likely associated with clear wellbeing trends than lower-level experiences
+  * This drives the SOM to add levels until clear wellbeing trends appear that productively drive attention
   * Afforded control over wellbeing makes up for the higher resource consumption of added SOM levels
+
+  See [feeling.md](./feeling.md)
 
 ## Wellbeing
 
-* It starts life with half the fullness of its mitotic progrnitor, full integrity and no engagement
-* A CA updates its wellbeing measures (fullness, integrity and engagement)
+* A CA starts life with half the fullness of its mitotic progenitor, full integrity and no engagement
+* A CA updates its wellbeing measures (fullness, integrity and engagement):
   * They are restored/depleted by the actions of the agent and by the passage of time
   * Wellbeing is osmotically equilibrated among CAs over parent-umwelt links
 
@@ -118,26 +116,26 @@ At any phase in a time frame, the CA immediately processes all events and messag
 
 The phases of a time frame are:
 
+* begin         - persist recently received predictions
 * predict       - make predictions from current observations
 * observe       - merge predictions and prediction errors into new observations
 * experience    - integrate current and past observations into terminated, updated and new experiences
 * feel          - assign a normative value (from worst to best feeling) to each experience
-* act          - formulate, accept and prioritize goals, make plans to achieve goals and execute them
-* assess        - evaluate causal theory and request new one if unsatisfactory, grant past plans affordance status if their goals were achieved, abandon stale goals, update and diffuse wellbeing (create cognitive glue), mitosis/apoptosis
-
-The pattern is *Message to self -> Task -> Follow-up message to self*
+* act           - formulate, accept and prioritize goals to impact strongly felt experiences, make plans to achieve goals and execute them
+* assess        - evaluate causal theory and request new one if unsatisfactory, evaluate executed plans as affordances from whether and when their goals were achieved, abandon stale goals, update and diffuse wellbeing (create cognitive glue), mitosis/apoptosis
 
 ```mermaid
 ---
 title: The phases of each timeframe of a Cognition Actor
 ---
 stateDiagram-v2
-    [*] --> predict: Create a new CA with an umwelt
+    [*] --> begin : Create a new CA with an umwelt
+    begin --> predict: Persist recently received predictions
     predict --> observe: Make predictions about umwelt experiences
     observe --> experience: Merge predictions and prediction errors into new observations
     experience --> feel: Unify observations into experiences
     feel --> act: Make experiences feel good or bad
     act --> assess: Formulate and execute plans to impact experiences
-    assess --> predict: Evaluate competency of causal model and past plans, review active goals, update and diffuse wellbeing, choose how to go on
+    assess --> begin: Evaluate competency of causal model and past plans, review active goals, update and diffuse wellbeing, choose how to go on
     assess --> [*]: Choose to terminate self
 ```
