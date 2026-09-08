@@ -40,3 +40,9 @@ The code of the Karma project is currently found in these repositories
 * Karma Analyst - TBD - Code facilitating analysis of data gathered from running the robot
 
 Note: This project is 100% GenAI-free.
+
+## Recommended reading
+
+* [The Autocomplete Delusion](https://substack.com/home/post/p-194564271) by Ananta Nair
+* ["Embodiment in Cognitive Systems: on the Mutual Dependence of Cognition & Robotics"](https://www.researchgate.net/publication/254400974_Embodiment_in_Cognitive_Systems_on_the_Mutual_Dependence_of_Cognition_Robotics) by David Vernon et al.
+* [The Apperception Engine](https://philpapers.org/archive/EVATA.pdf) by Richard Evans et al.
