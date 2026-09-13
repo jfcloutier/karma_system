@@ -12,9 +12,11 @@ The hope is that, from the interactions within an adaptive collective of CAs, co
 
 ## Observations
 
-A CA observes the experiences and actuations of its umwelt CAs. Experiences in the umwelt are observed by predicting them and by processing potential, consequent prediction errors.
+A CA observes the experiences and actuations of its umwelt CAs.
 
-Actuations are observed directly by a CA that has effector CAs in its umwelt from executing planned commands targeting these effector CAs. See [acting](./acting.md).
+Experiences in the umwelt are observed by predicting them and by processing potential, consequent prediction errors.
+
+An actuation is observed directly by a CA when it requests the execution of a command by an effector CA in its umwelt (no predicting is involved). See [acting](./acting.md).
 
 ## Learning from predictions and prediction errors
 
@@ -24,8 +26,8 @@ An autonomous agent must learn to predict what happens next in order to survive.
 
 1. Predicting that nothing can be observed (predicting from complete absence of information)
 2. Predicting that nothing last observed will change
-3. Predicting that incoming observations will maintain current experiences (of counts, comparisons, unchanging and trends, as constructed from observations)
-4. Predicting observations from understanding (from having a model of latent processes causing observations)
+3. Predicting that incoming observations will maintain current `count`, `more` and `trends` experiences constructed from prior observations
+4. Predicting observations from understanding (from having a model of latent processes that cause observations)
 5. Predicting goal/directive activations from plans the CA built to achieve its intent and received directives
 
 Given the provenance of a prediction, a consequent prediction error can present a learning opportunity of lesser or greater value:
@@ -36,9 +38,9 @@ Given the provenance of a prediction, a consequent prediction error can present 
 4. A prediction error as surprising observation triggering the revision of a causal model (greatest value because the prediction came from understanding)
 5. A prediction error as adjusted goal/directive activation status
 
-When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. As it accumulates observations and experiences them, and as it plans to impact these experiences, a CA makes more informed predictions and learns more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from an *understanding of what causes observations*, and potentially correct this understanding from consequent errors.
+When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. This is usually immediately contradicted by prediction errors. As it accumulates observations and experiences them, and as it plans to impact these experiences, a CA makes more informed predictions and learns more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from an *understanding of what causes observations*, and potentially correct this understanding from consequent errors.
 
-## Forming observations from predictions and prediction errors
+## Creating observations from predictions and prediction errors
 
 In each timeframe ("thick now") of its life, a CA makes observations by emitting predictions and maybe receiving prediction errors as a consequence. One way a CA makes predictions is by developing a causal theory about the latent processes that cause what it observes, and then using this theory to predict incoming observations.
 
@@ -57,6 +59,25 @@ Different umwelt CAs can reply to a prediction with prediction errors that have 
 A prediction error that is at least as confident as the contradicted prediction overrides the prediction as observation and confers its confidence to the resulting observation.
 
 A prediction error less confident than the prediction it corrects is dropped but it erodes the confidence in the resulting observation-from-prediction.
+
+## Observing the activation of directives
+
+A CA with plans makes predictions about the activation statuses of the directives composing these plans. It may or may not receive prediction errors from its umwelt about each directive activation prediction.
+
+A CA handles prediction errors about goal activations differently from other prediction errors.
+If no prediction error is received then the prediction about an activation becomes an observation as usual, but...
+
+* If **all** umwelt CAs give an error that the directive activation is `not_relevant` or `failed`, then the directive activation is observed as `failed`
+* If **any** umwelt CA says the directive activation is `relevant`, then it is observed by the CA as `relevant`
+* If **any** umwelt CA says the directive activation is `planned`, then it is observed by the CA as `planned`
+* If **any** umwelt CA says the directive activation is `executed`, then it is observed by the CA as `executed`
+
+* The possible values of a directive activation observation are thus:
+
+  * `relevant` - the directive has meaning for (is recognized by) one or more CAs the umwelt
+  * `planned` - there's a working plan for the directive by one or more CAs the umwelt
+  * `executed` - a plan for the directive was recently executed by a CA the umwelt
+  * `failed` - the entire umwelt failed to recognize, build or execute a plan
 
 ## Prioritizing making predictions
 

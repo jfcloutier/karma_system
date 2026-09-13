@@ -11,10 +11,10 @@ Henceforth, CAs refers to dynamic CAs unless otherwise indicated.
 
 A CA acts to improve how it feels by intending to terminate bad experiences and persist good ones. Over its lifetime, a CA gives itself goals to that effect (its intents) and, to achieve them, makes and executes plans, each plan a sequence of (sub)goals to be achieved by its umwelt. The CA delegates these sub-goals (directives) to its umwelt, or, if it is a low-level CA, one with effector CAs in its umwelt, it issues direct commands (spin your wheel, etc.).
 
-A CA thus acts by executing plans it builds to achieve a goal it gives itself (its intent), and to achieve goals assigned to it (directives) as planned by parent CAs.
+A CA thus acts by executing plans it builds to achieve a goal it gives itself (its intent), and to achieve goals assigned to it (directives) as part of plans by parent CAs.
 
 A CA with an intent triggers the recursive, stepwise execution of a plan to achieve the intent, as soon as the plan is (transitively) ready to execute.
-The recursion terminates with planned commands. A plan by a low-level CA, one with effector CAs in its umwelt, consists of commands, instead of goals, and only commands.
+The recursion terminates with planned commands. A plan by a low-level CA, one with effector CAs in its umwelt, consists of commands and only commands, instead of goals.
 A command directs the activation of a body's effector (e.g. spin the left wheel once etc.) Such a plan, with its commands, embodies a "movement" and all commands in a movement are executed at once.
 
 A CA initiates actions by:
@@ -95,8 +95,8 @@ During any phase of its lifecycle, a CA can receive:
 Progressing toward the realization of a planned goal is entirely driven by
 
 * predicting the activation statuses of planned directives as either `relevant`, `planned` or `executed`,
-* reacting to such predictions by possibly building or executing plans,
-* responding with prediction errors that give the actual goal activation statuses, including `not_relevant`, and `failed`,
+* reacting to receiving such predictions by possibly building or executing plans,
+* or responding with prediction errors that give the actual goal activation statuses, including `not_relevant`, and `failed`,
 * and reacting to goal activation prediction errors by updating observations and experiences about goals.
 
 Once a CA stops making predictions about the status of a goal/directive, it implicitly signals to its umwelt that it is no longer interested in having it pursue the goal.
