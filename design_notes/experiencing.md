@@ -67,7 +67,7 @@ A goal of the CA has activation status:
 
   * `failed` - if every directive in the goal's plan is observed as having activation status `failed`
   * else `executed` - if every directive in the goal's plan is observed as having activation status `executed`
-  * else `planned` - if every directive in the goal's plan is observed as having activation status `planned` or `executed`
+  * else `planned` - if every directive in the goal's plan is a command or is a goal observed as having activation status `planned` or `executed`
   * else `relevant` - if every directive in the goal's plan is observed as having activation status `relevant`, `planned` or `executed`
 
 ## Synthetic experiences
