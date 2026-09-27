@@ -60,9 +60,31 @@ A goal is achieved when the desired impact on the targeted experience is realize
 If the the desired impact is to persist or create an experience, then it is realized when a experience is held that matches the goal's target.
 If the the desired impact is to terminate an experience, then it is realized when no experience is being held that matches the goal's target.
 
+The goal's target is the experience in a current or past timeframe to be persisted or terminated in a future timeframe.
+
 An experience matches a goal's target if the experience and the goal's target are of the same kind,
-and both their origin objects and their values match, given the kind of target/experience.
+and both their origin objects and their values match, as constrained by the kind of target/experience.
 
-Matching rules:
+Matching rules (is there a current experience that matches the target experience?)
 
-TODO
+* Atomic values must be equal to match
+* Is a `count` experience the one targeted (to persist or terminate)?
+  * The count value is the same but are the same observations being counted?
+    * target.origin.evidence is the same set as experience.origin.evidence (if not, it's another count)
+* Is a `more` experience the one targeted
+  * Does the 'more' experience (between numerically-valued observations) compare the same things?
+    * the evidence being compared is either
+      * a pair of sensory observations (e.g. the front IR sensor distance is greater than the back sonic sensor distance)
+      * or a pair of count observations (e.g. the count of up trends is greater than the count of down trends)
+  * for sensory evidence
+    * are the same sensors being compared on each side of the comparison?
+      * target.origin.evidence.origin == experience.origin.evidence.origin
+      * target.value.evidence.origin == observation.value.evidence.origin
+    * are the same senses of these sensors being compared on each side of the comparison?
+      * target.origin.evidence.kind == observation.origin.evidence.kind
+      * target.value.evidence.kind == observation.value.evidence.kind
+  * for count observations (we are looking for the evidence sets that are counted staying the same, growing or shrinking)
+    * observation.origin.evidence is equal to, or a superset of, target.origin.evidence (the more-than, counted evidence is the same or has grown)
+    * observation.value.evidence is equal to, or a subset of, target.value.evidence (the less-than, counted evidence is the same or has shrunk)
+* Is a `trend` experience the one targeted?
+  * TODO
