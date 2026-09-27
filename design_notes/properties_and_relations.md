@@ -22,18 +22,18 @@ Sensors and effectors name their sense and action properties respectively. The c
 
 * (sense name) - only when the origin is a sensor, e.g. `distance`, `color`, `contact`, `state` etc.
 * (action name) - only when the origin is an effector, e.g. `spin`, `reverse_spin`
-* (latent property/relation name) - when the property/relation is abduced and named by a causal theory
+* (imagined property/relation name) - when the property/relation is abduced and named by a causal theory
 * (synthesis name) - names of abstractions, namely `count`, `more`, or `trend`
 
 ## Objects in properties/relations
 
 In properties, the origin is always an object but never the value. In relations, both origin and values are objects.
 
-Sensor and effector objects are a priori and permanent objects. Latent and synthetic objects are created by CAs as part of their sense making efforts.
+Sensor and effector objects are a priori and permanent objects. Imagined and synthetic objects are created by CAs as part of their sense making efforts.
 
 * (sensor) -> object{type: sensor, id: (sensor name)}
 * (effector) -> object{type: effector, id: (effector name)}
-* (latent object) -> object{type:(latent type), id:(unique atom)} - when the object is abduced by a causal theory
+* (imagined object) -> object{type:(imagined type), id:(unique atom)} - when the object is abduced by a causal theory
 * (synthetic object) -> object{type:synthetic, id:(unique atom)} - the id references a list of observations in time frames past and current; it is known only to the CA that synthesized the object
 
 ## Values of properties and relations
