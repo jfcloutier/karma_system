@@ -67,15 +67,22 @@ and both their origin objects and their values match, as constrained by the kind
 
 Matching rules (is there a current experience that matches the target experience?)
 
-* Atomic values must be equal to match
+* Atomic values match on equality
 * Is a `count` experience the one targeted (to persist or terminate)?
   * The count value is the same but are the same observations being counted?
-    * target.origin.evidence is the same set as experience.origin.evidence (if not, it's another count)
-* Is a `more` experience the one targeted
-  * Does the 'more' experience (between numerically-valued observations) compare the same things?
-    * the evidence being compared is either
-      * a pair of sensory observations (e.g. the front IR sensor distance is greater than the back sonic sensor distance)
-      * or a pair of count observations (e.g. the count of up trends is greater than the count of down trends)
+    * Matched if target.origin.evidence is the same set as experience.origin.evidence (if not, something else is being counted)
+* Is a `more` experience the one targeted?
+  * The evidence in the origin object and in the value object for target and experience are matched up, origin to origin and value to value
+    * The `more` experience is synthesized from comparing the values of two numerically-valued observations
+  * Does a `more` experience match a target `more` experience?
+    * Do target.origin.evidence and experience.origin.evidence match?
+    * And do target.value.evidence and experience.value.evidence match?
+  * The evidences being matched are pairs of observed experiences, either
+    * a pair of sensory observations (e.g. is the front IR sensor distance greater than the back sonic sensor distance?)
+      * we will need to dereference the observation ids in the evidence into full observations to examine what the sensations are about (sensor and sense), irrespective of their values
+        * we care about what it is that there is more than the other, not how many there is of this or that
+    * or a pair of `count` observations (e.g. is the count of up trends greater than the count of down trends?)
+      * we will need to dereference the observation id in the evidence of each count observation to examine what is being counted
   * for sensory evidence
     * are the same sensors being compared on each side of the comparison?
       * target.origin.evidence.origin == experience.origin.evidence.origin
@@ -83,8 +90,10 @@ Matching rules (is there a current experience that matches the target experience
     * are the same senses of these sensors being compared on each side of the comparison?
       * target.origin.evidence.kind == observation.origin.evidence.kind
       * target.value.evidence.kind == observation.value.evidence.kind
-  * for count observations (we are looking for the evidence sets that are counted staying the same, growing or shrinking)
-    * observation.origin.evidence is equal to, or a superset of, target.origin.evidence (the more-than, counted evidence is the same or has grown)
-    * observation.value.evidence is equal to, or a subset of, target.value.evidence (the less-than, counted evidence is the same or has shrunk)
+  * for count observations
+    * we are looking for what is counted in the counts compared by the `more` experience
+      * Is what's being counted staying the same, growing or shrinking? Or is it something else entirely? We do;t care about the values of the counts themselves.
+        * observation.origin.evidence.origin is equal to, or a superset of, target.origin.evidence.origin (the more-than, counted evidence is the same or has grown)
+        * observation.value.evidence.origin is equal to, or a subset of, target.value.evidence.origin (the less-than, counted evidence is the same or has shrunk)
 * Is a `trend` experience the one targeted?
   * TODO
