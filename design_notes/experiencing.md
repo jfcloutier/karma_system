@@ -102,7 +102,7 @@ e.g. this motor executed more spins than this other motor, the distance reported
 * What
   * A relation
 * Predicate `more(Object1, Object2)` where
-  * `Object1`, `Object2` synthesizes counted observations (there are more observations synthesized as Object1 than as Object2)
+  * `Object1`, `Object2` synthesizes sensory or counted observations (there are more observations synthesized as Object1 than as Object2)
 
 ### trend
 

@@ -55,45 +55,37 @@ When doing the assessment phase of its lifecycle, a CA
 
 ## Detecting goal achievement
 
-A goal is achieved when the desired impact on the targeted experience is realized.
+A goal is achieved when the desired impact on the targeted experience is realized by the appearance or disappearance of a matching experience.
 
-If the the desired impact is to persist or create an experience, then it is realized when a experience is held that matches the goal's target.
+If the the desired impact is to persist or create an experience, then it is realized when a experience is held and matches the goal's target.
 If the the desired impact is to terminate an experience, then it is realized when no experience is being held that matches the goal's target.
 
 The goal's target is the experience in a current or past timeframe to be persisted or terminated in a future timeframe.
 
-An experience matches a goal's target if the experience and the goal's target are of the same kind,
-and both their origin objects and their values match, as constrained by the kind of target/experience.
+An examined experience matches a goal's target if the experience and the goal's target are of the same kind,
+and if both their origin objects and their values match, as constrained by the kind of targeted experience.
 
-Matching rules (is there a current experience that matches the target experience?)
+Matching rules (targeted vs examined):
 
-* Atomic values match on equality
-* Is a `count` experience the one targeted (to persist or terminate)?
-  * The count value is the same but are the same observations being counted?
-    * Matched if target.origin.evidence is the same set as experience.origin.evidence (if not, something else is being counted)
-* Is a `more` experience the one targeted?
-  * The evidence in the origin object and in the value object for target and experience are matched up, origin to origin and value to value
-    * The `more` experience is synthesized from comparing the values of two numerically-valued observations
-  * Does a `more` experience match a target `more` experience?
-    * Do target.origin.evidence and experience.origin.evidence match?
-    * And do target.value.evidence and experience.value.evidence match?
-  * The evidences being matched are pairs of observed experiences, either
-    * a pair of sensory observations (e.g. is the front IR sensor distance greater than the back sonic sensor distance?)
-      * we will need to dereference the observation ids in the evidence into full observations to examine what the sensations are about (sensor and sense), irrespective of their values
-        * we care about what it is that there is more than the other, not how many there is of this or that
-    * or a pair of `count` observations (e.g. is the count of up trends greater than the count of down trends?)
-      * we will need to dereference the observation id in the evidence of each count observation to examine what is being counted
-  * for sensory evidence
-    * are the same sensors being compared on each side of the comparison?
-      * target.origin.evidence.origin == experience.origin.evidence.origin
-      * target.value.evidence.origin == observation.value.evidence.origin
-    * are the same senses of these sensors being compared on each side of the comparison?
-      * target.origin.evidence.kind == observation.origin.evidence.kind
-      * target.value.evidence.kind == observation.value.evidence.kind
-  * for count observations
-    * we are looking for what is counted in the counts compared by the `more` experience
-      * Is what's being counted staying the same, growing or shrinking? Or is it something else entirely? We do;t care about the values of the counts themselves.
-        * observation.origin.evidence.origin is equal to, or a superset of, target.origin.evidence.origin (the more-than, counted evidence is the same or has grown)
-        * observation.value.evidence.origin is equal to, or a subset of, target.value.evidence.origin (the less-than, counted evidence is the same or has shrunk)
-* Is a `trend` experience the one targeted?
-  * TODO
+* *Atomic* values of the targeted and examined experiences must be the identical to match
+* Targeted and examined experiences must be of the same kind (as noted above)
+* For `count` experiences:
+  * A `count` experience groups observations that have something in common and counts them
+  * e.g. two sensors give the same distance
+  * To match, the observations (evidencing a count) must be the same in the targeted and examined experiences
+* For `more` experiences:
+  * A `more` experience relates two numerically-valued observations (short for observations of numerically-valued experiences)
+    * The origin and value of a `more` experience each represent an observation, with the first observation having a value greater than the second
+  * To match, both origin objects (in the targeted and examined experiences) must be *germane*, and both value objects must also be germane
+  * Two objects each representing a numerically-valued observation are germane if the observations are compatible in the context of a `more` experience
+  * There are two possible types of numerically-valued observations evidencing a `more` experience
+    * observations of sensory experiences with numerical values (e.g. the distance measured by the front IR sensor)
+    * observations of `count` experiences (e.g. the number of up trends)
+  * Two sensory observations (observations of sensory experiences) are compatible if they are of the same kind (same sense, e.g. distance) and are numerically-valued
+  * Two `count` observations are compatible if what one counts is the same as, or is an expansion of, the other (we have more of this than of that)
+* For `trend` experiences:
+  * A `trend` qualifies how the value of an observed experience changes, or not, over time (from timeframe to timeframe)
+    * A trend experience has an atomic value of `up`, `down` or `steady`
+    * e.g. the distance read by the front IR sensor is trending down
+  * For a targeted and examined `trend` experiences to match (we have already matched their atomic values)
+    * the observations evidencing the examined `trend` experience trends must extend the observations evidencing the targeted `trend` experience
