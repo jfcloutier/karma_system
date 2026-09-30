@@ -55,37 +55,40 @@ When doing the assessment phase of its lifecycle, a CA
 
 ## Detecting goal achievement
 
+A goal's target is an experience (specified as a property or relation) from a current or past timeframe to be persisted or terminated in a future timeframe.
 A goal is achieved when the desired impact on the targeted experience is realized by the appearance or disappearance of a matching experience.
 
-If the the desired impact is to persist or create an experience, then it is realized when a experience is held and matches the goal's target.
-If the the desired impact is to terminate an experience, then it is realized when no experience is being held that matches the goal's target.
+If the desired impact is to persist or create an experience, then it is realized when a experience is examined in the current timeframe that matches the goal's target (the property or relation of the targeted experience).
 
-The goal's target is the experience in a current or past timeframe to be persisted or terminated in a future timeframe.
+If the desired impact is to terminate an experience, then it is realized when no experience is examined in the current timeframe that matches the goal's target.
 
-An examined experience matches a goal's target if the experience and the goal's target are of the same kind,
-and if both their origin objects and their values match, as constrained by the kind of targeted experience.
+An examined experience matches a goal's target experience if
 
-Matching rules (targeted vs examined):
+* the experience and the goal's target experience are defined by the same kind of property/relation (e.g. both are `count`, `trend`, `distance` etc. experiences),
+* the origins of each experienced property/relation match (the targeted and examined experiences are about compatible objects)
+* both property/relation values match
 
-* *Atomic* values of the targeted and examined experiences must be the identical to match
+The matching rules (targeted vs examined) are constrained by the kind of experience:
+
 * Targeted and examined experiences must be of the same kind (as noted above)
+* Values, if atomic, must be equal (a property's value is atomic, a relation's value is an object)
 * For `count` experiences:
-  * A `count` experience groups observations that have something in common and counts them
-  * e.g. two sensors give the same distance
-  * To match, the observations (evidencing a count) must be the same in the targeted and examined experiences
+  * A `count` experience groups observations that have something in common and counts them (it is a property with a number as its value)
+    * The group of observations form the origin object of the experience (what the `count` is about)
+    * e.g. "two sensors give the same distance"
+  * To match, the counted observations must be the same in the targeted and examined experiences (they must have the same origin object)
 * For `more` experiences:
-  * A `more` experience relates two numerically-valued observations (short for observations of numerically-valued experiences)
+  * A `more` experience is a relation between two numerically-valued observations (remember that observations are experiences noted in an umwelt)
     * The origin and value of a `more` experience each represent an observation, with the first observation having a value greater than the second
-  * To match, both origin objects (in the targeted and examined experiences) must be *germane*, and both value objects must also be germane
-  * Two objects each representing a numerically-valued observation are germane if the observations are compatible in the context of a `more` experience
-  * There are two possible types of numerically-valued observations evidencing a `more` experience
-    * observations of sensory experiences with numerical values (e.g. the distance measured by the front IR sensor)
-    * observations of `count` experiences (e.g. the number of up trends)
-  * Two sensory observations (observations of sensory experiences) are compatible if they are of the same kind (same sense, e.g. distance) and are numerically-valued
-  * Two `count` observations are compatible if what one counts is the same as, or is an expansion of, the other (we have more of this than of that)
-* For `trend` experiences:
-  * A `trend` qualifies how the value of an observed experience changes, or not, over time (from timeframe to timeframe)
-    * A trend experience has an atomic value of `up`, `down` or `steady`
-    * e.g. the distance read by the front IR sensor is trending down
-  * For a targeted and examined `trend` experiences to match (we have already matched their atomic values)
-    * the observations evidencing the examined `trend` experience trends must extend the observations evidencing the targeted `trend` experience
+  * To match, both origin objects (in the targeted vs examined experiences) must be *germane*, and both value objects must also be germane
+    * Two objects, each representing a numerically-valued observation, are germane if the observations whose values are compared are themselves compatible
+      * There are two possible types of numerically-valued observations evidencing a `more` experience, observations of sensory experiences and of `count` experiences
+      * Observations of sensory experiences with numerical values (e.g. the distance measured by the front IR sensor) are compatible if they are of the same kind (i.e. same sense, e.g. distance)
+      * Observations of `count` experiences (e.g. the number of up trends) are compatible if the counted set of observations is the same as, or is an expansion of, the other
+  * For `trend` experiences:
+    * A `trend` describes how the value of an observation changes, or not, over time (from timeframe to timeframe)
+      * A trend experience has an atomic value of `up`, `down` or `steady`
+      * e.g. "the distance read by the front IR sensor is trending down"
+    * For a targeted and examined `trend` experiences to match (after we matched their atomic values, e.g. `up` = `up`),
+      * the observations evidencing the examined `trend` experience (and forming its origin object) must extend the observations evidencing the targeted `trend` experience
+        * i.e. the evidence for the examined trend experience adds observations to the evidence for the targeted trend such that it keeps the trend value `up`, `down` or `steady`
