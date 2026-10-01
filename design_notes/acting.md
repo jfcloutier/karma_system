@@ -173,11 +173,13 @@ During the `act` phase, a CA:
 * Gives itself an intent (to impact the most felt experience), assigns it a priority, and immediately experiences it as `relevant`
   * but only if it has none already
 * For its intent and each (relevant) directive for which it received a `planned` activation prediction, the CA
-  * reuses an affordance as the goal's plan
+  * reuses a scored affordance as the goal's plan
   * or builds a plan if none exists
 * A plan is executed if the plan is experienced as `planned` and
   * the plan's goal is an intent
   * the plan's goal is a directive and the directive is predicted as `executed`
+* An executed plan is rememberd as an affordance yet to be scored
+  * Don't duplicate unscored affordances with the same plan
 * If a plan to execute is a movement (i.e. its directives are commands)
   * the movement is executed by
     * requesting all commanded effector CAs to prepare actuations
@@ -212,13 +214,10 @@ At the `assess` phase, a CA:
     * the plan is dropped
     * and the plan's goal activation is now experienced as only `relevant` ("back to square one")
 * Determines the effectiveness of affordances
-  * Add all executed plans to the CA's affordances (no duplication)
-    * A plan is executed if its goal activation is experienced as `executed`
-  * Update the score of all affordances as a combination of goal achievement correlation and of its "freshness"
-    * If the plan's goal is achieved, correlation is inversely proportional to delta time between goal achievement and plan execution
-      * The maximum correlation value is retained
-    * Freshness decreases with time elapsed since last executed
-  * Drop affordances that age out
+  * If an afforsance is not yet scored
+    * Determine if its goal was achieved and if it is set the affordance's score
+    * The score is inversely proportional to delta time between goal achievement and plan execution
+    * Drop any previously scored affordance with the same plan.
 
   See [assessing.md](./assessing.md)
 
