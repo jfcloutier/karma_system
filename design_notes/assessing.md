@@ -56,14 +56,17 @@ If too many prediction errors are caused from applying the current causal theory
 
 ### Diffusing wellbeing
 
-When diffusing wellbeing:
+A CA publishes (emits an event about) its wellbeing whenever it changes at the end of a phase.
+It listens to such events from its entourage (parents and umwelt CAs) and keeps track of the latest reported wellbeing values.
+As the last step before it requests its next life event (die, replicate, divide, or go on), it shares some of its wellbeing with entourage CAs in greater need.
 
-* broadcast wellbeing status (parents and umwelt are listeners)
-* decide how much wellbeing to transfer to parents and umwelt CAs
-  * from reviewing wellbeing status events received
+When sharing wellbeing, a CA:
+
+* decides how much wellbeing to transfer to parents and umwelt CAs
+  * from reviewing entourage wellbeing status events received
   * and own wellbeing reserves + depletion rates
-* send messages transfering wellbeing to needy parents and/or umwelt CAs
-  * clear received wellbeing status events
+* sends messages transfering wellbeing to needy parents and/or umwelt CAs, and then
+  * reducees its own wellbeing by the amounts shared
 
 ### Triggering life event
 
