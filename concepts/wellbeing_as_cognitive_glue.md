@@ -2,11 +2,12 @@
 
 In my design, a robot's agency is implemented by a dynamic collective of cognition actors (CAs). CAs form an evolving abstraction hierarchy where each CA has an umwelt composed of a few lower-level CAs it observes. The lowest-level CAs observe the physical sensors of the robot.
 
-Central to my design is the concept of wellbeing as carrier of normativity. Fullness, integrity and engagement are a CA's three measures of wellbeing.
+Central to my design is the concept of wellbeing as carrier of normativity. Fullness, integrity and engagement are a CA's three measures of wellbeing. Depleted fullness or integrity causes death.
+Fullness is consumed by the CA's activities but also when a CA self-repairs after damage to its integrity.
 
 The wellbeing of each CA fluctuates over its lifetime, with low or dropping wellbeing signalling risk to survival and creating stress. Stress affects the behavior of a CA, causing it to take actions to terminate experiences it associates with "bad feelings". Stress also makes a CA more "plastic", such as lowering the thresholds for the CA to try new plans or prompting it to revise the current causal theory by which it makes sense of its umwelt.
 
-Wellbeing, positive or negative, is contagious; it spreads from CA to CA up and down umwelt relationships. This diffusion of wellbeing signals is key to multiple CAs behaving as a collective. If, for example, a CA's feeling of integrity lowers dramatically from directly observing repeated collisions, the stress it feels needs to be shared with other CAs if they are to get involved in preventing further collisions. Stress acts as a cognitive glue for the collective.
+Fulllness, positive or negative, is contagious; it spreads from CA to CA up and down umwelt relationships. This diffusion of fullness signals is key to multiple CAs behaving as a collective. If, for example, a CA's fullness lowers dramatically from reduced integrity from repeated collisions, the stress it feels needs to be shared with other CAs if they are to get involved in preventing further collisions. Stress acts as a cognitive glue for the collective.
 
 Once a consciousness layer of CAs is implemented (see the note on Free will and consciousness), a CA could be acted upon from an upper (consciousness) layer so that it changes how it handles wellbeing signals.
 
@@ -14,4 +15,4 @@ It could be told to become a "wellbeing capacitor" by "hoarding" wellbeing signa
 
 Such internal actions allow a "consciousness" CA to manipulate the "mood" of CAs under its control and alter their usual priorities. For example, a CA might decide to have the CAs underneath it tolerate more pain while the collective is urgently seeking food; they would do so by declining integrity signals and letting them accumulate in their umwelts. Or a CA might decide to make CAs under its control more responsive to hunger, by having them hoard fullness signals to drain them from their umwelts.
 
-My thanks to @Elliott Hauser  for bringing cool ideas to this project such as the notions of stress, wellbeing diffusion and wellbeing capacitance.
+My thanks to @Elliott Hauser  for bringing cool ideas to this project such as the notions of stress, wellbeing fullness diffusion and wellbeing capacitance.

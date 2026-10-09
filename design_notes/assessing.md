@@ -14,7 +14,7 @@ When doing the `assess` phase of its lifecycle, a CA
 * scores affordances (remembered executed plans) to reflect the likelihood of the plans being responsible for achieving their goals
 * forgets old or useless affordances
 * decides whether to get an initial or a replacement causal theory
-* decides how much of its wellbeing to diffuse to its entourage (umwelt and parents)
+* Updating wellbeing by healing and diffusing surplus fullness to its entourage (umwelt and parents)
 * asks the SOM to carry out the next life event, if any (apoptosis, replication, division, or simply going on)
 
 ### Abandoning the current intent
@@ -54,17 +54,21 @@ If a CA does not have one yet and if there's enough history (timeframe count > N
 
 If too many prediction errors are caused from applying the current causal theory, request a new one.
 
-### Diffusing wellbeing
+### Updating wellbeing
 
 A CA publishes (emits an event about) its wellbeing whenever it changes at the end of a phase.
 It listens to such events from its entourage (parents and umwelt CAs) and keeps track of the latest reported wellbeing values.
-As the last step before it requests its next life event (die, replicate, divide, or go on), it shares some of its wellbeing with entourage CAs in greater need.
+
+As the last step before it requests its next life event (die, replicate, divide, or go on), it
+
+* updates its wellbeing by healing lowered integrity (at the expense of fullness)
+* and shares some of its surplus fullness with entourage CAs in greater need.
 
 When sharing wellbeing, a CA:
 
 * decides how much wellbeing to transfer to parents and umwelt CAs
   * from reviewing entourage wellbeing status events received
-  * and own wellbeing reserves + depletion rates
+  * and own wellbeing reserves
 * sends messages transfering wellbeing to needy parents and/or umwelt CAs, and then
   * reducees its own wellbeing by the amounts shared
 

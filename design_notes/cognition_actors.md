@@ -101,7 +101,7 @@ When the maximum number of remembered states is reached and the latest state is 
 * A CA starts life with half the fullness of its mitotic progenitor, full integrity and no engagement
 * A CA updates its wellbeing measures (fullness, integrity and engagement):
   * They are restored/depleted by the actions of the agent and by the passage of time
-  * Wellbeing is osmotically equilibrated among CAs over parent-umwelt links
+  * Wellbeing fullness is osmotically equilibrated among CAs over parent-umwelt links
 
 * See [wellbeing.md](./wellbeing.md)
 
@@ -122,7 +122,7 @@ The phases of a time frame are:
 * experience    - integrate current and past observations into terminated, updated and new experiences
 * feel          - assign a normative value (from worst to best feeling) to each experience
 * act           - formulate, accept and prioritize goals to impact strongly felt experiences, make plans to achieve goals and execute them
-* assess        - evaluate causal theory and request new one if unsatisfactory, evaluate executed plans as affordances from whether and when their goals were achieved, abandon stale goals, update and diffuse wellbeing (create cognitive glue), mitosis/apoptosis
+* assess        - evaluate causal theory and request new one if unsatisfactory, evaluate executed plans as affordances from whether and when their goals were achieved, abandon stale goals, update and diffuse wellbeing fullness (create cognitive glue), mitosis/apoptosis
 
 ```mermaid
 ---
@@ -136,6 +136,6 @@ stateDiagram-v2
     experience --> feel: Unify observations into experiences
     feel --> act: Make experiences feel good or bad
     act --> assess: Formulate and execute plans to impact experiences
-    assess --> begin: Evaluate competency of causal model and past plans, review active goals, update and diffuse wellbeing, choose how to go on
+    assess --> begin: Evaluate competency of causal model and past plans, review active goals, diffuse fullness, choose how to go on
     assess --> [*]: Choose to terminate self
 ```

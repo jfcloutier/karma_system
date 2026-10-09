@@ -6,13 +6,13 @@ Wellbeing is a collection of measures the agent strives to maximize. Wellbeing i
 
 The measures are:
 
-* **Fullness**: How much energy the agent has in store, to "pay for" its cognitive efforts, effector activation, and health recovery
+* **Fullness**: How much energy the agent has in store, to "pay for" its cognitive efforts, effector activation, and health recovery. Fullness can be transmitted to other CAs.
 * **Integrity**: The "health" of the agent, reduced by collisions (bruising), eating poison, and using its sensors and effectors (wear and tear)
 * **Engagement**: How much the agent is engaging its environment, both by making sense of it and by acting in it
 
 In additions to maintaining current measures of wellbeing, a CA also keeps track of the rising and falling of these measures. A sharply falling, yet still high, measure of a CA's wellbeing can be as "alarming" as a very low measure.
 
-The wellbeing measures of a CA grow and decrease based on actions they take, bumps they suffer, food or poison they "ingest" etc. They also change from CAs sharing their individual wellbeings as "wellbeing tokens" diffuse across the collective of CAs.
+The wellbeing measures of a CA grow and decrease based on actions they take, bumps they suffer, food or poison they "ingest" etc. They also change from CAs sharing their individual wellbeings as fullness diffuses across the collective of CAs.
 
 ## The role of wellbeing
 
@@ -65,6 +65,8 @@ A CA may reduce "metabolic costs" by:
 * forgetting a previously constructed affordance it has not or infrequently reused
 * raising the normative threshold for acting on experiences (don't waste energy on trivial matters!)
 
+A CA might share some its fullness with child and parent CAs that have less than it does.
+
 ### Integrity
 
 Integrity represents the health of the CA. Integrity is initially full.
@@ -97,11 +99,11 @@ Engagement decreases whenever
 
 The wellbeing of cognition actors (CAs) diffuse throughout the society of mind (SOM) as if by osmosis.
 
-Wellbeing is shred between CAs without provenance info ("Your wellbeing is my wellbeing, to a point".)
+Wellbeing fullness is shared between CAs without provenance info ("Your wellbeing is my wellbeing, to a point".)
 
-The tokens diffuse down gradients up and down umwelt relationships, that is between CAs and their umwelts.
+The fullness diffuse down gradients up and down umwelt relationships, that is between CAs and their umwelts.
 
-Within a timeframe, a CA absorbs or donates wellbeing depending on its relative surplus or deficiency relative to its parents and umwelt CAs.
+Within a timeframe, a CA absorbs or donates fullness depending on its relative surplus or deficiency relative to its parents and umwelt CAs.
 
 ### Modulating the sharing of wellbeing
 
@@ -111,14 +113,14 @@ A CA can do so by claiming to all its umwelt CAs that:
 
 * it has less of a given type than it really does, thus acting as a hoarder, taking up to half the pretended difference from each umwelt CA at the end of each timeframe, until it has its full
 * it has more of a given type than it really does, thus acting as a benefactor, sending up to half the pretended difference to each umwelt CA at the end of each timeframe, until it has none
-* it has the actual amount of a given type it actually does, thus either giving nor accepting tokens from its umwelt to reach equilibrium
+* it has the actual amount of a given type it actually does, thus either giving nor accepting fulness from its umwelt to reach equilibrium
 
 Any CA with can change its wellbeing representation toward its umwelt. It is an action the CA can take to impact the normativity of experiences it and its umwelt hold.
 
 The actions are:
 
-* hoard(wellbeing_type) -- the CA pretends to its umwelt that it has fewer wellbeing reserves of the given type (until it is full)
-* donate(wellbeing_type) -- the CA pretends to its umwelt it has more wellbeing reserves of a given type (until it is empty)
-* equilibrate(wellbeing type) -- the CA represents truthfully to its umwelt its wellbeing reserves of a given type
+* hoard() -- the CA pretends to its umwelt that it has fewer wellbeing fullness reserves of the given type (until it is full)
+* donate() -- the CA pretends to its umwelt it has more fullness reserves of a given type (until it is empty)
+* equilibrate( type) -- the CA represents truthfully to its umwelt its fullness reserves of a given type
 
- The change in a CA's "wellbeing osmotic state" persists through the next timeframe until the next wellbeing action is taken. A CA starts life with the default stance which is to equilibrate its fullness, integrity and engagement wellbeing with its parents and umwelt.
+ The change in a CA's "fullness osmotic state" persists through the next timeframe until the next wellbeing action is taken. A CA starts life with the default stance which is to equilibrate its fullness with its parents and umwelt.
