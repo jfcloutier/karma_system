@@ -7,11 +7,11 @@ Presenter: Jean-François Cloutier, Research Fellow, Active Inference Institute
 
 ## Synopsis
 
-My research project asks, "How can an autonomous robot learn to survive in a world it initially knows nothing about?"
+The Karma project, asks, "How can an autonomous robot learn to survive in a world it initially knows nothing about?"
 
 To answer this, I am building a cognitive system (enactive, emergent and symbolic) embodied in an autonomous -and mortal- Lego robot. The robot survives in a nourishing and dissipative world by acting-sensing and finding meaning in what it experiences.
 
-This project presents many challenges, technical but also metaphysical. A primary concern is the multiplicity of perspectives on "reality", that of the robot, of its (agentic) environment, of the programmer, and of observers. What can each know, and how? Is a confusion, a cross-contamination of epistemologies inevitable? With "agentic AI" poised to transform our lives, these questions about knowing matter far beyond the programming of a Lego robot, but they can be illuminated by it.
+The Karma project presents many challenges, technical but also metaphysical. A primary concern is the multiplicity of perspectives on "reality", that of the robot, of its (agentic) environment, of the programmer, and of observers. What can each know, and how? Is a confusion, a cross-contamination of epistemologies inevitable? With "agentic AI" poised to transform our lives, these questions about knowing matter far beyond the programming of a Lego robot, but they can be illuminated by it.
 
 ### Outline
 
@@ -138,7 +138,7 @@ Experiences (and thus observations thereof) are represented as binary predicates
 
 An object can be a sensor, an effector, a goal or a set of observations forming a pattern. It is not a physical object in the sense we humans are familiar with. Each object has a unique name, for examples `front_touch_sensor`, `infrared_sensor`, `left_wheel_effector` and `ab397f0dbb2a`. When a CA constructs an object (a goal or a set of observations), it gives it a unique name that does not make sense to humans but is perfectly adequate for the CA.
 
-An object can have properties each with its numeric value, and it can have relations, each with another object. Properties and relations also have names, for example `distance`, `touched`, `trend`, `count`, `more` and `587bcdefa30`. When a causal theory introduces a new kind of property or relation that's unobserved but needed to make sense of what is observed, it gives it a unique name that need not make sense to us humans.
+An object can have properties each with its numeric value, and it can have relations, each with another object. Properties and relations also have names, for example `distance`, `touched`, `trend`, `count`, `more_than` and `587bcdefa30`. When a causal theory introduces a new kind of property or relation that's unobserved but needed to make sense of what is observed, it gives it a unique name that need not make sense to us humans.
 
 Properties and relations look like `touched(front_touch_sensor, true)`, `distance(infrared_sensor, 120)`, `trend(ab397f0dbb2a, up)`, `more(4756facca, 9872fffe)`, or even `587bcdefa30(2bsd4500f, de53d4a00)`.
 
@@ -232,24 +232,42 @@ What we have here is a multiverse of umwelts within a shared noumena.
 
 Ideally.
 
-It is remarkably difficult to avoid a cross-contamination of epistemologies.
+It is remarkably difficult to keep theses universes separate, to avoid a cross-contamination of epistemologies.
 
-The programmer (me) will be tempted to insert the concepts of "wall" and "blocked" in the program of the robot even though there is absolutely no possibility for a robot with only touch and distance sensors to conceive of a "wall" or even of physical objects in 3D space **as we do**. We have a different, much more sophisticated sensory and cognitive apparatus that we developed to navigate 3D space. We have profoundly different umwelts.
+The programmer (me) will be tempted to insert the concepts of "wall" and "blocked" in the program of the robot even though there is absolutely no possibility for a robot with only touch and distance sensors to conceive of a "wall" or even of physical objects in 3D space **as we do**. We humans have a different, much more sophisticated sensory and cognitive apparatus that we evolved over eons to navigate 3D space. We have profoundly different umwelts.
 
-The robot will develop its own concepts from experiencing spinning its wheels while the touch sensor is pressed, distance remains unchanged and stored energy dwindles. We might recognize something akin to our concept of "blocked by a wall" but it will not be that. It cannot be that.
+The robot will develop its own concepts from experiencing the spinning of its wheels while its touch sensor is pressed, the distance it senses remains unchanged and its stores of energy dwindle. We might recognize in these concepts something akin to our notion of "blocked by a wall". But it will not be that to the robot. It cannot be that.
 
-If, as a programmer, I insert concepts from my own umwelt into the programming of the robot, these concepts will be necessarily alien to it. They will only get in the way of the robot developing a consistent and effective model of itself in its habitat. It will impede its survival.
+If, as a programmer, I insert concepts from my own umwelt into the programming of the robot, these concepts will be necessarily alien to it. They will almost certainly get in the way of the robot building its own consistent and effective model of itself in its habitat. It will impede its survival.
 
-Observers will likely see in the robot's behaviors the workings of a psychology familiar to them. The robot will be seen as being afraid of a barrier, becoming frantic from starvation, feeling content and relaxed after a meal etc.
+Observers will likely see in the robot's behaviors a psychology familiar to them. The robot will be seen as being afraid of a barrier, becoming frantic from starvation, feeling content and relaxed after a meal etc.
 
-Will they be wrong? Not necessarily. The robot-as-it-is is noumenon. Observers, just like the robot or any cognitive system, only have access to what Kant identifies as "appearances", sensations they unify into experiences that lead to empirical knowledge. Until observers test their hypotheses about the robot's motives and state of mind, the validity of this empirical knowledge about the robot remains undetermined.
+Will they be wrong? Not necessarily. The robot-as-it-is is afterall noumenon. Observers, just like the robot or any cognitive system, only have access to what Kant identifies as "appearances" from "things as they are" impacting their sensorium. Observers only have access to sensations, mostly visual, caused by light bouncing off the robot-as-it-is and hitting their retinas. The cognitive processes of the observers work to unify these sensations into spatio-temporal experiences that can lead to empirical knowledge about the robot-as-it-appears. Until observers test their hypotheses about the robot's motives and state of mind, the validity of this empirical knowledge remains very much in doubt.
 
-Of course, observers could talk to the programmer who would quickly, perhaps too quickly, attempt to dispell their beliefs about the robot.
+Of course, observers could talk to the programmer who would quickly, perhaps too quickly, attempt to dispell their delusional beliefs about the robot's psychology.
 
 ### Knowing better
 
-I take pleasure in developing an experience-based cognitive architecture for my Lego robots. I entertain no delusions (well, almost none) about the scientific value of the work. The goal has always been and remains to provide myself with challenges that gain insights into cognition, insights that I am happy to share. All in Feyman's spirit of building to understand.
+I very much enjoy the hours I spend developing an embodied, enactive and symbolic cognitive architecture for my Lego robots. I entertain no delusions (well, almost none) about the scientific importance of my work. The objective has always been to gain insights into cognition, insights that I am happy to share. All in Feyman's spirit of building to understand.
 
-I do not use agentic AI to generate code or to document my work because I doing it myself is the point.
+It follows that I do not use agentic AI to generate code or documentation because **I** doing the work **is** the point.
 
-Speaking of LLMs, I actually find their growing adoption distressing because of the widespread epistemic damage they cause. This project has helped me make some sense of the epistemic confusion behind the misinformed adoption of LLMs.
+Speaking of LLMs, I find the indiscreminate adoption of generative AI distressing, not only because of the well-documented cognitive and environmental damage it causes, but also because of the epistemic confusion at the core of the phenomenon.
+
+Working on the Karma project has helped me make sense of the confusion responsible for false and inflated claims about the capabilities of LLMs and of the agentic harnesses that automate their exploitation.
+
+We hear that the technology has achieved or will soon achieve "agency" and "superhuman general intelligence". Has it? Can it?
+
+I say no, though I do not deny that LLMs demonstrate extraordinary and unexpected capabilities.
+
+I will keep my refutation brief.
+
+Experiences, sense-making and understanding; what an LLM does experience?
+
+Meaning grounding; symbols as pointers to experiences; whose experiences?
+
+Embodiement, mortality and normativity; does an LLM care about anything?
+
+Agency; whose goals? whose choices?
+
+LLMs are magic but what kind of magic?
