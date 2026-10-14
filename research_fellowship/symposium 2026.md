@@ -29,7 +29,7 @@ The robot has a body and a mind. The body has sensors to read distance, touch, c
 
 The mind is a growing/shrinking/self-organizing society of processes that make sense, together, of a world the robot must engage with to survive.
 
-Each process in the robot's society of mind is a "software actor", that is, a long-lived process that manages its own changing state and interacts with other actors strictly via communications. This Actor Model should feel intuitive as it can be applied to people, neurons, the Web etc.
+Each process in the robot's society of mind is a "software actor", that is, a long-lived process that manages its own changing state and interacts with other actors strictly via messages. This Actor Model should feel intuitive as it can be applied to people, neurons, the Web etc.
 
 The software actors composing the robot's society of mind implement the robot's cognition. They will be referred to as Cognition Actors.
 
@@ -37,7 +37,7 @@ There are three kinds of Cognition Actors (CAs): sensor, effector and dynamic co
 
 Sensor and effector CAs interface with the body's sensors and effectors. CAs grow and evolve a hierarchy with sensor and effector CAs at the very bottom layer. Dynamic CAs form every other layer. Each dynamic CA has an umwelt (what they can sense and act upon). This umwelt is composed of other (child) CAs one level down. Two CAs can have umwelt CAs in common.
 
-A dynamic CA (henceforth CA unless otherwise specified) *observes* what its umwelt *experiences*. It observes by predicting umwelt experiences and then combining predictions with prediction errors -sent by its umwelt- into observations. It finds patterns in these observations and translates these observed patterns into its own experiences. A CA's experiences are then observed by its parent CAs, etc. The CAs thus form an abstraction hierachy.
+A dynamic CA (henceforth CA unless otherwise specified) observes what its umwelt experiences. It predicts umwelt experiences and then combines *predictions* with *prediction errors* -sent by its umwelt- into *observations*. It finds patterns in these observations and translates these observed patterns into its own experiences. A CA's experiences are then observed by its parent CAs, etc. The CAs thus form an abstraction hierachy.
 
 A CA makes sense of what it observes in its umwelt by developing a *causal theory* (logic rules and constraints) that explains why certain observations change, or not, from one moment to the next. It uses this causal theory to better predict and plan.
 
@@ -45,7 +45,7 @@ The wellbeing of a CA is defined in terms of its fullness (energy reserve), inte
 
 A CA *acts* by persisting or terminating its experiences, one at a time, because of how the experiences feel. The CA does it by formulating a plan by which it directs its umwelt/child CAs to change some of their own experiences, experiences the CA observed and translated into the experience it currently wants to persist or terminate. The child CAs formulate their own plans for impacting their own experiences in the service of the parent CA, and so on until an umwelt contains effector CAs to which commands are sent to turn wheels (perhaps avoiding a collision or positioning the robot over food).
 
-When the robot is first activated, its society of mind begins with a set of sensor CAs (one for each sensor in the robot's body) and effector CAs (one for each effector in the robot's body). They form a permanent bottom layer. A second layer is immediately seeded with a dynamic CA that has all of the first layer CAs as its umwelt. Over time, this first dynamic CA replicates and divides, populating the second layer with randomly "specialized" CAs, each with smaller umwelts. Once the layer is full, a third layer is seeded with a dymanic CA that has the entire second layer as its umwelt, and the process continues. Growth is constrained by how much food (a source of fullness) the habitat provides, and by the deaths of CAs when their fullness runs out or when their integrity is lost beyond repair. As the society of mind grows and shrinks and grows again, it explores a space of possible organizations, eventually finding one that favors the survival of the collective of CAs. Or the robot dies trying.
+When the robot is first activated, its society of mind begins with a set of sensor CAs (one for each sensor in the robot's body) and effector CAs (one for each effector in the robot's body). They form a permanent bottom layer. A second layer is immediately seeded with a dynamic CA that has all of the first layer CAs as its umwelt. Over time, this first dynamic CA replicates and divides, populating the second layer with randomly "specialized" CAs, each with smaller umwelts. Once the layer is full, a third layer is seeded with a dymanic CA that has the entire second layer as its umwelt, and the process continues. Growth is constrained by how much food (the ultimate source of fullness) the habitat provides, and by the deaths of CAs when their fullness runs out or when their integrity is lost beyond repair. As the society of mind grows and shrinks and grows again, it explores a space of possible organizations, eventually finding one that favors the survival of the collective of CAs. Or the robot dies trying.
 
 For a more detailed account of Karma's cognitive architecure, see last year's presentation at ...
 
@@ -61,7 +61,7 @@ The robot's knowledge is divided into innate vs. empirical knowledge.
 
 #### Innate knowledge
 
-Innate (or a priori) knowledge is programmed in. It is the logic, constrained by preset parameters, that drives the repeating lifecyle of each CA and each step of this lifecycle.
+Innate (or a priori) knowledge is programmed in. It is the logic, plus preset parameters, that drives the repeating lifecyle of each CA and each step of this lifecycle.
 
 The steps are:
 
@@ -95,19 +95,19 @@ The robot's habitat, when run in simulation mode, is itself a program that sense
 
 #### Empirical knowledge
 
-The robot acquires empirical (a posteriori) knowledge, that is, knowledge beyond its programming, entirely on its own.
+The robot acquires on its own empirical (a posteriori) knowledge, that is, knowledge beyond its programming.
 
 The robot is not pre-loaded with any concept or rule describing its habitat or what it should do in it. There is no pre-training. Furthermore, there is no communication from programmer or observer to assist the robot once it is activated.
 
-The robot's emperical knowledge is a manifold of experiences, feelings, causal models and affordances. This knowledge is distributed among the CAs that compose the robot's society of mind.
+The robot's empirical knowledge is a manifold of experiences, feelings, causal models and affordances. This knowledge is distributed among the CAs that compose the robot's society of mind.
 
 Each CA grows empirical knowledge about an umwelt which is itself composed of other CAs that are one level down an abstraction hierarchy.
 
-Experiences are central to knowing. A CA observes the experiences of its umwelt CAs in order to acquire its own experiences from patterns it detects (counts, up or down trends, compared quatities). It then acts to change its own experiences by directing its umwelt CAs to modify their own experiences.
+Experiences are central to knowing. A CA observes the experiences of its umwelt CAs in order to acquire its own experiences from patterns it detects (counts, up or down trends, compared quatities). It then acts to change its own experiences by directing its umwelt CAs to modify their experiences.
 
-Just like a CA's observations are acquired from predictions (of umwelt experiences) and from prediction errors (sent by the umwelt), a CA's actions are executed by predicting changes to observed umwelt "goal activation" experiences, predictions that cause umwelt CAs to build their own plans and execute them (also via predictions).
+Just like a CA's observations are acquired from predictions (of umwelt experiences) and from prediction errors (sent by the umwelt), a CA's actions are executed by predicting changes to umwelt "goal activation" experiences, predictions that cause umwelt CAs to build their own plans and to execute them (also via predictions).
 
-A CA's fluctuating wellbeing changes how it feels and whether its current experiences are good ones or bad ones. Feelings are how a CA knows where to direct its attention, which is on the most intensly felt experiences. The CA then sets its intent on persisting the best experiences and terminating the worst ones.
+A CA's fluctuating wellbeing changes how the CA feels and whether its current experiences are good ones or bad ones. Feelings modulate attention. A CA directs its attention to the most intensly felt experiences. It sets its intent on persisting the best experiences and terminating the worst ones.
 
 Having set for itself the **goal** of changing a current experience, a CA builds (or reuses) a plan of action. This plan is a sequence of directives, each directive being a goal assigned to the umwelt to persist or terminate an experience the CA observed. A directive can also be a command to carry out an effect (e,g, a reverse-spin of the left wheel) if the CA connects to an effector. How the umwelt CAs realize the goals they are assigned by their parent CAs is up to them (no micro-management!). Umwelt CAs might also give higher priority to self-assigned goals if they consider them more urgent than directives received from parent CAs.
 
@@ -119,16 +119,16 @@ A causal model is knowledge that *explains* what the CA observes. It is in the f
 
 A causal model is how a CA *makes sense* of what it observes and it is how it can more accurately predict future observations and do counter-factual reasoning when comparing alternate plans of action.
 
-Causal models are produced by an Apperception Engine, a sub-system that, given a history of a observations, will search for an economical causal theory that can reproduce this history with acceptable accuracy. Given current observations, a causal theory will not only predict what happens next with some confidence but also what infer what could not be observed but is likely true. For more details, see my presentation from the 2024 Symposium (...)
+Causal models are produced by an Apperception Engine, a sub-system that, given a history of observations by a CA, will search for an economical causal theory that can reproduce this history with acceptable accuracy. Given current observations, a causal theory will not only predict what happens next with some confidence but also what infer what could not be observed but is likely true. For more details, see my presentation from the 2024 Symposium (...)
 
-After a plan is executed and because the outcome of a plan may not immediately observable, the CA stays on the lookout over its next lifecycles for evidence that the plan was effective. Was the experience meant to be persisted indeed persisted? Was the experience meant to be terminated indeed terminated? If it was, and the outcome closely follows in time the execution of the plan, then the CA can have some confidence in the plan's effectiveness. Effective plans become learned **affordances**, to be reused later when the CA seeks to achieve the same goals.
+After a plan is executed and because the outcome of a plan may not immediately observable, the CA stays on the lookout over its next lifecycles for evidence that the plan was effective. Was the experience meant to be persisted indeed persisted? Was the experience meant to be terminated indeed terminated? If it was, and the outcome closely follows in time the execution of the plan, then the CA can have some confidence in the plan's effectiveness. An effective plan becomes a learned **affordance**, to be reused later when the CA seeks to achieve the same goal.
 
 To recap, a robot's empirical knowledge is a manifold. It is distributed among CAs composing an abstraction hierarchy where CAs make up the umwelt of more abstract CAs. Each CA:
 
 * updates its experiences by detecting patterns of experiences observed in its umwelt,
 * associates feelings to these experiences from a fluctuating wellbeing,
 * sets itself the goals of persisting or terminating the most intensively felt experiences,
-* builds plans to do so by altering umwelt experiences,
+* builds plans that direct its umwelt CAsto impact their experiences,
 * uses a causal theory to infer unobserved umwelt experiences and to anticipate consequences of a plan,
 * and reuses plans that have been shown to be effective affordances.
 
@@ -248,26 +248,26 @@ Of course, observers could simply talk to the programmer who would quickly, perh
 
 ### Knowing better
 
-I am developing, from the ground up, an embodied, enactive and symbolic cognitive architecture for my Lego robots. The objective has always been to gain personal insights into cognition, insights that I am happy to share. All in Feyman's spirit of building to understand.
+I am having great fun developing, from the ground up, an embodied, enactive and symbolic cognitive architecture for my Lego robots. The objective is to gain personal insights into cognition, insights that I am happy to share. All in Feyman's joyful spirit of building to understand.
 
 It follows that I do not use agentic AI to generate code or documentation because **I** doing the work **is** the point.
 
 This is not the only reason I don't use LLMs. I find the indiscreminate adoption of generative AI distressing, not only because of the well-documented cognitive and environmental damage it causes, but also because of the epistemic confusion at the core of the phenomenon.
 
-We hear that the technology has achieved or will soon achieve "free agency" and "superhuman general intelligence". Has it? Can it? Working on the Karma project has helped me make sense of the epistemic confusion responsible for the questionable and inflated claims made about LLMs and about the agentic harnesses that automate their exploitation (a.k.a. Agentic AI).
+We hear that the technology has achieved or will soon achieve "free agency" and "superhuman general intelligence". Has it? Can it? Working on the Karma project has helped me make sense of the epistemic confusion responsible for the questionable and inflated claims made about both LLMs and the agentic harnesses that automate their exploitation (a.k.a. Agentic AI).
 
-Much has been written refuting these claims so I will keep my own refutation brief.
+Much has been written refuting these claims so I will keep my own refutation brief. I will not address the ill-defined claim of "superhuman general intelligence" other than by saying that it probably implies being a cognitive system that makes sense of its sensations and learns how to beneficially engage a world it inhabits.
 
-First, my credo: Cognition requires embodiment and agency. Embodied experiences are central to cognition. An agent unifies streams of sensations into coherent experiences to make sense of them and predict future experiences. The scope and meaning of these experiences are bounded by the agent's own umwelt. The agent assigns value to experiences, which ones feel good and are to be persisted, which ones feel bad and are to be terminated. A free agent makes its own choices for its own good reasons. These reasons are grounded in sense-making, constrained by mortality, and motivated by the agent's drive to survive.
+But first, my credo: Cognition requires embodiment and agency. Embodied experiences are central to cognition. An agent unifies streams of sensations into coherent experiences to make sense of them and predict future experiences. The scope and meaning of these experiences are bounded by the agent's own umwelt, itself limited by what the agent can sense and do. The agent assigns feelings to its experiences to promote survivable choices: persist experiences that feel good and terminate experiences that feel bad. *A free agent makes its own choices for its own good reasons.* These reasons are informed by sense-making, grounded by mortality, and motivated by the agent's drive to survive.
 
-What does an LLM experience? An LLM trained on texts experiences the mutual proximity of lexical tokens (parts of word) within texts. Give the LLM-in-training enough word placement experiences and it will generate remarkably coherent texts when prompted with only a few words. Give it reiforcement training on its output and it will likely complete text in the preferred tone and style.
+What does an LLM experience? An LLM trained on texts experiences the mutual proximity of lexical tokens (parts of word) within these texts. Give the LLM-in-training enough word placement experiences and it will generate surprising and remarkably coherent sentences when prompted with only a few words. Give it reiforcement training on its output and it will likely generate text in the preferred tone and style.
 
-The LLm does not experience what the texts refer to, namely the human experiences of smelling a rose or falling in love. The words an LLM ingests are mere pointers to human experiences. The words it generates are also only pointers to human experiences. The pointed-to experiences are our own, they are not the experiences of the LLM.
+The LLm does not experience what the texts refer to, like the human experiences of smelling a rose or falling in love. The words an LLM ingests are mere pointers to human experiences. The words it expertly generates are also only pointers to human experiences. The pointed-to experiences are our own, they are not the experiences of the LLM.
 
-The LLM's umwelt is not ours. An LLM's umwelt is what we, humans, write about our own umwelt. The LLM senses word proximity, not the smell of a rose or the accelerated heartbeat of a lover. To believe that the LLM understands the meaning of what it generates is a clear case of epistemic confusion.
+The LLM's umwelt is not ours. An LLM's umwelt is what we, humans, write about our own umwelt. The LLM senses word proximity, not the smell of a rose or the accelerated heartbeat of a lover. To believe that the LLM understands what it generates is a clear case of epistemic confusion.
 
-What about agency? "Agentic AI" boils down to software scripts sending text to LLMs, interpreting LLM output as software commands which output is itself fed back, recursively, to the LLMs. Agentic AI can easily be used to generate working programs (code is text), **including its own scripts**. From this, some make the leap to the inevitability of a self-improving AI eventually achieving super-intelligent agency and turning us all into paperclips.
+What about agency? "Agentic AI" boils down to software scripts sending text to LLMs, interpreting some LLM output as software commands, running these commands and, recursively, feeding their output to the LLMs. Agentic AI can easily be used to generate working programs (code is text), **including its own scripts**. From this, some make the leap to the inevitability of a self-improving AI eventually achieving super-intelligent agency and turning us all into paperclips.
 
-An agentic AI system does make choices but these choices are about how to complete a text given an LLM's experiences of word co-locations. The system is neither cognitive nor autonomous, though it can give the illusion of it, especially when it causes widespread damage and generates text asking for forgiveness. All it does is recursively react to incomplete texts. Since it is not mortal, it has no basis for determining what choices are good vs bad for it. It never makes choices for its own good reasons, though it can produce text that says it does.
+An agentic AI system does make choices but these choices are about how to complete a text based on an LLM's experiences of word co-locations. The system is neither cognitive in the human sense nor truly autonomous, though it can give the illusion of it, especially when it causes widespread damage and generates text asking for forgiveness. All it does is recursively react to incomplete texts by completing or executing them. Since it is not mortal, it has no basis for determining what choices are good vs bad for it. Agentic AI never makes choices for its own good reasons, though it can produce text that says it does.
 
-The insights I gained building a cognitive architecture for my Lego robots tell me, in no uncertain terms, that agentic AI systems, as currently designed, possess no cognitive abilities and have no free agency.
+I have gained insight building a cognitive architecture for my Lego robots and these insights tell me, in no uncertain terms, that agentic AI will never become truly agentic or intelligent. A different approach however might succeed, one based on embodied experiences grounded in mortality.  
