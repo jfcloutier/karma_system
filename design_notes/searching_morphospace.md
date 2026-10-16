@@ -41,7 +41,7 @@ The following rules are for the creation, replication, division and death of dyn
 
 * The "daughter" dCAs born from division each replicate under stress until they reach the replication limit and become mitotic, unless they are already "mature" (they are then "end-of-line" dCAs).
 
-* "Replicant" dCAs and "daughter" dCAs differentiate over time because of non-deterministic causal theory generation but also from non-determinism in making predictions, unifying experiences, making plans, etc.
+* "Replicant" dCAs and "daughter" dCAs differentiate over time because of non-deterministic causal theory generation but also from non-determinism in making predictions, unifying percepts, making plans, etc.
 
 * A dCA remembers its lineage (the sequence of replications and divisions that led to it from the "stem" dCA in its layer) even though it differentiates. This allows counting toward replication limits.
 

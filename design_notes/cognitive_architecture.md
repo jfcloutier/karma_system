@@ -8,7 +8,7 @@ They can, but need not, be read in the following order:
 2. [som.md](./som.md)
 3. [wellbeing.md](./wellbeing.md)
 4. [predicting_and_observing.md](./predicting_and_observing.md)
-5. [experiencing.md](./experiencing.md)
+5. [perceiving.md](./perceiving.md)
 6. [feeling.md](./feeling.md)
 7. [acting.md](./acting.md)
 8. [planning.md](./planning.md)

@@ -1,11 +1,11 @@
 # Representing properties and relations
 
-Experiences, Predictions, Prediction Errors and Observations represent different perspectives held by CAs about properties/relations.
+Percepts, Predictions, Prediction Errors and Observations represent different perspectives held by CAs about properties/relations.
 
-* Observations: The experienced properties/relations a CA perceives of its umwelt CAs
+* Observations: The perceived properties/relations a CA perceives of its umwelt CAs
 * Predictions: The next observations a CA anticipates
 * Prediction errors: Corrections a CA receives from its umwelt about the values of predictions it made
-* Experiences:  Properties/relations abstracting the CA's past and current observations
+* Percepts:  Properties/relations abstracting the CA's past and current observations
 
 Properties/relations are represented as Origin ---Kind--> Value. A relation is between two objects (its origin and its value). A property is between one object (its origin) and an atomic value.
 
@@ -14,11 +14,11 @@ Properties/relations are represented as Origin ---Kind--> Value. A relation is b
 * The value of a relation is an object
 * The value of a property is a number or atom from a domain defined by the property's kind
 
-Observations, Experiences, Predictions and Prediction Errors add meta-data such as `confidence`.
+Observations, Percepts, Predictions and Prediction Errors add meta-data such as `confidence`.
 
 ## Kinds of properties/relations
 
-Sensors and effectors name their sense and action properties respectively. The causal theory of a CA can invent properties and relations that it also names. A CA creates properties and relations of three possible pre-defined kinds when it synthesizes experiences by abstracting observations.
+Sensors and effectors name their sense and action properties respectively. The causal theory of a CA can invent properties and relations that it also names. A CA creates properties and relations of three possible pre-defined kinds when it synthesizes percepts by abstracting observations.
 
 * (sense name) - only when the origin is a sensor, e.g. `distance`, `color`, `contact`, `state` etc.
 * (action name) - only when the origin is an effector, e.g. `spin`, `reverse_spin`
@@ -65,7 +65,7 @@ A `more` relation (between sets of current observations - both represented as sy
 
 ## Representations
 
-### Experience
+### Percept
 
 * (property or relation)
 * confidence: 0.0..1.0
@@ -82,7 +82,7 @@ A `more` relation (between sets of current observations - both represented as sy
 ### Prediction
 
 * (property or relation)
-* weight: 0..3 - how much weight the prediction has given its source - 3 if from causal model, 2 if from experience, 1 if from last observation, 0 if from ignorance
+* weight: 0..3 - how much weight the prediction has given its source - 3 if from causal model, 2 if from perception, 1 if from last observation, 0 if from ignorance
 * confidence: 0.0..1.0 - how confident the CA is about the prediction, irrespective of its source and thus weight
 * by: (ca)
 * for: [(unmwelt_ca), ...]

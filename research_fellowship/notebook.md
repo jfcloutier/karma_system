@@ -189,3 +189,7 @@ I became Research Fellow at the Active Inference Institute thus the motivation f
 ### Body
 
 * Added sense value tolerance (i.e. accuracy of reading)
+
+## October
+
+* Experiences -> percepts
