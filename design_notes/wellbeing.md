@@ -2,7 +2,7 @@
 
 ## About
 
-Wellbeing is a collection of measures the agent strives to maximize. Wellbeing imparts normativity to experiences, motivates activity, and focuses attention.
+Wellbeing is a collection of measures the agent strives to maximize. Wellbeing imparts normativity to percepts, motivates activity, and focuses attention.
 
 The measures are:
 
@@ -16,11 +16,11 @@ The wellbeing measures of a CA grow and decrease based on actions they take, bum
 
 ## The role of wellbeing
 
-Wellbeing provides the means by which *normativity* is associated with the experiences of CAs. CAs correlate synchronous wellbeing levels/trends with the experiences they hold from current and past observations.
+Wellbeing provides the means by which *normativity* is associated with the percepts of CAs. CAs correlate synchronous wellbeing levels/trends with the percepts they hold from current and past observations.
 
-Experiences associated with consistently high or increasing wellbeing measures, are "pleasant" experiences. Experiences associated with consistently low or decreasing wellbeing measures are "unpleasant". Experiences associated with neither are "neutral". Low and decreasing measures feel the worst whereas high and increasing measures feel the best.
+percepts associated with consistently high or increasing wellbeing measures, are "pleasant" percepts. Percepts associated with consistently low or decreasing wellbeing measures are "unpleasant". Percepts associated with neither are "neutral". Low and decreasing measures feel the worst whereas high and increasing measures feel the best.
 
-Wellbeing drives attention: CAs intend actions to persist pleasant experiences and terminate unpleasant experiences. Neutral experiences are normally "left alone" by the CA but are kept as they may compose the non-neutral experiences of more abstract CAs.
+Wellbeing drives attention: CAs intend actions to persist pleasant percepts and terminate unpleasant percepts. Neutral percepts are normally "left alone" by the CA but are kept as they may compose the non-neutral percepts of more abstract CAs.
 
 Wellbeing also provides the motivation for CAs to spawn new CAs or to remove themselves from the SOM, so as to manage overall energy levels or nudge up overall engagement.
 
@@ -32,7 +32,7 @@ Stress makes a CA more *plastic*. When stressed, it is more likely to:
 
 * revise the causal theory it uses as a symbolic generative model
 * temporarily ignore acquired affordance habits
-* temporarily ignore strongly held experiences and act instead on other experiences
+* temporarily ignore strongly held percepts and act instead on other percepts
 * lower its threshold for action
 * trigger its mitosis (birthing a new CA) or apoptosis (removing itself from the SOM)
 
@@ -49,9 +49,9 @@ Energy is replenished by the action of `eating` but only when the agent is posit
 Energy is spent individually by each CA when
 
 * obtaining a causal theory (the more time spent searching and the more complex the theory, the higher the energy cost)
-* synthesizing an experience (each experience comes at a metabolic cost)
+* synthesizing a percept (each percept comes at a metabolic cost)
 * using a causal theory (the more complex the theory, the higher the cost per use)
-* remembering past experiences and affordances (additional cost per remembered experience/affordance)
+* remembering past percepts and affordances (additional cost per remembered percept/affordance)
 * completing a timeframe (baseline computational/metabolic cost)
 
 Energy is also spent whenever the agent progressively and automatically recovers lost integrity, i.e. repairs itself.
@@ -61,9 +61,9 @@ In response to low and/or decreasing fullness,
 A CA may reduce "metabolic costs" by:
 
 * forgetting a past state (oldest first)
-* forgetting an experience ignored by all parent CAs (neutral first)
+* forgetting a percept ignored by all parent CAs (neutral first)
 * forgetting a previously constructed affordance it has not or infrequently reused
-* raising the normative threshold for acting on experiences (don't waste energy on trivial matters!)
+* raising the normative threshold for acting on percepts (don't waste energy on trivial matters!)
 
 A CA might share some its fullness with child and parent CAs that have less than it does.
 
@@ -87,12 +87,12 @@ Engagement keeps track of how engaged a CA is. Engagement is initially empty.
 Engagement goes up for a CA whenever
 
 * it obtains an accurate enough causal theory (making sense of its umwelt),
-* one of its experiences is elevated or is used in the composition of a parent CA's experience (it becomes relevant),
+* one of its percepts is elevated or is used in the composition of a parent CA's percept (it becomes relevant),
 * whenever an action it intends is executed (it acts in the world).
 
 Engagement decreases whenever
 
-* a CA's experience loses relevance (it was the basis of another CA's experience that was removed), or
+* a CA's percept loses relevance (it was the basis of another CA's percept that was removed), or
 * slowly, with the passing of time
 
 ## Spreading wellbeing
@@ -115,7 +115,7 @@ A CA can do so by claiming to all its umwelt CAs that:
 * it has more of a given type than it really does, thus acting as a benefactor, sending up to half the pretended difference to each umwelt CA at the end of each timeframe, until it has none
 * it has the actual amount of a given type it actually does, thus either giving nor accepting fulness from its umwelt to reach equilibrium
 
-Any CA with can change its wellbeing representation toward its umwelt. It is an action the CA can take to impact the normativity of experiences it and its umwelt hold.
+Any CA with can change its wellbeing representation toward its umwelt. It is an action the CA can take to impact the normativity of percepts it and its umwelt hold.
 
 The actions are:
 

@@ -4,17 +4,17 @@
 
 A robot is an autonomous and mortal agent animated by an evolving collective of communicating processes called Cognition Actors (CAs). The collective captures and applies what the robot learns about how to survive. The robot learns by changing the hierarchical structure of its mind-collective and by growing the competency of the individual CAs composing it.
 
-The collective forms an abstraction hierarchy where each CA has an umwelt composed of more "concrete" CAs that it observes, experiences, feels and acts upon. The bottom layer of CAs mediates access to the robot's sensors and motors, whereas the upper layers deal with the "big picture" of surviving.
+The collective forms an abstraction hierarchy where each CA has an umwelt composed of more "concrete" CAs that it observes, perceives, feels and acts upon. The bottom layer of CAs mediates access to the robot's sensors and motors, whereas the upper layers deal with the "big picture" of surviving.
 
-Each CA goes through a repeated "OODA loop" cycle (once per timeframe) where it runs through a sequence of begin, predict, observe, experience, feel, plan, act and assess phases. The more abstract the CA, the longer its timeframe. CAs run as separate, non-synchronized processes that interact with one another via queued messages.
+Each CA goes through a repeated "OODA loop" cycle (once per timeframe) where it runs through a sequence of begining, predicting, observing, perceiving, feeling, acting and assessing phases. The more abstract the CA, the longer its timeframe. CAs run as separate, non-synchronized processes that interact with one another via queued messages.
 
 The hope is that, from the interactions within an adaptive collective of CAs, competent agency will emerge.
 
 ## Observations
 
-A CA observes the experiences and actuations of its umwelt CAs.
+A CA observes the percepts of its umwelt CAs.
 
-Experiences in the umwelt are observed by predicting them and by processing potential, consequent prediction errors.
+Percepts in the umwelt are observed by predicting them and by processing potential, consequent prediction errors.
 
 An actuation is observed directly by a CA when it requests the execution of a command by an effector CA in its umwelt (no predicting is involved). See [acting](./acting.md).
 
@@ -26,19 +26,19 @@ An autonomous agent must learn to predict what happens next in order to survive.
 
 1. Predicting that nothing can be observed (predicting from complete absence of information)
 2. Predicting that nothing last observed will change
-3. Predicting that incoming observations will maintain current `count`, `more` and `trends` experiences constructed from prior observations
+3. Predicting that incoming observations will maintain current `count`, `more` and `trends` percepts constructed from prior observations
 4. Predicting observations from understanding (from having a model of latent processes that cause observations)
 5. Predicting goal/directive activations from plans the CA built to achieve its intent and received directives
 
 Given the provenance of a prediction, a consequent prediction error can present a learning opportunity of lesser or greater value:
 
 1. A prediction error as completely unanticipated observation (least value because the prediction came from ignorance)
-2. A prediction error as surprising observation causing a new experience
-3. A prediction error as surprising observation altering or terminating an experience
+2. A prediction error as surprising observation causing a new percept
+3. A prediction error as surprising observation altering or terminating a percept
 4. A prediction error as surprising observation triggering the revision of a causal model (greatest value because the prediction came from understanding)
 5. A prediction error as adjusted goal/directive activation status
 
-When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. This is usually immediately contradicted by prediction errors. As it accumulates observations and experiences them, and as it plans to impact these experiences, a CA makes more informed predictions and learns more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from an *understanding of what causes observations*, and potentially correct this understanding from consequent errors.
+When a cognition actor is created, it has everything to learn and can, at first, only predict that nothing will be observed. This is usually immediately contradicted by prediction errors. As it accumulates observations and percepts them, and as it plans to impact these percepts, a CA makes more informed predictions and learns more from errors. Eventually, the cognition actor will have enough of a history of observations to acquire a causal model, allowing it to make predictions from an *understanding of what causes observations*, and potentially correct this understanding from consequent errors.
 
 ## Creating observations from predictions and prediction errors
 
@@ -50,7 +50,7 @@ A CA assigns a confidence (between 1% and 100%) to each prediction it sends to i
 
 When a CA receives a prediction that is not meaningful to it, it returns a fully confident prediction error with value `unknown`.
 
-An uncontested prediction is one that has received no prediction error or has only received unknown-valued prediction errors from a strict subset of its umwelt (implying that at least one umwelt CA matched the prediction with an experience).
+An uncontested prediction is one that has received no prediction error or has only received unknown-valued prediction errors from a strict subset of its umwelt (implying that at least one umwelt CA matched the prediction with a percept).
 
 It is possible for a prediction to not cause an observation if consequent unknown-valued prediction errors were received from all umwelt CAs; the prediction was meaningless to the entire umwelt, and thus no information about the umwelt was gained from making the prediction.
 
@@ -87,9 +87,9 @@ The CA collects all the predictions it could make and drops those that fall too 
 
 The sources of predictions, in decreasing order of authority, are:
 
-* Plans built to impact (strongly felt) experiences (**goal activation predictions**)
+* Plans built to impact (strongly felt) percepts (**goal activation predictions**)
 * Inferring from the causal theory applied to prior observations (**predicting observations from an understanding of latent processes**)
-* Extrapolating from prior experiences (**predicting observations that sustain the CA's current experiences**)
+* Extrapolating from prior percepts (**predicting observations that sustain the CA's current percepts**)
 * Predicting unaltered prior observations (**predicting that the umwelt did not change**)
 * As a last resort, making an empty prediction (**predicting that nothing will be observed**)
 
@@ -99,21 +99,21 @@ When uncontested predictions conflict (different values are predicted), the one 
 
 See [acting](./acting.md)
 
-## Predictions from synthetic experiences
+## Predictions from synthetic percepts
 
-A CA synthesizes its experiences from observations it makes of its umwelt. The CA can predict a number of observations on the basis of its current experiences.
+A CA synthesizes its percepts from observations it makes of its umwelt. The CA can predict a number of observations on the basis of its current percepts.
 
-Making predictions from prior synthetic experiences (either `trend`, `count`, or `more` experiences):
+Making predictions from prior synthetic percepts (either `trend`, `count`, or `more` percepts):
 
-* Trend: Predict an observation that continues the experienced trend (up, down, steady) recently observed
+* Trend: Predict an observation that continues the perceived trend (up, down, steady) recently observed
 * Count: Predict the counted observations (there are N of this)
 * More: Predict the compared observations (there is more of this than that)
 
 ## Empty predictions
 
-At the start of its life, a CA has no observations, experiences, causal theory or plans. The CA can only make an empty prediction.
+At the start of its life, a CA has no observations, percepts, causal theory or plans. The CA can only make an empty prediction.
 
-Each umwelt CA responds to an empty prediction with fully confident prediction errors, essentially stating each of its experiences in the form of a prediction error.
+Each umwelt CA responds to an empty prediction with fully confident prediction errors, essentially stating each of its percepts in the form of a prediction error.
 
 An empty prediction is always overridden by the prediction errors it causes; it never becomes an observation.
 
@@ -135,4 +135,4 @@ This is needed since not receiving a prediction can be just as meaningful to a C
 For example, not holding predictions about the activation of a directive indicates that parent CAs are no longer interested in pursuing it.
 
 A persisted prediction is as active as a just-received one.
-It is possible for a prediction received by a CA in its lifecycle T to cause it to send a prediction error but only in lifecycle T+1, because of a change in the CA's experiences from T to T1.
+It is possible for a prediction received by a CA in its lifecycle T to cause it to send a prediction error but only in lifecycle T+1, because of a change in the CA's percepts from T to T1.
